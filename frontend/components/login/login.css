@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.auth-container {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #84B5AC 0%, #7FB0A7 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.back {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.back:hover {
+    opacity: 0.8;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 560px;
+    background: #F5F6F7;
+    border-radius: 30px;
+    padding: 55px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.10);
+    text-align: center;
+}
+
+.logo {
+    width: 110px;
+    border-radius: 26px;
+    margin-bottom: 24px;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.10);
+}
+
+.auth-card h2 {
+    font-size: 52px;
+    font-weight: 700;
+    color: #2F2A68;
+    margin-bottom: 14px;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 24px;
+    color: #6E6894;
+    margin-bottom: 38px;
+    line-height: 1.5;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: #4A4378;
+    margin-bottom: 10px;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #D8E1DD;
+    border-radius: 18px;
+    padding: 18px 20px;
+    transition: 0.2s ease;
+}
+
+.input-box:focus-within {
+    border-color: #66B8E8;
+    box-shadow: 0 0 0 4px rgba(102,184,232,0.08);
+}
+
+.input-box .icon {
+    font-size: 20px;
+    margin-right: 14px;
+}
+
+.input-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 18px;
+    color: #2F2A68;
+}
+
+.error,
+.success {
+    font-size: 15px;
+    margin-top: 10px;
+    min-height: 24px;
+    font-weight: 500;
+}
+
+.error {
+    color: #E74C3C;
+}
+
+.success {
+    color: #27AE60;
+}
+
+.btn-main {
+    width: 100%;
+    height: 72px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #49C7E7, #5D7BEE);
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+}
+
+.switch {
+    margin-top: 28px;
+    font-size: 18px;
+    color: #6E6894;
+    line-height: 1.5;
+}
+
+.switch span {
+    color: #35C2E8;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .auth-card {
+        max-width: 500px;
+        padding: 48px 36px;
+    }
+
+    .auth-card h2 {
+        font-size: 42px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 30px 18px;
+    }
+
+    .auth-card {
+        padding: 40px 28px;
+        max-width: 100%;
+        border-radius: 26px;
+    }
+
+    .auth-card h2 {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .input-group label {
+        font-size: 16px;
+    }
+
+    .input-box {
+        padding: 16px 18px;
+    }
+
+    .input-box input {
+        font-size: 16px;
+    }
+
+    .btn-main {
+        font-size: 20px;
+        height: 60px;
+        border-radius: 18px;
+    }
+
+    .switch {
+        font-size: 15px;
+    }
+
+    .logo {
+        width: 85px;
+        border-radius: 20px;
+    }
+
+    .back {
+        top: 20px;
+        left: 20px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 20px 14px;
+    }
+
+    .auth-card {
+        border-radius: 22px;
+        padding: 30px 20px;
+    }
+
+    .auth-card h2 {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+        margin-bottom: 26px;
+    }
+
+    .input-group {
+        margin-bottom: 18px;
+    }
+
+    .input-box {
+        padding: 14px 16px;
+        border-radius: 16px;
+    }
+
+    .input-box .icon {
+        font-size: 18px;
+    }
+
+    .btn-main {
+        height: 56px;
+        font-size: 18px;
+    }
+
+    .switch {
+        font-size: 14px;
+    }
+
+    .logo {
+        width: 75px;
+    }
+}

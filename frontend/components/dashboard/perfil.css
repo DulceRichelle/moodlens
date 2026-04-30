@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.perfil-page {
+    min-height: 100vh;
+    background: #84B5AC;
+    padding: 40px 30px;
+}
+
+.header-perfil {
+    margin-bottom: 30px;
+}
+
+.header-perfil h1 {
+    font-size: 46px;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.header-perfil p {
+    font-size: 20px;
+    color: #F5F5F5;
+    line-height: 1.5;
+}
+
+.perfil-card {
+    background: #F5F6F7;
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.perfil-card h2 {
+    color: #2F2A68;
+    margin-bottom: 28px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.perfil-top {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+.avatar-grande {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #49C7E7, #5D7BEE);
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 72px;
+}
+
+.perfil-datos h3 {
+    font-size: 30px;
+    color: #2F2A68;
+    margin-bottom: 6px;
+}
+
+.perfil-datos p {
+    font-size: 18px;
+    color: #6D6795;
+    margin-bottom: 4px;
+}
+
+.perfil-datos span {
+    font-size: 15px;
+    color: #9A95B8;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4A4378;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px solid #D8E1DD;
+    background: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.btn-guardar {
+    width: 100%;
+    height: 64px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #49C7E7, #5D7BEE);
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-guardar:hover {
+    transform: translateY(-2px);
+}
+
+.ajuste-item {
+    background: #FAFAFB;
+    border: 1px solid #DDE4E0;
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    gap: 20px;
+}
+
+.ajuste-item h3 {
+    color: #2F2A68;
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.ajuste-item p {
+    color: #6D6795;
+    font-size: 15px;
+}
+
+.switch {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    min-width: 52px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #D8DCE2;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+    background: #49C7E7;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+.progreso-card {
+    background: linear-gradient(90deg, #49C7E7, #5D7BEE);
+    border-radius: 24px;
+    padding: 30px;
+    color: white;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.progreso-card h2 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.progreso-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.progreso-box {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+    padding: 24px;
+}
+
+.progreso-box h3 {
+    font-size: 36px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.progreso-box p {
+    font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+
+    .header-perfil h1 {
+        font-size: 38px;
+    }
+
+    .header-perfil p {
+        font-size: 17px;
+    }
+
+    .perfil-card,
+    .progreso-card {
+        padding: 28px;
+    }
+
+    .perfil-card h2,
+    .progreso-card h2 {
+        font-size: 24px;
+    }
+
+    .perfil-datos h3 {
+        font-size: 26px;
+    }
+
+    .progreso-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .perfil-page {
+        padding: 24px 16px;
+    }
+
+    .header-perfil {
+        margin-bottom: 24px;
+    }
+
+    .header-perfil h1 {
+        font-size: 32px;
+    }
+
+    .header-perfil p {
+        font-size: 15px;
+    }
+
+    .perfil-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .avatar-grande {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        font-size: 26px;
+    }
+
+    .perfil-datos h3 {
+        font-size: 22px;
+    }
+
+    .perfil-datos p {
+        font-size: 15px;
+    }
+
+    .perfil-datos span {
+        font-size: 13px;
+    }
+
+    .perfil-card,
+    .progreso-card {
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .ajuste-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-guardar {
+        height: 58px;
+        font-size: 17px;
+    }
+
+    .progreso-box h3 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .header-perfil h1 {
+        font-size: 28px;
+    }
+
+    .perfil-card h2,
+    .progreso-card h2 {
+        font-size: 22px;
+    }
+
+    .btn-guardar {
+        font-size: 16px;
+    }
+}

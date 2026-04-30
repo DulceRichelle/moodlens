@@ -1,0 +1,26 @@
+{
+  "name": "moodlens-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "backend": "node index.js",
+    "frontend": "live-server frontend --port=5500",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.2"
+  }
+}

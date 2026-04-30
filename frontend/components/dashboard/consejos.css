@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.consejos-page {
+    min-height: 100vh;
+    background: #84B5AC;
+    padding: 40px 30px;
+}
+
+/* HEADER */
+
+.header-consejos {
+    margin-bottom: 35px;
+}
+
+.header-consejos h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.header-consejos p {
+    font-size: 20px;
+    color: #F5F5F5;
+    line-height: 1.5;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.consejos-container {
+    width: 100%;
+    max-width: 1500px;
+    background: #F5F6F7;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.consejos-container h2 {
+    font-size: 30px;
+    color: #2F2A68;
+    margin-bottom: 30px;
+}
+
+/* GRID */
+
+.consejos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* CARD */
+
+.consejo-card {
+    background: #FAFAFB;
+    border: 1px solid #DDE4E0;
+    border-radius: 20px;
+    padding: 28px;
+    transition: 0.3s ease;
+    min-height: 230px;
+}
+
+.consejo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+.consejo-card h3 {
+    font-size: 24px;
+    color: #352A6A;
+    margin: 18px 0 12px;
+    line-height: 1.3;
+}
+
+.consejo-card p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #6D6795;
+}
+
+/* ICONOS */
+
+.icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+}
+
+.amarillo {
+    background: #FFF4D8;
+}
+
+.azul {
+    background: #DDF6FA;
+}
+
+.naranja {
+    background: #FBE7D8;
+}
+
+.morado {
+    background: #E8E1F8;
+}
+
+.celeste {
+    background: #E0F5FF;
+}
+
+.rosa {
+    background: #FCE8F3;
+}
+
+/* ============================= */
+/* TABLET */
+/* ============================= */
+
+@media (max-width: 1024px) {
+    .consejos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-consejos h1 {
+        font-size: 40px;
+    }
+}
+
+/* ============================= */
+/* MÓVIL */
+/* ============================= */
+
+@media (max-width: 768px) {
+    .consejos-page {
+        padding: 24px 16px;
+    }
+
+    .header-consejos {
+        margin-bottom: 28px;
+    }
+
+    .header-consejos h1 {
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+
+    .header-consejos p {
+        font-size: 16px;
+    }
+
+    .consejos-container {
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .consejos-container h2 {
+        font-size: 24px;
+        margin-bottom: 22px;
+    }
+
+    .consejos-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .consejo-card {
+        padding: 22px;
+        min-height: auto;
+        border-radius: 18px;
+    }
+
+    .consejo-card h3 {
+        font-size: 20px;
+        margin: 16px 0 10px;
+    }
+
+    .consejo-card p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        border-radius: 14px;
+    }
+}
+
+/* ============================= */
+/* MÓVIL PEQUEÑO */
+/* ============================= */
+
+@media (max-width: 480px) {
+    .header-consejos h1 {
+        font-size: 28px;
+    }
+
+    .header-consejos p {
+        font-size: 15px;
+    }
+
+    .consejos-container h2 {
+        font-size: 22px;
+    }
+
+    .consejo-card h3 {
+        font-size: 18px;
+    }
+
+    .consejo-card p {
+        font-size: 14px;
+    }
+}

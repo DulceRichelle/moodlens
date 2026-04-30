@@ -1,0 +1,410 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.historial-page {
+    min-height: 100vh;
+    background: #8DB8AF;
+    padding: 40px 30px;
+}
+
+.header-historial {
+    margin-bottom: 35px;
+}
+
+.header-historial h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.header-historial p {
+    font-size: 20px;
+    color: #F5F5F5;
+}
+
+.historial-main-container {
+    width: 100%;
+    max-width: 1520px;
+    background: #F3F5F4;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.historial-main-container h2 {
+    font-size: 30px;
+    color: #2F2A68;
+    margin-bottom: 20px;
+}
+
+.filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filtro {
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    background: #E0E5EC;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filtro:hover {
+    transform: translateY(-1px);
+}
+
+.filtro.active {
+    background: linear-gradient(90deg, #49C7E7, #5D7BEE);
+    color: white;
+}
+
+.historial-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+.historial-lista::-webkit-scrollbar {
+    width: 6px;
+}
+
+.historial-lista::-webkit-scrollbar-thumb {
+    background: #8A84B0;
+    border-radius: 20px;
+}
+
+.grupo {
+    margin-bottom: 25px;
+}
+
+.grupo-titulo {
+    font-size: 20px;
+    color: #2F2A68;
+    margin-bottom: 12px;
+}
+
+.historial-card {
+    background: #F7F7F9;
+    border: 1px solid #D9E1DD;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.25s ease;
+}
+
+.historial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+.card-left {
+    flex: 1;
+}
+
+.card-left h3 {
+    font-size: 24px;
+    color: #352A6A;
+    margin-bottom: 10px;
+}
+
+.card-left p {
+    font-size: 16px;
+    color: #6D6795;
+    margin-bottom: 6px;
+}
+
+.card-right {
+    font-size: 14px;
+    color: #8A84B0;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.emocion-header {
+    display: flex;
+    gap: 16px;
+}
+
+.emocion-icono {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.emocion-icono.ansioso {
+    background: #E8E1F8;
+    color: #5B3B9B;
+}
+
+.emocion-icono.triste {
+    background: #FBE7D8;
+    color: #F28A2E;
+}
+
+.emocion-icono.tranquilo {
+    background: #DDF6FA;
+    color: #25C6E8;
+}
+
+.emocion-icono.feliz {
+    background: #FFF3D6;
+    color: #F5C542;
+}
+
+.emocion-icono.neutral {
+    background: #ECECEC;
+    color: #7A7A7A;
+}
+
+.acciones {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.acciones button {
+    border: none;
+    background: #E0E5EC;
+    border-radius: 8px;
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.acciones button:hover {
+    background: #d0d7df;
+}
+
+.historial-vacio {
+    text-align: center;
+    font-size: 22px;
+    color: #8B84AF;
+    padding: 40px;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #F5F6F7;
+    padding: 30px;
+    border-radius: 20px;
+    width: 320px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    color: #2F2A68;
+}
+
+.modal-content label {
+    font-size: 14px;
+    color: #555;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#guardarEdit {
+    background: linear-gradient(90deg, #49C7E7, #5D7BEE);
+    color: white;
+}
+
+#cancelarEdit {
+    background: #ddd;
+}
+
+.toast {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2F2A68;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.toast button {
+    background: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modal-buttons .danger {
+    background: #ff5e5e;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.historial-card.removing {
+    animation: removeAnim 0.3s ease forwards;
+}
+
+@keyframes removeAnim {
+    to {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+
+.historial-card.adding {
+    animation: addAnim 0.3s ease;
+}
+
+@keyframes addAnim {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .historial-page {
+        padding: 20px 15px;
+    }
+
+    .header-historial h1 {
+        font-size: 32px;
+    }
+
+    .historial-card {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .card-right {
+        margin-left: 0;
+        white-space: normal;
+    }
+
+    .filtro {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .header-historial h1 {
+        font-size: 26px;
+    }
+
+    .card-left h3 {
+        font-size: 18px;
+    }
+
+    .card-left p {
+        font-size: 14px;
+    }
+
+    .historial-vacio {
+        font-size: 18px;
+    }
+}
