@@ -1,21 +1,50 @@
 import { getUser } from "../../services/user.service.js";
 
-export function renderPerfil(app) {
-
+export async function renderPerfil(app) {
+    
 const user = getUser();
 
+let stats = {
+    total: 0,
+    constancia: 0
+};
+
+try {
+
+    const res = await fetch(
+        `https://moodlens-oj88.onrender.com/api/emociones/${user.id_usuario || user.id}`
+        );
+
+    const registros = await res.json();
+
+    stats.total = registros.length;
+
+    const fechasUnicas = [
+        ...new Set(
+            registros.map(r =>
+                new Date(r.fecha).toDateString()
+            )
+        )
+    ];
+
+    stats.constancia = fechasUnicas.length;
+
+} catch (error) {
+    console.log(error);
+}
+
 const fechaRegistro =
-    formatearFechaRegistro(user?.fecha_creacion);
+    user.fecha_registro || user.created_at || new Date();
 
 app.innerHTML = `
-    <link rel="stylesheet" href="components/dashboard/perfil.css">
+<link rel="stylesheet" href="components/dashboard/perfil.css">
 
-        <div class="perfil-page">
+<div class="perfil-page">
 
-        <div class="header-perfil">
+    <div class="header-perfil">
         <h1>⚙ Ajustes de Perfil</h1>
-    <p>Gestiona tu cuenta y preferencias</p>
-</div>
+        <p>Gestiona tu cuenta y preferencias</p>
+    </div>
 
     <div class="perfil-card">
 
@@ -29,7 +58,7 @@ app.innerHTML = `
 
             <div class="perfil-datos">
 
-                <h3>
+                <h3 id="nombreVisual">
                     ${user?.nombre || "Usuario"}
                 </h3>
 
@@ -38,7 +67,8 @@ app.innerHTML = `
                 </p>
 
                 <span>
-                    Miembro desde ${fechaRegistro}
+                    Miembro desde
+                    ${formatearFecha(fechaRegistro)}
                 </span>
 
             </div>
@@ -65,13 +95,14 @@ app.innerHTML = `
                 type="email"
                 id="emailPerfil"
                 value="${user?.email || ""}"
+                disabled
             >
 
         </div>
 
         <button
             class="btn-guardar"
-            onclick="guardarPerfil()"
+            id="guardarPerfilBtn"
         >
             💾 Guardar Cambios
         </button>
@@ -97,7 +128,7 @@ app.innerHTML = `
                     checked
                 >
 
-                    <span class="slider"></span>
+                <span class="slider"></span>
 
             </label>
 
@@ -117,7 +148,7 @@ app.innerHTML = `
                     id="darkMode"
                 >
 
-                    <span class="slider"></span>
+                <span class="slider"></span>
 
             </label>
 
@@ -132,13 +163,13 @@ app.innerHTML = `
         <div class="progreso-grid">
 
             <div class="progreso-box">
-                <h3>23</h3>
-                <p>Días activo</p>
+                <h3>${stats.total}</h3>
+                <p>Registros emocionales</p>
             </div>
 
             <div class="progreso-box">
-                <h3>85%</h3>
-                <p>Constancia</p>
+                <h3>${stats.constancia}</h3>
+                <p>Días con actividad</p>
             </div>
 
         </div>
@@ -149,8 +180,62 @@ app.innerHTML = `
 `;
 
 initDarkMode();
+initPerfilEvents(user);
 
-window.guardarPerfil = guardarPerfil;
+}
+
+function initPerfilEvents(user) {
+
+document
+    .getElementById("guardarPerfilBtn")
+    .addEventListener("click", async () => {
+
+        const nuevoNombre =
+            document.getElementById("nombrePerfil")
+                .value
+                .trim();
+
+        if (!nuevoNombre) return;
+
+        try {
+
+            await fetch(
+                `https://moodlens-oj88.onrender.com/api/usuarios/${user.id_usuario || user.id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nombre: nuevoNombre
+                    })
+                }
+            );
+
+            user.nombre = nuevoNombre;
+
+            localStorage.setItem(
+                "user",
+                JSON.stringify(user)
+            );
+
+            document.getElementById(
+                "nombreVisual"
+            ).textContent = nuevoNombre;
+
+            mostrarToast(
+                "Perfil actualizado ✨"
+            );
+
+        } catch (error) {
+
+            console.log(error);
+
+            mostrarToast(
+                "Error al guardar cambios :("
+            );
+        }
+    });
 
 }
 
@@ -165,7 +250,6 @@ const darkSaved =
 if (darkSaved === "true") {
 
     document.body.classList.add("dark-mode");
-
     darkToggle.checked = true;
 }
 
@@ -191,47 +275,45 @@ darkToggle.addEventListener("change", () => {
     }
 });
 
+}
+
+function mostrarToast(msg) {
+
+const toast =
+    document.createElement("div");
+
+toast.className = "toast";
+toast.textContent = msg;
+
+document.body.appendChild(toast);
+
+setTimeout(() => {
+    toast.classList.add("show");
+}, 100);
+
+setTimeout(() => {
+
+    toast.classList.remove("show");
+
+    setTimeout(() => {
+        toast.remove();
+    }, 300);
+
+}, 2500);
+
 
 }
 
-function guardarPerfil() {
+function formatearFecha(fecha) {
 
-const nombre =
-    document.getElementById("nombrePerfil").value;
 
-const email =
-    document.getElementById("emailPerfil").value;
-
-const user = getUser();
-
-const actualizado = {
-    ...user,
-    nombre,
-    email
-};
-
-localStorage.setItem(
-    "user",
-    JSON.stringify(actualizado)
+return new Date(fecha).toLocaleDateString(
+    "es-ES",
+    {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    }
 );
-
-alert("¡Cambios guardados correctamente! ✨");
-
-}
-
-function formatearFechaRegistro(fecha) {
-
-
-if (!fecha) {
-    return "hace poco";
-}
-
-const f = new Date(fecha);
-
-return f.toLocaleDateString("es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-});
 
 }
