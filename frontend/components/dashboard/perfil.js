@@ -1,7 +1,7 @@
 import { getUser } from "../../services/user.service.js";
 
 export async function renderPerfil(app) {
-    
+
 const user = getUser();
 
 let stats = {

@@ -291,6 +291,31 @@ app.put('/api/emociones/:id', (req, res) => {
     );
 });
 
+app.put('/api/usuarios/:id', (req, res) => {
+
+const { id } = req.params;
+const { nombre } = req.body;
+
+db.query(
+    `UPDATE usuarios
+    SET nombre = ?
+        WHERE id_usuario = ?`,
+    [nombre, id],
+    (err, result) => {
+
+        if (err) {
+            console.log(err);
+            return res.status(500).send(err);
+        }
+
+        res.json({
+            message: 'Perfil actualizado'
+        });
+    }
+);
+
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, '0.0.0.0', () => {
