@@ -223,6 +223,47 @@ body {
     font-size: 16px;
 }
 
+.dark-mode {
+    background: #151515;
+    color: white;
+}
+
+.dark-mode .perfil-card,
+.dark-mode .historial-main-container,
+.dark-mode .registro-container,
+.dark-mode .analisis-card,
+.dark-mode .historial-card {
+    background: #1F1F1F;
+    color: white;
+    border-color: #2C2C2C;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode span,
+.dark-mode label {
+    color: white !important;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+    background: #2A2A2A;
+    color: white;
+    border-color: #444;
+}
+
+.dark-mode .filtro {
+    background: #2D2D2D;
+    color: white;
+}
+
+.dark-mode .modal-content {
+    background: #1E1E1E;
+    color: white;
+}
+
 @media (max-width: 1024px) {
 
     .header-perfil h1 {
