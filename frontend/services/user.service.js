@@ -1,4 +1,4 @@
-const API = 'http://192.168.1.128:3000/api';
+const API = 'https://moodlens-oj88.onrender.com/api';
 
 export async function login(email, password) {
     const res = await fetch(`${API}/login`, {

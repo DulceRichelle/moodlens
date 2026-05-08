@@ -92,7 +92,7 @@ async function handleRegister() {
     }
 
     try {
-        const res = await fetch('http://192.168.1.128:3000/api/register', {
+        const res = await fetch('https://moodlens-oj88.onrender.com/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -49,7 +49,7 @@ async function cargarAnalisis() {
     const userId = user.id || user.id_usuario;
 
     try {
-        const res = await fetch(`http://192.168.1.128:3000/api/emociones/${userId}`);
+        const res = await fetch(`https://moodlens-oj88.onrender.com/api/emociones/${userId}`);
         const data = await res.json();
 
         if (!data.length) return;

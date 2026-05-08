@@ -79,7 +79,7 @@ async function cargarHistorial() {
     const userId = user.id || user.id_usuario;
 
     try {
-        const res = await fetch(`http://192.168.1.128:3000/api/emociones/${userId}`);
+        const res = await fetch(`https://moodlens-oj88.onrender.com/api/emociones/${userId}`);
         const data = await res.json();
 
         historialData = data || [];
@@ -192,7 +192,7 @@ function initEventosGlobales() {
             const intensidad = document.getElementById("editIntensidad").value;
             const nota = document.getElementById("editNota").value;
 
-            await fetch(`http://192.168.1.128:3000/api/emociones/${registroEditando.id_registro}`, {
+            await fetch(`https://moodlens-oj88.onrender.com/api/emociones/${registroEditando.id_registro}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ intensidad, nota })
@@ -220,7 +220,7 @@ function initEventosGlobales() {
 
                 setTimeout(async () => {
 
-                    await fetch(`http://192.168.1.128:3000/api/emociones/${registroAEliminar}`, {
+                    await fetch(`https://moodlens-oj88.onrender.com/api/emociones/${registroAEliminar}`, {
                         method: "DELETE"
                     });
 

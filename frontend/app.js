@@ -2,7 +2,7 @@ async function login() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const res = await fetch('http://192.168.1.128:3000/api/login', {
+    const res = await fetch('https://moodlens-oj88.onrender.com/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ async function login() {
 async function cargarRegistros() {
     const userId = localStorage.getItem('userId');
 
-    const res = await fetch(`http://192.168.1.128:3000/api/registros/${userId}`);
+    const res = await fetch(`https://moodlens-oj88.onrender.com/api/registros/${userId}`);
     const data = await res.json();
 
     const lista = document.getElementById('lista');
@@ -38,7 +38,7 @@ async function cargarRegistros() {
 async function cargarGrafico() {
     const userId = localStorage.getItem('userId');
 
-    const res = await fetch(`http://192.168.1.128:3000/api/registros/${userId}`);
+    const res = await fetch(`https://moodlens-oj88.onrender.com/api/registros/${userId}`);
     const data = await res.json();
 
     const emociones = {};
@@ -74,7 +74,7 @@ async function guardarRegistro() {
     const nota = document.getElementById('nota').value;
     const emocion = document.getElementById('emocion').value;
 
-    const res = await fetch('http://192.168.1.128:3000/api/registros', {
+    const res = await fetch('https://moodlens-oj88.onrender.com/api/registros', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ async function register() {
         return;
     }
 
-    const res = await fetch('http://192.168.1.128:3000/api/register', {
+    const res = await fetch('https://moodlens-oj88.onrender.com/api/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
