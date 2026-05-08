@@ -9,15 +9,13 @@ const connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
-
-    ```
 if (err) {
     console.log('Error MySQL:', err);
 } else {
     console.log('MySQL conectado');
 }
-```
 
 });
 
 module.exports = connection;
+
