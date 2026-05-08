@@ -158,6 +158,22 @@ body {
     cursor: pointer;
 }
 
+.password-box {
+    position: relative;
+}
+
+.toggle-password {
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 12px;
+    transition: 0.2s ease;
+}
+
+.toggle-password:hover {
+    transform: scale(1.1);
+}
+
 @media (max-width: 1024px) {
     .auth-card {
         max-width: 500px;
