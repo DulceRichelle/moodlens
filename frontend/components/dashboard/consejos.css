@@ -10,33 +10,28 @@ body {
 
 .consejos-page {
 
-    min-height: 100vh;
+    width: 100%;
 
-    padding: 28px;
+    padding: 10px;
 
-    background:
-            linear-gradient(
-                    135deg,
-                    #8DB8AF 0%,
-                    #7FA9E1 100%
-            );
+    animation:
+            fadePage 0.4s ease;
 }
 
 .hero-consejos {
 
     margin-bottom: 28px;
-
-    animation:
-            fadeUp 0.5s ease;
 }
 
 .hero-consejos h1 {
 
-    font-size: 48px;
+    font-size: 46px;
 
     color: white;
 
     margin-bottom: 10px;
+
+    line-height: 1.1;
 }
 
 .hero-consejos p {
@@ -49,7 +44,7 @@ body {
 .consejo-destacado {
 
     background:
-            rgba(255,255,255,0.18);
+            rgba(255,255,255,0.16);
 
     backdrop-filter: blur(18px);
 
@@ -58,18 +53,21 @@ body {
 
     border-radius: 30px;
 
-    padding: 32px;
+    padding: 30px;
 
     display: flex;
 
-    gap: 24px;
-
     align-items: center;
+
+    gap: 24px;
 
     margin-bottom: 28px;
 
+    box-shadow:
+            0 10px 28px rgba(0,0,0,0.08);
+
     animation:
-            fadeUp 0.7s ease;
+            fadeUp 0.5s ease;
 }
 
 .destacado-icono {
@@ -82,7 +80,7 @@ body {
     border-radius: 24px;
 
     background:
-            rgba(255,255,255,0.24);
+            rgba(255,255,255,0.18);
 
     display: flex;
     justify-content: center;
@@ -93,11 +91,13 @@ body {
 
 .tag {
 
-    display: inline-block;
+    display: inline-flex;
 
-    padding: 8px 12px;
+    align-items: center;
 
-    border-radius: 12px;
+    padding: 8px 14px;
+
+    border-radius: 999px;
 
     background:
             rgba(255,255,255,0.18);
@@ -106,7 +106,9 @@ body {
 
     font-size: 13px;
 
-    margin-bottom: 14px;
+    font-weight: 600;
+
+    margin-bottom: 16px;
 }
 
 .consejo-destacado h2 {
@@ -114,6 +116,8 @@ body {
     color: white;
 
     font-size: 34px;
+
+    line-height: 1.2;
 
     margin-bottom: 12px;
 }
@@ -141,19 +145,20 @@ body {
 
 .insight-card {
 
-    background: white;
+    background:
+            rgba(255,255,255,0.96);
 
-    border-radius: 26px;
+    border-radius: 28px;
 
     padding: 28px;
+
+    transition: 0.28s ease;
 
     box-shadow:
             0 10px 24px rgba(0,0,0,0.08);
 
-    transition: 0.28s ease;
-
     animation:
-            fadeUp 0.8s ease;
+            fadeUp 0.6s ease;
 }
 
 .insight-card:hover {
@@ -166,7 +171,7 @@ body {
 
     font-size: 34px;
 
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .insight-card h3 {
@@ -185,19 +190,13 @@ body {
     line-height: 1.6;
 }
 
-.tips-section {
-
-    animation:
-            fadeUp 1s ease;
-}
-
 .tips-section h2 {
 
     color: white;
 
-    font-size: 32px;
+    font-size: 30px;
 
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 }
 
 .tips-grid {
@@ -212,7 +211,8 @@ body {
 
 .tip-card {
 
-    background: white;
+    background:
+            rgba(255,255,255,0.96);
 
     border-radius: 28px;
 
@@ -222,6 +222,9 @@ body {
 
     box-shadow:
             0 10px 24px rgba(0,0,0,0.08);
+
+    animation:
+            fadeUp 0.8s ease;
 }
 
 .tip-card:hover {
@@ -290,6 +293,19 @@ body {
     }
 }
 
+@keyframes fadePage {
+
+    from {
+
+        opacity: 0;
+    }
+
+    to {
+
+        opacity: 1;
+    }
+}
+
 @media (max-width: 1024px) {
 
     .hero-consejos h1 {
@@ -302,7 +318,12 @@ body {
 
     .consejos-page {
 
-        padding: 18px;
+        padding: 8px;
+    }
+
+    .hero-consejos {
+
+        margin-top: 60px;
     }
 
     .hero-consejos h1 {
@@ -331,20 +352,20 @@ body {
 
     .tips-section h2 {
 
-        font-size: 28px;
+        font-size: 26px;
     }
 }
 
 @media (max-width: 480px) {
 
-    .consejos-page {
-
-        padding: 14px;
-    }
-
     .hero-consejos h1 {
 
         font-size: 28px;
+    }
+
+    .hero-consejos p {
+
+        font-size: 15px;
     }
 
     .consejo-destacado,
@@ -357,5 +378,15 @@ body {
     .consejo-destacado h2 {
 
         font-size: 24px;
+    }
+
+    .destacado-icono {
+
+        width: 78px;
+        height: 78px;
+
+        min-width: 78px;
+
+        font-size: 36px;
     }
 }
