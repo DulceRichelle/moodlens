@@ -18,8 +18,6 @@ body {
     overflow-x: hidden;
 }
 
-/* LAYOUT */
-
 .dashboard-layout {
 
     display: flex;
@@ -28,8 +26,6 @@ body {
 
     width: 100%;
 }
-
-/* SIDEBAR */
 
 .sidebar {
 
@@ -76,8 +72,6 @@ body {
     }
 }
 
-/* LOGO */
-
 .logo-section {
 
     display: flex;
@@ -115,8 +109,6 @@ body {
 
     font-size: 13px;
 }
-
-/* USER */
 
 .user-box {
 
@@ -181,8 +173,6 @@ body {
     font-size: 13px;
 }
 
-/* MENU */
-
 .menu {
 
     display: flex;
@@ -242,8 +232,6 @@ body {
     transform: translateX(6px);
 }
 
-/* LOGOUT */
-
 .logout {
 
     margin-top: 26px;
@@ -275,8 +263,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* MAIN */
-
 .main-content {
 
     flex: 1;
@@ -306,8 +292,6 @@ body {
     }
 }
 
-/* TOGGLE */
-
 .menu-toggle {
 
     display: none;
@@ -335,8 +319,6 @@ body {
 
     z-index: 999;
 }
-
-/* MOBILE */
 
 @media (max-width: 1024px) {
 

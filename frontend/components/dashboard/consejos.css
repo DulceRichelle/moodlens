@@ -5,223 +5,357 @@
 }
 
 body {
-    overflow-x: hidden;
     font-family: 'Inter', sans-serif;
 }
 
 .consejos-page {
+
     min-height: 100vh;
-    background: #84B5AC;
-    padding: 40px 30px;
-}
 
-/* HEADER */
-
-.header-consejos {
-    margin-bottom: 35px;
-}
-
-.header-consejos h1 {
-    font-size: 48px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 12px;
-    line-height: 1.2;
-}
-
-.header-consejos p {
-    font-size: 20px;
-    color: #F5F5F5;
-    line-height: 1.5;
-}
-
-/* CONTENEDOR PRINCIPAL */
-
-.consejos-container {
-    width: 100%;
-    max-width: 1500px;
-    background: #F5F6F7;
-    border-radius: 24px;
-    padding: 36px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-}
-
-.consejos-container h2 {
-    font-size: 30px;
-    color: #2F2A68;
-    margin-bottom: 30px;
-}
-
-/* GRID */
-
-.consejos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-/* CARD */
-
-.consejo-card {
-    background: #FAFAFB;
-    border: 1px solid #DDE4E0;
-    border-radius: 20px;
     padding: 28px;
-    transition: 0.3s ease;
-    min-height: 230px;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #8DB8AF 0%,
+                    #7FA9E1 100%
+            );
 }
 
-.consejo-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+.hero-consejos {
+
+    margin-bottom: 28px;
+
+    animation:
+            fadeUp 0.5s ease;
 }
 
-.consejo-card h3 {
-    font-size: 24px;
-    color: #352A6A;
-    margin: 18px 0 12px;
-    line-height: 1.3;
+.hero-consejos h1 {
+
+    font-size: 48px;
+
+    color: white;
+
+    margin-bottom: 10px;
 }
 
-.consejo-card p {
-    font-size: 17px;
-    line-height: 1.6;
-    color: #6D6795;
+.hero-consejos p {
+
+    font-size: 18px;
+
+    color: rgba(255,255,255,0.9);
 }
 
-/* ICONOS */
+.consejo-destacado {
 
-.icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
+    background:
+            rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(18px);
+
+    border:
+            1px solid rgba(255,255,255,0.18);
+
+    border-radius: 30px;
+
+    padding: 32px;
+
+    display: flex;
+
+    gap: 24px;
+
+    align-items: center;
+
+    margin-bottom: 28px;
+
+    animation:
+            fadeUp 0.7s ease;
+}
+
+.destacado-icono {
+
+    width: 90px;
+    height: 90px;
+
+    min-width: 90px;
+
+    border-radius: 24px;
+
+    background:
+            rgba(255,255,255,0.24);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 26px;
+
+    font-size: 42px;
 }
 
-.amarillo {
-    background: #FFF4D8;
+.tag {
+
+    display: inline-block;
+
+    padding: 8px 12px;
+
+    border-radius: 12px;
+
+    background:
+            rgba(255,255,255,0.18);
+
+    color: white;
+
+    font-size: 13px;
+
+    margin-bottom: 14px;
 }
 
-.azul {
-    background: #DDF6FA;
+.consejo-destacado h2 {
+
+    color: white;
+
+    font-size: 34px;
+
+    margin-bottom: 12px;
 }
 
-.naranja {
-    background: #FBE7D8;
+.consejo-destacado p {
+
+    color: rgba(255,255,255,0.92);
+
+    line-height: 1.7;
+
+    font-size: 16px;
 }
 
-.morado {
-    background: #E8E1F8;
+.insights-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(240px,1fr));
+
+    gap: 20px;
+
+    margin-bottom: 28px;
 }
 
-.celeste {
-    background: #E0F5FF;
+.insight-card {
+
+    background: white;
+
+    border-radius: 26px;
+
+    padding: 28px;
+
+    box-shadow:
+            0 10px 24px rgba(0,0,0,0.08);
+
+    transition: 0.28s ease;
+
+    animation:
+            fadeUp 0.8s ease;
 }
 
-.rosa {
-    background: #FCE8F3;
+.insight-card:hover {
+
+    transform:
+            translateY(-4px);
 }
 
-/* ============================= */
-/* TABLET */
-/* ============================= */
+.insight-icono {
 
-@media (max-width: 1024px) {
-    .consejos-grid {
-        grid-template-columns: repeat(2, 1fr);
+    font-size: 34px;
+
+    margin-bottom: 14px;
+}
+
+.insight-card h3 {
+
+    color: #2F2A68;
+
+    margin-bottom: 10px;
+
+    font-size: 22px;
+}
+
+.insight-card p {
+
+    color: #6D6795;
+
+    line-height: 1.6;
+}
+
+.tips-section {
+
+    animation:
+            fadeUp 1s ease;
+}
+
+.tips-section h2 {
+
+    color: white;
+
+    font-size: 32px;
+
+    margin-bottom: 24px;
+}
+
+.tips-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap: 22px;
+}
+
+.tip-card {
+
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 28px;
+
+    transition: 0.28s ease;
+
+    box-shadow:
+            0 10px 24px rgba(0,0,0,0.08);
+}
+
+.tip-card:hover {
+
+    transform:
+            translateY(-4px);
+}
+
+.tip-icono {
+
+    width: 64px;
+    height: 64px;
+
+    border-radius: 18px;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #49C7E7,
+                    #5D7BEE
+            );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 28px;
+
+    margin-bottom: 18px;
+}
+
+.tip-card h3 {
+
+    color: #2F2A68;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.tip-card p {
+
+    color: #6D6795;
+
+    line-height: 1.6;
+}
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+                translateY(20px);
     }
 
-    .header-consejos h1 {
+    to {
+
+        opacity: 1;
+
+        transform:
+                translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .hero-consejos h1 {
+
         font-size: 40px;
     }
 }
 
-/* ============================= */
-/* MÓVIL */
-/* ============================= */
-
 @media (max-width: 768px) {
+
     .consejos-page {
-        padding: 24px 16px;
+
+        padding: 18px;
     }
 
-    .header-consejos {
-        margin-bottom: 28px;
-    }
+    .hero-consejos h1 {
 
-    .header-consejos h1 {
         font-size: 34px;
-        margin-bottom: 10px;
     }
 
-    .header-consejos p {
+    .hero-consejos p {
+
         font-size: 16px;
     }
 
-    .consejos-container {
-        padding: 22px 18px;
-        border-radius: 20px;
+    .consejo-destacado {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 24px;
     }
 
-    .consejos-container h2 {
-        font-size: 24px;
-        margin-bottom: 22px;
-    }
+    .consejo-destacado h2 {
 
-    .consejos-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .consejo-card {
-        padding: 22px;
-        min-height: auto;
-        border-radius: 18px;
-    }
-
-    .consejo-card h3 {
-        font-size: 20px;
-        margin: 16px 0 10px;
-    }
-
-    .consejo-card p {
-        font-size: 15px;
-        line-height: 1.5;
-    }
-
-    .icon {
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-        border-radius: 14px;
-    }
-}
-
-/* ============================= */
-/* MÓVIL PEQUEÑO */
-/* ============================= */
-
-@media (max-width: 480px) {
-    .header-consejos h1 {
         font-size: 28px;
     }
 
-    .header-consejos p {
-        font-size: 15px;
+    .tips-section h2 {
+
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .consejos-page {
+
+        padding: 14px;
     }
 
-    .consejos-container h2 {
-        font-size: 22px;
+    .hero-consejos h1 {
+
+        font-size: 28px;
     }
 
-    .consejo-card h3 {
-        font-size: 18px;
+    .consejo-destacado,
+    .tip-card,
+    .insight-card {
+
+        border-radius: 24px;
     }
 
-    .consejo-card p {
-        font-size: 14px;
+    .consejo-destacado h2 {
+
+        font-size: 24px;
     }
 }
