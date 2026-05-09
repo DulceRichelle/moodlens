@@ -1,4 +1,6 @@
-export function renderRegistro(app) {
+let moodChart = null;
+
+export async function renderRegistro(app) {
 
     app.innerHTML = `
 <link rel="stylesheet" href="components/dashboard/registro.css">
@@ -39,6 +41,7 @@ export function renderRegistro(app) {
         <h3>¿Cómo te sientes hoy?</h3>
 
         <div class="emociones">
+
             <div class="emocion feliz" data-value="feliz">
                 😊
                 <span>Feliz</span>
@@ -63,10 +66,16 @@ export function renderRegistro(app) {
                 😖
                 <span>Ansioso</span>
             </div>
+
         </div>
 
         <div class="intensidad hidden">
-            <p>Intensidad: <span id="valor">5</span>/10</p>
+
+            <p>
+                Intensidad:
+                <span id="valor">5</span>/10
+            </p>
+
             <input
                 type="range"
                 min="1"
@@ -74,14 +83,18 @@ export function renderRegistro(app) {
                 value="5"
                 id="range"
             >
+
         </div>
 
         <div class="notas hidden">
+
             <p>Notas (opcional)</p>
+
             <textarea
                 id="nota"
                 placeholder="¿Qué está pasando en tu vida?"
             ></textarea>
+
         </div>
 
         <button class="btn hidden" id="guardar">
@@ -90,30 +103,51 @@ export function renderRegistro(app) {
 
     </div>
 
-    <div class="grafico hidden">
+    <div class="grafico hidden" id="graficoBox">
+
         <h3>Tendencia de tu estado de ánimo</h3>
+
         <canvas id="chart"></canvas>
+
     </div>
 
 </div>
 `;
 
     initRegistro();
-    cargarEstadisticas();
-    mostrarGrafico();
+
+    await cargarEstadisticas();
+
+    await mostrarGrafico();
 }
 
 function initRegistro() {
 
-    const emociones = document.querySelectorAll(".emocion");
-    const intensidad = document.querySelector(".intensidad");
-    const notas = document.querySelector(".notas");
-    const boton = document.getElementById("guardar");
+    const emociones =
+        document.querySelectorAll(".emocion");
+
+    const intensidad =
+        document.querySelector(".intensidad");
+
+    const notas =
+        document.querySelector(".notas");
+
+    const boton =
+        document.getElementById("guardar");
+
+    if (!emociones.length ||
+        !intensidad ||
+        !notas ||
+        !boton) return;
 
     emociones.forEach(emocion => {
+
         emocion.addEventListener("click", () => {
 
-            emociones.forEach(el => el.classList.remove("active"));
+            emociones.forEach(el =>
+                el.classList.remove("active")
+            );
+
             emocion.classList.add("active");
 
             intensidad.classList.remove("hidden");
@@ -122,43 +156,57 @@ function initRegistro() {
         });
     });
 
-    const range = document.getElementById("range");
-    const valor = document.getElementById("valor");
+    const range =
+        document.getElementById("range");
 
-    range.addEventListener("input", () => {
-        valor.textContent = range.value;
-    });
+    const valor =
+        document.getElementById("valor");
 
-    boton.addEventListener("click", guardarRegistro);
+    if (range && valor) {
+
+        range.addEventListener("input", () => {
+            valor.textContent = range.value;
+        });
+    }
+
+    boton.addEventListener(
+        "click",
+        guardarRegistro
+    );
 }
 
 async function guardarRegistro() {
 
-    const emocion = document.querySelector(".emocion.active")?.dataset.value;
-    const intensidad = document.getElementById("range").value;
-    const nota = document.getElementById("nota").value.trim();
+    const emocion =
+        document.querySelector(".emocion.active")
+            ?.dataset.value;
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const intensidad =
+        document.getElementById("range")?.value;
+
+    const nota =
+        document.getElementById("nota")
+            ?.value
+            .trim();
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("user")
+        );
 
     if (!emocion) {
-        alert("Selecciona una emoción");
+        mostrarToast(
+            "Selecciona una emoción"
+        );
         return;
     }
 
     if (!user) {
-        alert("Debes iniciar sesión");
+        mostrarToast(
+            "Debes iniciar sesión"
+        );
         return;
     }
-
-    /*
-        IMPORTANTE:
-        Según tu BD real:
-        1 = Feliz
-        2 = Tranquilo
-        3 = Neutral
-        4 = Triste
-        5 = Ansioso
-    */
 
     const emocionesMap = {
         feliz: 1,
@@ -168,7 +216,8 @@ async function guardarRegistro() {
         ansioso: 5
     };
 
-    const id_emocion = emocionesMap[emocion];
+    const id_emocion =
+        emocionesMap[emocion];
 
     try {
 
@@ -177,10 +226,12 @@ async function guardarRegistro() {
             {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type":
+                        "application/json"
                 },
                 body: JSON.stringify({
-                    id_usuario: user.id_usuario || user.id,
+                    id_usuario:
+                        user.id_usuario || user.id,
                     id_emocion,
                     intensidad,
                     nota
@@ -188,53 +239,86 @@ async function guardarRegistro() {
             }
         );
 
-        const data = await res.json();
+        const data =
+            await res.json();
 
         if (!res.ok) {
-            alert(data.message || "Error al guardar");
+
+            mostrarToast(
+                data.message ||
+                "Error al guardar"
+            );
+
             return;
         }
 
-        alert("¡Estado emocional guardado correctamente! 🎉");
+        mostrarToast(
+            "Estado emocional guardado ✨"
+        );
 
-        // limpiar formulario
-        document.getElementById("nota").value = "";
-        document.getElementById("range").value = 5;
-        document.getElementById("valor").textContent = 5;
+        limpiarFormulario();
 
-        document
-            .querySelectorAll(".emocion")
-            .forEach(el => el.classList.remove("active"));
-
-        document
-            .querySelector(".intensidad")
-            .classList.add("hidden");
-
-        document
-            .querySelector(".notas")
-            .classList.add("hidden");
-
-        document
-            .getElementById("guardar")
-            .classList.add("hidden");
-
-        // actualizar estadísticas + gráfico
         await cargarEstadisticas();
+
         await mostrarGrafico();
 
     } catch (error) {
+
         console.error(error);
-        alert("Error de conexión con el servidor");
+
+        mostrarToast(
+            "Error de conexión"
+        );
     }
+}
+
+function limpiarFormulario() {
+
+    const nota =
+        document.getElementById("nota");
+
+    const range =
+        document.getElementById("range");
+
+    const valor =
+        document.getElementById("valor");
+
+    if (nota) nota.value = "";
+
+    if (range) range.value = 5;
+
+    if (valor) valor.textContent = 5;
+
+    document
+        .querySelectorAll(".emocion")
+        .forEach(el =>
+            el.classList.remove("active")
+        );
+
+    document
+        .querySelector(".intensidad")
+        ?.classList.add("hidden");
+
+    document
+        .querySelector(".notas")
+        ?.classList.add("hidden");
+
+    document
+        .getElementById("guardar")
+        ?.classList.add("hidden");
 }
 
 async function cargarEstadisticas() {
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user =
+        JSON.parse(
+            localStorage.getItem("user")
+        );
 
     if (!user) return;
 
-    const userId = user.id_usuario || user.id;
+    const userId =
+        user.id_usuario || user.id;
 
     try {
 
@@ -242,19 +326,42 @@ async function cargarEstadisticas() {
             `https://moodlens-oj88.onrender.com/api/stats/${userId}`
         );
 
-        const data = await res.json();
+        const data =
+            await res.json();
 
-        document.getElementById("total").textContent =
-            data.total_registros || 0;
+        const total =
+            document.getElementById("total");
 
-        document.getElementById("promedio").textContent =
-            `${data.promedio_intensidad || 0}/10`;
+        const promedio =
+            document.getElementById("promedio");
 
-        document.getElementById("frecuente").textContent =
-            capitalizar(data.emocion_frecuente || "N/A");
+        const frecuente =
+            document.getElementById("frecuente");
 
-        document.getElementById("semana").textContent =
-            data.ultimos_7_dias || 0;
+        const semana =
+            document.getElementById("semana");
+
+        if (total) {
+            total.textContent =
+                data.total_registros || 0;
+        }
+
+        if (promedio) {
+            promedio.textContent =
+                `${data.promedio_intensidad || 0}/10`;
+        }
+
+        if (frecuente) {
+            frecuente.textContent =
+                capitalizar(
+                    data.emocion_frecuente || "N/A"
+                );
+        }
+
+        if (semana) {
+            semana.textContent =
+                data.ultimos_7_dias || 0;
+        }
 
     } catch (error) {
         console.error(error);
@@ -263,11 +370,15 @@ async function cargarEstadisticas() {
 
 async function mostrarGrafico() {
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user =
+        JSON.parse(
+            localStorage.getItem("user")
+        );
 
     if (!user) return;
 
-    const userId = user.id_usuario || user.id;
+    const userId =
+        user.id_usuario || user.id;
 
     try {
 
@@ -275,9 +386,12 @@ async function mostrarGrafico() {
             `https://moodlens-oj88.onrender.com/api/emociones/${userId}`
         );
 
-        const data = await res.json();
+        const data =
+            await res.json();
 
-        if (!data || data.length === 0) {
+        if (!data ||
+            data.length === 0) {
+
             return;
         }
 
@@ -288,42 +402,66 @@ async function mostrarGrafico() {
     }
 }
 
-let moodChart;
-
 function pintarGrafico(data) {
 
+    const graficoBox =
+        document.getElementById("graficoBox");
+
+    const canvas =
+        document.getElementById("chart");
+
+    if (!graficoBox || !canvas) return;
+
+    graficoBox.classList.remove("hidden");
+
     const labels = data.map(item =>
-        new Date(item.fecha).toLocaleDateString("es-ES")
+        new Date(item.fecha)
+            .toLocaleDateString("es-ES")
     );
 
-    const valores = data.map(item => item.intensidad);
+    const valores = data.map(item =>
+        item.intensidad
+    );
 
-    document
-        .querySelector(".grafico")
-        .classList.remove("hidden");
-
-    const ctx = document.getElementById("chart");
+    const ctx =
+        canvas.getContext("2d");
 
     if (moodChart) {
         moodChart.destroy();
     }
 
     moodChart = new Chart(ctx, {
+
         type: "line",
+
         data: {
+
             labels,
+
             datasets: [
                 {
-                    label: "Estado emocional",
+                    label:
+                        "Estado emocional",
+
                     data: valores,
+
                     tension: 0.4,
-                    fill: true
+
+                    fill: true,
+
+                    borderWidth: 3
                 }
             ]
         },
+
         options: {
+
             responsive: true,
+
+            maintainAspectRatio: false,
+
             scales: {
+
                 y: {
                     min: 0,
                     max: 10
@@ -333,7 +471,40 @@ function pintarGrafico(data) {
     });
 }
 
+function mostrarToast(msg) {
+
+    const toast =
+        document.createElement("div");
+
+    toast.className = "toast";
+    toast.textContent = msg;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add("show");
+    }, 100);
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+
+    }, 2500);
+}
+
 function capitalizar(texto) {
-    if (!texto || texto === "N/A") return texto;
-    return texto.charAt(0).toUpperCase() + texto.slice(1);
+
+    if (!texto ||
+        texto === "N/A") {
+
+        return texto;
+    }
+
+    return texto.charAt(0)
+            .toUpperCase() +
+        texto.slice(1);
 }
