@@ -21,8 +21,6 @@ body {
             );
 }
 
-/* LAYOUT */
-
 .dashboard-layout {
 
     display: flex;
@@ -40,8 +38,6 @@ body {
                     #7FA9E1 100%
             );
 }
-
-/* SIDEBAR */
 
 .sidebar {
 
@@ -69,8 +65,6 @@ body {
     transition:
             left 0.3s ease;
 }
-
-/* LOGO */
 
 .logo-section {
 
@@ -107,8 +101,6 @@ body {
 
     font-size: 13px;
 }
-
-/* USER */
 
 .user-box {
 
@@ -168,8 +160,6 @@ body {
     font-size: 13px;
 }
 
-/* MENU */
-
 .menu {
 
     display: flex;
@@ -223,8 +213,6 @@ body {
             0 10px 22px rgba(93,123,238,0.22);
 }
 
-/* LOGOUT */
-
 .logout {
 
     border: none;
@@ -253,8 +241,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* MAIN */
-
 .main-content {
 
     flex: 1;
@@ -268,8 +254,6 @@ body {
     background:
             transparent;
 }
-
-/* TOGGLE */
 
 .menu-toggle {
 
@@ -299,8 +283,6 @@ body {
     z-index: 2000;
 }
 
-/* OVERLAY */
-
 .sidebar-overlay {
 
     position: fixed;
@@ -325,8 +307,6 @@ body {
 
     pointer-events: all;
 }
-
-/* TABLET */
 
 @media (max-width: 1024px) {
 
@@ -369,8 +349,6 @@ body {
     }
 }
 
-/* MOBILE */
-
 @media (max-width: 768px) {
 
     .main-content {
@@ -384,8 +362,6 @@ body {
         font-size: 24px;
     }
 }
-
-/* SMALL MOBILE */
 
 @media (max-width: 480px) {
 
