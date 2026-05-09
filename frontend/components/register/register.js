@@ -247,7 +247,7 @@ async function handleRegister() {
         showSuccess('¡Cuenta creada correctamente! :D🎉');
 
         setTimeout(() => {
-            navigate('login');
+            navigate('registro');
         }, 1200);
 
     } catch (error) {
