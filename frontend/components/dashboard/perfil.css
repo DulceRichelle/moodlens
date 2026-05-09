@@ -20,8 +20,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* HERO */
-
 .perfil-hero {
 
     width: 100%;
@@ -137,8 +135,6 @@
             0 8px 18px rgba(0,0,0,0.08);
 }
 
-/* STATS */
-
 .stats-grid {
 
     display: grid;
@@ -188,8 +184,6 @@
     font-size: 15px;
 }
 
-/* GRID */
-
 .perfil-grid {
 
     display: grid;
@@ -199,8 +193,6 @@
 
     gap: 24px;
 }
-
-/* CARD */
 
 .perfil-card {
 
@@ -222,8 +214,6 @@
 
     margin-bottom: 24px;
 }
-
-/* FORM */
 
 .form-group {
 
@@ -270,8 +260,6 @@
             0 0 0 4px rgba(73,199,231,0.12);
 }
 
-/* BUTTON */
-
 .btn-guardar {
 
     width: 100%;
@@ -307,8 +295,6 @@
             0 10px 20px rgba(0,0,0,0.08);
 }
 
-/* AJUSTES */
-
 .ajuste-item {
 
     display: flex;
@@ -341,8 +327,6 @@
 
     font-size: 14px;
 }
-
-/* SWITCH */
 
 .switch {
 
@@ -406,8 +390,6 @@
     transform: translateX(28px);
 }
 
-/* ACTIVIDAD */
-
 .actividad-box {
 
     display: flex;
@@ -449,8 +431,6 @@
     font-size: 14px;
 }
 
-/* TOAST */
-
 .toast {
 
     position: fixed;
@@ -481,8 +461,6 @@
 
     transform: translateY(0);
 }
-
-/* DARK MODE */
 
 .dark-mode {
 
@@ -519,8 +497,6 @@
     background: #2A2A2A;
 }
 
-/* TABLET */
-
 @media (max-width: 1024px) {
 
     .perfil-page {
@@ -533,8 +509,6 @@
         font-size: 32px;
     }
 }
-
-/* MOBILE */
 
 @media (max-width: 768px) {
 
@@ -598,8 +572,6 @@
         font-size: 36px;
     }
 }
-
-/* SMALL MOBILE */
 
 @media (max-width: 480px) {
 
