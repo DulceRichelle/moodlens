@@ -244,7 +244,7 @@ async function handleRegister() {
             );
         }
 
-        showSuccess('Cuenta creada correctamente 🎉');
+        showSuccess('¡Cuenta creada correctamente! :D🎉');
 
         setTimeout(() => {
             navigate('login');

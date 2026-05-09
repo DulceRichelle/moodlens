@@ -148,7 +148,7 @@ try {
         JSON.stringify(data.user)
     );
 
-    showSuccess('¡Login correcto! 🎉');
+    showSuccess('¡Login correcto! :D🎉');
 
     setTimeout(() => {
         navigate('dashboard');
