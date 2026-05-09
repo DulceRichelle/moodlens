@@ -23,8 +23,8 @@ export async function renderPerfil(app) {
     const emocionFrecuente =
         obtenerEmocionFrecuente(registros);
 
-    const streak =
-        calcularStreak(registros);
+    const diasActivos =
+        calcularDiasActivos(registros);
 
     const fechaRegistro =
         user.fecha_registro ||
@@ -51,7 +51,7 @@ export async function renderPerfil(app) {
                     </h1>
 
                     <p>
-                        Sigue cuidando de tu bienestar emocional 🌸
+                        Tu espacio personal en MoodLens 🌸
                     </p>
 
                     <span>
@@ -63,27 +63,46 @@ export async function renderPerfil(app) {
 
             </div>
 
-            <button class="logout-btn" id="logoutBtn">
-                Cerrar sesión
-            </button>
-
         </div>
 
         <div class="stats-grid">
 
             <div class="stat-card">
+
+                <div class="stat-icon">
+                    📝
+                </div>
+
                 <h2>${totalRegistros}</h2>
+
                 <p>Registros emocionales</p>
+
             </div>
 
             <div class="stat-card">
-                <h2>${streak}</h2>
+
+                <div class="stat-icon">
+                    🔥
+                </div>
+
+                <h2>${diasActivos}</h2>
+
                 <p>Días activos</p>
+
             </div>
 
             <div class="stat-card">
-                <h2>${emocionFrecuente.icono}</h2>
-                <p>${emocionFrecuente.nombre}</p>
+
+                <div class="stat-icon">
+                    ${emocionFrecuente.icono}
+                </div>
+
+                <h2>
+                    ${emocionFrecuente.nombre}
+                </h2>
+
+                <p>Emoción más frecuente</p>
+
             </div>
 
         </div>
@@ -92,7 +111,7 @@ export async function renderPerfil(app) {
 
             <div class="perfil-card">
 
-                <h2>👤 Información Personal</h2>
+                <h2>👤 Cuenta</h2>
 
                 <div class="form-group">
 
@@ -129,25 +148,50 @@ export async function renderPerfil(app) {
 
             <div class="perfil-card">
 
-                <h2>🎨 Apariencia</h2>
+                <h2>⚙ Preferencias</h2>
 
-                <div class="ajuste-item">
+                <div class="setting-item">
 
                     <div>
-                        <h3>🌙 Modo Oscuro</h3>
-                        <p>Cambiar apariencia visual</p>
+                        <h3>🔔 Notificaciones</h3>
+                        <p>
+                            Recordatorios emocionales
+                        </p>
                     </div>
 
-                    <label class="switch">
+                    <span class="setting-badge">
+                        Próximamente
+                    </span>
 
-                        <input
-                            type="checkbox"
-                            id="darkMode"
-                        >
+                </div>
 
-                        <span class="slider"></span>
+                <div class="setting-item">
 
-                    </label>
+                    <div>
+                        <h3>📥 Exportar datos</h3>
+                        <p>
+                            Descarga tu historial
+                        </p>
+                    </div>
+
+                    <span class="setting-badge">
+                        Beta
+                    </span>
+
+                </div>
+
+                <div class="setting-item">
+
+                    <div>
+                        <h3>🔒 Privacidad</h3>
+                        <p>
+                            Tus emociones son privadas
+                        </p>
+                    </div>
+
+                    <span class="setting-badge active">
+                        Activo
+                    </span>
 
                 </div>
 
@@ -155,13 +199,41 @@ export async function renderPerfil(app) {
 
             <div class="perfil-card">
 
-                <h2>📈 Actividad emocional</h2>
+                <h2>💌 Soporte</h2>
 
-                <div class="actividad-box">
+                <div class="support-box">
 
-                    ${crearActividad(registros)}
+                    <p>
+                        ¿Necesitas ayuda o quieres
+                        compartir ideas para MoodLens?
+                    </p>
+
+                    <button
+                        class="btn-secondary"
+                        id="supportBtn"
+                    >
+                        Contactar soporte
+                    </button>
 
                 </div>
+
+            </div>
+
+            <div class="perfil-card logout-card">
+
+                <h2>🚪 Sesión</h2>
+
+                <p>
+                    Cierra sesión en tu cuenta
+                    de MoodLens.
+                </p>
+
+                <button
+                    class="logout-btn"
+                    id="logoutBtn"
+                >
+                    Cerrar sesión
+                </button>
 
             </div>
 
@@ -170,123 +242,123 @@ export async function renderPerfil(app) {
     </div>
     `;
 
-    initDarkMode();
     initPerfil(user);
 }
 
 function initPerfil(user) {
 
-    document
-        .getElementById("guardarPerfilBtn")
-        .addEventListener("click", async () => {
-
-            const nuevoNombre =
-                document.getElementById("nombrePerfil")
-                    .value
-                    .trim();
-
-            if (!nuevoNombre) return;
-
-            try {
-
-                await fetch(
-                    `https://moodlens-oj88.onrender.com/api/usuarios/${user.id_usuario || user.id}`,
-                    {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            nombre: nuevoNombre
-                        })
-                    }
-                );
-
-                user.nombre = nuevoNombre;
-
-                localStorage.setItem(
-                    "user",
-                    JSON.stringify(user)
-                );
-
-                mostrarToast(
-                    "Perfil actualizado ✨"
-                );
-
-                renderPerfil(
-                    document.getElementById("app")
-                );
-
-            } catch (error) {
-
-                console.log(error);
-
-                mostrarToast(
-                    "Error al guardar"
-                );
-            }
-        });
-
-    document
-        .getElementById("logoutBtn")
-        .addEventListener("click", () => {
-
-            localStorage.removeItem("user");
-
-            navigate("login");
-        });
-}
-
-function initDarkMode() {
-
-    const darkToggle =
-        document.getElementById("darkMode");
-
-    if (
-        localStorage.getItem("darkMode")
-        === "true"
-    ) {
-
-        document.body.classList.add(
-            "dark-mode"
+    const guardarBtn =
+        document.getElementById(
+            "guardarPerfilBtn"
         );
 
-        darkToggle.checked = true;
+    if (guardarBtn) {
+
+        guardarBtn.addEventListener(
+            "click",
+            async () => {
+
+                const nuevoNombre =
+                    document
+                        .getElementById(
+                            "nombrePerfil"
+                        )
+                        .value
+                        .trim();
+
+                if (!nuevoNombre) {
+                    mostrarToast(
+                        "El nombre no puede estar vacío"
+                    );
+                    return;
+                }
+
+                try {
+
+                    await fetch(
+                        `https://moodlens-oj88.onrender.com/api/usuarios/${user.id_usuario || user.id}`,
+                        {
+                            method: "PUT",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+                            body: JSON.stringify({
+                                nombre: nuevoNombre
+                            })
+                        }
+                    );
+
+                    user.nombre =
+                        nuevoNombre;
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify(user)
+                    );
+
+                    mostrarToast(
+                        "Perfil actualizado ✨"
+                    );
+
+                    renderPerfil(
+                        document.getElementById("app")
+                    );
+
+                } catch (error) {
+
+                    console.log(error);
+
+                    mostrarToast(
+                        "Error al guardar"
+                    );
+                }
+            }
+        );
     }
 
-    darkToggle.addEventListener("change", () => {
+    const logoutBtn =
+        document.getElementById("logoutBtn");
 
-        if (darkToggle.checked) {
+    if (logoutBtn) {
 
-            document.body.classList.add(
-                "dark-mode"
-            );
+        logoutBtn.addEventListener(
+            "click",
+            () => {
 
-            localStorage.setItem(
-                "darkMode",
-                "true"
-            );
+                localStorage.removeItem(
+                    "user"
+                );
 
-        } else {
+                navigate("login");
+            }
+        );
+    }
 
-            document.body.classList.remove(
-                "dark-mode"
-            );
+    const supportBtn =
+        document.getElementById("supportBtn");
 
-            localStorage.setItem(
-                "darkMode",
-                "false"
-            );
-        }
-    });
+    if (supportBtn) {
+
+        supportBtn.addEventListener(
+            "click",
+            () => {
+
+                mostrarToast(
+                    "Soporte disponible próximamente 💌"
+                );
+            }
+        );
+    }
 }
 
-function calcularStreak(registros) {
+function calcularDiasActivos(registros) {
 
     const dias = [
         ...new Set(
             registros.map(r =>
-                new Date(r.fecha).toDateString()
+                new Date(r.fecha)
+                    .toDateString()
             )
         )
     ];
@@ -297,8 +369,9 @@ function calcularStreak(registros) {
 function obtenerEmocionFrecuente(registros) {
 
     if (!registros.length) {
+
         return {
-            nombre: "Sin registros",
+            nombre: "Sin datos",
             icono: "🫶"
         };
     }
@@ -330,45 +403,13 @@ function obtenerEmocionFrecuente(registros) {
     };
 }
 
-function crearActividad(registros) {
-
-    if (!registros.length) {
-        return `
-            <p class="actividad-vacia">
-                Todavía no hay actividad emocional 🌱
-            </p>
-        `;
-    }
-
-    return registros
-        .slice(0, 6)
-        .map(r => `
-            <div class="actividad-item">
-
-                <span class="actividad-icono">
-                    ${r.icono}
-                </span>
-
-                <div>
-                    <h4>${r.nombre_emocion}</h4>
-
-                    <p>
-                        Intensidad:
-                        ${r.intensidad}/10
-                    </p>
-                </div>
-
-            </div>
-        `)
-        .join("");
-}
-
 function mostrarToast(msg) {
 
     const toast =
         document.createElement("div");
 
     toast.className = "toast";
+
     toast.textContent = msg;
 
     document.body.appendChild(toast);
