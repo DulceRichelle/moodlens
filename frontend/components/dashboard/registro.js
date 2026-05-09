@@ -209,11 +209,11 @@ async function guardarRegistro() {
 
     const mensajes = {
         feliz:
-            "✨ Qué bonito verte feliz",
+            "¡✨ Qué bonito verte feliz!",
         tranquilo:
             "🌸 Sigue cuidando tu paz",
         neutral:
-            "💫 Gracias por compartir cómo te sientes",
+            "💫 Gracias por compartir cómo te sientes <3",
         triste:
             "🫶 Está bien tener días difíciles",
         ansioso:
