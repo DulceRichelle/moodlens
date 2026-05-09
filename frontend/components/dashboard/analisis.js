@@ -30,8 +30,11 @@ export function renderAnalisis(app) {
                 <h2 id="semana">0</h2>
             </div>
         </div>
-        
-        
+
+        <div class="grafico">
+            <h3>Tendencia de tu estado de ánimo</h3>
+            <canvas id="chart"></canvas>
+        </div>
 
     </div>
     `;
