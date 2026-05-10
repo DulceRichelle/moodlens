@@ -7,6 +7,8 @@
 html,
 body {
 
+    width: 100%;
+
     min-height: 100%;
 
     overflow-x: hidden;
@@ -29,6 +31,8 @@ body {
 
     width: 100%;
 
+    overflow-x: hidden;
+
     position: relative;
 
     background:
@@ -46,7 +50,7 @@ body {
     min-width: 280px;
 
     background:
-            rgba(20, 28, 45, 0.72);
+            rgba(20, 28, 45, 0.82);
 
     backdrop-filter: blur(24px);
 
@@ -290,7 +294,7 @@ body {
 
     border-radius: 18px;
 
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.96);
 
     color: #1F2940;
 
@@ -329,6 +333,15 @@ body {
     pointer-events: all;
 }
 
+#contenidoDashboard {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+}
+
 @media (max-width: 1024px) {
 
     .menu-toggle {
@@ -341,11 +354,18 @@ body {
         position: fixed;
 
         top: 0;
-        left: -320px;
+
+        left: -100%;
+
+        transform: translateX(0);
 
         height: 100vh;
 
         width: 290px;
+
+        max-width: 85%;
+
+        z-index: 1500;
     }
 
     .sidebar.open {
@@ -379,6 +399,11 @@ body {
 
         font-size: 24px;
     }
+
+    .user-box {
+
+        padding: 16px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -391,20 +416,33 @@ body {
     .main-content {
 
         padding:
-                86px 14px 20px;
+                84px 14px 20px;
     }
 
     .menu-item {
 
         font-size: 14px;
+
+        padding: 15px 16px;
     }
-}
 
-#contenidoDashboard {
+    .menu-toggle {
 
-    width: 100%;
+        width: 50px;
+        height: 50px;
 
-    max-width: 1400px;
+        font-size: 26px;
 
-    margin: 0 auto;
+        border-radius: 16px;
+    }
+
+    .user-box strong {
+
+        font-size: 15px;
+    }
+
+    .user-box p {
+
+        font-size: 12px;
+    }
 }

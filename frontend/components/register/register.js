@@ -268,7 +268,7 @@ async function handleRegister() {
         }
 
         const usuarioGuardado = data.user;
-        
+
         localStorage.setItem(
             'user',
             JSON.stringify(usuarioGuardado)
