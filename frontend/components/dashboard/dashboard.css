@@ -255,14 +255,23 @@ body {
 
     flex: 1;
 
+    width: 100%;
+
+    min-width: 0;
+
     min-height: 100vh;
 
-    padding: 32px;
+    padding: 30px;
 
+    overflow-x: hidden;
     overflow-y: auto;
 
     background:
-            transparent;
+            linear-gradient(
+                    135deg,
+                    #8DB8AF 0%,
+                    #7FA9E1 100%
+            );
 }
 
 .menu-toggle {
@@ -389,4 +398,13 @@ body {
 
         font-size: 14px;
     }
+}
+
+#contenidoDashboard {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
 }

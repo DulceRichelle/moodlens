@@ -47,7 +47,13 @@ app.post('/api/register', async (req, res) => {
                 }
 
                 res.json({
-                    message: 'Usuario creado correctamente'
+                    message: 'Usuario creado correctamente',
+
+                    user: {
+                        id_usuario: result.insertId,
+                        nombre,
+                        email
+                    }
                 });
             }
         );
@@ -73,7 +79,7 @@ app.post('/api/login', (req, res) => {
 
             if (result.length === 0) {
                 return res.status(404).json({
-                    message: 'Usuario no encontrado'
+                    message: 'Usuario no encontrado :('
                 });
             }
 
@@ -91,7 +97,7 @@ app.post('/api/login', (req, res) => {
 
             } else {
                 res.status(401).json({
-                    message: 'Contraseña incorrecta'
+                    message: 'Contraseña incorrecta :('
                 });
             }
         }

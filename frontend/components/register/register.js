@@ -14,6 +14,7 @@ export function renderRegister(app) {
         <img src="assets/logo.png" class="logo"/>
 
         <h2>Crear Cuenta</h2>
+
         <p class="subtitle">
             Comienza tu viaje hacia el bienestar
         </p>
@@ -23,6 +24,7 @@ export function renderRegister(app) {
             <label>Nombre completo</label>
 
             <div class="input-box">
+
                 <span class="icon">👤</span>
 
                 <input
@@ -30,6 +32,7 @@ export function renderRegister(app) {
                     placeholder="Tu nombre"
                     id="nombre"
                 >
+
             </div>
 
         </div>
@@ -39,6 +42,7 @@ export function renderRegister(app) {
             <label>Correo electrónico</label>
 
             <div class="input-box">
+
                 <span class="icon">✉️</span>
 
                 <input
@@ -46,6 +50,7 @@ export function renderRegister(app) {
                     placeholder="tu@email.com"
                     id="email"
                 >
+
             </div>
 
         </div>
@@ -124,7 +129,6 @@ export function renderRegister(app) {
         .addEventListener('click', handleRegister);
 
     initPasswordToggles();
-
 }
 
 function initPasswordToggles() {
@@ -164,7 +168,6 @@ function initPasswordToggles() {
         toggleConfirm.textContent =
             isPassword ? "🙈" : "👁️";
     });
-
 }
 
 async function handleRegister() {
@@ -181,6 +184,9 @@ async function handleRegister() {
     const confirmPassword =
         document.getElementById('confirmPassword').value;
 
+    const registerBtn =
+        document.getElementById('registerBtn');
+
     const errorBox =
         document.querySelector('.error');
 
@@ -196,24 +202,28 @@ async function handleRegister() {
         !password ||
         !confirmPassword
     ) {
+
         return showError(
             'Por favor, completa todos los campos'
         );
     }
 
     if (!validateEmail(email)) {
+
         return showError(
             'Correo electrónico no válido :('
         );
     }
 
     if (password.length < 4) {
+
         return showError(
             'La contraseña debe tener al menos 4 caracteres'
         );
     }
 
     if (password !== confirmPassword) {
+
         return showError(
             'Las contraseñas no coinciden :('
         );
@@ -221,13 +231,20 @@ async function handleRegister() {
 
     try {
 
+        registerBtn.disabled = true;
+
+        registerBtn.textContent =
+            'Creando cuenta...';
+
         const res = await fetch(
             'https://moodlens-oj88.onrender.com/api/register',
             {
                 method: 'POST',
+
                 headers: {
                     'Content-Type': 'application/json'
                 },
+
                 body: JSON.stringify({
                     nombre,
                     email,
@@ -239,33 +256,58 @@ async function handleRegister() {
         const data = await res.json();
 
         if (!res.ok) {
+
+            registerBtn.disabled = false;
+
+            registerBtn.textContent =
+                'Crear Cuenta';
+
             return showError(
                 data.message || 'Error al registrar :('
             );
         }
 
-        showSuccess('¡Cuenta creada correctamente! :D🎉');
+        const usuarioGuardado = data.user;
+        
+        localStorage.setItem(
+            'user',
+            JSON.stringify(usuarioGuardado)
+        );
+
+        showSuccess(
+            '¡Cuenta creada correctamente :D! 🎉'
+        );
 
         setTimeout(() => {
-            navigate('registro');
+
+            navigate('dashboard');
+
         }, 1200);
 
     } catch (error) {
+
+        registerBtn.disabled = false;
+
+        registerBtn.textContent =
+            'Crear Cuenta';
+
         showError(
             'Error de conexión con el servidor :('
         );
     }
-
 }
 
 function validateEmail(email) {
-    return /\S+@\S+.\S+/.test(email);
+
+    return /\S+@\S+\.\S+/.test(email);
 }
 
 function showError(msg) {
+
     document.querySelector('.error').textContent = msg;
 }
 
 function showSuccess(msg) {
+
     document.querySelector('.success').textContent = msg;
 }
