@@ -1,3 +1,5 @@
+import { t, getLanguage } from '../../services/i18n.js';
+
 export function renderRegistro(app) {
 
     app.innerHTML = `
@@ -6,63 +8,99 @@ export function renderRegistro(app) {
 <div class="registro-page">
 
     <div class="header">
-        <h1>📝 Registrar Estado de Ánimo</h1>
-        <p>¿Cómo te sientes hoy? Registra tu estado emocional</p>
+
+        <h1>
+            📝 ${t("registerMood")}
+        </h1>
+
+        <p>
+            ${t("howFeelingTodaySubtitle")}
+        </p>
+
     </div>
 
     <div class="stats">
 
         <div class="stat">
-            <p>Registros totales</p>
+
+            <p>${t("totalRecords")}</p>
+
             <h2 id="total">0</h2>
+
         </div>
 
         <div class="stat">
-            <p>Intensidad promedio</p>
+
+            <p>${t("averageIntensity")}</p>
+
             <h2 id="promedio">0/10</h2>
+
         </div>
 
         <div class="stat">
-            <p>Estado más común</p>
+
+            <p>${t("mostCommonMood")}</p>
+
             <h2 id="frecuente">N/A</h2>
+
         </div>
 
         <div class="stat">
-            <p>Últimos 7 días</p>
+
+            <p>${t("last7Days")}</p>
+
             <h2 id="semana">0</h2>
+
         </div>
 
     </div>
 
     <div class="card">
 
-        <h3>¿Cómo te sientes hoy?</h3>
+        <h3>
+            ${t("howFeelingToday")}
+        </h3>
 
         <div class="emociones">
 
-            <div class="emocion feliz" data-value="feliz">
+            <div
+                class="emocion feliz"
+                data-value="feliz"
+            >
                 😊
-                <span>Feliz</span>
+                <span>${t("happy")}</span>
             </div>
 
-            <div class="emocion tranquilo" data-value="tranquilo">
+            <div
+                class="emocion tranquilo"
+                data-value="tranquilo"
+            >
                 💙
-                <span>Tranquilo</span>
+                <span>${t("calm")}</span>
             </div>
 
-            <div class="emocion neutral" data-value="neutral">
+            <div
+                class="emocion neutral"
+                data-value="neutral"
+            >
                 😐
-                <span>Neutral</span>
+                <span>${t("neutral")}</span>
             </div>
 
-            <div class="emocion triste" data-value="triste">
+            <div
+                class="emocion triste"
+                data-value="triste"
+            >
                 😢
-                <span>Triste</span>
+                <span>${t("sad")}</span>
             </div>
 
-            <div class="emocion ansioso" data-value="ansioso">
+            <div
+                class="emocion ansioso"
+                data-value="ansioso"
+            >
                 😖
-                <span>Ansioso</span>
+                <span>${t("anxious")}</span>
             </div>
 
         </div>
@@ -70,8 +108,11 @@ export function renderRegistro(app) {
         <div class="intensidad hidden">
 
             <p>
-                Intensidad:
+
+                ${t("intensity")}:
+
                 <span id="valor">5</span>/10
+
             </p>
 
             <input
@@ -86,24 +127,31 @@ export function renderRegistro(app) {
 
         <div class="notas hidden">
 
-            <p>Notas (opcional)</p>
+            <p>
+                ${t("notesOptional")}
+            </p>
 
             <textarea
                 id="nota"
-                placeholder="¿Qué está pasando en tu vida?"
+                placeholder="${t("lifePlaceholder")}"
             ></textarea>
 
         </div>
 
-        <button class="btn hidden" id="guardar">
-            Registrar estado de ánimo
+        <button
+            class="btn hidden"
+            id="guardar"
+        >
+            ${t("saveMood")}
         </button>
 
     </div>
 
     <div class="grafico hidden">
 
-        <h3>Tendencia de tu estado de ánimo</h3>
+        <h3>
+            ${t("moodTrend")}
+        </h3>
 
         <canvas id="chart"></canvas>
 
@@ -184,7 +232,7 @@ async function guardarRegistro() {
     if (!emocion) {
 
         mostrarToast(
-            "⚠️ Selecciona una emoción"
+            `⚠️ ${t("selectEmotion")}`
         );
 
         return;
@@ -193,7 +241,7 @@ async function guardarRegistro() {
     if (!user) {
 
         mostrarToast(
-            "⚠️ Debes iniciar sesión"
+            `⚠️ ${t("loginRequired")}`
         );
 
         return;
@@ -208,16 +256,21 @@ async function guardarRegistro() {
     };
 
     const mensajes = {
+
         feliz:
-            "¡✨ Qué bonito verte feliz!",
+            t("happyMessage"),
+
         tranquilo:
-            "🌸 Sigue cuidando tu paz",
+            t("calmMessage"),
+
         neutral:
-            "💫 Gracias por compartir cómo te sientes <3",
+            t("neutralMessage"),
+
         triste:
-            "🫶 Está bien tener días difíciles",
+            t("sadMessage"),
+
         ansioso:
-            "🌿 Respira, poco a poco"
+            t("anxiousMessage")
     };
 
     const id_emocion =
@@ -236,6 +289,7 @@ async function guardarRegistro() {
                 },
 
                 body: JSON.stringify({
+
                     id_usuario:
                         user.id_usuario || user.id,
 
@@ -253,7 +307,7 @@ async function guardarRegistro() {
         if (!res.ok) {
 
             mostrarToast(
-                data.message || "Error al guardar"
+                data.message || t("saveError")
             );
 
             return;
@@ -295,7 +349,7 @@ async function guardarRegistro() {
         console.error(error);
 
         mostrarToast(
-            "❌ Error de conexión"
+            `❌ ${t("connectionError")}`
         );
     }
 }
@@ -376,10 +430,21 @@ let moodChart;
 
 function pintarGrafico(data) {
 
+    const lang = getLanguage();
+
+    const localeMap = {
+        es: "es-ES",
+        en: "en-US",
+        fr: "fr-FR",
+        de: "de-DE"
+    };
+
     const labels =
         data.map(item =>
             new Date(item.fecha)
-                .toLocaleDateString("es-ES")
+                .toLocaleDateString(
+                    localeMap[lang]
+                )
         );
 
     const valores =
@@ -408,7 +473,7 @@ function pintarGrafico(data) {
             datasets: [
                 {
                     label:
-                        "Estado emocional",
+                        t("emotionalState"),
 
                     data: valores,
 
