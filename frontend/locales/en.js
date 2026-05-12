@@ -1,24 +1,104 @@
 export default {
 
-    homeTitle: "Welcome to MoodLens",
+    dashboard: "Dashboard",
 
-    homeSubtitle:
-        "Your personal emotional wellness companion.",
+    premiumUser: "Premium user",
 
-    login: "Login",
+    registro: "Home",
 
-    register: "Create account",
+    analisis: "Analysis",
+
+    historial: "History",
+
+    consejos: "Tips",
+
+    perfil: "Profile",
 
     logout: "Logout",
 
-    moodQuestion: "How are you feeling today?",
+    hello: "Hello",
 
-    saveMood: "Save mood",
+    perfilSubtitle:
+        "Your personal MoodLens space 🌸",
 
-    profile: "Profile",
+    memberSince:
+        "Member since",
 
-    history: "History",
+    moodRecords:
+        "Mood records",
 
-    tips: "Tips"
+    activeDays:
+        "Active days",
 
+    mostFrequentEmotion:
+        "Most frequent emotion",
+
+    account:
+        "Account",
+
+    name:
+        "Name",
+
+    saveChanges:
+        "Save changes",
+
+    preferences:
+        "Preferences",
+
+    language:
+        "Language",
+
+    notifications:
+        "Notifications",
+
+    emotionalReminders:
+        "Emotional reminders",
+
+    comingSoon:
+        "Coming soon",
+
+    exportData:
+        "Export data",
+
+    downloadHistory:
+        "Download your history",
+
+    privacy:
+        "Privacy",
+
+    privateEmotions:
+        "Your emotions are private",
+
+    active:
+        "Active",
+
+    support:
+        "Support",
+
+    supportText:
+        "Need help or want to share ideas for MoodLens?",
+
+    contactSupport:
+        "Contact support",
+
+    session:
+        "Session",
+
+    logoutText:
+        "Log out from your MoodLens account.",
+
+    emptyName:
+        "Name cannot be empty",
+
+    profileUpdated:
+        "Profile updated ✨",
+
+    saveError:
+        "Error while saving",
+
+    supportSoon:
+        "Support coming soon 💌",
+
+    noData:
+        "No data"
 };

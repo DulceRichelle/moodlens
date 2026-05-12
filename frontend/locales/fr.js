@@ -1,24 +1,104 @@
 export default {
 
-    homeTitle: "Bienvenue sur MoodLens",
+    dashboard: "Tableau de bord",
 
-    homeSubtitle:
-        "Ton compagnon personnel de bien-être émotionnel.",
+    premiumUser: "Utilisateur premium",
 
-    login: "Se connecter",
+    registro: "Accueil",
 
-    register: "Créer un compte",
+    analisis: "Analyse",
+
+    historial: "Historique",
+
+    consejos: "Conseils",
+
+    perfil: "Profil",
 
     logout: "Déconnexion",
 
-    moodQuestion: "Comment te sens-tu aujourd’hui ?",
+    hello: "Bonjour",
 
-    saveMood: "Enregistrer l’émotion",
+    perfilSubtitle:
+        "Ton espace personnel MoodLens 🌸",
 
-    profile: "Profil",
+    memberSince:
+        "Membre depuis",
 
-    history: "Historique",
+    moodRecords:
+        "Enregistrements émotionnels",
 
-    tips: "Conseils"
+    activeDays:
+        "Jours actifs",
 
+    mostFrequentEmotion:
+        "Émotion la plus fréquente",
+
+    account:
+        "Compte",
+
+    name:
+        "Nom",
+
+    saveChanges:
+        "Enregistrer",
+
+    preferences:
+        "Préférences",
+
+    language:
+        "Langue",
+
+    notifications:
+        "Notifications",
+
+    emotionalReminders:
+        "Rappels émotionnels",
+
+    comingSoon:
+        "Bientôt",
+
+    exportData:
+        "Exporter les données",
+
+    downloadHistory:
+        "Télécharge ton historique",
+
+    privacy:
+        "Confidentialité",
+
+    privateEmotions:
+        "Tes émotions sont privées",
+
+    active:
+        "Actif",
+
+    support:
+        "Support",
+
+    supportText:
+        "Besoin d’aide ou envie de partager des idées pour MoodLens ?",
+
+    contactSupport:
+        "Contacter le support",
+
+    session:
+        "Session",
+
+    logoutText:
+        "Déconnecte-toi de ton compte MoodLens.",
+
+    emptyName:
+        "Le nom ne peut pas être vide",
+
+    profileUpdated:
+        "Profil mis à jour ✨",
+
+    saveError:
+        "Erreur lors de l’enregistrement",
+
+    supportSoon:
+        "Support bientôt disponible 💌",
+
+    noData:
+        "Aucune donnée"
 };

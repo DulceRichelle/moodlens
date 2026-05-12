@@ -1,24 +1,104 @@
 export default {
 
-    homeTitle: "Bienvenido a MoodLens",
+    dashboard: "Dashboard",
 
-    homeSubtitle:
-        "Tu compañero personal de bienestar emocional.",
+    premiumUser: "Usuario premium",
 
-    login: "Iniciar sesión",
+    registro: "Registro",
 
-    register: "Crear cuenta",
+    analisis: "Análisis",
+
+    historial: "Historial",
+
+    consejos: "Consejos",
+
+    perfil: "Perfil",
 
     logout: "Cerrar sesión",
 
-    moodQuestion: "¿Cómo te sientes hoy?",
+    hello: "Hola",
 
-    saveMood: "Guardar estado",
+    perfilSubtitle:
+        "Tu espacio personal en MoodLens 🌸",
 
-    profile: "Perfil",
+    memberSince:
+        "Miembro desde",
 
-    history: "Historial",
+    moodRecords:
+        "Registros emocionales",
 
-    tips: "Consejos"
+    activeDays:
+        "Días activos",
 
+    mostFrequentEmotion:
+        "Emoción más frecuente",
+
+    account:
+        "Cuenta",
+
+    name:
+        "Nombre",
+
+    saveChanges:
+        "Guardar cambios",
+
+    preferences:
+        "Preferencias",
+
+    language:
+        "Idioma",
+
+    notifications:
+        "Notificaciones",
+
+    emotionalReminders:
+        "Recordatorios emocionales",
+
+    comingSoon:
+        "Próximamente",
+
+    exportData:
+        "Exportar datos",
+
+    downloadHistory:
+        "Descarga tu historial",
+
+    privacy:
+        "Privacidad",
+
+    privateEmotions:
+        "Tus emociones son privadas",
+
+    active:
+        "Activo",
+
+    support:
+        "Soporte",
+
+    supportText:
+        "¿Necesitas ayuda o quieres compartir ideas para MoodLens?",
+
+    contactSupport:
+        "Contactar soporte",
+
+    session:
+        "Sesión",
+
+    logoutText:
+        "Cierra sesión en tu cuenta de MoodLens.",
+
+    emptyName:
+        "El nombre no puede estar vacío",
+
+    profileUpdated:
+        "Perfil actualizado ✨",
+
+    saveError:
+        "Error al guardar",
+
+    supportSoon:
+        "Soporte disponible próximamente 💌",
+
+    noData:
+        "Sin datos"
 };

@@ -1,24 +1,104 @@
 export default {
 
-    homeTitle: "Willkommen bei MoodLens",
+    dashboard: "Dashboard",
 
-    homeSubtitle:
-        "Dein persönlicher Begleiter für emotionales Wohlbefinden.",
+    premiumUser: "Premium-Benutzer",
 
-    login: "Anmelden",
+    registro: "Startseite",
 
-    register: "Konto erstellen",
+    analisis: "Analyse",
+
+    historial: "Verlauf",
+
+    consejos: "Tipps",
+
+    perfil: "Profil",
 
     logout: "Abmelden",
 
-    moodQuestion: "Wie fühlst du dich heute?",
+    hello: "Hallo",
 
-    saveMood: "Stimmung speichern",
+    perfilSubtitle:
+        "Dein persönlicher MoodLens-Bereich 🌸",
 
-    profile: "Profil",
+    memberSince:
+        "Mitglied seit",
 
-    history: "Verlauf",
+    moodRecords:
+        "Emotionale Einträge",
 
-    tips: "Tipps"
+    activeDays:
+        "Aktive Tage",
 
+    mostFrequentEmotion:
+        "Häufigste Emotion",
+
+    account:
+        "Konto",
+
+    name:
+        "Name",
+
+    saveChanges:
+        "Änderungen speichern",
+
+    preferences:
+        "Einstellungen",
+
+    language:
+        "Sprache",
+
+    notifications:
+        "Benachrichtigungen",
+
+    emotionalReminders:
+        "Emotionale Erinnerungen",
+
+    comingSoon:
+        "Demnächst",
+
+    exportData:
+        "Daten exportieren",
+
+    downloadHistory:
+        "Verlauf herunterladen",
+
+    privacy:
+        "Privatsphäre",
+
+    privateEmotions:
+        "Deine Emotionen sind privat",
+
+    active:
+        "Aktiv",
+
+    support:
+        "Support",
+
+    supportText:
+        "Brauchst du Hilfe oder möchtest Ideen für MoodLens teilen?",
+
+    contactSupport:
+        "Support kontaktieren",
+
+    session:
+        "Sitzung",
+
+    logoutText:
+        "Melde dich von deinem MoodLens-Konto ab.",
+
+    emptyName:
+        "Name darf nicht leer sein",
+
+    profileUpdated:
+        "Profil aktualisiert ✨",
+
+    saveError:
+        "Fehler beim Speichern",
+
+    supportSoon:
+        "Support bald verfügbar 💌",
+
+    noData:
+        "Keine Daten"
 };
