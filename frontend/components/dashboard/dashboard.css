@@ -187,35 +187,38 @@ body {
 .menu {
 
     display: flex;
+
     flex-direction: column;
 
-    gap: 10px;
+    gap: 14px;
 
     flex: 1;
+
+    width: 100%;
 }
 
 .menu-item {
+
+    width: 100%;
 
     border: none;
 
     background: transparent;
 
-    width: 100%;
-
-    min-height: 58px;
-
-    padding: 0 18px;
+    padding: 16px 18px;
 
     border-radius: 18px;
 
     display: flex;
+
     align-items: center;
 
-    gap: 14px;
+    justify-content: flex-start;
 
     text-align: left;
 
     font-size: 16px;
+
     font-weight: 600;
 
     color: rgba(255,255,255,0.92);
@@ -224,7 +227,9 @@ body {
 
     transition: 0.25s ease;
 
-    white-space: nowrap;
+    gap: 14px;
+
+    line-height: 1.2;
 }
 
 .menu-item:hover {
