@@ -15,9 +15,16 @@ let currentLanguage =
 
 export function setLanguage(lang) {
 
+    if (!languages[lang]) {
+        return;
+    }
+
     currentLanguage = lang;
 
-    localStorage.setItem("language", lang);
+    localStorage.setItem(
+        "language",
+        lang
+    );
 
     if (window.refreshApp) {
 
@@ -27,7 +34,13 @@ export function setLanguage(lang) {
 
 export function t(key) {
 
-    return languages[currentLanguage][key] || key;
+    return (
+        languages[currentLanguage]?.[key] ||
+
+        languages.es?.[key] ||
+
+        key
+    );
 }
 
 export function getLanguage() {
