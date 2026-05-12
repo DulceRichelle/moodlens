@@ -58,40 +58,40 @@ export function renderDashboard(app) {
 
             <div class="menu">
 
-                <button
-                    class="menu-item active"
-                    onclick="cargarVista('registro', this)"
-                >
-                    🏠 ${t("registro")}
-                </button>
+               <button
+    class="menu-item active"
+    onclick="cargarVista('registro', this)"
+>
+    🏠 Registro
+</button>
 
-                <button
-                    class="menu-item"
-                    onclick="cargarVista('analisis', this)"
-                >
-                    📊 ${t("analisis")}
-                </button>
+<button
+    class="menu-item"
+    onclick="cargarVista('analisis', this)"
+>
+    📊 Análisis
+</button>
 
-                <button
-                    class="menu-item"
-                    onclick="cargarVista('historial', this)"
-                >
-                    🕒 ${t("historial")}
-                </button>
+<button
+    class="menu-item"
+    onclick="cargarVista('historial', this)"
+>
+    🕒 Historial
+</button>
 
-                <button
-                    class="menu-item"
-                    onclick="cargarVista('consejos', this)"
-                >
-                    💡 ${t("consejos")}
-                </button>
+<button
+    class="menu-item"
+    onclick="cargarVista('consejos', this)"
+>
+    💡 Consejos
+</button>
 
-                <button
-                    class="menu-item"
-                    onclick="cargarVista('perfil', this)"
-                >
-                    ⚙️ ${t("perfil")}
-                </button>
+<button
+    class="menu-item"
+    onclick="cargarVista('perfil', this)"
+>
+    ⚙️ Perfil
+</button>
 
             </div>
 

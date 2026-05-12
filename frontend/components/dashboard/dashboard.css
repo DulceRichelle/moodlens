@@ -209,12 +209,6 @@ body {
 
     border-radius: 18px;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-start;
-
     text-align: left;
 
     font-size: 16px;
@@ -227,9 +221,7 @@ body {
 
     transition: 0.25s ease;
 
-    gap: 14px;
-
-    line-height: 1.2;
+    display: block;
 }
 
 .menu-item:hover {
@@ -272,13 +264,14 @@ body {
     border-radius: 18px;
 
     font-size: 15px;
+
     font-weight: 600;
 
     cursor: pointer;
 
     transition: 0.25s ease;
 
-    margin-top: 14px;
+    margin-top: auto;
 }
 
 .logout:hover {
