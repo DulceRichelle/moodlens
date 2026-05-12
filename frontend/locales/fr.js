@@ -178,5 +178,115 @@ export default {
         "Erreur de connexion",
 
     emotionalState:
-        "État émotionnel"
+        "État émotionnel",
+
+    back: "Retour",
+
+    loginTitle:
+        "Connexion",
+
+    loginSubtitle:
+        "Bienvenue à nouveau sur MoodLens",
+
+    email:
+        "Email",
+
+    password:
+        "Mot de passe",
+
+    loginButton:
+        "Se connecter",
+
+    noAccount:
+        "Tu n'as pas de compte ?",
+
+    registerHere:
+        "Inscris-toi ici",
+
+    fillAllFields:
+        "Remplis tous les champs",
+
+    invalidEmail:
+        "Email invalide :(",
+
+    loginError:
+        "Erreur de connexion :(",
+
+    loginSuccess:
+        "Connexion réussie ! 🎉",
+
+    serverConnectionError:
+        "Erreur de connexion au serveur :(",
+
+    registerTitle:
+        "Créer un compte",
+
+    registerSubtitle:
+        "Commence ton voyage vers le bien-être",
+
+    fullName:
+        "Nom complet",
+
+    yourName:
+        "Ton nom",
+
+    confirmPassword:
+        "Confirmer le mot de passe",
+
+    createAccount:
+        "Créer un compte",
+
+    alreadyAccount:
+        "Tu as déjà un compte ?",
+
+    loginHere:
+        "Connecte-toi ici",
+
+    passwordMin:
+        "Le mot de passe doit contenir au moins 4 caractères",
+
+    passwordMismatch:
+        "Les mots de passe ne correspondent pas :(",
+
+    creatingAccount:
+        "Création du compte...",
+
+    registerError:
+        "Erreur lors de l'inscription :(",
+
+    registerSuccess:
+        "Compte créé avec succès ! 🎉",
+
+    homeTitle:
+        "Bienvenue sur MoodLens",
+
+    homeSubtitle:
+        "Ton compagnon personnel de bien-être émotionnel. Enregistre, analyse et améliore ta santé mentale chaque jour.",
+
+    startNow:
+        "Commencer",
+
+    dailyTracking:
+        "Suivi quotidien",
+
+    dailyTrackingText:
+        "Enregistre facilement ton humeur",
+
+    deepAnalysis:
+        "Analyse approfondie",
+
+    deepAnalysisText:
+        "Visualise les tendances émotionnelles",
+
+    fullHistory:
+        "Historique complet",
+
+    fullHistoryText:
+        "Accède à tout ton historique émotionnel",
+
+    personalizedTips:
+        "Conseils personnalisés",
+
+    personalizedTipsText:
+        "Reçois des conseils bien-être adaptés"
 };

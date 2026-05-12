@@ -1,3 +1,5 @@
+import { t } from "../../services/i18n.js";
+
 export function renderRegister(app) {
 
     app.innerHTML = `
@@ -6,22 +8,24 @@ export function renderRegister(app) {
 <div class="auth-container">
 
     <button class="back" onclick="navigate('home')">
-        ← Volver
+        ← ${t("back")}
     </button>
 
     <div class="auth-card">
 
         <img src="assets/logo.png" class="logo"/>
 
-        <h2>Crear Cuenta</h2>
+        <h2>${t("registerTitle")}</h2>
 
         <p class="subtitle">
-            Comienza tu viaje hacia el bienestar
+            ${t("registerSubtitle")}
         </p>
 
         <div class="input-group">
 
-            <label>Nombre completo</label>
+            <label>
+                ${t("fullName")}
+            </label>
 
             <div class="input-box">
 
@@ -29,7 +33,7 @@ export function renderRegister(app) {
 
                 <input
                     type="text"
-                    placeholder="Tu nombre"
+                    placeholder="${t("yourName")}"
                     id="nombre"
                 >
 
@@ -39,7 +43,9 @@ export function renderRegister(app) {
 
         <div class="input-group">
 
-            <label>Correo electrónico</label>
+            <label>
+                ${t("email")}
+            </label>
 
             <div class="input-box">
 
@@ -57,7 +63,9 @@ export function renderRegister(app) {
 
         <div class="input-group">
 
-            <label>Contraseña</label>
+            <label>
+                ${t("password")}
+            </label>
 
             <div class="input-box password-box">
 
@@ -82,7 +90,9 @@ export function renderRegister(app) {
 
         <div class="input-group">
 
-            <label>Confirmar contraseña</label>
+            <label>
+                ${t("confirmPassword")}
+            </label>
 
             <div class="input-box password-box">
 
@@ -109,14 +119,17 @@ export function renderRegister(app) {
         <div class="success"></div>
 
         <button class="btn-main" id="registerBtn">
-            Crear Cuenta
+            ${t("createAccount")}
         </button>
 
         <p class="switch">
-            ¿Ya tienes cuenta?
+
+            ${t("alreadyAccount")}
+
             <span onclick="navigate('login')">
-                Inicia sesión aquí
+                ${t("loginHere")}
             </span>
+
         </p>
 
     </div>
@@ -204,28 +217,28 @@ async function handleRegister() {
     ) {
 
         return showError(
-            'Por favor, completa todos los campos'
+            t("fillAllFields")
         );
     }
 
     if (!validateEmail(email)) {
 
         return showError(
-            'Correo electrónico no válido :('
+            t("invalidEmail")
         );
     }
 
     if (password.length < 4) {
 
         return showError(
-            'La contraseña debe tener al menos 4 caracteres'
+            t("passwordMin")
         );
     }
 
     if (password !== confirmPassword) {
 
         return showError(
-            'Las contraseñas no coinciden :('
+            t("passwordMismatch")
         );
     }
 
@@ -234,7 +247,7 @@ async function handleRegister() {
         registerBtn.disabled = true;
 
         registerBtn.textContent =
-            'Creando cuenta...';
+            t("creatingAccount");
 
         const res = await fetch(
             'https://moodlens-oj88.onrender.com/api/register',
@@ -260,10 +273,10 @@ async function handleRegister() {
             registerBtn.disabled = false;
 
             registerBtn.textContent =
-                'Crear Cuenta';
+                t("createAccount");
 
             return showError(
-                data.message || 'Error al registrar :('
+                data.message || t("registerError")
             );
         }
 
@@ -275,7 +288,7 @@ async function handleRegister() {
         );
 
         showSuccess(
-            '¡Cuenta creada correctamente :D! 🎉'
+            t("registerSuccess")
         );
 
         setTimeout(() => {
@@ -289,10 +302,10 @@ async function handleRegister() {
         registerBtn.disabled = false;
 
         registerBtn.textContent =
-            'Crear Cuenta';
+            t("createAccount");
 
         showError(
-            'Error de conexión con el servidor :('
+            t("serverConnectionError")
         );
     }
 }

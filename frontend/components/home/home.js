@@ -1,26 +1,52 @@
+import { t, setLanguage, getLanguage } from "../../services/i18n.js";
+
 export function renderHome(app) {
+
     app.innerHTML = `
     <link rel="stylesheet" href="components/home/home.css">
+
+    <div class="language-selector">
+
+        <select id="languageSelect">
+
+            <option value="es">🇪🇸 Español</option>
+
+            <option value="en">🇬🇧 English</option>
+
+            <option value="fr">🇫🇷 Français</option>
+
+            <option value="de">🇩🇪 Deutsch</option>
+
+        </select>
+
+    </div>
 
     <section class="hero">
 
         <img src="assets/logo.png" class="logo"/>
 
-        <h1>Bienvenido a MoodLens</h1>
+        <h1>${t("homeTitle")}</h1>
 
         <p class="subtitle">
-            Tu compañero personal de bienestar emocional. Registra, analiza y mejora
-            tu salud mental día a día.
+            ${t("homeSubtitle")}
         </p>
 
         <div class="buttons">
-            <button class="btn-primary" onclick="navigate('register')">
-                Comenzar ahora →
+
+            <button
+                class="btn-primary"
+                onclick="navigate('register')"
+            >
+                ${t("startNow")} →
             </button>
 
-            <button class="btn-secondary" onclick="navigate('login')">
-                Iniciar sesión
+            <button
+                class="btn-secondary"
+                onclick="navigate('login')"
+            >
+                ${t("loginButton")}
             </button>
+
         </div>
 
     </section>
@@ -28,29 +54,69 @@ export function renderHome(app) {
     <section class="features">
 
         <div class="card">
+
             <div class="icon orange">❤</div>
-            <h3>Registro Diario</h3>
-            <p>Registra tu estado de ánimo con facilidad</p>
+
+            <h3>${t("dailyTracking")}</h3>
+
+            <p>
+                ${t("dailyTrackingText")}
+            </p>
+
         </div>
 
         <div class="card">
+
             <div class="icon blue">📈</div>
-            <h3>Análisis Profundo</h3>
-            <p>Visualiza tendencias y patrones emocionales</p>
+
+            <h3>${t("deepAnalysis")}</h3>
+
+            <p>
+                ${t("deepAnalysisText")}
+            </p>
+
         </div>
 
         <div class="card">
+
             <div class="icon yellow">📖</div>
-            <h3>Historial Completo</h3>
-            <p>Accede a todo tu historial emocional</p>
+
+            <h3>${t("fullHistory")}</h3>
+
+            <p>
+                ${t("fullHistoryText")}
+            </p>
+
         </div>
 
         <div class="card">
+
             <div class="icon purple">✨</div>
-            <h3>Consejos Personalizados</h3>
-            <p>Recibe tips de bienestar adaptados</p>
+
+            <h3>${t("personalizedTips")}</h3>
+
+            <p>
+                ${t("personalizedTipsText")}
+            </p>
+
         </div>
 
     </section>
     `;
+
+    const languageSelect =
+        document.getElementById("languageSelect");
+
+    languageSelect.value =
+        getLanguage();
+
+    languageSelect.addEventListener(
+        "change",
+        (e) => {
+
+            setLanguage(e.target.value);
+
+            renderHome(app);
+        }
+    );
 }

@@ -601,3 +601,69 @@ body::before {
         padding: 22px;
     }
 }
+
+.language-selector {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 2000;
+}
+
+.language-selector select {
+
+    background:
+            rgba(255,255,255,0.14);
+
+    backdrop-filter: blur(14px);
+
+    border:
+            1px solid rgba(255,255,255,0.24);
+
+    color: white;
+
+    padding:
+            12px 18px;
+
+    border-radius: 16px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.language-selector select:hover {
+
+    background:
+            rgba(255,255,255,0.2);
+}
+
+.language-selector option {
+
+    color: black;
+}
+
+@media (max-width: 768px) {
+
+    .language-selector {
+
+        top: 14px;
+        right: 14px;
+    }
+
+    .language-selector select {
+
+        padding:
+                10px 14px;
+
+        font-size: 13px;
+    }
+}

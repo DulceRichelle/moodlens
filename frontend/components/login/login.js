@@ -1,174 +1,215 @@
+import { t } from "../../services/i18n.js";
+
 export function renderLogin(app) {
 
-app.innerHTML = `
+    app.innerHTML = `
     <link rel="stylesheet" href="components/login/login.css">
 
-        <div class="auth-container">
+    <div class="auth-container">
 
         <button class="back" onclick="navigate('home')">
-        ← Volver
-    </button>
-
-    <div class="auth-card">
-
-        <img src="assets/logo.png" class="logo"/>
-
-        <h2>Iniciar Sesión</h2>
-        <p class="subtitle">Bienvenido de nuevo a MoodLens</p>
-
-        <div class="input-group">
-            <label>Correo electrónico</label>
-
-            <div class="input-box">
-                <span class="icon">✉️</span>
-
-                <input
-                    type="email"
-                    placeholder="tu@email.com"
-                    id="email"
-                >
-            </div>
-        </div>
-
-        <div class="input-group">
-            <label>Contraseña</label>
-
-            <div class="input-box password-box">
-
-                <span class="icon">🔒</span>
-
-                <input
-                    type="password"
-                    placeholder="Contraseña"
-                    id="password"
-                >
-
-                <span class="toggle-password" id="togglePassword">
-                    👁️
-                </span>
-
-            </div>
-        </div>
-
-        <div class="error"></div>
-        <div class="success"></div>
-
-        <button class="btn-main" id="loginBtn">
-            Iniciar Sesión
+            ← ${t("back")}
         </button>
 
-        <p class="switch">
-            ¿No tienes cuenta?
-            <span onclick="navigate('register')">
-                Regístrate aquí
-            </span>
-        </p>
+        <div class="auth-card">
+
+            <img src="assets/logo.png" class="logo"/>
+
+            <h2>${t("loginTitle")}</h2>
+
+            <p class="subtitle">
+                ${t("loginSubtitle")}
+            </p>
+
+            <div class="input-group">
+
+                <label>
+                    ${t("email")}
+                </label>
+
+                <div class="input-box">
+
+                    <span class="icon">✉️</span>
+
+                    <input
+                        type="email"
+                        placeholder="tu@email.com"
+                        id="email"
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+                    ${t("password")}
+                </label>
+
+                <div class="input-box password-box">
+
+                    <span class="icon">🔒</span>
+
+                    <input
+                        type="password"
+                        placeholder="${t("password")}"
+                        id="password"
+                    >
+
+                    <span
+                        class="toggle-password"
+                        id="togglePassword"
+                    >
+                        👁️
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="error"></div>
+            <div class="success"></div>
+
+            <button
+                class="btn-main"
+                id="loginBtn"
+            >
+                ${t("loginButton")}
+            </button>
+
+            <p class="switch">
+
+                ${t("noAccount")}
+
+                <span onclick="navigate('register')">
+                    ${t("registerHere")}
+                </span>
+
+            </p>
+
+        </div>
 
     </div>
-
-</div>
 `;
 
-document
-.getElementById('loginBtn')
-.addEventListener('click', login);
+    document
+        .getElementById('loginBtn')
+        .addEventListener('click', login);
 
-const togglePassword =
-document.getElementById("togglePassword");
+    const togglePassword =
+        document.getElementById("togglePassword");
 
-const passwordInput =
-document.getElementById("password");
+    const passwordInput =
+        document.getElementById("password");
 
-togglePassword.addEventListener("click", () => {
+    togglePassword.addEventListener("click", () => {
 
-    const isPassword =
-        passwordInput.type === "password";
+        const isPassword =
+            passwordInput.type === "password";
 
-    passwordInput.type =
-        isPassword ? "text" : "password";
+        passwordInput.type =
+            isPassword ? "text" : "password";
 
-    togglePassword.textContent =
-        isPassword ? "🙈" : "👁️";
-});
+        togglePassword.textContent =
+            isPassword ? "🙈" : "👁️";
+    });
 
 }
 
 async function login() {
 
+    const email =
+        document.getElementById('email').value.trim();
 
-const email =
-    document.getElementById('email').value.trim();
+    const password =
+        document.getElementById('password').value;
 
-const password =
-    document.getElementById('password').value;
+    const errorBox =
+        document.querySelector('.error');
 
-const errorBox =
-    document.querySelector('.error');
+    const successBox =
+        document.querySelector('.success');
 
-const successBox =
-    document.querySelector('.success');
+    errorBox.textContent = '';
+    successBox.textContent = '';
 
-errorBox.textContent = '';
-successBox.textContent = '';
+    if (!email || !password) {
 
-if (!email || !password) {
-    return showError('Completa todos los campos');
-}
-
-if (!validateEmail(email)) {
-    return showError('Correo electrónico no válido :(');
-}
-
-try {
-
-    const res = await fetch(
-        'https://moodlens-oj88.onrender.com/api/login',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                password
-            })
-        }
-    );
-
-    const data = await res.json();
-
-    if (!res.ok) {
         return showError(
-            data.message || 'Error al iniciar sesión :('
+            t("fillAllFields")
         );
     }
 
-    localStorage.setItem(
-        'user',
-        JSON.stringify(data.user)
-    );
+    if (!validateEmail(email)) {
 
-    showSuccess('¡Login correcto! :D🎉');
+        return showError(
+            t("invalidEmail")
+        );
+    }
 
-    setTimeout(() => {
-        navigate('dashboard');
-    }, 1000);
+    try {
 
-} catch (error) {
-    showError('Error de conexión con el servidor :(');
-}
+        const res = await fetch(
+            'https://moodlens-oj88.onrender.com/api/login',
+            {
+                method: 'POST',
 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+
+            return showError(
+                data.message || t("loginError")
+            );
+        }
+
+        localStorage.setItem(
+            'user',
+            JSON.stringify(data.user)
+        );
+
+        showSuccess(
+            t("loginSuccess")
+        );
+
+        setTimeout(() => {
+
+            navigate('dashboard');
+
+        }, 1000);
+
+    } catch (error) {
+
+        showError(
+            t("serverConnectionError")
+        );
+    }
 
 }
 
 function validateEmail(email) {
-    return /\S+@\S+.\S+/.test(email);
+
+    return /\S+@\S+\.\S+/.test(email);
 }
 
 function showError(msg) {
+
     document.querySelector('.error').textContent = msg;
 }
 
 function showSuccess(msg) {
+
     document.querySelector('.success').textContent = msg;
 }

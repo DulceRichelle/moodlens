@@ -178,5 +178,115 @@ export default {
         "Connection error",
 
     emotionalState:
-        "Emotional state"
+        "Emotional state",
+
+    back: "Back",
+
+    loginTitle:
+        "Log in",
+
+    loginSubtitle:
+        "Welcome back to MoodLens",
+
+    email:
+        "Email",
+
+    password:
+        "Password",
+
+    loginButton:
+        "Log in",
+
+    noAccount:
+        "Don't have an account?",
+
+    registerHere:
+        "Sign up here",
+
+    fillAllFields:
+        "Fill in all fields",
+
+    invalidEmail:
+        "Invalid email :(",
+
+    loginError:
+        "Login error :(",
+
+    loginSuccess:
+        "Login successful! 🎉",
+
+    serverConnectionError:
+        "Server connection error :(",
+
+    registerTitle:
+        "Create Account",
+
+    registerSubtitle:
+        "Start your wellness journey",
+
+    fullName:
+        "Full name",
+
+    yourName:
+        "Your name",
+
+    confirmPassword:
+        "Confirm password",
+
+    createAccount:
+        "Create account",
+
+    alreadyAccount:
+        "Already have an account?",
+
+    loginHere:
+        "Log in here",
+
+    passwordMin:
+        "Password must contain at least 4 characters",
+
+    passwordMismatch:
+        "Passwords do not match :(",
+
+    creatingAccount:
+        "Creating account...",
+
+    registerError:
+        "Registration error :(",
+
+    registerSuccess:
+        "Account created successfully! 🎉",
+
+    homeTitle:
+        "Welcome to MoodLens",
+
+    homeSubtitle:
+        "Your personal emotional wellness companion. Track, analyze and improve your mental health every day.",
+
+    startNow:
+        "Start now",
+
+    dailyTracking:
+        "Daily tracking",
+
+    dailyTrackingText:
+        "Track your mood easily",
+
+    deepAnalysis:
+        "Deep analysis",
+
+    deepAnalysisText:
+        "Visualize emotional patterns and trends",
+
+    fullHistory:
+        "Complete history",
+
+    fullHistoryText:
+        "Access your full emotional history",
+
+    personalizedTips:
+        "Personalized tips",
+
+    personalizedTipsText:
+        "Receive wellness tips adapted to you"
 };

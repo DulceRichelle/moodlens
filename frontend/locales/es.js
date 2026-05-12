@@ -178,5 +178,115 @@ export default {
         "Error de conexión",
 
     emotionalState:
-        "Estado emocional"
+        "Estado emocional",
+
+    back: "Volver",
+
+    loginTitle:
+        "Iniciar sesión",
+
+    loginSubtitle:
+        "Bienvenido de nuevo a MoodLens",
+
+    email:
+        "Correo electrónico",
+
+    password:
+        "Contraseña",
+
+    loginButton:
+        "Iniciar sesión",
+
+    noAccount:
+        "¿No tienes cuenta?",
+
+    registerHere:
+        "Regístrate aquí",
+
+    fillAllFields:
+        "Completa todos los campos",
+
+    invalidEmail:
+        "Correo electrónico no válido :(",
+
+    loginError:
+        "Error al iniciar sesión :(",
+
+    loginSuccess:
+        "¡Login correcto! 🎉",
+
+    serverConnectionError:
+        "Error de conexión con el servidor :(",
+
+    registerTitle:
+        "Crear Cuenta",
+
+    registerSubtitle:
+        "Comienza tu viaje hacia el bienestar",
+
+    fullName:
+        "Nombre completo",
+
+    yourName:
+        "Tu nombre",
+
+    confirmPassword:
+        "Confirmar contraseña",
+
+    createAccount:
+        "Crear cuenta",
+
+    alreadyAccount:
+        "¿Ya tienes cuenta?",
+
+    loginHere:
+        "Inicia sesión aquí",
+
+    passwordMin:
+        "La contraseña debe tener al menos 4 caracteres",
+
+    passwordMismatch:
+        "Las contraseñas no coinciden :(",
+
+    creatingAccount:
+        "Creando cuenta...",
+
+    registerError:
+        "Error al registrar :(",
+
+    registerSuccess:
+        "¡Cuenta creada correctamente! 🎉",
+
+    homeTitle:
+        "Bienvenido a MoodLens",
+
+    homeSubtitle:
+        "Tu compañero personal de bienestar emocional. Registra, analiza y mejora tu salud mental día a día.",
+
+    startNow:
+        "Comenzar ahora",
+
+    dailyTracking:
+        "Registro diario",
+
+    dailyTrackingText:
+        "Registra tu estado de ánimo con facilidad",
+
+    deepAnalysis:
+        "Análisis profundo",
+
+    deepAnalysisText:
+        "Visualiza tendencias y patrones emocionales",
+
+    fullHistory:
+        "Historial completo",
+
+    fullHistoryText:
+        "Accede a todo tu historial emocional",
+
+    personalizedTips:
+        "Consejos personalizados",
+
+    personalizedTipsText:
+        "Recibe tips de bienestar adaptados"
 };
