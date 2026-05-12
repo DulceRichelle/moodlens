@@ -1,9 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MoodLens</title>
+
+    <meta
+            name="theme-color"
+            content="#79AEA5"
+    >
+
+    <link
+            rel="manifest"
+            href="manifest.json"
+    >
+
+    <link
+            rel="stylesheet"
+            href="styles/global.css"
+    >
+
+</head>
+
 <body>
 
 <div id="app"></div>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles/global.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="module" src="router/router.js"></script>
+
+<script
+        type="module"
+        src="router/router.js"
+></script>
+
+<script>
+
+    if ("serviceWorker" in navigator) {
+
+        window.addEventListener("load", () => {
+
+            navigator.serviceWorker
+                .register("/service-worker.js")
+                .then(() => {
+                    console.log("PWA lista");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+        });
+
+    }
+
+</script>
+
 </body>
+
+</html>
