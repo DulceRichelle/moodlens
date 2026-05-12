@@ -100,5 +100,83 @@ export default {
         "Support bald verfügbar 💌",
 
     noData:
-        "Keine Daten"
+        "Keine Daten",
+
+    registerMood:
+        "Stimmung eintragen",
+
+    howFeelingTodaySubtitle:
+        "Wie fühlst du dich heute? Teile deinen emotionalen Zustand mit.",
+
+    totalRecords:
+        "Gesamte Einträge",
+
+    averageIntensity:
+        "Durchschnittliche Intensität",
+
+    mostCommonMood:
+        "Häufigste Stimmung",
+
+    last7Days:
+        "Letzte 7 Tage",
+
+    howFeelingToday:
+        "Wie fühlst du dich heute?",
+
+    happy:
+        "Glücklich",
+
+    calm:
+        "Ruhig",
+
+    neutral:
+        "Neutral",
+
+    sad:
+        "Traurig",
+
+    anxious:
+        "Ängstlich",
+
+    intensity:
+        "Intensität",
+
+    notesOptional:
+        "Notizen (optional)",
+
+    lifePlaceholder:
+        "Was passiert gerade in deinem Leben?",
+
+    saveMood:
+        "Stimmung speichern",
+
+    moodTrend:
+        "Stimmungstrend",
+
+    selectEmotion:
+        "Wähle eine Emotion aus",
+
+    loginRequired:
+        "Du musst dich anmelden",
+
+    happyMessage:
+        "✨ Schön dich glücklich zu sehen",
+
+    calmMessage:
+        "🌸 Bewahre deinen inneren Frieden",
+
+    neutralMessage:
+        "💫 Danke, dass du deine Gefühle teilst",
+
+    sadMessage:
+        "🫶 Schwierige Tage sind okay",
+
+    anxiousMessage:
+        "🌿 Atme langsam und ruhig",
+
+    connectionError:
+        "Verbindungsfehler",
+
+    emotionalState:
+        "Emotionale Stimmung"
 };
