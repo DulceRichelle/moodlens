@@ -19,7 +19,10 @@ export function setLanguage(lang) {
 
     localStorage.setItem("language", lang);
 
-    location.reload();
+    if (window.refreshApp) {
+
+        window.refreshApp();
+    }
 }
 
 export function t(key) {

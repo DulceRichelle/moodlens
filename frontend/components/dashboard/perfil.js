@@ -1,5 +1,11 @@
 import { getUser } from "../../services/user.service.js";
 
+import {
+    t,
+    setLanguage,
+    getLanguage
+} from "../../services/i18n.js";
+
 export async function renderPerfil(app) {
 
     const user = getUser();
@@ -15,6 +21,7 @@ export async function renderPerfil(app) {
         registros = await res.json();
 
     } catch (error) {
+
         console.log(error);
     }
 
@@ -32,6 +39,7 @@ export async function renderPerfil(app) {
         new Date();
 
     app.innerHTML = `
+
     <link rel="stylesheet" href="components/dashboard/perfil.css">
 
     <div class="perfil-page">
@@ -41,22 +49,31 @@ export async function renderPerfil(app) {
             <div class="hero-left">
 
                 <div class="avatar-grande">
+
                     ${user?.nombre?.charAt(0).toUpperCase() || "U"}
+
                 </div>
 
                 <div class="hero-info">
 
                     <h1>
-                        Hola, ${user?.nombre || "Usuario"} ✨
+
+                        ${t("hello")},
+                        ${user?.nombre || "Usuario"} ✨
+
                     </h1>
 
                     <p>
-                        Tu espacio personal en MoodLens 🌸
+
+                        ${t("perfilSubtitle")}
+
                     </p>
 
                     <span>
-                        Miembro desde
+
+                        ${t("memberSince")}
                         ${formatearFecha(fechaRegistro)}
+
                     </span>
 
                 </div>
@@ -73,9 +90,13 @@ export async function renderPerfil(app) {
                     📝
                 </div>
 
-                <h2>${totalRegistros}</h2>
+                <h2>
+                    ${totalRegistros}
+                </h2>
 
-                <p>Registros emocionales</p>
+                <p>
+                    ${t("moodRecords")}
+                </p>
 
             </div>
 
@@ -85,23 +106,35 @@ export async function renderPerfil(app) {
                     🔥
                 </div>
 
-                <h2>${diasActivos}</h2>
+                <h2>
+                    ${diasActivos}
+                </h2>
 
-                <p>Días activos</p>
+                <p>
+                    ${t("activeDays")}
+                </p>
 
             </div>
 
             <div class="stat-card">
 
                 <div class="stat-icon">
+
                     ${emocionFrecuente.icono}
+
                 </div>
 
                 <h2>
+
                     ${emocionFrecuente.nombre}
+
                 </h2>
 
-                <p>Emoción más frecuente</p>
+                <p>
+
+                    ${t("mostFrequentEmotion")}
+
+                </p>
 
             </div>
 
@@ -111,11 +144,15 @@ export async function renderPerfil(app) {
 
             <div class="perfil-card">
 
-                <h2>👤 Cuenta</h2>
+                <h2>
+                    👤 ${t("account")}
+                </h2>
 
                 <div class="form-group">
 
-                    <label>Nombre</label>
+                    <label>
+                        ${t("name")}
+                    </label>
 
                     <input
                         type="text"
@@ -127,7 +164,9 @@ export async function renderPerfil(app) {
 
                 <div class="form-group">
 
-                    <label>Email</label>
+                    <label>
+                        Email
+                    </label>
 
                     <input
                         type="email"
@@ -141,26 +180,69 @@ export async function renderPerfil(app) {
                     class="btn-guardar"
                     id="guardarPerfilBtn"
                 >
-                    Guardar cambios
+
+                    ${t("saveChanges")}
+
                 </button>
 
             </div>
 
             <div class="perfil-card">
 
-                <h2>⚙ Preferencias</h2>
+                <h2>
+                    ⚙ ${t("preferences")}
+                </h2>
+
+                <div class="setting-language">
+
+                    <label>
+
+                        🌍 ${t("language")}
+
+                    </label>
+
+                    <select id="languageSelect">
+
+                        <option value="es">
+                            🇪🇸 Español
+                        </option>
+
+                        <option value="en">
+                            🇬🇧 English
+                        </option>
+
+                        <option value="fr">
+                            🇫🇷 Français
+                        </option>
+
+                        <option value="de">
+                            🇩🇪 Deutsch
+                        </option>
+
+                    </select>
+
+                </div>
 
                 <div class="setting-item">
 
                     <div>
-                        <h3>🔔 Notificaciones</h3>
+
+                        <h3>
+                            🔔 ${t("notifications")}
+                        </h3>
+
                         <p>
-                            Recordatorios emocionales
+
+                            ${t("emotionalReminders")}
+
                         </p>
+
                     </div>
 
                     <span class="setting-badge">
-                        Próximamente
+
+                        ${t("comingSoon")}
+
                     </span>
 
                 </div>
@@ -168,14 +250,23 @@ export async function renderPerfil(app) {
                 <div class="setting-item">
 
                     <div>
-                        <h3>📥 Exportar datos</h3>
+
+                        <h3>
+                            📥 ${t("exportData")}
+                        </h3>
+
                         <p>
-                            Descarga tu historial
+
+                            ${t("downloadHistory")}
+
                         </p>
+
                     </div>
 
                     <span class="setting-badge">
+
                         Beta
+
                     </span>
 
                 </div>
@@ -183,14 +274,23 @@ export async function renderPerfil(app) {
                 <div class="setting-item">
 
                     <div>
-                        <h3>🔒 Privacidad</h3>
+
+                        <h3>
+                            🔒 ${t("privacy")}
+                        </h3>
+
                         <p>
-                            Tus emociones son privadas
+
+                            ${t("privateEmotions")}
+
                         </p>
+
                     </div>
 
                     <span class="setting-badge active">
-                        Activo
+
+                        ${t("active")}
+
                     </span>
 
                 </div>
@@ -199,20 +299,25 @@ export async function renderPerfil(app) {
 
             <div class="perfil-card">
 
-                <h2>💌 Soporte</h2>
+                <h2>
+                    💌 ${t("support")}
+                </h2>
 
                 <div class="support-box">
 
                     <p>
-                        ¿Necesitas ayuda o quieres
-                        compartir ideas para MoodLens?
+
+                        ${t("supportText")}
+
                     </p>
 
                     <button
                         class="btn-secondary"
                         id="supportBtn"
                     >
-                        Contactar soporte
+
+                        ${t("contactSupport")}
+
                     </button>
 
                 </div>
@@ -221,18 +326,23 @@ export async function renderPerfil(app) {
 
             <div class="perfil-card logout-card">
 
-                <h2>🚪 Sesión</h2>
+                <h2>
+                    🚪 ${t("session")}
+                </h2>
 
                 <p>
-                    Cierra sesión en tu cuenta
-                    de MoodLens.
+
+                    ${t("logoutText")}
+
                 </p>
 
                 <button
                     class="logout-btn"
                     id="logoutBtn"
                 >
-                    Cerrar sesión
+
+                    ${t("logout")}
+
                 </button>
 
             </div>
@@ -267,9 +377,11 @@ function initPerfil(user) {
                         .trim();
 
                 if (!nuevoNombre) {
+
                     mostrarToast(
-                        "El nombre no puede estar vacío"
+                        t("emptyName")
                     );
+
                     return;
                 }
 
@@ -279,10 +391,12 @@ function initPerfil(user) {
                         `https://moodlens-oj88.onrender.com/api/usuarios/${user.id_usuario || user.id}`,
                         {
                             method: "PUT",
+
                             headers: {
                                 "Content-Type":
                                     "application/json"
                             },
+
                             body: JSON.stringify({
                                 nombre: nuevoNombre
                             })
@@ -298,11 +412,11 @@ function initPerfil(user) {
                     );
 
                     mostrarToast(
-                        "Perfil actualizado ✨"
+                        t("profileUpdated")
                     );
 
                     renderPerfil(
-                        document.getElementById("app")
+                        document.getElementById("contenidoDashboard")
                     );
 
                 } catch (error) {
@@ -310,7 +424,7 @@ function initPerfil(user) {
                     console.log(error);
 
                     mostrarToast(
-                        "Error al guardar"
+                        t("saveError")
                     );
                 }
             }
@@ -345,8 +459,28 @@ function initPerfil(user) {
             () => {
 
                 mostrarToast(
-                    "Soporte disponible próximamente 💌"
+                    t("supportSoon")
                 );
+            }
+        );
+    }
+
+    const languageSelect =
+        document.getElementById("languageSelect");
+
+    if (languageSelect) {
+
+        languageSelect.value =
+            getLanguage();
+
+        languageSelect.addEventListener(
+            "change",
+            (e) => {
+
+                setLanguage(
+                    e.target.value
+                );
+
             }
         );
     }
@@ -355,8 +489,11 @@ function initPerfil(user) {
 function calcularDiasActivos(registros) {
 
     const dias = [
+
         ...new Set(
+
             registros.map(r =>
+
                 new Date(r.fecha)
                     .toDateString()
             )
@@ -371,7 +508,9 @@ function obtenerEmocionFrecuente(registros) {
     if (!registros.length) {
 
         return {
-            nombre: "Sin datos",
+
+            nombre: t("noData"),
+
             icono: "🫶"
         };
     }
@@ -387,6 +526,7 @@ function obtenerEmocionFrecuente(registros) {
     const top =
         Object.keys(contador)
             .reduce((a, b) =>
+
                 contador[a] > contador[b]
                     ? a
                     : b
@@ -394,12 +534,16 @@ function obtenerEmocionFrecuente(registros) {
 
     const encontrado =
         registros.find(r =>
+
             r.nombre_emocion === top
         );
 
     return {
+
         nombre: top,
-        icono: encontrado?.icono || "✨"
+
+        icono:
+            encontrado?.icono || "✨"
     };
 }
 
@@ -415,7 +559,9 @@ function mostrarToast(msg) {
     document.body.appendChild(toast);
 
     setTimeout(() => {
+
         toast.classList.add("show");
+
     }, 100);
 
     setTimeout(() => {
@@ -423,7 +569,9 @@ function mostrarToast(msg) {
         toast.classList.remove("show");
 
         setTimeout(() => {
+
             toast.remove();
+
         }, 300);
 
     }, 2500);
@@ -433,7 +581,13 @@ function formatearFecha(fecha) {
 
     return new Date(fecha)
         .toLocaleDateString(
-            "es-ES",
+            getLanguage() === "en"
+                ? "en-US"
+                : getLanguage() === "fr"
+                    ? "fr-FR"
+                    : getLanguage() === "de"
+                        ? "de-DE"
+                        : "es-ES",
             {
                 day: "numeric",
                 month: "long",

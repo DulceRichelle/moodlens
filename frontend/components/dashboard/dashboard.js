@@ -1,11 +1,6 @@
 import { getUser, logout } from '../../services/user.service.js';
 
-import {
-    t,
-    setLanguage,
-    getLanguage
-} from '../../services/i18n.js';
-
+import { t } from '../../services/i18n.js';
 import { renderRegistro } from './registro.js';
 import { renderAnalisis } from './analisis.js';
 import { renderHistorial } from './historial.js';
@@ -60,24 +55,6 @@ export function renderDashboard(app) {
                     <p>${t("premiumUser")}</p>
 
                 </div>
-
-            </div>
-
-            <div class="language-box">
-
-                <select id="languageSelect">
-
-                    <option value="es">🇪🇸 ES</option>
-
-                    <option value="en">🇬🇧 EN</option>
-
-                    <option value="fr">🇫🇷 FR</option>
-
-                    <option value="de">🇩🇪 DE</option>
-
-                </select>
-
-            </div>
 
             <div class="menu">
 
@@ -143,29 +120,14 @@ export function renderDashboard(app) {
     </div>
     `;
 
-    initLanguageSelector();
-
     window.cargarVista = cargarVista;
     window.toggleSidebar = toggleSidebar;
     window.handleLogout = handleLogout;
+    window.refreshApp = () => {
 
+        renderDashboard(app);
+    };
     cargarVista('registro');
-}
-
-function initLanguageSelector() {
-
-    const select =
-        document.getElementById("languageSelect");
-
-    if (!select) return;
-
-    select.value = getLanguage();
-
-    select.addEventListener("change", (e) => {
-
-        setLanguage(e.target.value);
-
-    });
 }
 
 function cargarVista(vista, element = null) {
