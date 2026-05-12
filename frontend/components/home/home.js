@@ -4,7 +4,7 @@ export function renderHome(app) {
 
     <section class="hero">
 
-        <img src="/logo.png" class="logo"/>
+        <img src="assets/logo.png" class="logo"/>
 
         <h1>Bienvenido a MoodLens</h1>
 

@@ -11,7 +11,7 @@ export function renderRegister(app) {
 
     <div class="auth-card">
 
-        <img src="/logo.png" class="logo"/>
+        <img src="assets/logo.png" class="logo"/>
 
         <h2>Crear Cuenta</h2>
 

@@ -22,7 +22,7 @@ export function renderDashboard(app) {
         <aside class="sidebar" id="sidebar">
 
             <div class="logo-section">
-                <img src="/logo.png" class="logo"/>
+                <img src="assets/logo.png" class="logo"/>
 
                 <div>
                     <h3>MoodLens</h3>

@@ -11,7 +11,7 @@ app.innerHTML = `
 
     <div class="auth-card">
 
-        <img src="/logo.png" class="logo"/>
+        <img src="assets/logo.png" class="logo"/>
 
         <h2>Iniciar Sesión</h2>
         <p class="subtitle">Bienvenido de nuevo a MoodLens</p>
