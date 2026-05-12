@@ -44,19 +44,21 @@ export function renderDashboard(app) {
 
             <div class="user-box">
 
-                <div class="avatar">
-                    ${user.nombre.charAt(0)}
-                </div>
+    <div class="avatar">
+        ${user.nombre.charAt(0)}
+    </div>
 
-                <div>
+    <div>
 
-                    <strong>${user.nombre}</strong>
+        <strong>${user.nombre}</strong>
 
-                    <p>${t("premiumUser")}</p>
+        <p>${t("premiumUser")}</p>
 
-                </div>
+    </div>
 
-            <div class="menu">
+</div>
+
+<div class="menu">
 
                <button
     class="menu-item active"
