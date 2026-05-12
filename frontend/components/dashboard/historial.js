@@ -1,3 +1,5 @@
+import { t, getLanguage } from "../../services/i18n.js";
+
 let historialData = [];
 let registroEditando = null;
 let ultimoEliminado = null;
@@ -12,25 +14,75 @@ export async function renderHistorial(app) {
 <div class="historial-page">
 
     <div class="header-historial">
-        <h1>🕘 Historial Emocional</h1>
-        <p>Revisa todos tus registros anteriores</p>
+
+        <h1>
+            🕘 ${t("emotionalHistory")}
+        </h1>
+
+        <p>
+            ${t("reviewRecords")}
+        </p>
+
     </div>
 
     <div class="historial-main-container">
 
-        <h2>Historial de estados de ánimo</h2>
+        <h2>
+            ${t("moodHistory")}
+        </h2>
 
         <div class="filtros">
-            <button class="filtro active" data-filtro="todos">Todos</button>
-            <button class="filtro" data-filtro="feliz">😊 Feliz</button>
-            <button class="filtro" data-filtro="tranquilo">💙 Tranquilo</button>
-            <button class="filtro" data-filtro="neutral">😐 Neutral</button>
-            <button class="filtro" data-filtro="triste">😢 Triste</button>
-            <button class="filtro" data-filtro="ansioso">😖 Ansioso</button>
+
+            <button
+                class="filtro active"
+                data-filtro="todos"
+            >
+                ${t("all")}
+            </button>
+
+            <button
+                class="filtro"
+                data-filtro="feliz"
+            >
+                😊 ${t("happy")}
+            </button>
+
+            <button
+                class="filtro"
+                data-filtro="tranquilo"
+            >
+                💙 ${t("calm")}
+            </button>
+
+            <button
+                class="filtro"
+                data-filtro="neutral"
+            >
+                😐 ${t("neutral")}
+            </button>
+
+            <button
+                class="filtro"
+                data-filtro="triste"
+            >
+                😢 ${t("sad")}
+            </button>
+
+            <button
+                class="filtro"
+                data-filtro="ansioso"
+            >
+                😖 ${t("anxious")}
+            </button>
+
         </div>
 
         <div id="historialLista">
-            <p>Cargando historial...</p>
+
+            <p>
+                ${t("loadingHistory")}
+            </p>
+
         </div>
 
     </div>
@@ -41,9 +93,13 @@ export async function renderHistorial(app) {
 
     <div class="modal-content">
 
-        <h2>Editar registro</h2>
+        <h2>
+            ${t("editRecord")}
+        </h2>
 
-        <label>Intensidad</label>
+        <label>
+            ${t("intensity")}
+        </label>
 
         <input
             type="range"
@@ -52,13 +108,22 @@ export async function renderHistorial(app) {
             id="editIntensidad"
         >
 
-        <label>Nota</label>
+        <label>
+            ${t("note")}
+        </label>
 
         <textarea id="editNota"></textarea>
 
         <div class="modal-buttons">
-            <button id="guardarEdit">Guardar</button>
-            <button id="cancelarEdit">Cancelar</button>
+
+            <button id="guardarEdit">
+                ${t("save")}
+            </button>
+
+            <button id="cancelarEdit">
+                ${t("cancel")}
+            </button>
+
         </div>
 
     </div>
@@ -69,23 +134,27 @@ export async function renderHistorial(app) {
 
     <div class="modal-content">
 
-        <h3>¿Eliminar registro?</h3>
+        <h3>
+            ${t("deleteRecord")}
+        </h3>
 
         <p>
-            Esta acción no se puede deshacer
+            ${t("deleteWarning")}
         </p>
 
         <div class="modal-buttons">
+
             <button id="cancelarEliminar">
-                Cancelar
+                ${t("cancel")}
             </button>
 
             <button
                 id="confirmarEliminar"
                 class="danger"
             >
-                Eliminar
+                ${t("delete")}
             </button>
+
         </div>
 
     </div>
@@ -93,8 +162,13 @@ export async function renderHistorial(app) {
 </div>
 
 <div id="toastUndo" class="toast hidden">
-    Registro eliminado
-    <button id="undoBtn">Deshacer</button>
+
+    ${t("recordDeleted")}
+
+    <button id="undoBtn">
+        ${t("undo")}
+    </button>
+
 </div>
 `;
 
@@ -102,7 +176,6 @@ export async function renderHistorial(app) {
 
     initFiltros();
     initEventosGlobales();
-
 }
 
 async function cargarHistorial() {
@@ -133,7 +206,6 @@ async function cargarHistorial() {
 
         mostrarVacio();
     }
-
 }
 
 function initFiltros() {
@@ -167,7 +239,6 @@ function initFiltros() {
                 pintarHistorial(filtrados);
             });
         });
-
 }
 
 function pintarHistorial(data) {
@@ -197,9 +268,11 @@ function pintarHistorial(data) {
         const fecha = new Date(item.fecha);
 
         if (esMismoDia(fecha, hoy)) {
+
             grupos.hoy.push(item);
 
         } else if (esAyer(fecha, hoy)) {
+
             grupos.ayer.push(item);
 
         } else {
@@ -208,8 +281,11 @@ function pintarHistorial(data) {
                 (hoy - fecha) / 86400000;
 
             if (diff <= 7) {
+
                 grupos.semana.push(item);
+
             } else {
+
                 grupos.anteriores.push(item);
             }
         }
@@ -218,14 +294,16 @@ function pintarHistorial(data) {
     lista.innerHTML = `
     <div class="historial-lista">
 
-        ${crearGrupo("Hoy", grupos.hoy)}
-        ${crearGrupo("Ayer", grupos.ayer)}
-        ${crearGrupo("Esta semana", grupos.semana)}
-        ${crearGrupo("Anteriores", grupos.anteriores)}
+        ${crearGrupo(t("today"), grupos.hoy)}
+
+        ${crearGrupo(t("yesterday"), grupos.ayer)}
+
+        ${crearGrupo(t("thisWeek"), grupos.semana)}
+
+        ${crearGrupo(t("older"), grupos.anteriores)}
 
     </div>
 `;
-
 }
 
 function crearGrupo(titulo, items) {
@@ -256,12 +334,12 @@ function crearGrupo(titulo, items) {
                     <h3>${item.nombre_emocion}</h3>
 
                     <p>
-                        Intensidad:
+                        ${t("intensity")}:
                         ${item.intensidad}/10
                     </p>
 
                     <p>
-                        ${item.nota || "Sin nota"}
+                        ${item.nota || t("noNote")}
                     </p>
 
                 </div>
@@ -296,7 +374,6 @@ function crearGrupo(titulo, items) {
 
 </div>
 `;
-
 }
 
 window.editarRegistro = function(id) {
@@ -321,7 +398,6 @@ window.editarRegistro = function(id) {
     document
         .getElementById("editNota")
         .value = reg.nota || "";
-
 };
 
 window.eliminarRegistro = function(id) {
@@ -331,7 +407,6 @@ window.eliminarRegistro = function(id) {
     document
         .getElementById("modalEliminar")
         .classList.remove("hidden");
-
 };
 
 function initEventosGlobales() {
@@ -356,10 +431,12 @@ function initEventosGlobales() {
                     `https://moodlens-oj88.onrender.com/api/emociones/${registroEditando.id_registro}`,
                     {
                         method: "PUT",
+
                         headers: {
                             "Content-Type":
                                 "application/json"
                         },
+
                         body: JSON.stringify({
                             intensidad,
                             nota
@@ -397,61 +474,18 @@ function initEventosGlobales() {
                             idEliminar
                     );
 
-                const card = document
-                    .querySelector(
-                        `[onclick="eliminarRegistro(${idEliminar})"]`
-                    )
-                    ?.closest('.historial-card');
-
                 cerrarModal();
 
-                if (card) {
-
-                    card.classList.add('removing');
-
-                    setTimeout(async () => {
-
-                        try {
-
-                            await fetch(
-                                `https://moodlens-oj88.onrender.com/api/emociones/${idEliminar}`,
-                                {
-                                    method: "DELETE"
-                                }
-                            );
-
-                            historialData =
-                                historialData.filter(
-                                    r =>
-                                        r.id_registro !==
-                                        idEliminar
-                                );
-
-                            pintarHistorial(
-                                historialData
-                            );
-
-                            mostrarUndo(eliminado);
-
-                        } catch (error) {
-                            console.error(error);
-                        }
-
-                    }, 300);
-
-                } else {
-
-                    historialData =
-                        historialData.filter(
-                            r =>
-                                r.id_registro !==
-                                idEliminar
-                        );
-
-                    pintarHistorial(
-                        historialData
+                historialData =
+                    historialData.filter(
+                        r =>
+                            r.id_registro !==
+                            idEliminar
                     );
-                }
+
+                pintarHistorial(historialData);
+
+                mostrarUndo(eliminado);
             }
 
             if (e.target.closest("#undoBtn")) {
@@ -466,26 +500,10 @@ function initEventosGlobales() {
 
                 pintarHistorial(historialData);
 
-                setTimeout(() => {
-
-                    const primeraCard =
-                        document.querySelector(
-                            '.historial-card'
-                        );
-
-                    if (primeraCard) {
-                        primeraCard.classList.add(
-                            'adding'
-                        );
-                    }
-
-                }, 10);
-
                 ocultarToast();
             }
         }
     );
-
 }
 
 function cerrarModal() {
@@ -499,7 +517,6 @@ function cerrarModal() {
         .classList.add("hidden");
 
     registroEditando = null;
-
 }
 
 function mostrarUndo(registro) {
@@ -518,7 +535,6 @@ function mostrarUndo(registro) {
         ocultarToast();
 
     }, 4000);
-
 }
 
 function ocultarToast() {
@@ -528,10 +544,10 @@ function ocultarToast() {
         .classList.add("hidden");
 
     ultimoEliminado = null;
-
 }
 
 function esMismoDia(a, b) {
+
     return a.toDateString() === b.toDateString();
 }
 
@@ -542,7 +558,6 @@ function esAyer(fecha, hoy) {
     ayer.setDate(hoy.getDate() - 1);
 
     return esMismoDia(fecha, ayer);
-
 }
 
 function mostrarVacio() {
@@ -551,35 +566,19 @@ function mostrarVacio() {
         "historialLista"
     ).innerHTML = `
     <div class="historial-vacio">
-        No hay registros todavía
+
+        ${t("noRecordsYet")}
+
     </div>
 `;
-
 }
 
 function formatearFecha(f) {
 
     const fecha = new Date(f);
 
-    const ahora = new Date();
-
-    const diff =
-        (ahora - fecha) / 1000;
-
-    if (diff < 60) {
-        return "Hace unos segundos";
-    }
-
-    if (diff < 3600) {
-        return `Hace ${Math.floor(diff / 60)} min`;
-    }
-
-    if (diff < 86400) {
-        return `Hace ${Math.floor(diff / 3600)} h`;
-    }
-
     return fecha.toLocaleString(
-        'es-ES',
+        getLanguage(),
         {
             day: '2-digit',
             month: 'short',
@@ -587,5 +586,4 @@ function formatearFecha(f) {
             minute: '2-digit'
         }
     );
-
 }
