@@ -23,6 +23,11 @@ body {
             );
 }
 
+body {
+
+    overflow-x: hidden;
+}
+
 .dashboard-layout {
 
     display: flex;
@@ -50,14 +55,14 @@ body {
     min-width: 280px;
 
     background:
-            rgba(20, 28, 45, 0.82);
+            rgba(20, 28, 45, 0.88);
 
     backdrop-filter: blur(24px);
 
     border-right:
-            1px solid rgba(255,255,255,0.08);
+            1px solid rgba(255,255,255,0.06);
 
-    padding: 24px 18px;
+    padding: 22px 18px;
 
     display: flex;
     flex-direction: column;
@@ -80,12 +85,12 @@ body {
 
     gap: 14px;
 
-    margin-bottom: 34px;
+    margin-bottom: 30px;
 }
 
 .logo {
 
-    width: 56px;
+    width: 58px;
 
     border-radius: 18px;
 
@@ -95,44 +100,50 @@ body {
 
 .logo-section h3 {
 
-    font-size: 30px;
+    font-size: 2rem;
 
     color: white;
 
-    font-weight: 700;
+    font-weight: 800;
+
+    line-height: 1;
 }
 
 .logo-section span {
 
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.72);
 
-    font-size: 13px;
+    font-size: 14px;
+
+    margin-top: 4px;
+
+    display: block;
 }
 
 .user-box {
 
     background:
-            rgba(255,255,255,0.08);
+            rgba(255,255,255,0.06);
 
     border:
-            1px solid rgba(255,255,255,0.08);
+            1px solid rgba(255,255,255,0.06);
 
     border-radius: 24px;
 
-    padding: 18px;
+    padding: 16px;
 
     display: flex;
     align-items: center;
 
     gap: 14px;
 
-    margin-bottom: 34px;
+    margin-bottom: 28px;
 }
 
 .avatar {
 
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
 
     border-radius: 50%;
 
@@ -152,8 +163,7 @@ body {
     font-size: 20px;
     font-weight: 700;
 
-    box-shadow:
-            0 8px 20px rgba(0,0,0,0.16);
+    flex-shrink: 0;
 }
 
 .user-box strong {
@@ -161,6 +171,10 @@ body {
     color: white;
 
     font-size: 16px;
+
+    display: block;
+
+    margin-bottom: 2px;
 }
 
 .user-box p {
@@ -186,20 +200,31 @@ body {
 
     background: transparent;
 
-    padding: 16px 18px;
+    width: 100%;
+
+    min-height: 58px;
+
+    padding: 0 18px;
 
     border-radius: 18px;
 
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
     text-align: left;
 
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.92);
 
     cursor: pointer;
 
-    transition: 0.28s ease;
+    transition: 0.25s ease;
+
+    white-space: nowrap;
 }
 
 .menu-item:hover {
@@ -223,7 +248,7 @@ body {
     color: white;
 
     box-shadow:
-            0 10px 22px rgba(93,123,238,0.3);
+            0 10px 22px rgba(93,123,238,0.28);
 }
 
 .logout {
@@ -233,17 +258,22 @@ body {
     background:
             rgba(255,255,255,0.08);
 
-    color: white;
+    color: red;
 
-    padding: 16px;
+    width: 100%;
+
+    height: 56px;
 
     border-radius: 18px;
 
+    font-size: 15px;
     font-weight: 600;
 
     cursor: pointer;
 
     transition: 0.25s ease;
+
+    margin-top: 14px;
 }
 
 .logout:hover {
@@ -278,14 +308,23 @@ body {
             );
 }
 
+#contenidoDashboard {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+}
+
 .menu-toggle {
 
     display: none;
 
     position: fixed;
 
-    top: 14px;
-    left: 14px;
+    top: 16px;
+    left: 16px;
 
     width: 54px;
     height: 54px;
@@ -315,7 +354,7 @@ body {
     inset: 0;
 
     background:
-            rgba(0,0,0,0.4);
+            rgba(0,0,0,0.45);
 
     opacity: 0;
 
@@ -333,20 +372,14 @@ body {
     pointer-events: all;
 }
 
-#contenidoDashboard {
-
-    width: 100%;
-
-    max-width: 1400px;
-
-    margin: 0 auto;
-}
-
 @media (max-width: 1024px) {
 
     .menu-toggle {
 
-        display: block;
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
     }
 
     .sidebar {
@@ -356,8 +389,6 @@ body {
         top: 0;
 
         left: -100%;
-
-        transform: translateX(0);
 
         height: 100vh;
 
@@ -383,7 +414,7 @@ body {
 
     .logo-section {
 
-        margin-top: 50px;
+        margin-top: 48px;
     }
 }
 
@@ -392,17 +423,24 @@ body {
     .main-content {
 
         padding:
-                88px 16px 24px;
+                84px 16px 24px;
     }
 
     .logo-section h3 {
 
-        font-size: 24px;
+        font-size: 1.8rem;
+    }
+
+    .menu-item {
+
+        min-height: 54px;
+
+        font-size: 15px;
     }
 
     .user-box {
 
-        padding: 16px;
+        padding: 15px;
     }
 }
 
@@ -410,30 +448,40 @@ body {
 
     .sidebar {
 
-        width: 85%;
+        width: 82%;
     }
 
     .main-content {
 
         padding:
-                84px 14px 20px;
-    }
-
-    .menu-item {
-
-        font-size: 14px;
-
-        padding: 15px 16px;
+                78px 14px 20px;
     }
 
     .menu-toggle {
 
-        width: 50px;
-        height: 50px;
-
-        font-size: 26px;
+        width: 48px;
+        height: 48px;
 
         border-radius: 16px;
+
+        font-size: 25px;
+    }
+
+    .menu-item {
+
+        padding: 0 16px;
+
+        font-size: 14px;
+    }
+
+    .logo {
+
+        width: 52px;
+    }
+
+    .logo-section h3 {
+
+        font-size: 1.7rem;
     }
 
     .user-box strong {
@@ -444,5 +492,13 @@ body {
     .user-box p {
 
         font-size: 12px;
+    }
+
+    .avatar {
+
+        width: 48px;
+        height: 48px;
+
+        font-size: 18px;
     }
 }
