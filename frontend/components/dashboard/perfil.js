@@ -403,7 +403,7 @@ function initPerfil(user, app) {
                         t("profileUpdated")
                     );
 
-                    renderPerfil(app);
+                    navigate("perfil");
 
                 } catch (error) {
 
@@ -509,7 +509,7 @@ function initPerfil(user, app) {
 
             setLanguage(lang);
 
-            renderPerfil(app);
+            navigate("perfil");
 
             optionsContainer
                 .classList.add("hidden");
