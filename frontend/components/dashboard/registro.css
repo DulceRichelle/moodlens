@@ -46,6 +46,8 @@ body{
 
     gap:24px;
 
+    padding-bottom:120px;
+
     animation:
             pageReveal 0.8s cubic-bezier(0.16,1,0.3,1);
 }
@@ -235,7 +237,7 @@ body{
             clamp(24px,3vw,34px);
 
     padding:
-            clamp(18px,3vw,34px);
+            clamp(18px,3vw,30px);
 
     box-shadow:var(--shadow);
 
@@ -406,7 +408,9 @@ textarea{
     width:100%;
 
     min-height:
-            clamp(110px,16vw,150px);
+            clamp(90px,14vw,120px);
+
+    max-height:220px;
 
     resize:vertical;
 
@@ -481,6 +485,12 @@ textarea:focus{
 
     transform:
             translateY(12px);
+
+    position:sticky;
+
+    bottom:16px;
+
+    z-index:50;
 }
 
 .btn.visible{
@@ -502,25 +512,21 @@ textarea:focus{
 
 .grafico{
 
-    opacity:0;
-
-    transform:
-            translateY(18px);
-}
-
-.grafico.show{
-
     opacity:1;
 
     transform:
             translateY(0);
+
+    margin-top:24px;
 }
 
-canvas{
+.grafico canvas{
 
     width:100% !important;
 
     height:auto !important;
+
+    max-height:420px !important;
 }
 
 .hidden{
@@ -642,6 +648,11 @@ canvas{
 
         grid-template-columns:
                 repeat(2,1fr);
+    }
+
+    .grafico canvas{
+
+        max-height:320px !important;
     }
 }
 
