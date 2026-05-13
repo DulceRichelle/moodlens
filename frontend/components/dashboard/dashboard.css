@@ -307,12 +307,17 @@ body {
 }
 
 #contenidoDashboard {
+    opacity: 1;
+    transform: translateY(0);
 
-    width: 100%;
+    transition:
+            opacity 0.22s ease,
+            transform 0.22s ease;
+}
 
-    max-width: 1400px;
-
-    margin: 0 auto;
+#contenidoDashboard.changing {
+    opacity: 0;
+    transform: translateY(10px);
 }
 
 .menu-toggle {

@@ -150,7 +150,7 @@ export function renderDashboard(app) {
     cargarVista(vistaActual);
 }
 
-function cargarVista(vista, element = null) {
+function cargarVista(vista) {
 
     vistaActual = vista;
 
@@ -166,40 +166,48 @@ function cargarVista(vista, element = null) {
 
     if (!contenedor) return;
 
-    switch (vista) {
+    contenedor.classList.add("changing");
 
-        case 'registro':
+    setTimeout(() => {
 
-            renderRegistro(contenedor);
+        switch (vista) {
 
-            break;
+            case 'registro':
 
-        case 'analisis':
+                renderRegistro(contenedor);
 
-            renderAnalisis(contenedor);
+                break;
 
-            break;
+            case 'analisis':
 
-        case 'historial':
+                renderAnalisis(contenedor);
 
-            renderHistorial(contenedor);
+                break;
 
-            break;
+            case 'historial':
 
-        case 'consejos':
+                renderHistorial(contenedor);
 
-            renderConsejos(contenedor);
+                break;
 
-            break;
+            case 'consejos':
 
-        case 'perfil':
+                renderConsejos(contenedor);
 
-            renderPerfil(contenedor);
+                break;
 
-            break;
-    }
+            case 'perfil':
 
-    actualizarMenuActivo(vista);
+                renderPerfil(contenedor);
+
+                break;
+        }
+
+        actualizarMenuActivo(vista);
+
+        contenedor.classList.remove("changing");
+
+    }, 180);
 
     if (window.innerWidth <= 768) {
 

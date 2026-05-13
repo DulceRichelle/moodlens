@@ -16,6 +16,7 @@
             name="theme-color"
             content="#5F8F9A"
     >
+
     <meta
             name="apple-mobile-web-app-capable"
             content="yes"
@@ -41,9 +42,57 @@
             href="/logo.png"
     >
 
+    <!-- GLOBAL -->
+
     <link
             rel="stylesheet"
             href="styles/global.css"
+    >
+
+    <!-- HOME -->
+
+    <link
+            rel="stylesheet"
+            href="components/home/home.css"
+    >
+
+    <!-- AUTH -->
+
+    <link
+            rel="stylesheet"
+            href="components/login/login.css"
+    >
+
+    <link
+            rel="stylesheet"
+            href="components/register/register.css"
+    >
+
+    <!-- DASHBOARD -->
+
+    <link
+            rel="stylesheet"
+            href="components/dashboard/dashboard.css"
+    >
+
+    <link
+            rel="stylesheet"
+            href="components/dashboard/registro.css"
+    >
+
+    <link
+            rel="stylesheet"
+            href="components/dashboard/historial.css"
+    >
+
+    <link
+            rel="stylesheet"
+            href="components/dashboard/perfil.css"
+    >
+
+    <link
+            rel="stylesheet"
+            href="components/dashboard/consejos.css"
     >
 
 </head>
@@ -67,7 +116,9 @@
 
             try {
 
-                await navigator.serviceWorker.register("/service-worker.js");
+                await navigator
+                    .serviceWorker
+                    .register("/service-worker.js");
 
                 console.log("PWA lista");
 
