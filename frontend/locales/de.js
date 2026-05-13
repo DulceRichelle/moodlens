@@ -367,5 +367,143 @@ export default {
         "Personalisierter Tipp",
 
     wellnessTips:
-        "Wohlbefinden-Empfehlungen",
+        "Wohlfühl-Empfehlungen",
+
+    anxiousTitle:
+        "Reduziere Überstimulation",
+
+    anxiousDesc:
+        "Deine aktuelle Aktivität zeigt viel Angst. Versuche Reize zu reduzieren, tief zu atmen und echte Pausen zu machen.",
+
+    sadTitle:
+        "Finde langsam wieder zu dir selbst",
+
+    sadDesc:
+        "Du hattest zuletzt schwerere Emotionen. Geh nach draußen, höre ruhige Musik und rede mit jemandem.",
+
+    happyTitle:
+        "Behalte diese positive Energie",
+
+    happyDesc:
+        "Dein emotionaler Zustand wirkt positiv. Nutze diese Energie für gesunde Gewohnheiten.",
+
+    calmTitle:
+        "Schütze deine Ruhe",
+
+    calmDesc:
+        "Deine emotionale Stabilität ist wertvoll. Sorge für Ruhe und Zeit für dich.",
+
+    neutralTitle:
+        "Höre auf deine Gefühle",
+
+    neutralDesc:
+        "Auch ohne starke Emotionen solltest du mit dir selbst verbunden bleiben.",
+
+    emotionalActivity:
+        "Emotionale Aktivität",
+
+    youRegistered:
+        "Du hast",
+
+    emotionsInMoodlens:
+        "Emotionen in MoodLens gespeichert.",
+
+    yourAverageIntensity:
+        "Deine durchschnittliche emotionale Intensität beträgt",
+
+    selfCare:
+        "Selbstfürsorge",
+
+    selfCareDesc:
+        "Das regelmäßige Erfassen deiner Emotionen hilft dir, dich besser kennenzulernen.",
+
+    breathing:
+        "Atmung",
+
+    breathingDesc:
+        "Atme 4 Sekunden langsam ein und 6 Sekunden aus.",
+
+    disconnect:
+        "Abschalten",
+
+    disconnectDesc:
+        "Reduziere soziale Netzwerke in stressigen Momenten.",
+
+    rest:
+        "Ruhe",
+
+    restDesc:
+        "Besserer Schlaf kann intensive Emotionen regulieren.",
+
+    sunlight:
+        "Sonnenlicht",
+
+    sunlightDesc:
+        "Nach draußen zu gehen kann deine Stimmung verbessern.",
+
+    music:
+        "Musik",
+
+    musicDesc:
+        "Höre beruhigende Musik.",
+
+    connection:
+        "Verbindung",
+
+    connectionDesc:
+        "Mit jemandem zu reden kann sehr helfen.",
+
+    gratitude:
+        "Dankbarkeit",
+
+    gratitudeDesc:
+        "Schreibe positive Dinge auf, die du behalten möchtest.",
+
+    moments:
+        "Momente",
+
+    momentsDesc:
+        "Bewahre Erinnerungen an glückliche Momente.",
+
+    habits:
+        "Gewohnheiten",
+
+    habitsDesc:
+        "Behalte Routinen bei, die dir guttun.",
+
+    meditation:
+        "Meditation",
+
+    meditationDesc:
+        "Nimm dir einige Minuten für Ruhe und Stille.",
+
+    slowTime:
+        "Langsame Zeit",
+
+    slowTimeDesc:
+        "Lesen oder Spazierengehen kann Stabilität fördern.",
+
+    breaks:
+        "Pausen",
+
+    breaksDesc:
+        "Vergiss nicht, auch an ruhigen Tagen Pausen zu machen.",
+
+    listenToYourself:
+        "Höre auf dich selbst",
+
+    listenToYourselfDesc:
+        "Frage dich, wie du dich wirklich fühlst.",
+
+    reflection:
+        "Reflexion",
+
+    reflectionDesc:
+        "Gedanken aufzuschreiben hilft dir, dich mit dir selbst zu verbinden.",
+
+    wellbeing:
+        "Wohlbefinden",
+
+    wellbeingDesc:
+        "Schlaf und Selbstfürsorge beeinflussen ebenfalls deine Emotionen."
 };

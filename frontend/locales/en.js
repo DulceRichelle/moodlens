@@ -372,37 +372,37 @@ export default {
         "Reduce overstimulation",
 
     anxiousDesc:
-        "Your recent activity shows quite a bit of anxiety. Try reducing stimulation, breathing deeply and giving yourself real breaks during the day.",
+        "Your recent activity shows a lot of anxiety. Try reducing stimulation, breathing deeply and taking real breaks during the day.",
 
     sadTitle:
         "Reconnect with yourself slowly",
 
     sadDesc:
-        "You’ve been experiencing heavier emotions lately. Try going outside, listening to calm music and talking to someone close to you.",
+        "You've experienced heavier emotions lately. Try going outside, listening to calming music and talking to someone close to you.",
 
     happyTitle:
         "Keep that positive energy",
 
     happyDesc:
-        "Your emotional state seems quite positive. Use this energy to strengthen healthy habits and enjoy small moments.",
+        "Your emotional state seems very positive. Use this energy to strengthen healthy habits and enjoy small moments.",
 
     calmTitle:
         "Protect your calm",
 
     calmDesc:
-        "Your emotional stability is valuable. Maintain peaceful spaces, proper rest and time for yourself.",
+        "Your emotional stability is valuable. Maintain calm spaces, proper rest and time for yourself.",
 
     neutralTitle:
         "Listen to how you feel",
 
     neutralDesc:
-        "Even without intense emotions, continue connecting with yourself and paying attention to your emotional wellbeing.",
+        "Even without intense emotions, keep connecting with yourself and paying attention to your emotional wellbeing.",
 
     emotionalActivity:
         "Emotional activity",
 
     youRegistered:
-        "You registered",
+        "You have registered",
 
     emotionsInMoodlens:
         "emotions in MoodLens.",
@@ -450,7 +450,7 @@ export default {
         "Connection",
 
     connectionDesc:
-        "Talking to someone close can help a lot.",
+        "Talking with someone close can help a lot.",
 
     gratitude:
         "Gratitude",
@@ -462,13 +462,13 @@ export default {
         "Moments",
 
     momentsDesc:
-        "Keep memories of happy moments.",
+        "Save memories of happy moments.",
 
     habits:
         "Habits",
 
     habitsDesc:
-        "Maintain routines that make you feel good.",
+        "Keep routines that make you feel good.",
 
     meditation:
         "Meditation",
@@ -486,7 +486,7 @@ export default {
         "Breaks",
 
     breaksDesc:
-        "Don’t forget to rest even on calm days.",
+        "Don't forget to rest even on calm days.",
 
     listenToYourself:
         "Listen to yourself",
@@ -498,11 +498,11 @@ export default {
         "Reflection",
 
     reflectionDesc:
-        "Writing thoughts helps you connect with yourself.",
+        "Writing thoughts helps you reconnect with yourself.",
 
     wellbeing:
         "Wellbeing",
 
     wellbeingDesc:
-        "Sleeping and taking care of yourself also impacts your emotions."
+        "Sleeping and taking care of yourself also affects your emotions."
 };

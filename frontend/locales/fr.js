@@ -367,4 +367,142 @@ export default {
 
     wellnessTips:
         "Recommandations bien-être",
+
+    anxiousTitle:
+        "Réduis la surstimulation",
+
+    anxiousDesc:
+        "Ton activité récente montre beaucoup d’anxiété. Essaie de réduire les stimulations, respirer profondément et prendre de vraies pauses.",
+
+    sadTitle:
+        "Reconnecte-toi doucement à toi-même",
+
+    sadDesc:
+        "Tu as vécu des émotions plus lourdes récemment. Essaie de sortir, écouter de la musique calme et parler avec quelqu’un de proche.",
+
+    happyTitle:
+        "Garde cette énergie positive",
+
+    happyDesc:
+        "Ton état émotionnel semble positif. Profite de cette énergie pour renforcer de bonnes habitudes.",
+
+    calmTitle:
+        "Protège ton calme",
+
+    calmDesc:
+        "Ta stabilité émotionnelle est précieuse. Garde des espaces calmes et du temps pour toi.",
+
+    neutralTitle:
+        "Écoute ce que tu ressens",
+
+    neutralDesc:
+        "Même sans émotions intenses, continue à rester connecté à toi-même.",
+
+    emotionalActivity:
+        "Activité émotionnelle",
+
+    youRegistered:
+        "Tu as enregistré",
+
+    emotionsInMoodlens:
+        "émotions dans MoodLens.",
+
+    yourAverageIntensity:
+        "Ton intensité émotionnelle moyenne est",
+
+    selfCare:
+        "Prendre soin de soi",
+
+    selfCareDesc:
+        "Enregistrer régulièrement tes émotions aide à mieux te connaître.",
+
+    breathing:
+        "Respiration",
+
+    breathingDesc:
+        "Inspire lentement pendant 4 secondes et expire pendant 6.",
+
+    disconnect:
+        "Déconnexion",
+
+    disconnectDesc:
+        "Réduis les réseaux sociaux pendant les moments d’anxiété.",
+
+    rest:
+        "Repos",
+
+    restDesc:
+        "Mieux dormir peut aider à réguler les émotions fortes.",
+
+    sunlight:
+        "Lumière du soleil",
+
+    sunlightDesc:
+        "Sortir peut améliorer ton humeur.",
+
+    music:
+        "Musique",
+
+    musicDesc:
+        "Écoute des chansons apaisantes.",
+
+    connection:
+        "Connexion",
+
+    connectionDesc:
+        "Parler avec quelqu’un de proche peut beaucoup aider.",
+
+    gratitude:
+        "Gratitude",
+
+    gratitudeDesc:
+        "Écris des choses positives à retenir.",
+
+    moments:
+        "Moments",
+
+    momentsDesc:
+        "Garde des souvenirs des moments heureux.",
+
+    habits:
+        "Habitudes",
+
+    habitsDesc:
+        "Conserve les routines qui te font du bien.",
+
+    meditation:
+        "Méditation",
+
+    meditationDesc:
+        "Consacre quelques minutes au calme et au silence.",
+
+    slowTime:
+        "Temps calme",
+
+    slowTimeDesc:
+        "Lire ou marcher peut aider à maintenir l’équilibre.",
+
+    breaks:
+        "Pauses",
+
+    breaksDesc:
+        "N’oublie pas de te reposer même pendant les journées calmes.",
+
+    listenToYourself:
+        "Écoute-toi",
+
+    listenToYourselfDesc:
+        "Demande-toi comment tu te sens vraiment.",
+
+    reflection:
+        "Réflexion",
+
+    reflectionDesc:
+        "Écrire ses pensées aide à se reconnecter à soi-même.",
+
+    wellbeing:
+        "Bien-être",
+
+    wellbeingDesc:
+        "Dormir et prendre soin de toi influence aussi tes émotions."
 };
