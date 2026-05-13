@@ -301,7 +301,7 @@ export default {
 
     all:
         "Alle",
-    
+
 
     loadingHistory:
         "Verlauf wird geladen...",

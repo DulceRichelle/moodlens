@@ -331,7 +331,9 @@ function crearGrupo(titulo, items) {
 
                 <div class="emocion-info">
 
-                    <h3>${item.nombre_emocion}</h3>
+                    <h3>
+                         ${traducirEmocion(item.nombre_emocion)}
+                    </h3> 
 
                     <p>
                         ${t("intensity")}:
@@ -586,4 +588,24 @@ function formatearFecha(f) {
             minute: '2-digit'
         }
     );
+}
+
+function traducirEmocion(emocion) {
+
+    const emociones = {
+
+        feliz: t("happy"),
+
+        tranquilo: t("calm"),
+
+        neutral: t("neutral"),
+
+        triste: t("sad"),
+
+        ansioso: t("anxious")
+    };
+
+    return emociones[
+        emocion?.toLowerCase()
+        ] || emocion;
 }
