@@ -1,11 +1,16 @@
 import { getUser, logout } from '../../services/user.service.js';
-let vistaActual = 'registro';
+
 import { t } from '../../services/i18n.js';
+
 import { renderRegistro } from './registro.js';
 import { renderAnalisis } from './analisis.js';
 import { renderHistorial } from './historial.js';
 import { renderConsejos } from './consejos.js';
 import { renderPerfil } from './perfil.js';
+
+let vistaActual =
+    localStorage.getItem("currentSection")
+    || 'registro';
 
 export function renderDashboard(app) {
 
@@ -14,6 +19,7 @@ export function renderDashboard(app) {
     if (!user) {
 
         navigate('login');
+
         return;
     }
 
@@ -36,7 +42,9 @@ export function renderDashboard(app) {
 
                     <h3>MoodLens</h3>
 
-                    <span>${t("dashboard")}</span>
+                    <span>
+                        ${t("dashboard")}
+                    </span>
 
                 </div>
 
@@ -44,56 +52,62 @@ export function renderDashboard(app) {
 
             <div class="user-box">
 
-    <div class="avatar">
-        ${user.nombre.charAt(0)}
-    </div>
+                <div class="avatar">
 
-    <div>
+                    ${user.nombre.charAt(0)}
 
-        <strong>${user.nombre}</strong>
+                </div>
 
-        <p>${t("premiumUser")}</p>
+                <div>
 
-    </div>
+                    <strong>
+                        ${user.nombre}
+                    </strong>
 
-</div>
+                    <p>
+                        ${t("premiumUser")}
+                    </p>
 
-<div class="menu">
+                </div>
 
-               <button
-    class="menu-item active"
-    onclick="cargarVista('registro', this)"
->
-    🏠 Registro
-</button>
+            </div>
 
-<button
-    class="menu-item"
-    onclick="cargarVista('analisis', this)"
->
-    📊 Análisis
-</button>
+            <div class="menu">
 
-<button
-    class="menu-item"
-    onclick="cargarVista('historial', this)"
->
-    🕒 Historial
-</button>
+                <button
+                    class="menu-item ${vistaActual === 'registro' ? 'active' : ''}"
+                    onclick="cargarVista('registro', this)"
+                >
+                    🏠 ${t("registro")}
+                </button>
 
-<button
-    class="menu-item"
-    onclick="cargarVista('consejos', this)"
->
-    💡 Consejos
-</button>
+                <button
+                    class="menu-item ${vistaActual === 'analisis' ? 'active' : ''}"
+                    onclick="cargarVista('analisis', this)"
+                >
+                    📊 ${t("analysis")}
+                </button>
 
-<button
-    class="menu-item"
-    onclick="cargarVista('perfil', this)"
->
-    ⚙️ Perfil
-</button>
+                <button
+                    class="menu-item ${vistaActual === 'historial' ? 'active' : ''}"
+                    onclick="cargarVista('historial', this)"
+                >
+                    🕒 ${t("history")}
+                </button>
+
+                <button
+                    class="menu-item ${vistaActual === 'consejos' ? 'active' : ''}"
+                    onclick="cargarVista('consejos', this)"
+                >
+                    💡 ${t("tips")}
+                </button>
+
+                <button
+                    class="menu-item ${vistaActual === 'perfil' ? 'active' : ''}"
+                    onclick="cargarVista('perfil', this)"
+                >
+                    ⚙️ ${t("profile")}
+                </button>
 
             </div>
 
@@ -123,57 +137,79 @@ export function renderDashboard(app) {
     `;
 
     window.cargarVista = cargarVista;
+
     window.toggleSidebar = toggleSidebar;
+
     window.handleLogout = handleLogout;
+
     window.refreshApp = () => {
 
         renderDashboard(app);
     };
+
     cargarVista(vistaActual);
 }
 
 function cargarVista(vista, element = null) {
-     vistaActual = vista;
+
+    vistaActual = vista;
+
+    localStorage.setItem(
+        "currentSection",
+        vista
+    );
 
     const contenedor =
-        document.getElementById('contenidoDashboard');
+        document.getElementById(
+            'contenidoDashboard'
+        );
 
     if (!contenedor) return;
 
     switch (vista) {
 
         case 'registro':
+
             renderRegistro(contenedor);
+
             break;
 
         case 'analisis':
+
             renderAnalisis(contenedor);
+
             break;
 
         case 'historial':
+
             renderHistorial(contenedor);
+
             break;
 
         case 'consejos':
+
             renderConsejos(contenedor);
+
             break;
 
         case 'perfil':
+
             renderPerfil(contenedor);
+
             break;
     }
 
-    actualizarMenuActivo(element);
+    actualizarMenuActivo(vista);
 
     if (window.innerWidth <= 768) {
 
         document
             .getElementById('sidebar')
-            .classList.remove('open');
+            ?.classList.remove('open');
     }
 }
 
-function actualizarMenuActivo(element) {
+function actualizarMenuActivo(vista) {
 
     const items =
         document.querySelectorAll('.menu-item');
@@ -182,16 +218,14 @@ function actualizarMenuActivo(element) {
 
         item.classList.remove('active');
 
+        const texto =
+            item.getAttribute("onclick");
+
+        if (texto?.includes(vista)) {
+
+            item.classList.add('active');
+        }
     });
-
-    if (element) {
-
-        element.classList.add('active');
-
-    } else {
-
-        items[0]?.classList.add('active');
-    }
 }
 
 function toggleSidebar() {
@@ -208,6 +242,10 @@ function toggleSidebar() {
 function handleLogout() {
 
     logout();
+
+    localStorage.removeItem(
+        "currentSection"
+    );
 
     navigate('home');
 }

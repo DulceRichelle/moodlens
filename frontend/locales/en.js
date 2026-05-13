@@ -504,5 +504,9 @@ export default {
         "Wellbeing",
 
     wellbeingDesc:
-        "Sleeping and taking care of yourself also affects your emotions."
+        "Sleeping and taking care of yourself also affects your emotions.",
+    analysis: "Analysis",
+    history: "History",
+    tips: "Tips",
+    profile: "Profile",
 };

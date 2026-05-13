@@ -507,9 +507,12 @@ function initPerfil(user, app) {
             selectedLanguage.innerHTML =
                 idiomas[lang];
 
-            setLanguage(lang);
+            localStorage.setItem(
+                "currentSection",
+                "perfil"
+            );
 
-            navigate("perfil");
+            setLanguage(lang);
 
             optionsContainer
                 .classList.add("hidden");

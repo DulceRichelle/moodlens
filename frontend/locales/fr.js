@@ -504,5 +504,9 @@ export default {
         "Bien-être",
 
     wellbeingDesc:
-        "Dormir et prendre soin de toi influence aussi tes émotions."
+        "Dormir et prendre soin de toi influence aussi tes émotions.",
+    analysis: "Analyse",
+    history: "Historique",
+    tips: "Conseils",
+    profile: "Profil",
 };

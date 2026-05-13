@@ -505,5 +505,9 @@ export default {
         "Wohlbefinden",
 
     wellbeingDesc:
-        "Schlaf und Selbstfürsorge beeinflussen ebenfalls deine Emotionen."
+        "Schlaf und Selbstfürsorge beeinflussen ebenfalls deine Emotionen.",
+    analysis: "Analyse",
+    history: "Verlauf",
+    tips: "Tipps",
+    profile: "Profil",
 };
