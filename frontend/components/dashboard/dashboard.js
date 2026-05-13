@@ -1,5 +1,5 @@
 import { getUser, logout } from '../../services/user.service.js';
-
+let vistaActual = 'registro';
 import { t } from '../../services/i18n.js';
 import { renderRegistro } from './registro.js';
 import { renderAnalisis } from './analisis.js';
@@ -129,10 +129,11 @@ export function renderDashboard(app) {
 
         renderDashboard(app);
     };
-    cargarVista('registro');
+    cargarVista(vistaActual);
 }
 
 function cargarVista(vista, element = null) {
+     vistaActual = vista;
 
     const contenedor =
         document.getElementById('contenidoDashboard');
