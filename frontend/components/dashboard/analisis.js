@@ -3,14 +3,19 @@ import {
     getLanguage
 } from "../../services/i18n.js";
 
-export function renderAnalisis(app) {
+let moodChart;
+
+export function renderAnalisis(app){
 
     app.innerHTML = `
-    <link rel="stylesheet" href="components/dashboard/registro.css">
 
-    <div class="registro-page">
+<link rel="stylesheet" href="components/dashboard/analisis.css">
 
-        <div class="header">
+<div class="analisis-page">
+
+    <section class="analisis-hero">
+
+        <div class="hero-content">
 
             <h1>
                 📊 ${t("analysisStats")}
@@ -20,81 +25,232 @@ export function renderAnalisis(app) {
                 ${t("analysisSubtitle")}
             </p>
 
+            <div class="quick-insights">
+
+                <div class="insight">
+
+                    <span>
+                        ✨
+                    </span>
+
+                    <h3>
+                        Emotional Awareness
+                    </h3>
+
+                    <p>
+                        Your emotional patterns become clearer with every new entry.
+                    </p>
+
+                </div>
+
+                <div class="insight">
+
+                    <span>
+                        🧠
+                    </span>
+
+                    <h3>
+                        Personal Insights
+                    </h3>
+
+                    <p>
+                        Detect mood tendencies and emotional intensity over time.
+                    </p>
+
+                </div>
+
+                <div class="insight">
+
+                    <span>
+                        🌙
+                    </span>
+
+                    <h3>
+                        Wellness Journey
+                    </h3>
+
+                    <p>
+                        Emotional tracking helps improve self awareness and routines.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="stats">
+    </section>
 
-            <div class="stat">
+    <section class="stats-grid">
 
-                <p>
-                    ${t("totalRecords")}
-                </p>
+        <div class="stat-card">
 
-                <h2 id="total">0</h2>
-
+            <div class="stat-icon blue">
+                📘
             </div>
 
-            <div class="stat">
+            <p>
+                ${t("totalRecords")}
+            </p>
 
-                <p>
-                    ${t("averageIntensity")}
-                </p>
+            <h2 id="total">
+                0
+            </h2>
 
-                <h2 id="promedio">0/10</h2>
+        </div>
 
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+                📈
             </div>
 
-            <div class="stat">
+            <p>
+                ${t("averageIntensity")}
+            </p>
 
-                <p>
-                    ${t("mostCommonMood")}
-                </p>
+            <h2 id="promedio">
+                0/10
+            </h2>
 
-                <h2 id="frecuente">N/A</h2>
+        </div>
 
+        <div class="stat-card">
+
+            <div class="stat-icon orange">
+                😊
             </div>
 
-            <div class="stat">
+            <p>
+                ${t("mostCommonMood")}
+            </p>
 
-                <p>
-                    ${t("last7Days")}
-                </p>
+            <h2 id="frecuente">
+                N/A
+            </h2>
 
-                <h2 id="semana">0</h2>
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon yellow">
+                🔥
+            </div>
+
+            <p>
+                ${t("last7Days")}
+            </p>
+
+            <h2 id="semana">
+                0
+            </h2>
+
+        </div>
+
+    </section>
+
+    <section class="chart-section">
+
+        <div class="chart-card">
+
+            <h2>
+                ${t("moodTrend")}
+            </h2>
+
+            <div class="chart-wrapper">
+
+                <canvas id="chart"></canvas>
 
             </div>
 
         </div>
 
-        <div class="grafico">
+        <div class="mood-distribution">
+
+            <h2>
+                Mood Distribution
+            </h2>
+
+            <div
+                class="mood-list"
+                id="moodList"
+            ></div>
+
+        </div>
+
+    </section>
+
+    <section class="analysis-grid">
+
+        <div class="analysis-card">
+
+            <span>
+                💙
+            </span>
 
             <h3>
-                ${t("moodTrend")}
+                Emotional Balance
             </h3>
 
-            <canvas id="chart"></canvas>
+            <p id="balanceText">
+                Your emotional balance insights will appear here.
+            </p>
 
         </div>
 
-    </div>
-    `;
+        <div class="analysis-card">
+
+            <span>
+                📅
+            </span>
+
+            <h3>
+                Activity Pattern
+            </h3>
+
+            <p id="activityText">
+                Your emotional activity patterns will appear here.
+            </p>
+
+        </div>
+
+        <div class="analysis-card">
+
+            <span>
+                🌱
+            </span>
+
+            <h3>
+                Growth Reflection
+            </h3>
+
+            <p id="growthText">
+                Personalized emotional reflections will appear here.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+`;
 
     cargarAnalisis();
 }
 
-let moodChart;
-
-async function cargarAnalisis() {
+async function cargarAnalisis(){
 
     const user =
         JSON.parse(
-            localStorage.getItem('user')
+            localStorage.getItem("user")
         );
+
+    if(!user) return;
 
     const userId =
         user.id || user.id_usuario;
 
-    try {
+    try{
 
         const res = await fetch(
             `https://moodlens-oj88.onrender.com/api/emociones/${userId}`
@@ -102,24 +258,33 @@ async function cargarAnalisis() {
 
         const data = await res.json();
 
-        if (!data.length) return;
+        if(!data.length){
+
+            mostrarEstadoVacio();
+
+            return;
+        }
 
         calcularEstadisticas(data);
 
         pintarGrafico(data);
 
-    } catch (error) {
+        pintarDistribucion(data);
+
+        generarInsights(data);
+
+    }catch(error){
 
         console.error(error);
     }
 }
 
-function calcularEstadisticas(data) {
+function calcularEstadisticas(data){
 
     const total = data.length;
 
     const suma = data.reduce(
-        (acc, item) =>
+        (acc,item) =>
             acc + Number(item.intensidad),
         0
     );
@@ -144,9 +309,9 @@ function calcularEstadisticas(data) {
 
     let max = 0;
 
-    for (let emocion in contador) {
+    for(const emocion in contador){
 
-        if (contador[emocion] > max) {
+        if(contador[emocion] > max){
 
             max = contador[emocion];
 
@@ -169,186 +334,267 @@ function calcularEstadisticas(data) {
 
     }).length;
 
-    document.getElementById(
-        "total"
-    ).textContent = total;
+    document.getElementById("total")
+        .textContent = total;
 
-    document.getElementById(
-        "promedio"
-    ).textContent = `${promedio}/10`;
+    document.getElementById("promedio")
+        .textContent = `${promedio}/10`;
 
-    document.getElementById("frecuente").textContent =
+    document.getElementById("frecuente")
+        .textContent =
         traducirEmocion(frecuente);
-    document.getElementById(
-        "semana"
-    ).textContent = semana;
+
+    document.getElementById("semana")
+        .textContent = semana;
 }
 
-function pintarGrafico(data) {
+function pintarGrafico(data){
 
     const labels = data.map(item => {
 
-        const fecha =
-            new Date(item.fecha);
-
-        return fecha.toLocaleDateString(
-            getLanguage()
-        );
+        return new Date(item.fecha)
+            .toLocaleDateString(
+                getLanguage()
+            );
     });
 
     const valores = data.map(
         item => Number(item.intensidad)
     );
 
-    const coloresEmocion = {
-
-        feliz: '#FFD35A',
-
-        tranquilo: '#45D5F2',
-
-        neutral: '#A0A0A0',
-
-        triste: '#FFA142',
-
-        ansioso: '#8E7CF3'
-    };
-
-    const colores = data.map(item => {
-
-        const emocion =
-            item.nombre_emocion
-                ?.toLowerCase();
-
-        return coloresEmocion[
-            emocion
-            ] || '#4bcffa';
-    });
-
-    document
-        .querySelector('.grafico')
-        .classList.remove('hidden');
-
     const ctx =
         document.getElementById("chart");
 
-    if (moodChart) {
+    if(moodChart){
 
         moodChart.destroy();
     }
 
-    moodChart = new Chart(ctx, {
+    moodChart = new Chart(ctx,{
 
-        type: "line",
+        type:"line",
 
-        data: {
+        data:{
 
             labels,
 
-            datasets: [
+            datasets:[
                 {
                     label:
                         t("emotionalState"),
 
-                    data: valores,
+                    data:valores,
 
-                    tension: 0.4,
+                    tension:.45,
 
-                    fill: true,
+                    fill:true,
 
-                    borderColor: '#4bcffa',
+                    borderWidth:4,
+
+                    borderColor:"#49C7E7",
 
                     backgroundColor:
-                        'rgba(75, 207, 250, 0.2)',
+                        "rgba(73,199,231,.18)",
 
-                    pointBackgroundColor:
-                    colores,
+                    pointRadius:6,
 
-                    pointBorderColor:
-                    colores,
+                    pointHoverRadius:8,
 
-                    pointRadius: 6,
+                    pointBackgroundColor:"#5D7BEE",
 
-                    pointHoverRadius: 8
+                    pointBorderWidth:3,
+
+                    pointBorderColor:"#fff"
                 }
             ]
         },
 
-        options: {
+        options:{
 
-            responsive: true,
+            responsive:true,
 
-            plugins: {
+            maintainAspectRatio:false,
 
-                tooltip: {
+            plugins:{
 
-                    callbacks: {
-
-                        label: function(context) {
-
-                            const emocion =
-                                traducirEmocion(
-                                    data[
-                                        context.dataIndex
-                                        ].nombre_emocion
-                                );
-
-                            return `
-${emocion}
-(${context.raw}/10)
-`;
-                        }
-                    }
+                legend:{
+                    display:false
                 }
             },
 
-            scales: {
+            scales:{
 
-                y: {
+                x:{
 
-                    min: 0,
+                    grid:{
+                        display:false
+                    }
+                },
 
-                    max: 10
+                y:{
+
+                    min:0,
+                    max:10,
+
+                    ticks:{
+                        stepSize:2
+                    }
                 }
             }
         }
     });
 }
 
-function traducirEmocion(emocion) {
+function pintarDistribucion(data){
+
+    const moodList =
+        document.getElementById("moodList");
 
     const emociones = {
 
-        feliz:
-            t("happy"),
+        feliz:{
+            emoji:"😊",
+            color:"yellow"
+        },
 
-        tranquilo:
-            t("calm"),
+        tranquilo:{
+            emoji:"💙",
+            color:"blue"
+        },
 
-        neutral:
-            t("neutral"),
+        neutral:{
+            emoji:"😐",
+            color:"purple"
+        },
 
-        triste:
-            t("sad"),
+        triste:{
+            emoji:"😢",
+            color:"orange"
+        },
 
-        ansioso:
-            t("anxious")
+        ansioso:{
+            emoji:"😖",
+            color:"purple"
+        }
+    };
+
+    const contador = {};
+
+    data.forEach(item => {
+
+        const emocion =
+            item.nombre_emocion
+                .toLowerCase();
+
+        contador[emocion] =
+            (contador[emocion] || 0) + 1;
+    });
+
+    moodList.innerHTML = "";
+
+    Object.keys(contador).forEach(emocion => {
+
+        const porcentaje =
+            Math.round(
+                (contador[emocion] / data.length) * 100
+            );
+
+        const mood =
+            emociones[emocion];
+
+        moodList.innerHTML += `
+
+<div class="mood-item">
+
+    <div class="mood-left">
+
+        <div class="mood-emoji ${mood.color}">
+
+            ${mood.emoji}
+
+        </div>
+
+        <div class="mood-info">
+
+            <h3>
+                ${traducirEmocion(emocion)}
+            </h3>
+
+            <p>
+                ${contador[emocion]} entries
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="mood-percent">
+
+        ${porcentaje}%
+
+    </div>
+
+</div>
+`;
+    });
+}
+
+function generarInsights(data){
+
+    const promedio =
+        data.reduce(
+            (acc,item) =>
+                acc + Number(item.intensidad),
+            0
+        ) / data.length;
+
+    document.getElementById("balanceText")
+        .textContent =
+        promedio >= 7
+            ? "Your recent emotional intensity has been quite high. Taking breaks and reflecting may help balance your energy."
+            : "Your emotional intensity appears relatively balanced and stable recently.";
+
+    document.getElementById("activityText")
+        .textContent =
+        `You have logged ${data.length} emotional entries so far, helping build a clearer emotional timeline.`;
+
+    document.getElementById("growthText")
+        .textContent =
+        "Consistent emotional tracking improves self awareness and helps recognize emotional patterns over time.";
+}
+
+function mostrarEstadoVacio(){
+
+    document.querySelector(
+        ".analisis-page"
+    ).innerHTML = `
+
+<div class="empty-state">
+
+    <h2>
+        📊 No analysis available yet
+    </h2>
+
+    <p>
+        Start tracking your emotions to unlock emotional insights, mood analytics and personalized reflections.
+    </p>
+
+</div>
+`;
+}
+
+function traducirEmocion(emocion){
+
+    const emociones = {
+
+        feliz:t("happy"),
+        tranquilo:t("calm"),
+        neutral:t("neutral"),
+        triste:t("sad"),
+        ansioso:t("anxious")
     };
 
     return emociones[
         emocion?.toLowerCase()
         ] || emocion;
-}
-
-function capitalizar(texto) {
-
-    if (
-        !texto ||
-        texto === "N/A"
-    ) {
-        return texto;
-    }
-
-    return texto.charAt(0)
-            .toUpperCase() +
-        texto.slice(1);
 }

@@ -7,25 +7,414 @@ import {
 } from "../../services/i18n.js";
 
 export async function renderPerfil(app) {
+
     app.innerHTML = `
+<link rel="stylesheet" href="components/dashboard/perfil.css">
 
-<div class="perfil-page fade-in">
+<div class="perfil-page">
 
-    <div class="perfil-skeleton">
+    <div class="perfil-hero">
 
-        <div class="skeleton skeleton-hero"></div>
+        <div class="hero-top">
 
-        <div class="skeleton skeleton-progress"></div>
+            <div class="hero-left">
 
-        <div class="skeleton-grid">
+                <div class="avatar-wrapper">
 
-            <div class="skeleton skeleton-card"></div>
+                    <div class="avatar-glow"></div>
 
-            <div class="skeleton skeleton-card"></div>
+                    <div class="avatar-grande">
 
-            <div class="skeleton skeleton-card"></div>
+                        U
 
-            <div class="skeleton skeleton-card"></div>
+                        <div class="online-indicator"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-info">
+
+                    <h1>
+                        MoodLens
+                    </h1>
+
+                    <p>
+                        ${t("perfilSubtitle")}
+                    </p>
+
+                    <span id="memberSince"></span>
+
+                </div>
+
+            </div>
+
+            <div class="hero-badge">
+
+                ✨ Premium Mind Tracker
+
+            </div>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div class="hero-stat">
+
+                <h3 id="heroEntries">
+                    0
+                </h3>
+
+                <p>
+                    ${t("totalEntries")}
+                </p>
+
+            </div>
+
+            <div class="hero-stat">
+
+                <h3 id="heroDays">
+                    0
+                </h3>
+
+                <p>
+                    ${t("activeDays")}
+                </p>
+
+            </div>
+
+            <div class="hero-stat">
+
+                <h3 id="heroMood">
+                    😊
+                </h3>
+
+                <p>
+                    ${t("mainMood")}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <section class="progress-section">
+
+        <div class="progress-card">
+
+            <div class="progress-header">
+
+                <h2>
+                    ${t("yourProgress")}
+                </h2>
+
+                <p>
+                    ${t("reviewRecords")}
+                </p>
+
+            </div>
+
+            <div class="progress-grid">
+
+                <div class="mini-progress">
+
+                    <h3 id="diasActivos">
+                        0
+                    </h3>
+
+                    <p>
+                        ${t("activeDays")}
+                    </p>
+
+                </div>
+
+                <div class="mini-progress">
+
+                    <h3 id="consistencia">
+                        0%
+                    </h3>
+
+                    <p>
+                        ${t("consistency")}
+                    </p>
+
+                </div>
+
+                <div class="mini-progress">
+
+                    <h3 id="racha">
+                        🔥 0
+                    </h3>
+
+                    <p>
+                        Streak
+                    </p>
+
+                </div>
+
+                <div class="mini-progress">
+
+                    <h3 id="nivel">
+                        Lv.1
+                    </h3>
+
+                    <p>
+                        Emotional Explorer
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="insights-grid">
+
+        <div class="insight-card">
+
+            <div class="insight-icon">
+                🌙
+            </div>
+
+            <h3>
+                Emotional Insight
+            </h3>
+
+            <p>
+                You are becoming more consistent with your emotional tracking journey.
+            </p>
+
+        </div>
+
+        <div class="insight-card">
+
+            <div class="insight-icon">
+                💙
+            </div>
+
+            <h3>
+                Calm Moments
+            </h3>
+
+            <p>
+                Tracking your calm days helps identify healthier routines and habits.
+            </p>
+
+        </div>
+
+        <div class="insight-card">
+
+            <div class="insight-icon">
+                ✨
+            </div>
+
+            <h3>
+                Personal Growth
+            </h3>
+
+            <p>
+                Small emotional reflections create powerful long-term self awareness.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="perfil-grid">
+
+        <div class="perfil-card">
+
+            <h2>
+                👤 ${t("account")}
+            </h2>
+
+            <div class="form-group">
+
+                <label>
+                    ${t("name")}
+                </label>
+
+                <input
+                    type="text"
+                    id="nombrePerfil"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="emailPerfil"
+                    disabled
+                >
+
+            </div>
+
+            <button
+                class="btn-guardar"
+                id="guardarPerfilBtn"
+            >
+                ${t("saveChanges")}
+            </button>
+
+        </div>
+
+        <div class="perfil-card">
+
+            <h2>
+                🌍 ${t("preferences")}
+            </h2>
+
+            <div class="custom-select" id="customSelect">
+
+                <div class="select-selected">
+
+                    <span id="selectedLanguage"></span>
+
+                    <span class="arrow">
+                        ⌄
+                    </span>
+
+                </div>
+
+                <div class="select-options hidden">
+
+                    <div class="option" data-lang="es">
+                        🇪🇸 Español
+                    </div>
+
+                    <div class="option" data-lang="en">
+                        🇬🇧 English
+                    </div>
+
+                    <div class="option" data-lang="fr">
+                        🇫🇷 Français
+                    </div>
+
+                    <div class="option" data-lang="de">
+                        🇩🇪 Deutsch
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <h3>
+                        🔔 ${t("notifications")}
+                    </h3>
+
+                    <p>
+                        ${t("emotionalReminders")}
+                    </p>
+
+                </div>
+
+                <span class="setting-badge">
+                    Soon
+                </span>
+
+            </div>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <h3>
+                        🔒 ${t("privacy")}
+                    </h3>
+
+                    <p>
+                        ${t("privateEmotions")}
+                    </p>
+
+                </div>
+
+                <span class="setting-badge active">
+                    ${t("active")}
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="perfil-card">
+
+            <h2>
+                🏆 Achievements
+            </h2>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <h3>
+                        🔥 First Streak
+                    </h3>
+
+                    <p>
+                        Logged emotions for consecutive days.
+                    </p>
+
+                </div>
+
+                <span class="setting-badge active">
+                    Unlocked
+                </span>
+
+            </div>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <h3>
+                        ✨ Self Awareness
+                    </h3>
+
+                    <p>
+                        Reached multiple emotional entries.
+                    </p>
+
+                </div>
+
+                <span class="setting-badge">
+                    Progress
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="perfil-card">
+
+            <h2>
+                🚪 ${t("session")}
+            </h2>
+
+            <p style="color:#6F6A97;line-height:1.7;">
+
+                ${t("logoutText")}
+
+            </p>
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                ${t("logout")}
+            </button>
 
         </div>
 
@@ -34,11 +423,48 @@ export async function renderPerfil(app) {
 </div>
 `;
 
+    initPerfil(app);
+}
+
+async function initPerfil(app){
+
     const user = getUser();
+
+    if(!user) return;
+
+    const avatar =
+        document.querySelector(".avatar-grande");
+
+    avatar.innerHTML = `
+        ${user.nombre?.charAt(0).toUpperCase() || "U"}
+        <div class="online-indicator"></div>
+    `;
+
+    document.querySelector(".hero-info h1")
+        .innerHTML = `
+            ${t("hello")},
+            ${user.nombre} ✨
+        `;
+
+    document.getElementById("nombrePerfil")
+        .value = user.nombre || "";
+
+    document.getElementById("emailPerfil")
+        .value = user.email || "";
+
+    document.getElementById("memberSince")
+        .textContent = `
+            ${t("memberSince")}
+            ${formatearFecha(
+        user.fecha_registro ||
+        user.created_at ||
+        new Date()
+    )}
+        `;
 
     let registros = [];
 
-    try {
+    try{
 
         const res = await fetch(
             `https://moodlens-oj88.onrender.com/api/emociones/${user.id_usuario || user.id}`
@@ -46,7 +472,7 @@ export async function renderPerfil(app) {
 
         registros = await res.json();
 
-    } catch (error) {
+    }catch(error){
 
         console.log(error);
     }
@@ -54,472 +480,110 @@ export async function renderPerfil(app) {
     const diasActivos =
         calcularDiasActivos(registros);
 
-    const fechaRegistro =
-        user.fecha_registro ||
-        user.created_at ||
-        new Date();
+    const emocionTop =
+        obtenerEmocionTop(registros);
 
-    app.innerHTML = `
+    document.getElementById("heroEntries")
+        .textContent = registros.length;
 
-    <link rel="stylesheet" href="components/dashboard/perfil.css">
+    document.getElementById("heroDays")
+        .textContent = diasActivos;
 
-    <div class="perfil-page">
+    document.getElementById("heroMood")
+        .textContent = emocionTop;
 
-        <div class="perfil-hero">
+    document.getElementById("diasActivos")
+        .textContent = diasActivos;
 
-            <div class="hero-left">
+    document.getElementById("consistencia")
+        .textContent = `
+            ${calcularConstancia(diasActivos)}%
+        `;
 
-                <div class="avatar-grande">
+    document.getElementById("racha")
+        .textContent = `🔥 ${diasActivos}`;
 
-                    ${user?.nombre?.charAt(0).toUpperCase() || "U"}
+    document.getElementById("nivel")
+        .textContent = `
+            Lv.${Math.max(
+        1,
+        Math.floor(registros.length / 5)
+    )}
+        `;
 
-                </div>
+    initLanguageSelector(app);
 
-                <div class="hero-info">
+    document
+        .getElementById("guardarPerfilBtn")
+        .addEventListener("click", guardarPerfil);
 
-                    <h1>
+    document
+        .getElementById("logoutBtn")
+        .addEventListener("click", () => {
 
-                        ${t("hello")},
-                        ${user?.nombre || "Usuario"} ✨
+            localStorage.removeItem("user");
 
-                    </h1>
+            navigate("login");
+        });
 
-                    <p>
+    async function guardarPerfil(){
 
-                        ${t("perfilSubtitle")}
+        const nuevoNombre =
+            document
+                .getElementById("nombrePerfil")
+                .value
+                .trim();
 
-                    </p>
+        if(!nuevoNombre){
 
-                    <span>
+            mostrarToast(t("emptyName"));
 
-                        ${t("memberSince")}
-                        ${formatearFecha(fechaRegistro)}
+            return;
+        }
 
-                    </span>
+        try{
 
-                </div>
+            await fetch(
+                `https://moodlens-oj88.onrender.com/api/usuarios/${user.id_usuario || user.id}`,
+                {
+                    method:"PUT",
 
-            </div>
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
 
-        </div>
+                    body:JSON.stringify({
+                        nombre:nuevoNombre
+                    })
+                }
+            );
 
-        <div class="progress-card">
+            user.nombre = nuevoNombre;
 
-    <div class="progress-header">
+            localStorage.setItem(
+                "user",
+                JSON.stringify(user)
+            );
 
-        <h2>
-            ${t("yourProgress")}
-        </h2>
+            mostrarToast(
+                t("profileUpdated")
+            );
 
-    </div>
+            renderPerfil(app);
 
-    <div class="progress-grid">
+        }catch(error){
 
-        <div class="mini-progress scale-in">
+            console.log(error);
 
-            <h3>
-                ${diasActivos}
-            </h3>
-
-            <p>
-                ${t("activeDays")}
-            </p>
-
-        </div>
-
-        <div class="mini-progress scale-in">
-
-            <h3>
-                ${calcularConstancia(diasActivos)}%
-            </h3>
-
-            <p>
-                ${t("consistency")}
-            </p>
-
-        </div>
-
-        <div class="mini-progress scale-in">
-
-            <h3>
-                ${registros.length}
-            </h3>
-
-            <p>
-                ${t("totalEntries")}
-            </p>
-
-        </div>
-
-        <div class="mini-progress scale-in">
-
-            <h3>
-                ${obtenerEmocionTop(registros)}
-            </h3>
-
-            <p>
-                ${t("mainMood")}
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-        <div class="perfil-grid">
-
-           <div class="perfil-card slide-up">
-
-                <h2>
-                    👤 ${t("account")}
-                </h2>
-
-                <div class="form-group">
-
-                    <label>
-                        ${t("name")}
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nombrePerfil"
-                        value="${user?.nombre || ""}"
-                    >
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        value="${user?.email || ""}"
-                        disabled
-                    >
-
-                </div>
-
-                <button
-                    class="btn-guardar"
-                    id="guardarPerfilBtn"
-                >
-
-                    ${t("saveChanges")}
-
-                </button>
-
-            </div>
-
-            <div class="perfil-card slide-up">
-
-                <h2>
-                    ⚙ ${t("preferences")}
-                </h2>
-
-                <div class="setting-language">
-
-                    <label>
-
-                        🌍 ${t("language")}
-
-                    </label>
-
-                    <div class="custom-select" id="customSelect">
-
-                        <div class="select-selected">
-
-                            <span id="selectedLanguage">
-
-                                <span class="flag">🇪🇸</span>
-                                Español
-
-                            </span>
-
-                            <span class="arrow">
-                                ⌄
-                            </span>
-
-                        </div>
-
-                        <div class="select-options hidden">
-
-                            <div class="option" data-lang="es">
-
-                                <span class="flag">🇪🇸</span>
-                                Español
-
-                            </div>
-
-                            <div class="option" data-lang="en">
-
-                                <span class="flag">🇬🇧</span>
-                                English
-
-                            </div>
-
-                            <div class="option" data-lang="fr">
-
-                                <span class="flag">🇫🇷</span>
-                                Français
-
-                            </div>
-
-                            <div class="option" data-lang="de">
-
-                                <span class="flag">🇩🇪</span>
-                                Deutsch
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="setting-item">
-
-                    <div>
-
-                        <h3>
-                            🔔 ${t("notifications")}
-                        </h3>
-
-                        <p>
-
-                            ${t("emotionalReminders")}
-
-                        </p>
-
-                    </div>
-
-                    <span class="setting-badge">
-
-                        ${t("comingSoon")}
-
-                    </span>
-
-                </div>
-
-                <div class="setting-item">
-
-                    <div>
-
-                        <h3>
-                            📥 ${t("exportData")}
-                        </h3>
-
-                        <p>
-
-                            ${t("downloadHistory")}
-
-                        </p>
-
-                    </div>
-
-                    <span class="setting-badge">
-
-                        Beta
-
-                    </span>
-
-                </div>
-
-                <div class="setting-item">
-
-                    <div>
-
-                        <h3>
-                            🔒 ${t("privacy")}
-                        </h3>
-
-                        <p>
-
-                            ${t("privateEmotions")}
-
-                        </p>
-
-                    </div>
-
-                    <span class="setting-badge active">
-
-                        ${t("active")}
-
-                    </span>
-
-                </div>
-
-            </div>
-
-            <div class="perfil-card slide-up">
-
-                <h2>
-                    💌 ${t("support")}
-                </h2>
-
-                <div class="support-box">
-
-                    <p>
-
-                        ${t("supportText")}
-
-                    </p>
-
-                    <button
-                        class="btn-secondary"
-                        id="supportBtn"
-                    >
-
-                        ${t("contactSupport")}
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="perfil-card logout-card">
-
-                <h2>
-                    🚪 ${t("session")}
-                </h2>
-
-                <p>
-
-                    ${t("logoutText")}
-
-                </p>
-
-                <button
-                    class="logout-btn"
-                    id="logoutBtn"
-                >
-
-                    ${t("logout")}
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-    `;
-
-    initPerfil(user, app);
+            mostrarToast(
+                t("saveError")
+            );
+        }
+    }
 }
 
-function initPerfil(user, app) {
-
-    const guardarBtn =
-        document.getElementById(
-            "guardarPerfilBtn"
-        );
-
-    if (guardarBtn) {
-
-        guardarBtn.addEventListener(
-            "click",
-            async () => {
-
-                const nuevoNombre =
-                    document
-                        .getElementById(
-                            "nombrePerfil"
-                        )
-                        .value
-                        .trim();
-
-                if (!nuevoNombre) {
-
-                    mostrarToast(
-                        t("emptyName")
-                    );
-
-                    return;
-                }
-
-                try {
-
-                    await fetch(
-                        `https://moodlens-oj88.onrender.com/api/usuarios/${user.id_usuario || user.id}`,
-                        {
-                            method: "PUT",
-
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
-
-                            body: JSON.stringify({
-                                nombre: nuevoNombre
-                            })
-                        }
-                    );
-
-                    user.nombre =
-                        nuevoNombre;
-
-                    localStorage.setItem(
-                        "user",
-                        JSON.stringify(user)
-                    );
-
-                    mostrarToast(
-                        t("profileUpdated")
-                    );
-
-                    navigate("perfil");
-
-                } catch (error) {
-
-                    console.log(error);
-
-                    mostrarToast(
-                        t("saveError")
-                    );
-                }
-            }
-        );
-    }
-
-    const logoutBtn =
-        document.getElementById("logoutBtn");
-
-    if (logoutBtn) {
-
-        logoutBtn.addEventListener(
-            "click",
-            () => {
-
-                localStorage.removeItem(
-                    "user"
-                );
-
-                navigate("login");
-            }
-        );
-    }
-
-    const supportBtn =
-        document.getElementById("supportBtn");
-
-    if (supportBtn) {
-
-        supportBtn.addEventListener(
-            "click",
-            () => {
-
-                mostrarToast(
-                    t("supportSoon")
-                );
-            }
-        );
-    }
+function initLanguageSelector(app){
 
     const customSelect =
         document.getElementById("customSelect");
@@ -527,33 +591,18 @@ function initPerfil(user, app) {
     const selectedLanguage =
         document.getElementById("selectedLanguage");
 
-    const options =
-        document.querySelectorAll(".option");
-
     const optionsContainer =
         document.querySelector(".select-options");
 
+    const options =
+        document.querySelectorAll(".option");
+
     const idiomas = {
 
-        es: `
-            <span class="flag">🇪🇸</span>
-            Español
-        `,
-
-        en: `
-            <span class="flag">🇬🇧</span>
-            English
-        `,
-
-        fr: `
-            <span class="flag">🇫🇷</span>
-            Français
-        `,
-
-        de: `
-            <span class="flag">🇩🇪</span>
-            Deutsch
-        `
+        es:"🇪🇸 Español",
+        en:"🇬🇧 English",
+        fr:"🇫🇷 Français",
+        de:"🇩🇪 Deutsch"
     };
 
     selectedLanguage.innerHTML =
@@ -574,24 +623,20 @@ function initPerfil(user, app) {
             const lang =
                 option.dataset.lang;
 
-            selectedLanguage.innerHTML =
-                idiomas[lang];
+            setLanguage(lang);
 
             localStorage.setItem(
                 "currentSection",
                 "perfil"
             );
 
-            setLanguage(lang);
-
-            optionsContainer
-                .classList.add("hidden");
+            renderPerfil(app);
         });
     });
 
-    document.addEventListener("click", (e) => {
+    document.addEventListener("click", e => {
 
-        if (!customSelect.contains(e.target)) {
+        if(!customSelect.contains(e.target)){
 
             optionsContainer
                 .classList.add("hidden");
@@ -599,7 +644,7 @@ function initPerfil(user, app) {
     });
 }
 
-function calcularDiasActivos(registros) {
+function calcularDiasActivos(registros){
 
     const dias = [
 
@@ -616,20 +661,17 @@ function calcularDiasActivos(registros) {
     return dias.length;
 }
 
-function calcularConstancia(diasActivos) {
+function calcularConstancia(dias){
 
-    const porcentaje =
-        Math.min(
-            Math.round((diasActivos / 30) * 100),
-            100
-        );
-
-    return porcentaje;
+    return Math.min(
+        Math.round((dias / 30) * 100),
+        100
+    );
 }
 
-function obtenerEmocionTop(registros) {
+function obtenerEmocionTop(registros){
 
-    if (!registros.length) {
+    if(!registros.length){
 
         return "🌸";
     }
@@ -638,20 +680,17 @@ function obtenerEmocionTop(registros) {
 
     registros.forEach(r => {
 
-        const emocion =
-            r.nombre_emocion;
-
-        contador[emocion] =
-            (contador[emocion] || 0) + 1;
+        contador[r.nombre_emocion] =
+            (contador[r.nombre_emocion] || 0) + 1;
     });
 
     let top = null;
 
     let max = 0;
 
-    for (const emocion in contador) {
+    for(const emocion in contador){
 
-        if (contador[emocion] > max) {
+        if(contador[emocion] > max){
 
             max = contador[emocion];
 
@@ -661,17 +700,17 @@ function obtenerEmocionTop(registros) {
 
     const emojis = {
 
-        feliz: "😊",
-        tranquilo: "💙",
-        neutral: "😐",
-        triste: "😢",
-        ansioso: "😖"
+        feliz:"😊",
+        tranquilo:"💙",
+        neutral:"😐",
+        triste:"😢",
+        ansioso:"😖"
     };
 
     return emojis[top?.toLowerCase()] || "🌸";
 }
 
-function mostrarToast(msg) {
+function mostrarToast(msg){
 
     const toast =
         document.createElement("div");
@@ -686,7 +725,7 @@ function mostrarToast(msg) {
 
         toast.classList.add("show");
 
-    }, 100);
+    },100);
 
     setTimeout(() => {
 
@@ -696,12 +735,12 @@ function mostrarToast(msg) {
 
             toast.remove();
 
-        }, 300);
+        },300);
 
-    }, 2500);
+    },2500);
 }
 
-function formatearFecha(fecha) {
+function formatearFecha(fecha){
 
     return new Date(fecha)
         .toLocaleDateString(
@@ -713,9 +752,9 @@ function formatearFecha(fecha) {
                         ? "de-DE"
                         : "es-ES",
             {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
+                day:"numeric",
+                month:"long",
+                year:"numeric"
             }
         );
 }

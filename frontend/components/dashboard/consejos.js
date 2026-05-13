@@ -33,87 +33,269 @@ export async function renderConsejos(app) {
     const insights =
         generarInsights(registros);
 
+    const streak =
+        calcularRacha(registros);
+
+    const intensidadPromedio =
+        calcularPromedio(registros);
+
     app.innerHTML = `
-    <link rel="stylesheet" href="components/dashboard/consejos.css">
 
-    <div class="consejos-page">
+<link rel="stylesheet" href="components/dashboard/consejos.css">
 
-        <div class="hero-consejos">
+<div class="consejos-page">
+
+    <section class="hero-consejos">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+
+                ✨ MoodLens Insights
+
+            </span>
+
+            <h1>
+
+                ${t("tipsForYou")} 🌸
+
+            </h1>
+
+            <p>
+
+                ${t("tipsSubtitle")}
+
+            </p>
+
+            <div class="hero-mini-stats">
+
+                <div class="mini-stat">
+
+                    <h3>
+                        ${registros.length}
+                    </h3>
+
+                    <p>
+                        ${t("totalRecords")}
+                    </p>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <h3>
+                        ${intensidadPromedio}/10
+                    </h3>
+
+                    <p>
+                        ${t("averageIntensity")}
+                    </p>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <h3>
+                        ${streak}
+                    </h3>
+
+                    <p>
+                        Day Streak
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="consejo-destacado">
+
+        <div class="destacado-glow"></div>
+
+        <div class="destacado-icono">
+
+            ${consejoPrincipal.icono}
+
+        </div>
+
+        <div class="destacado-info">
+
+            <span class="tag">
+
+                ${t("personalizedTip")}
+
+            </span>
+
+            <h2>
+
+                ${consejoPrincipal.titulo}
+
+            </h2>
+
+            <p>
+
+                ${consejoPrincipal.descripcion}
+
+            </p>
+
+            <div class="emotion-pill">
+
+                ${emocionPrincipal.icono}
+                ${capitalizar(emocionPrincipal.nombre)}
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="mood-summary">
+
+        <div class="summary-card calm">
+
+            <span>
+                💙
+            </span>
 
             <div>
 
-                <h1>
-                    ${t("tipsForYou")} 🌸
-                </h1>
+                <h3>
+                    Emotional State
+                </h3>
 
                 <p>
-                    ${t("tipsSubtitle")}
+                    ${generarEstadoEmocional(registros)}
                 </p>
 
             </div>
 
         </div>
 
-        <div class="consejo-destacado">
+        <div class="summary-card energy">
 
-            <div class="destacado-icono">
-                ${consejoPrincipal.icono}
-            </div>
+            <span>
+                ⚡
+            </span>
 
             <div>
 
-                <span class="tag">
-                    ${t("personalizedTip")}
-                </span>
-
-                <h2>
-                    ${consejoPrincipal.titulo}
-                </h2>
+                <h3>
+                    Energy Reflection
+                </h3>
 
                 <p>
-                    ${consejoPrincipal.descripcion}
+                    ${generarEnergia(registros)}
                 </p>
 
             </div>
+
+        </div>
+
+        <div class="summary-card growth">
+
+            <span>
+                🌱
+            </span>
+
+            <div>
+
+                <h3>
+                    Personal Growth
+                </h3>
+
+                <p>
+                    Your consistency helps build emotional awareness over time.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="insights-section">
+
+        <div class="section-title">
+
+            <h2>
+                📈 ${t("analysis")}
+            </h2>
+
+            <p>
+                Small emotional patterns can reveal meaningful habits.
+            </p>
 
         </div>
 
         <div class="insights-grid">
 
             ${insights.map(item => `
+
                 <div class="insight-card">
 
-                    <div class="insight-icono">
-                        ${item.icono}
+                    <div class="insight-top">
+
+                        <div class="insight-icono">
+
+                            ${item.icono}
+
+                        </div>
+
+                        <span class="insight-badge">
+                            Insight
+                        </span>
+
                     </div>
 
-                    <h3>${item.titulo}</h3>
+                    <h3>
 
-                    <p>${item.texto}</p>
+                        ${item.titulo}
+
+                    </h3>
+
+                    <p>
+
+                        ${item.texto}
+
+                    </p>
 
                 </div>
+
             `).join("")}
 
         </div>
 
-        <div class="tips-section">
+    </section>
+
+    <section class="tips-section">
+
+        <div class="section-title">
 
             <h2>
                 🌿 ${t("wellnessTips")}
             </h2>
 
-            <div class="tips-grid">
-
-                ${crearTips(
-        emocionPrincipal.nombre
-    )}
-
-            </div>
+            <p>
+                Personalized recommendations based on your recent emotional activity.
+            </p>
 
         </div>
 
-    </div>
-    `;
+        <div class="tips-grid">
+
+            ${crearTips(
+        emocionPrincipal.nombre
+    )}
+
+        </div>
+
+    </section>
+
+</div>
+`;
 }
 
 function obtenerEmocionPrincipal(registros) {
@@ -271,6 +453,58 @@ function calcularPromedio(registros) {
     ).toFixed(1);
 }
 
+function calcularRacha(registros) {
+
+    if (!registros.length) return 0;
+
+    const fechas = [
+
+        ...new Set(
+
+            registros.map(r =>
+
+                new Date(r.fecha)
+                    .toDateString()
+            )
+        )
+    ];
+
+    return fechas.length;
+}
+
+function generarEstadoEmocional(registros) {
+
+    if (!registros.length) {
+
+        return "You are just beginning your emotional journey.";
+    }
+
+    const promedio =
+        calcularPromedio(registros);
+
+    if (promedio >= 7) {
+
+        return "Your recent emotions show high intensity and emotional energy.";
+    }
+
+    if (promedio >= 5) {
+
+        return "Your emotional balance appears relatively stable lately.";
+    }
+
+    return "Your recent emotions seem calm and emotionally balanced.";
+}
+
+function generarEnergia(registros) {
+
+    if (!registros.length) {
+
+        return "Tracking emotions regularly can improve emotional awareness.";
+    }
+
+    return "Small mindful breaks and routines can help maintain emotional clarity.";
+}
+
 function crearTips(emocion) {
 
     const tips = {
@@ -380,17 +614,34 @@ function crearTips(emocion) {
         tips[emocion] || tips.neutral
     ).map(item => `
 
-        <div class="tip-card">
+<div class="tip-card">
 
-            <div class="tip-icono">
-                ${item.icono}
-            </div>
+    <div class="tip-icono">
 
-            <h3>${item.titulo}</h3>
+        ${item.icono}
 
-            <p>${item.texto}</p>
+    </div>
 
-        </div>
+    <h3>
 
-    `).join("");
+        ${item.titulo}
+
+    </h3>
+
+    <p>
+
+        ${item.texto}
+
+    </p>
+
+</div>
+
+`).join("");
+}
+
+function capitalizar(texto) {
+
+    return texto.charAt(0)
+            .toUpperCase() +
+        texto.slice(1);
 }
