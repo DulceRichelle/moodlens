@@ -12,7 +12,8 @@ export function renderHome(app) {
             <div class="select-selected">
 
                 <span id="selectedLanguage">
-                    🇪🇸 Español
+                    <span class="flag">🇪🇸</span>
+                    Español
                 </span>
 
                 <span class="arrow">
@@ -24,19 +25,23 @@ export function renderHome(app) {
             <div class="select-options hidden">
 
                 <div class="option" data-lang="es">
-                    🇪🇸 Español
+                    <span class="flag">🇪🇸</span>
+                    Español
                 </div>
 
                 <div class="option" data-lang="en">
-                    🇬🇧 English
+                    <span class="flag">🇬🇧</span>
+                    English
                 </div>
 
                 <div class="option" data-lang="fr">
-                    🇫🇷 Français
+                    <span class="flag">🇫🇷</span>
+                    Français
                 </div>
 
                 <div class="option" data-lang="de">
-                    🇩🇪 Deutsch
+                    <span class="flag">🇩🇪</span>
+                    Deutsch
                 </div>
 
             </div>
@@ -146,13 +151,29 @@ function initLanguageSelector(app) {
         document.querySelector(".select-options");
 
     const idiomas = {
-        es: "🇪🇸 Español",
-        en: "🇬🇧 English",
-        fr: "🇫🇷 Français",
-        de: "🇩🇪 Deutsch"
+
+        es: `
+            <span class="flag">🇪🇸</span>
+            Español
+        `,
+
+        en: `
+            <span class="flag">🇬🇧</span>
+            English
+        `,
+
+        fr: `
+            <span class="flag">🇫🇷</span>
+            Français
+        `,
+
+        de: `
+            <span class="flag">🇩🇪</span>
+            Deutsch
+        `
     };
 
-    selectedLanguage.textContent =
+    selectedLanguage.innerHTML =
         idiomas[getLanguage()];
 
     customSelect
@@ -170,7 +191,7 @@ function initLanguageSelector(app) {
             const lang =
                 option.dataset.lang;
 
-            selectedLanguage.textContent =
+            selectedLanguage.innerHTML =
                 idiomas[lang];
 
             setLanguage(lang);

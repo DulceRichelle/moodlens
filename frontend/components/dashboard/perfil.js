@@ -163,7 +163,10 @@ export async function renderPerfil(app) {
                         <div class="select-selected">
 
                             <span id="selectedLanguage">
-                                🇪🇸 Español
+
+                                <span class="flag">🇪🇸</span>
+                                Español
+
                             </span>
 
                             <span class="arrow">
@@ -175,19 +178,31 @@ export async function renderPerfil(app) {
                         <div class="select-options hidden">
 
                             <div class="option" data-lang="es">
-                                🇪🇸 Español
+
+                                <span class="flag">🇪🇸</span>
+                                Español
+
                             </div>
 
                             <div class="option" data-lang="en">
-                                🇬🇧 English
+
+                                <span class="flag">🇬🇧</span>
+                                English
+
                             </div>
 
                             <div class="option" data-lang="fr">
-                                🇫🇷 Français
+
+                                <span class="flag">🇫🇷</span>
+                                Français
+
                             </div>
 
                             <div class="option" data-lang="de">
-                                🇩🇪 Deutsch
+
+                                <span class="flag">🇩🇪</span>
+                                Deutsch
+
                             </div>
 
                         </div>
@@ -325,10 +340,10 @@ export async function renderPerfil(app) {
     </div>
     `;
 
-    initPerfil(user);
+    initPerfil(user, app);
 }
 
-function initPerfil(user) {
+function initPerfil(user, app) {
 
     const guardarBtn =
         document.getElementById(
@@ -388,9 +403,7 @@ function initPerfil(user) {
                         t("profileUpdated")
                     );
 
-                    renderPerfil(
-                        document.getElementById("contenidoDashboard")
-                    );
+                    renderPerfil(app);
 
                 } catch (error) {
 
@@ -451,13 +464,29 @@ function initPerfil(user) {
         document.querySelector(".select-options");
 
     const idiomas = {
-        es: "🇪🇸 Español",
-        en: "🇬🇧 English",
-        fr: "🇫🇷 Français",
-        de: "🇩🇪 Deutsch"
+
+        es: `
+            <span class="flag">🇪🇸</span>
+            Español
+        `,
+
+        en: `
+            <span class="flag">🇬🇧</span>
+            English
+        `,
+
+        fr: `
+            <span class="flag">🇫🇷</span>
+            Français
+        `,
+
+        de: `
+            <span class="flag">🇩🇪</span>
+            Deutsch
+        `
     };
 
-    selectedLanguage.textContent =
+    selectedLanguage.innerHTML =
         idiomas[getLanguage()];
 
     customSelect
@@ -475,14 +504,25 @@ function initPerfil(user) {
             const lang =
                 option.dataset.lang;
 
-            selectedLanguage.textContent =
+            selectedLanguage.innerHTML =
                 idiomas[lang];
 
             setLanguage(lang);
 
+            renderPerfil(app);
+
             optionsContainer
                 .classList.add("hidden");
         });
+    });
+
+    document.addEventListener("click", (e) => {
+
+        if (!customSelect.contains(e.target)) {
+
+            optionsContainer
+                .classList.add("hidden");
+        }
     });
 }
 
