@@ -348,5 +348,11 @@ export default {
         "Cette semaine",
 
     older:
-        "Plus anciens"
+        "Plus anciens",
+
+    analysisStats:
+        "Analyse et statistiques",
+
+    analysisSubtitle:
+        "Visualise les tendances et les émotions"
 };

@@ -349,5 +349,11 @@ export default {
         "Diese Woche",
 
     older:
-        "Älter"
+        "Älter",
+
+    analysisStats:
+        "Analyse und Statistiken",
+
+    analysisSubtitle:
+        "Visualisiere emotionale Trends und Muster"
 };
