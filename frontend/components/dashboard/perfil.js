@@ -7,6 +7,32 @@ import {
 } from "../../services/i18n.js";
 
 export async function renderPerfil(app) {
+    app.innerHTML = `
+
+<div class="perfil-page">
+
+    <div class="perfil-skeleton">
+
+        <div class="skeleton skeleton-hero"></div>
+
+        <div class="skeleton skeleton-progress"></div>
+
+        <div class="skeleton-grid">
+
+            <div class="skeleton skeleton-card"></div>
+
+            <div class="skeleton skeleton-card"></div>
+
+            <div class="skeleton skeleton-card"></div>
+
+            <div class="skeleton skeleton-card"></div>
+
+        </div>
+
+    </div>
+
+</div>
+`;
 
     const user = getUser();
 

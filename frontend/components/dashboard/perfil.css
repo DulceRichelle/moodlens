@@ -766,3 +766,68 @@ body {
 
     opacity: 0.92;
 }
+
+.perfil-skeleton {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+.skeleton {
+
+    border-radius: 28px;
+
+    background:
+            linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.7) 25%,
+                    rgba(255,255,255,0.95) 50%,
+                    rgba(255,255,255,0.7) 75%
+            );
+
+    background-size: 200% 100%;
+
+    animation:
+            skeletonLoading 1.3s infinite;
+}
+
+.skeleton-hero {
+
+    height: 180px;
+}
+
+.skeleton-progress {
+
+    height: 170px;
+}
+
+.skeleton-grid {
+
+    display: grid;
+
+    grid-template-columns:
+            repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 20px;
+}
+
+.skeleton-card {
+
+    height: 260px;
+}
+
+@keyframes skeletonLoading {
+
+    0% {
+
+        background-position: 200% 0;
+    }
+
+    100% {
+
+        background-position: -200% 0;
+    }
+}
