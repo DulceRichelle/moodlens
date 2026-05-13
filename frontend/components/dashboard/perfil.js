@@ -27,9 +27,6 @@ export async function renderPerfil(app) {
 
     const totalRegistros = registros.length;
 
-    const emocionFrecuente =
-        obtenerEmocionFrecuente(registros);
-
     const diasActivos =
         calcularDiasActivos(registros);
 
@@ -83,22 +80,6 @@ export async function renderPerfil(app) {
         </div>
 
         <div class="stats-grid">
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    📝
-                </div>
-
-                <h2>
-                    ${totalRegistros}
-                </h2>
-
-                <p>
-                    ${t("moodRecords")}
-                </p>
-
-            </div>
 
             <div class="stat-card">
 
@@ -501,50 +482,6 @@ function calcularDiasActivos(registros) {
     ];
 
     return dias.length;
-}
-
-function obtenerEmocionFrecuente(registros) {
-
-    if (!registros.length) {
-
-        return {
-
-            nombre: t("noData"),
-
-            icono: "🫶"
-        };
-    }
-
-    const contador = {};
-
-    registros.forEach(r => {
-
-        contador[r.nombre_emocion] =
-            (contador[r.nombre_emocion] || 0) + 1;
-    });
-
-    const top =
-        Object.keys(contador)
-            .reduce((a, b) =>
-
-                contador[a] > contador[b]
-                    ? a
-                    : b
-            );
-
-    const encontrado =
-        registros.find(r =>
-
-            r.nombre_emocion === top
-        );
-
-    return {
-
-        nombre: top,
-
-        icono:
-            encontrado?.icono || "✨"
-    };
 }
 
 function mostrarToast(msg) {

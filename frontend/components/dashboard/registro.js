@@ -382,9 +382,9 @@ async function cargarEstadisticas() {
 
         document.getElementById("frecuente")
             .textContent =
-            capitalizar(
-                data.emocion_frecuente || "N/A"
-            );
+            traducirEmocion(
+                data.emocion_frecuente
+            ) || "N/A"
 
         document.getElementById("semana")
             .textContent =
@@ -544,4 +544,22 @@ function mostrarToast(mensaje) {
         }, 400);
 
     }, 2600);
+}
+
+function traducirEmocion(emocion) {
+
+    const mapa = {
+
+        feliz: t("happy"),
+
+        tranquilo: t("calm"),
+
+        neutral: t("neutral"),
+
+        triste: t("sad"),
+
+        ansioso: t("anxious")
+    };
+
+    return mapa[emocion?.toLowerCase()] || emocion;
 }

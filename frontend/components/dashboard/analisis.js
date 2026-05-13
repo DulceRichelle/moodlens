@@ -177,11 +177,8 @@ function calcularEstadisticas(data) {
         "promedio"
     ).textContent = `${promedio}/10`;
 
-    document.getElementById(
-        "frecuente"
-    ).textContent =
+    document.getElementById("frecuente").textContent =
         traducirEmocion(frecuente);
-
     document.getElementById(
         "semana"
     ).textContent = semana;
