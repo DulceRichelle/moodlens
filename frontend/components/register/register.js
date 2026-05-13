@@ -7,18 +7,35 @@ export function renderRegister(app) {
 
 <div class="auth-container">
 
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
     <button class="back" onclick="navigate('home')">
-        ← ${t("back")}
+
+        <span class="back-arrow">←</span>
+
+        ${t("back")}
+
     </button>
 
     <div class="auth-card">
 
-        <img src="assets/logo.png" class="logo"/>
+        <div class="card-glow"></div>
 
-        <h2>${t("registerTitle")}</h2>
+        <img
+            src="assets/logo.png"
+            class="logo"
+        />
+
+        <h2>
+            ${t("registerTitle")}
+        </h2>
 
         <p class="subtitle">
+
             ${t("registerSubtitle")}
+
         </p>
 
         <div class="input-group">
@@ -115,11 +132,23 @@ export function renderRegister(app) {
 
         </div>
 
-        <div class="error"></div>
-        <div class="success"></div>
+        <div class="message-area">
 
-        <button class="btn-main" id="registerBtn">
-            ${t("createAccount")}
+            <div class="error"></div>
+
+            <div class="success"></div>
+
+        </div>
+
+        <button
+            class="btn-main"
+            id="registerBtn"
+        >
+
+            <span class="btn-text">
+                ${t("createAccount")}
+            </span>
+
         </button>
 
         <p class="switch">
@@ -127,7 +156,9 @@ export function renderRegister(app) {
             ${t("alreadyAccount")}
 
             <span onclick="navigate('login')">
+
                 ${t("loginHere")}
+
             </span>
 
         </p>
@@ -139,7 +170,10 @@ export function renderRegister(app) {
 
     document
         .getElementById('registerBtn')
-        .addEventListener('click', handleRegister);
+        .addEventListener(
+            'click',
+            handleRegister
+        );
 
     initPasswordToggles();
 }
@@ -158,47 +192,74 @@ function initPasswordToggles() {
     const toggleConfirm =
         document.getElementById("toggleConfirmPassword");
 
-    togglePassword.addEventListener("click", () => {
+    togglePassword.addEventListener(
+        "click",
+        () => {
 
-        const isPassword =
-            passwordInput.type === "password";
+            const isPassword =
+                passwordInput.type === "password";
 
-        passwordInput.type =
-            isPassword ? "text" : "password";
+            passwordInput.type =
+                isPassword
+                    ? "text"
+                    : "password";
 
-        togglePassword.textContent =
-            isPassword ? "🙈" : "👁️";
-    });
+            togglePassword.textContent =
+                isPassword
+                    ? "🙈"
+                    : "👁️";
+        }
+    );
 
-    toggleConfirm.addEventListener("click", () => {
+    toggleConfirm.addEventListener(
+        "click",
+        () => {
 
-        const isPassword =
-            confirmInput.type === "password";
+            const isPassword =
+                confirmInput.type === "password";
 
-        confirmInput.type =
-            isPassword ? "text" : "password";
+            confirmInput.type =
+                isPassword
+                    ? "text"
+                    : "password";
 
-        toggleConfirm.textContent =
-            isPassword ? "🙈" : "👁️";
-    });
+            toggleConfirm.textContent =
+                isPassword
+                    ? "🙈"
+                    : "👁️";
+        }
+    );
 }
 
 async function handleRegister() {
 
     const nombre =
-        document.getElementById('nombre').value.trim();
+        document
+            .getElementById('nombre')
+            .value
+            .trim();
 
     const email =
-        document.getElementById('email').value.trim();
+        document
+            .getElementById('email')
+            .value
+            .trim();
 
     const password =
-        document.getElementById('password').value;
+        document
+            .getElementById('password')
+            .value;
 
     const confirmPassword =
-        document.getElementById('confirmPassword').value;
+        document
+            .getElementById('confirmPassword')
+            .value;
 
     const registerBtn =
         document.getElementById('registerBtn');
+
+    const btnText =
+        registerBtn.querySelector(".btn-text");
 
     const errorBox =
         document.querySelector('.error');
@@ -246,7 +307,11 @@ async function handleRegister() {
 
         registerBtn.disabled = true;
 
-        registerBtn.textContent =
+        registerBtn.classList.add(
+            "loading"
+        );
+
+        btnText.textContent =
             t("creatingAccount");
 
         const res = await fetch(
@@ -255,7 +320,8 @@ async function handleRegister() {
                 method: 'POST',
 
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type':
+                        'application/json'
                 },
 
                 body: JSON.stringify({
@@ -266,42 +332,54 @@ async function handleRegister() {
             }
         );
 
-        const data = await res.json();
+        const data =
+            await res.json();
 
         if (!res.ok) {
 
             registerBtn.disabled = false;
 
-            registerBtn.textContent =
+            registerBtn.classList.remove(
+                "loading"
+            );
+
+            btnText.textContent =
                 t("createAccount");
 
             return showError(
-                data.message || t("registerError")
+                data.message ||
+                t("registerError")
             );
         }
 
-        const usuarioGuardado = data.user;
-
         localStorage.setItem(
             'user',
-            JSON.stringify(usuarioGuardado)
+            JSON.stringify(data.user)
         );
 
         showSuccess(
             t("registerSuccess")
         );
 
+        document.body.classList.add(
+            "page-leave"
+        );
+
         setTimeout(() => {
 
             navigate('dashboard');
 
-        }, 1200);
+        }, 900);
 
     } catch (error) {
 
         registerBtn.disabled = false;
 
-        registerBtn.textContent =
+        registerBtn.classList.remove(
+            "loading"
+        );
+
+        btnText.textContent =
             t("createAccount");
 
         showError(
@@ -317,10 +395,12 @@ function validateEmail(email) {
 
 function showError(msg) {
 
-    document.querySelector('.error').textContent = msg;
+    document.querySelector('.error')
+        .textContent = msg;
 }
 
 function showSuccess(msg) {
 
-    document.querySelector('.success').textContent = msg;
+    document.querySelector('.success')
+        .textContent = msg;
 }

@@ -213,8 +213,10 @@ body::before {
 
     z-index: 999;
 
+    transform-origin: top;
+
     animation:
-            dropdownReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            dropdownReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .option {
@@ -246,6 +248,15 @@ body::before {
     font-size: 18px;
 
     color: rgba(255,255,255,0.82);
+
+    transition:
+            transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arrow.rotate {
+
+    transform:
+            rotate(180deg);
 }
 
 .flag {
@@ -729,21 +740,37 @@ body::before {
     .hero {
 
         padding:
-                60px 18px 130px;
+                54px 18px 120px;
     }
 
     .logo {
 
-        width: 110px;
+        width: 96px;
 
-        border-radius: 26px;
+        border-radius: 24px;
+
+        margin-bottom: 22px;
+    }
+
+    .hero h1 {
+
+        font-size:
+                clamp(2.3rem, 9vw, 4rem);
+
+        letter-spacing: -2px;
+
+        line-height: 1;
     }
 
     .subtitle {
 
-        margin-bottom: 34px;
+        font-size: 0.95rem;
 
-        line-height: 1.7;
+        line-height: 1.65;
+
+        margin-bottom: 30px;
+
+        max-width: 95%;
     }
 
     .buttons {
@@ -751,6 +778,8 @@ body::before {
         width: 100%;
 
         flex-direction: column;
+
+        gap: 14px;
     }
 
     .btn-primary,
@@ -758,11 +787,13 @@ body::before {
 
         width: 100%;
 
-        max-width: 320px;
+        max-width: 280px;
 
-        height: 58px;
+        height: 52px;
 
-        border-radius: 18px;
+        border-radius: 16px;
+
+        font-size: 0.92rem;
     }
 
     .features {
@@ -770,57 +801,76 @@ body::before {
         padding:
                 0 16px 50px;
 
-        margin-top: -60px;
+        margin-top: -55px;
 
-        gap: 18px;
+        gap: 16px;
     }
 
     .card {
 
-        padding: 24px;
+        padding: 22px;
 
-        border-radius: 26px;
+        border-radius: 24px;
 
         min-height: auto;
     }
 
     .card h3 {
 
-        font-size: 1.25rem;
+        font-size: 1.08rem;
+
+        margin:
+                18px 0 10px;
     }
 
     .card p {
 
-        font-size: 0.95rem;
+        font-size: 0.88rem;
+
+        line-height: 1.6;
     }
 
     .icon {
 
-        width: 56px;
-        height: 56px;
+        width: 50px;
+        height: 50px;
 
-        border-radius: 18px;
+        border-radius: 16px;
 
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .language-selector {
 
-        top: 14px;
-        right: 14px;
+        top: 12px;
+        right: 12px;
     }
 
     .custom-select {
 
-        width: 170px;
+        width: 155px;
     }
 
     .select-selected {
 
         padding:
-                10px 14px;
+                9px 12px;
+
+        font-size: 12px;
+
+        border-radius: 14px;
+    }
+
+    .option {
 
         font-size: 13px;
+
+        padding: 12px;
+    }
+
+    .flag {
+
+        font-size: 14px;
     }
 }
 
@@ -829,54 +879,115 @@ body::before {
     .hero {
 
         padding:
-                40px 14px 110px;
+                34px 14px 95px;
     }
 
     .logo {
 
-        width: 90px;
+        width: 78px;
 
-        border-radius: 22px;
+        border-radius: 20px;
+
+        margin-bottom: 18px;
+    }
+
+    .hero h1 {
+
+        font-size:
+                clamp(2rem, 10vw, 3rem);
+
+        letter-spacing: -1.5px;
+    }
+
+    .subtitle {
+
+        font-size: 0.84rem;
+
+        line-height: 1.55;
+
+        margin-bottom: 24px;
     }
 
     .btn-primary,
     .btn-secondary {
 
-        height: 54px;
+        height: 48px;
 
-        font-size: 0.95rem;
+        font-size: 0.84rem;
+
+        border-radius: 14px;
+
+        max-width: 240px;
     }
 
     .features {
 
         padding:
-                0 14px 40px;
+                0 12px 34px;
+
+        gap: 14px;
     }
 
     .card {
 
-        padding: 22px;
+        padding: 18px;
+
+        border-radius: 20px;
     }
-}
 
-.arrow {
+    .card h3 {
 
-    transition:
-            transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
+        font-size: 0.98rem;
+    }
 
-.arrow.rotate {
+    .card p {
 
-    transform:
-            rotate(180deg);
-}
+        font-size: 0.8rem;
 
-.select-options {
+        line-height: 1.5;
+    }
 
-    transform-origin: top;
+    .icon {
 
-    animation:
-            dropdownReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        width: 44px;
+        height: 44px;
+
+        border-radius: 14px;
+
+        font-size: 1.05rem;
+    }
+
+    .custom-select {
+
+        width: 145px;
+    }
+
+    .select-selected {
+
+        font-size: 11px;
+
+        padding:
+                8px 10px;
+    }
+
+    .option {
+
+        font-size: 12px;
+
+        padding: 10px;
+    }
+
+    .arrow {
+
+        font-size: 14px;
+    }
+
+    .flag {
+
+        margin-right: 6px;
+
+        font-size: 12px;
+    }
 }
 
 .page-transition .hero,
