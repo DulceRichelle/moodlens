@@ -505,7 +505,10 @@ export default {
 
     wellbeingDesc:
         "Dormir y cuidarte también impacta tus emociones.",
-
+    analysis: "Análisis",
+    history: "Historial",
+    tips: "Consejos",
+    profile: "Perfil",
     yourProgress: "Tu progreso",
     consistency: "Constancia",
     totalEntries: "Registros totales",
