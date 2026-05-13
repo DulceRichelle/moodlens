@@ -9,7 +9,7 @@ import {
 export async function renderPerfil(app) {
     app.innerHTML = `
 
-<div class="perfil-page">
+<div class="perfil-page fade-in">
 
     <div class="perfil-skeleton">
 
@@ -115,7 +115,7 @@ export async function renderPerfil(app) {
 
     <div class="progress-grid">
 
-        <div class="mini-progress">
+        <div class="mini-progress scale-in">
 
             <h3>
                 ${diasActivos}
@@ -127,7 +127,7 @@ export async function renderPerfil(app) {
 
         </div>
 
-        <div class="mini-progress">
+        <div class="mini-progress scale-in">
 
             <h3>
                 ${calcularConstancia(diasActivos)}%
@@ -139,7 +139,7 @@ export async function renderPerfil(app) {
 
         </div>
 
-        <div class="mini-progress">
+        <div class="mini-progress scale-in">
 
             <h3>
                 ${registros.length}
@@ -151,7 +151,7 @@ export async function renderPerfil(app) {
 
         </div>
 
-        <div class="mini-progress">
+        <div class="mini-progress scale-in">
 
             <h3>
                 ${obtenerEmocionTop(registros)}
@@ -169,7 +169,7 @@ export async function renderPerfil(app) {
 
         <div class="perfil-grid">
 
-            <div class="perfil-card">
+           <div class="perfil-card slide-up">
 
                 <h2>
                     👤 ${t("account")}
@@ -214,7 +214,7 @@ export async function renderPerfil(app) {
 
             </div>
 
-            <div class="perfil-card">
+            <div class="perfil-card slide-up">
 
                 <h2>
                     ⚙ ${t("preferences")}
@@ -355,7 +355,7 @@ export async function renderPerfil(app) {
 
             </div>
 
-            <div class="perfil-card">
+            <div class="perfil-card slide-up">
 
                 <h2>
                     💌 ${t("support")}

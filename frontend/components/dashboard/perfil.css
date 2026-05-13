@@ -170,8 +170,6 @@ body {
     font-size: 15px;
 }
 
-/* GRID */
-
 .perfil-grid {
 
     display: grid;
@@ -182,9 +180,10 @@ body {
     gap: 24px;
 }
 
-/* CARD */
-
 .perfil-card {
+    transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
 
     background: white;
 
@@ -194,6 +193,15 @@ body {
 
     box-shadow:
             0 12px 28px rgba(0,0,0,0.07);
+}
+
+.perfil-card:hover {
+
+    transform:
+            translateY(-4px);
+
+    box-shadow:
+            0 18px 40px rgba(0,0,0,0.10);
 }
 
 .perfil-card h2 {
