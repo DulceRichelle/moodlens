@@ -97,28 +97,6 @@ export async function renderPerfil(app) {
 
             </div>
 
-            <div class="stat-card">
-
-                <div class="stat-icon">
-
-                    ${emocionFrecuente.icono}
-
-                </div>
-
-                <h2>
-
-                    ${emocionFrecuente.nombre}
-
-                </h2>
-
-                <p>
-
-                    ${t("mostFrequentEmotion")}
-
-                </p>
-
-            </div>
-
         </div>
 
         <div class="perfil-grid">

@@ -125,10 +125,6 @@ export function renderDashboard(app) {
     window.cargarVista = cargarVista;
     window.toggleSidebar = toggleSidebar;
     window.handleLogout = handleLogout;
-    window.refreshApp = () => {
-
-        renderDashboard(app);
-    };
     cargarVista('registro');
 }
 
