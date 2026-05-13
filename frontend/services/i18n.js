@@ -26,7 +26,10 @@ export function setLanguage(lang) {
         lang
     );
 
-    window.location.reload();
+    if (window.refreshApp) {
+
+        window.refreshApp();
+    }
 }
 
 export function t(key) {
