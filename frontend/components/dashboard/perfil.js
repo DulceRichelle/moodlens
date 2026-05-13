@@ -25,8 +25,6 @@ export async function renderPerfil(app) {
         console.log(error);
     }
 
-    const totalRegistros = registros.length;
-
     const diasActivos =
         calcularDiasActivos(registros);
 
@@ -160,25 +158,41 @@ export async function renderPerfil(app) {
 
                     </label>
 
-                    <select id="languageSelect">
+                    <div class="custom-select" id="customSelect">
 
-                        <option value="es">
-                            🇪🇸 Español
-                        </option>
+                        <div class="select-selected">
 
-                        <option value="en">
-                            🇬🇧 English
-                        </option>
+                            <span id="selectedLanguage">
+                                🇪🇸 Español
+                            </span>
 
-                        <option value="fr">
-                            🇫🇷 Français
-                        </option>
+                            <span class="arrow">
+                                ⌄
+                            </span>
 
-                        <option value="de">
-                            🇩🇪 Deutsch
-                        </option>
+                        </div>
 
-                    </select>
+                        <div class="select-options hidden">
+
+                            <div class="option" data-lang="es">
+                                🇪🇸 Español
+                            </div>
+
+                            <div class="option" data-lang="en">
+                                🇬🇧 English
+                            </div>
+
+                            <div class="option" data-lang="fr">
+                                🇫🇷 Français
+                            </div>
+
+                            <div class="option" data-lang="de">
+                                🇩🇪 Deutsch
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -424,25 +438,52 @@ function initPerfil(user) {
         );
     }
 
-    const languageSelect =
-        document.getElementById("languageSelect");
+    const customSelect =
+        document.getElementById("customSelect");
 
-    if (languageSelect) {
+    const selectedLanguage =
+        document.getElementById("selectedLanguage");
 
-        languageSelect.value =
-            getLanguage();
+    const options =
+        document.querySelectorAll(".option");
 
-        languageSelect.addEventListener(
-            "change",
-            (e) => {
+    const optionsContainer =
+        document.querySelector(".select-options");
 
-                setLanguage(
-                    e.target.value
-                );
+    const idiomas = {
+        es: "🇪🇸 Español",
+        en: "🇬🇧 English",
+        fr: "🇫🇷 Français",
+        de: "🇩🇪 Deutsch"
+    };
 
-            }
-        );
-    }
+    selectedLanguage.textContent =
+        idiomas[getLanguage()];
+
+    customSelect
+        .querySelector(".select-selected")
+        .addEventListener("click", () => {
+
+            optionsContainer
+                .classList.toggle("hidden");
+        });
+
+    options.forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            const lang =
+                option.dataset.lang;
+
+            selectedLanguage.textContent =
+                idiomas[lang];
+
+            setLanguage(lang);
+
+            optionsContainer
+                .classList.add("hidden");
+        });
+    });
 }
 
 function calcularDiasActivos(registros) {

@@ -602,3 +602,93 @@ body {
         padding: 14px;
     }
 }
+
+.custom-select {
+
+    position: relative;
+
+    width: 100%;
+}
+
+.select-selected {
+
+    width: 100%;
+
+    background: #F8FAFC;
+
+    border: 1px solid #D9E1DD;
+
+    border-radius: 16px;
+
+    padding: 14px 16px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    color: #2F2A68;
+
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+.select-selected:hover {
+
+    border-color: #49C7E7;
+}
+
+.select-options {
+
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    left: 0;
+
+    width: 100%;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 8px;
+
+    box-shadow:
+            0 12px 30px rgba(0,0,0,0.08);
+
+    z-index: 999;
+}
+
+.option {
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    font-size: 15px;
+
+    color: #2F2A68;
+}
+
+.option:hover {
+
+    background: #EEF4FF;
+}
+
+.arrow {
+
+    font-size: 18px;
+
+    color: #6D6795;
+}
