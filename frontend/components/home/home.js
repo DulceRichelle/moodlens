@@ -29,31 +29,23 @@ export function renderHome(app) {
             <div class="select-options hidden" id="optionsContainer">
 
                 <div class="option" data-lang="es">
-
                     <span class="flag">🇪🇸</span>
                     Español
-
                 </div>
 
                 <div class="option" data-lang="en">
-
                     <span class="flag">🇬🇧</span>
                     English
-
                 </div>
 
                 <div class="option" data-lang="fr">
-
                     <span class="flag">🇫🇷</span>
                     Français
-
                 </div>
 
                 <div class="option" data-lang="de">
-
                     <span class="flag">🇩🇪</span>
                     Deutsch
-
                 </div>
 
             </div>
@@ -67,6 +59,7 @@ export function renderHome(app) {
         <img
             src="assets/logo.png"
             class="logo"
+            alt="MoodLens Logo"
         />
 
         <h1>
@@ -74,9 +67,7 @@ export function renderHome(app) {
         </h1>
 
         <p class="subtitle">
-
             ${t("homeSubtitle")}
-
         </p>
 
         <div class="buttons">
@@ -168,7 +159,9 @@ export function renderHome(app) {
     </section>
     `;
 
-    initLanguageSelector(app);
+    requestAnimationFrame(() => {
+        initLanguageSelector(app);
+    });
 }
 
 function initLanguageSelector(app) {
@@ -219,7 +212,9 @@ function initLanguageSelector(app) {
 
     selectSelected.addEventListener(
         "click",
-        () => {
+        (e) => {
+
+            e.stopPropagation();
 
             optionsContainer
                 .classList.toggle("hidden");
@@ -238,8 +233,18 @@ function initLanguageSelector(app) {
                 const lang =
                     option.dataset.lang;
 
-                selectedLanguage.innerHTML =
-                    idiomas[lang];
+                if (lang === getLanguage()) {
+
+                    optionsContainer
+                        .classList.add("hidden");
+
+                    selectArrow
+                        .classList.remove("rotate");
+
+                    return;
+                }
+
+                setLanguage(lang);
 
                 optionsContainer
                     .classList.add("hidden");
@@ -247,22 +252,15 @@ function initLanguageSelector(app) {
                 selectArrow
                     .classList.remove("rotate");
 
-                document.body.classList.add(
-                    "page-transition"
-                );
-
-                setTimeout(() => {
-
-                    setLanguage(lang);
+                requestAnimationFrame(() => {
 
                     renderHome(app);
 
                     window.scrollTo({
                         top: 0,
-                        behavior: "smooth"
+                        behavior: "instant"
                     });
-
-                }, 180);
+                });
             }
         );
     });
@@ -281,6 +279,7 @@ function initLanguageSelector(app) {
                 selectArrow
                     .classList.remove("rotate");
             }
-        }
+        },
+        { once: true }
     );
 }
