@@ -7,17 +7,41 @@ export function renderHome(app) {
 
     <div class="language-selector">
 
-        <select id="languageSelect">
+        <div class="custom-select" id="customSelect">
 
-            <option value="es">🇪🇸 Español</option>
+            <div class="select-selected">
 
-            <option value="en">🇬🇧 English</option>
+                <span id="selectedLanguage">
+                    🇪🇸 Español
+                </span>
 
-            <option value="fr">🇫🇷 Français</option>
+                <span class="arrow">
+                    ⌄
+                </span>
 
-            <option value="de">🇩🇪 Deutsch</option>
+            </div>
 
-        </select>
+            <div class="select-options hidden">
+
+                <div class="option" data-lang="es">
+                    🇪🇸 Español
+                </div>
+
+                <div class="option" data-lang="en">
+                    🇬🇧 English
+                </div>
+
+                <div class="option" data-lang="fr">
+                    🇫🇷 Français
+                </div>
+
+                <div class="option" data-lang="de">
+                    🇩🇪 Deutsch
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -104,19 +128,66 @@ export function renderHome(app) {
     </section>
     `;
 
-    const languageSelect =
-        document.getElementById("languageSelect");
+    initLanguageSelector(app);
+}
 
-    languageSelect.value =
-        getLanguage();
+function initLanguageSelector(app) {
 
-    languageSelect.addEventListener(
-        "change",
-        (e) => {
+    const customSelect =
+        document.getElementById("customSelect");
 
-            setLanguage(e.target.value);
+    const selectedLanguage =
+        document.getElementById("selectedLanguage");
+
+    const options =
+        document.querySelectorAll(".option");
+
+    const optionsContainer =
+        document.querySelector(".select-options");
+
+    const idiomas = {
+        es: "🇪🇸 Español",
+        en: "🇬🇧 English",
+        fr: "🇫🇷 Français",
+        de: "🇩🇪 Deutsch"
+    };
+
+    selectedLanguage.textContent =
+        idiomas[getLanguage()];
+
+    customSelect
+        .querySelector(".select-selected")
+        .addEventListener("click", () => {
+
+            optionsContainer
+                .classList.toggle("hidden");
+        });
+
+    options.forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            const lang =
+                option.dataset.lang;
+
+            selectedLanguage.textContent =
+                idiomas[lang];
+
+            setLanguage(lang);
 
             renderHome(app);
+
+            optionsContainer
+                .classList.add("hidden");
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+
+        if (!customSelect.contains(e.target)) {
+
+            optionsContainer
+                .classList.add("hidden");
         }
-    );
+    });
 }

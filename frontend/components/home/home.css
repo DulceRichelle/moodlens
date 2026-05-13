@@ -612,7 +612,14 @@ body::before {
     z-index: 2000;
 }
 
-.language-selector select {
+.custom-select {
+
+    position: relative;
+
+    width: 190px;
+}
+
+.select-selected {
 
     background:
             rgba(255,255,255,0.14);
@@ -633,22 +640,75 @@ body::before {
 
     font-weight: 600;
 
-    outline: none;
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
 
     cursor: pointer;
 
     transition: 0.25s ease;
 }
 
-.language-selector select:hover {
+.select-selected:hover {
 
     background:
             rgba(255,255,255,0.2);
 }
 
-.language-selector option {
+.select-options {
 
-    color: black;
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    left: 0;
+
+    width: 100%;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 8px;
+
+    box-shadow:
+            0 12px 30px rgba(0,0,0,0.08);
+
+    z-index: 999;
+}
+
+.option {
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    font-size: 15px;
+
+    color: #2F2A68;
+}
+
+.option:hover {
+
+    background: #EEF4FF;
+}
+
+.arrow {
+
+    font-size: 18px;
+
+    color: rgba(255,255,255,0.8);
+}
+
+.hidden {
+
+    display: none;
 }
 
 @media (max-width: 768px) {
@@ -659,7 +719,12 @@ body::before {
         right: 14px;
     }
 
-    .language-selector select {
+    .custom-select {
+
+        width: 170px;
+    }
+
+    .select-selected {
 
         padding:
                 10px 14px;
