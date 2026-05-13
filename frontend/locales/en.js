@@ -354,5 +354,155 @@ export default {
         "Analysis and statistics",
 
     analysisSubtitle:
-        "Visualize trends and emotional patterns"
+        "Visualize trends and emotional patterns",
+
+    tipsForYou:
+        "Tips for you",
+
+    tipsSubtitle:
+        "Based on your recent emotional activity",
+
+    personalizedTip:
+        "Personalized tip",
+
+    wellnessTips:
+        "Wellness recommendations",
+
+    anxiousTitle:
+        "Reduce overstimulation",
+
+    anxiousDesc:
+        "Your recent activity shows quite a bit of anxiety. Try reducing stimulation, breathing deeply and giving yourself real breaks during the day.",
+
+    sadTitle:
+        "Reconnect with yourself slowly",
+
+    sadDesc:
+        "You’ve been experiencing heavier emotions lately. Try going outside, listening to calm music and talking to someone close to you.",
+
+    happyTitle:
+        "Keep that positive energy",
+
+    happyDesc:
+        "Your emotional state seems quite positive. Use this energy to strengthen healthy habits and enjoy small moments.",
+
+    calmTitle:
+        "Protect your calm",
+
+    calmDesc:
+        "Your emotional stability is valuable. Maintain peaceful spaces, proper rest and time for yourself.",
+
+    neutralTitle:
+        "Listen to how you feel",
+
+    neutralDesc:
+        "Even without intense emotions, continue connecting with yourself and paying attention to your emotional wellbeing.",
+
+    emotionalActivity:
+        "Emotional activity",
+
+    youRegistered:
+        "You registered",
+
+    emotionsInMoodlens:
+        "emotions in MoodLens.",
+
+    yourAverageIntensity:
+        "Your average emotional intensity is",
+
+    selfCare:
+        "Self-care",
+
+    selfCareDesc:
+        "Tracking your emotions regularly helps you understand yourself better.",
+
+    breathing:
+        "Breathing",
+
+    breathingDesc:
+        "Inhale slowly for 4 seconds and exhale for 6.",
+
+    disconnect:
+        "Disconnect",
+
+    disconnectDesc:
+        "Reduce social media during anxious moments.",
+
+    rest:
+        "Rest",
+
+    restDesc:
+        "Sleeping better can help regulate intense emotions.",
+
+    sunlight:
+        "Sunlight",
+
+    sunlightDesc:
+        "Going outside can improve your mood.",
+
+    music:
+        "Music",
+
+    musicDesc:
+        "Listen to songs that bring you calm.",
+
+    connection:
+        "Connection",
+
+    connectionDesc:
+        "Talking to someone close can help a lot.",
+
+    gratitude:
+        "Gratitude",
+
+    gratitudeDesc:
+        "Write down positive things you want to remember.",
+
+    moments:
+        "Moments",
+
+    momentsDesc:
+        "Keep memories of happy moments.",
+
+    habits:
+        "Habits",
+
+    habitsDesc:
+        "Maintain routines that make you feel good.",
+
+    meditation:
+        "Meditation",
+
+    meditationDesc:
+        "Spend a few minutes in silence and calm.",
+
+    slowTime:
+        "Slow time",
+
+    slowTimeDesc:
+        "Reading or walking can help maintain stability.",
+
+    breaks:
+        "Breaks",
+
+    breaksDesc:
+        "Don’t forget to rest even on calm days.",
+
+    listenToYourself:
+        "Listen to yourself",
+
+    listenToYourselfDesc:
+        "Ask yourself how you truly feel.",
+
+    reflection:
+        "Reflection",
+
+    reflectionDesc:
+        "Writing thoughts helps you connect with yourself.",
+
+    wellbeing:
+        "Wellbeing",
+
+    wellbeingDesc:
+        "Sleeping and taking care of yourself also impacts your emotions."
 };

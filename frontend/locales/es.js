@@ -355,4 +355,154 @@ export default {
 
     analysisSubtitle:
         "Visualiza tendencias y patrones de tus emociones",
+
+    tipsForYou:
+        "Consejos para ti",
+
+    tipsSubtitle:
+        "Basados en tu actividad emocional reciente",
+
+    personalizedTip:
+        "Consejo personalizado",
+
+    wellnessTips:
+        "Recomendaciones de bienestar",
+
+    anxiousTitle:
+        "Reduce la sobreestimulación",
+
+    anxiousDesc:
+        "Tu actividad reciente muestra bastante ansiedad. Intenta reducir estímulos, respirar profundamente y darte pausas reales durante el día.",
+
+    sadTitle:
+        "Reconecta contigo poco a poco",
+
+    sadDesc:
+        "Has tenido emociones más pesadas últimamente. Intenta salir al exterior, escuchar música tranquila y hablar con alguien cercano.",
+
+    happyTitle:
+        "Mantén esa energía positiva",
+
+    happyDesc:
+        "Tu estado emocional parece bastante positivo. Aprovecha esta energía para fortalecer hábitos saludables y disfrutar pequeños momentos.",
+
+    calmTitle:
+        "Protege tu calma",
+
+    calmDesc:
+        "Tu estabilidad emocional es valiosa. Mantén espacios tranquilos, descanso adecuado y tiempo para ti.",
+
+    neutralTitle:
+        "Escucha cómo te sientes",
+
+    neutralDesc:
+        "Aunque no haya emociones intensas, sigue conectando contigo y prestando atención a tu bienestar emocional.",
+
+    emotionalActivity:
+        "Actividad emocional",
+
+    youRegistered:
+        "Has registrado",
+
+    emotionsInMoodlens:
+        "emociones en MoodLens.",
+
+    yourAverageIntensity:
+        "Tu intensidad emocional promedio es",
+
+    selfCare:
+        "Autocuidado",
+
+    selfCareDesc:
+        "Registrar tus emociones regularmente ayuda a conocerte mejor.",
+
+    breathing:
+        "Respiración",
+
+    breathingDesc:
+        "Inhala lentamente durante 4 segundos y exhala durante 6.",
+
+    disconnect:
+        "Desconexión",
+
+    disconnectDesc:
+        "Reduce redes sociales durante momentos de ansiedad.",
+
+    rest:
+        "Descanso",
+
+    restDesc:
+        "Dormir mejor puede ayudarte a regular emociones intensas.",
+
+    sunlight:
+        "Luz solar",
+
+    sunlightDesc:
+        "Salir al exterior puede mejorar tu estado de ánimo.",
+
+    music:
+        "Música",
+
+    musicDesc:
+        "Escucha canciones que te transmitan calma.",
+
+    connection:
+        "Conexión",
+
+    connectionDesc:
+        "Hablar con alguien cercano puede ayudarte mucho.",
+
+    gratitude:
+        "Gratitud",
+
+    gratitudeDesc:
+        "Escribe cosas positivas que quieras recordar.",
+
+    moments:
+        "Momentos",
+
+    momentsDesc:
+        "Guarda recuerdos de los momentos felices.",
+
+    habits:
+        "Hábitos",
+
+    habitsDesc:
+        "Mantén las rutinas que te hacen sentir bien.",
+
+    meditation:
+        "Meditación",
+
+    meditationDesc:
+        "Dedica unos minutos al silencio y la calma.",
+
+    slowTime:
+        "Tiempo lento",
+
+    slowTimeDesc:
+        "Leer o caminar puede ayudarte a mantener estabilidad.",
+
+    breaks:
+        "Pausas",
+
+    breaksDesc:
+        "No olvides descansar incluso en días tranquilos.",
+
+    listenToYourself:
+        "Escúchate",
+
+    listenToYourselfDesc:
+        "Pregúntate cómo te sientes realmente.",
+
+    reflection:
+        "Reflexión",
+
+    reflectionDesc:
+        "Escribir pensamientos ayuda a conectar contigo.",
+
+    wellbeing:
+        "Bienestar",
+
+    wellbeingDesc:
+        "Dormir y cuidarte también impacta tus emociones."
 };

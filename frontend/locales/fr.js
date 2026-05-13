@@ -354,5 +354,17 @@ export default {
         "Analyse et statistiques",
 
     analysisSubtitle:
-        "Visualise les tendances et les émotions"
+        "Visualise les tendances et les émotions",
+
+    tipsForYou:
+        "Conseils pour toi",
+
+    tipsSubtitle:
+        "Basés sur ton activité émotionnelle récente",
+
+    personalizedTip:
+        "Conseil personnalisé",
+
+    wellnessTips:
+        "Recommandations bien-être",
 };

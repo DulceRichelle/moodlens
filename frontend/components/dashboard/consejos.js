@@ -1,3 +1,5 @@
+import { t } from "../../services/i18n.js";
+
 export async function renderConsejos(app) {
 
     const user =
@@ -41,11 +43,11 @@ export async function renderConsejos(app) {
             <div>
 
                 <h1>
-                    Consejos para ti 🌸
+                    ${t("tipsForYou")} 🌸
                 </h1>
 
                 <p>
-                    Basados en tu actividad emocional reciente
+                    ${t("tipsSubtitle")}
                 </p>
 
             </div>
@@ -61,7 +63,7 @@ export async function renderConsejos(app) {
             <div>
 
                 <span class="tag">
-                    Consejo personalizado
+                    ${t("personalizedTip")}
                 </span>
 
                 <h2>
@@ -97,7 +99,7 @@ export async function renderConsejos(app) {
         <div class="tips-section">
 
             <h2>
-                🌿 Recomendaciones de bienestar
+                🌿 ${t("wellnessTips")}
             </h2>
 
             <div class="tips-grid">
@@ -160,10 +162,10 @@ function generarConsejoPrincipal(emocion) {
             icono: "🌿",
 
             titulo:
-                "Reduce la sobreestimulación",
+                t("anxiousTitle"),
 
             descripcion:
-                "Tu actividad reciente muestra bastante ansiedad. Intenta reducir estímulos, respirar profundamente y darte pausas reales durante el día."
+                t("anxiousDesc")
         },
 
         triste: {
@@ -171,10 +173,10 @@ function generarConsejoPrincipal(emocion) {
             icono: "☀️",
 
             titulo:
-                "Reconecta contigo poco a poco",
+                t("sadTitle"),
 
             descripcion:
-                "Has tenido emociones más pesadas últimamente. Intenta salir al exterior, escuchar música tranquila y hablar con alguien cercano."
+                t("sadDesc")
         },
 
         feliz: {
@@ -182,10 +184,10 @@ function generarConsejoPrincipal(emocion) {
             icono: "✨",
 
             titulo:
-                "Mantén esa energía positiva",
+                t("happyTitle"),
 
             descripcion:
-                "Tu estado emocional parece bastante positivo. Aprovecha esta energía para fortalecer hábitos saludables y disfrutar pequeños momentos."
+                t("happyDesc")
         },
 
         tranquilo: {
@@ -193,10 +195,10 @@ function generarConsejoPrincipal(emocion) {
             icono: "🧘",
 
             titulo:
-                "Protege tu calma",
+                t("calmTitle"),
 
             descripcion:
-                "Tu estabilidad emocional es valiosa. Mantén espacios tranquilos, descanso adecuado y tiempo para ti."
+                t("calmDesc")
         },
 
         neutral: {
@@ -204,10 +206,10 @@ function generarConsejoPrincipal(emocion) {
             icono: "🌸",
 
             titulo:
-                "Escucha cómo te sientes",
+                t("neutralTitle"),
 
             descripcion:
-                "Aunque no haya emociones intensas, sigue conectando contigo y prestando atención a tu bienestar emocional."
+                t("neutralDesc")
         }
     };
 
@@ -227,28 +229,28 @@ function generarInsights(registros) {
         {
             icono: "📝",
 
-            titulo: "Actividad emocional",
+            titulo: t("emotionalActivity"),
 
             texto:
-                `Has registrado ${total} emociones en MoodLens.`
+                `${t("youRegistered")} ${total} ${t("emotionsInMoodlens")}`
         },
 
         {
             icono: "📈",
 
-            titulo: "Intensidad promedio",
+            titulo: t("averageIntensity"),
 
             texto:
-                `Tu intensidad emocional promedio es ${promedio}/10.`
+                `${t("yourAverageIntensity")} ${promedio}/10.`
         },
 
         {
             icono: "💖",
 
-            titulo: "Autocuidado",
+            titulo: t("selfCare"),
 
             texto:
-                "Registrar tus emociones regularmente ayuda a conocerte mejor."
+                t("selfCareDesc")
         }
     ];
 }
@@ -276,115 +278,100 @@ function crearTips(emocion) {
         ansioso: [
             {
                 icono: "🌬️",
-                titulo: "Respiración",
-                texto:
-                    "Inhala lentamente durante 4 segundos y exhala durante 6."
+                titulo: t("breathing"),
+                texto: t("breathingDesc")
             },
 
             {
                 icono: "📵",
-                titulo: "Desconexión",
-                texto:
-                    "Reduce redes sociales durante momentos de ansiedad."
+                titulo: t("disconnect"),
+                texto: t("disconnectDesc")
             },
 
             {
                 icono: "🌙",
-                titulo: "Descanso",
-                texto:
-                    "Dormir mejor puede ayudarte a regular emociones intensas."
+                titulo: t("rest"),
+                texto: t("restDesc")
             }
         ],
 
         triste: [
             {
                 icono: "☀️",
-                titulo: "Luz solar",
-                texto:
-                    "Salir al exterior puede mejorar tu estado de ánimo."
+                titulo: t("sunlight"),
+                texto: t("sunlightDesc")
             },
 
             {
                 icono: "🎵",
-                titulo: "Música",
-                texto:
-                    "Escucha canciones que te transmitan calma."
+                titulo: t("music"),
+                texto: t("musicDesc")
             },
 
             {
                 icono: "💌",
-                titulo: "Conexión",
-                texto:
-                    "Hablar con alguien cercano puede ayudarte mucho."
+                titulo: t("connection"),
+                texto: t("connectionDesc")
             }
         ],
 
         feliz: [
             {
                 icono: "✨",
-                titulo: "Gratitud",
-                texto:
-                    "Escribe cosas positivas que quieras recordar."
+                titulo: t("gratitude"),
+                texto: t("gratitudeDesc")
             },
 
             {
                 icono: "📸",
-                titulo: "Momentos",
-                texto:
-                    "Guarda recuerdos de los momentos felices."
+                titulo: t("moments"),
+                texto: t("momentsDesc")
             },
 
             {
                 icono: "🌱",
-                titulo: "Hábitos",
-                texto:
-                    "Mantén las rutinas que te hacen sentir bien."
+                titulo: t("habits"),
+                texto: t("habitsDesc")
             }
         ],
 
         tranquilo: [
             {
                 icono: "🧘",
-                titulo: "Meditación",
-                texto:
-                    "Dedica unos minutos al silencio y la calma."
+                titulo: t("meditation"),
+                texto: t("meditationDesc")
             },
 
             {
                 icono: "📚",
-                titulo: "Tiempo lento",
-                texto:
-                    "Leer o caminar puede ayudarte a mantener estabilidad."
+                titulo: t("slowTime"),
+                texto: t("slowTimeDesc")
             },
 
             {
                 icono: "🍵",
-                titulo: "Pausas",
-                texto:
-                    "No olvides descansar incluso en días tranquilos."
+                titulo: t("breaks"),
+                texto: t("breaksDesc")
             }
         ],
 
         neutral: [
             {
                 icono: "🌸",
-                titulo: "Escúchate",
-                texto:
-                    "Pregúntate cómo te sientes realmente."
+                titulo: t("listenToYourself"),
+                texto: t("listenToYourselfDesc")
             },
 
             {
                 icono: "📝",
-                titulo: "Reflexión",
-                texto:
-                    "Escribir pensamientos ayuda a conectar contigo."
+                titulo: t("reflection"),
+                texto: t("reflectionDesc")
             },
 
             {
                 icono: "💧",
-                titulo: "Bienestar",
-                texto:
-                    "Dormir y cuidarte también impacta tus emociones."
+                titulo: t("wellbeing"),
+                texto: t("wellbeingDesc")
             }
         ]
     };
