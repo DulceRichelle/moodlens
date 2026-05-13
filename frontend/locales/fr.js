@@ -288,5 +288,65 @@ export default {
         "Conseils personnalisés",
 
     personalizedTipsText:
-        "Reçois des conseils bien-être adaptés"
+        "Reçois des conseils bien-être adaptés",
+
+    emotionalHistory:
+        "Historique émotionnel",
+
+    reviewRecords:
+        "Consulte tous tes anciens enregistrements",
+
+    moodHistory:
+        "Historique des humeurs",
+
+    all:
+        "Tous",
+
+    loadingHistory:
+        "Chargement de l'historique...",
+
+    editRecord:
+        "Modifier l'enregistrement",
+
+    note:
+        "Note",
+
+    save:
+        "Enregistrer",
+
+    cancel:
+        "Annuler",
+
+    delete:
+        "Supprimer",
+
+    deleteRecord:
+        "Supprimer l'enregistrement ?",
+
+    deleteWarning:
+        "Cette action est irréversible",
+
+    recordDeleted:
+        "Enregistrement supprimé",
+
+    undo:
+        "Annuler",
+
+    noNote:
+        "Aucune note",
+
+    noRecordsYet:
+        "Aucun enregistrement pour le moment",
+
+    today:
+        "Aujourd'hui",
+
+    yesterday:
+        "Hier",
+
+    thisWeek:
+        "Cette semaine",
+
+    older:
+        "Plus anciens"
 };

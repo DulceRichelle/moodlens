@@ -288,5 +288,65 @@ export default {
         "Personalized tips",
 
     personalizedTipsText:
-        "Receive wellness tips adapted to you"
+        "Receive wellness tips adapted to you",
+
+    emotionalHistory:
+        "Emotional history",
+
+    reviewRecords:
+        "Review all your previous records",
+
+    moodHistory:
+        "Mood history",
+
+    all:
+        "All",
+
+    loadingHistory:
+        "Loading history...",
+
+    editRecord:
+        "Edit record",
+
+    note:
+        "Note",
+
+    save:
+        "Save",
+
+    cancel:
+        "Cancel",
+
+    delete:
+        "Delete",
+
+    deleteRecord:
+        "Delete record?",
+
+    deleteWarning:
+        "This action cannot be undone",
+
+    recordDeleted:
+        "Record deleted",
+
+    undo:
+        "Undo",
+
+    noNote:
+        "No note",
+
+    noRecordsYet:
+        "No records yet",
+
+    today:
+        "Today",
+
+    yesterday:
+        "Yesterday",
+
+    thisWeek:
+        "This week",
+
+    older:
+        "Older"
 };

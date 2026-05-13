@@ -288,5 +288,65 @@ export default {
         "Consejos personalizados",
 
     personalizedTipsText:
-        "Recibe tips de bienestar adaptados"
+        "Recibe tips de bienestar adaptados",
+
+    emotionalHistory:
+        "Historial emocional",
+
+    reviewRecords:
+        "Revisa todos tus registros anteriores",
+
+    moodHistory:
+        "Historial de estados de ánimo",
+
+    all:
+        "Todos",
+
+    loadingHistory:
+        "Cargando historial...",
+
+    editRecord:
+        "Editar registro",
+
+    note:
+        "Nota",
+
+    save:
+        "Guardar",
+
+    cancel:
+        "Cancelar",
+
+    delete:
+        "Eliminar",
+
+    deleteRecord:
+        "¿Eliminar registro?",
+
+    deleteWarning:
+        "Esta acción no se puede deshacer",
+
+    recordDeleted:
+        "Registro eliminado",
+
+    undo:
+        "Deshacer",
+
+    noNote:
+        "Sin nota",
+
+    noRecordsYet:
+        "No hay registros todavía",
+
+    today:
+        "Hoy",
+
+    yesterday:
+        "Ayer",
+
+    thisWeek:
+        "Esta semana",
+
+    older:
+        "Anteriores"
 };

@@ -288,5 +288,66 @@ export default {
         "Personalisierte Tipps",
 
     personalizedTipsText:
-        "Erhalte angepasste Wohlfühltipps"
+        "Erhalte angepasste Wohlfühltipps",
+
+    emotionalHistory:
+        "Emotionaler Verlauf",
+
+    reviewRecords:
+        "Sieh dir alle deine früheren Einträge an",
+
+    moodHistory:
+        "Stimmungsverlauf",
+
+    all:
+        "Alle",
+    
+
+    loadingHistory:
+        "Verlauf wird geladen...",
+
+    editRecord:
+        "Eintrag bearbeiten",
+
+    note:
+        "Notiz",
+
+    save:
+        "Speichern",
+
+    cancel:
+        "Abbrechen",
+
+    delete:
+        "Löschen",
+
+    deleteRecord:
+        "Eintrag löschen?",
+
+    deleteWarning:
+        "Diese Aktion kann nicht rückgängig gemacht werden",
+
+    recordDeleted:
+        "Eintrag gelöscht",
+
+    undo:
+        "Rückgängig",
+
+    noNote:
+        "Keine Notiz",
+
+    noRecordsYet:
+        "Noch keine Einträge",
+
+    today:
+        "Heute",
+
+    yesterday:
+        "Gestern",
+
+    thisWeek:
+        "Diese Woche",
+
+    older:
+        "Älter"
 };
