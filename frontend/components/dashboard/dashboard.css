@@ -157,6 +157,33 @@ body::after{
     transition:var(--transition);
 }
 
+.logo{
+
+    width:clamp(52px,5vw,62px);
+
+    height:clamp(52px,5vw,62px);
+
+    object-fit:contain;
+
+    display:block;
+
+    border-radius:20px;
+
+    padding:6px;
+
+    background:
+            rgba(255,255,255,0.12);
+
+    border:
+            1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+            0 14px 34px rgba(0,0,0,0.18);
+
+    animation:
+            logoFloat 8s ease-in-out infinite;
+}
+
 .logo-section{
 
     display:flex;
@@ -167,19 +194,8 @@ body::after{
 
     margin-bottom:
             clamp(24px,3vw,34px);
-}
 
-.logo{
-
-    width:clamp(52px,5vw,62px);
-
-    border-radius:20px;
-
-    box-shadow:
-            0 14px 34px rgba(0,0,0,0.18);
-
-    animation:
-            logoFloat 8s ease-in-out infinite;
+    min-height:70px;
 }
 
 .logo-section h3{
