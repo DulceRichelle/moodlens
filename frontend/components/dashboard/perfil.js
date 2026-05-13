@@ -77,25 +77,69 @@ export async function renderPerfil(app) {
 
         </div>
 
-        <div class="stats-grid">
+        <div class="progress-card">
 
-            <div class="stat-card">
+    <div class="progress-header">
 
-                <div class="stat-icon">
-                    🔥
-                </div>
+        <h2>
+            ${t("yourProgress")}
+        </h2>
 
-                <h2>
-                    ${diasActivos}
-                </h2>
+    </div>
 
-                <p>
-                    ${t("activeDays")}
-                </p>
+    <div class="progress-grid">
 
-            </div>
+        <div class="mini-progress">
+
+            <h3>
+                ${diasActivos}
+            </h3>
+
+            <p>
+                ${t("activeDays")}
+            </p>
 
         </div>
+
+        <div class="mini-progress">
+
+            <h3>
+                ${calcularConstancia(diasActivos)}%
+            </h3>
+
+            <p>
+                ${t("consistency")}
+            </p>
+
+        </div>
+
+        <div class="mini-progress">
+
+            <h3>
+                ${registros.length}
+            </h3>
+
+            <p>
+                ${t("totalEntries")}
+            </p>
+
+        </div>
+
+        <div class="mini-progress">
+
+            <h3>
+                ${obtenerEmocionTop(registros)}
+            </h3>
+
+            <p>
+                ${t("mainMood")}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
 
         <div class="perfil-grid">
 
@@ -544,6 +588,61 @@ function calcularDiasActivos(registros) {
     ];
 
     return dias.length;
+}
+
+function calcularConstancia(diasActivos) {
+
+    const porcentaje =
+        Math.min(
+            Math.round((diasActivos / 30) * 100),
+            100
+        );
+
+    return porcentaje;
+}
+
+function obtenerEmocionTop(registros) {
+
+    if (!registros.length) {
+
+        return "🌸";
+    }
+
+    const contador = {};
+
+    registros.forEach(r => {
+
+        const emocion =
+            r.nombre_emocion;
+
+        contador[emocion] =
+            (contador[emocion] || 0) + 1;
+    });
+
+    let top = null;
+
+    let max = 0;
+
+    for (const emocion in contador) {
+
+        if (contador[emocion] > max) {
+
+            max = contador[emocion];
+
+            top = emocion;
+        }
+    }
+
+    const emojis = {
+
+        feliz: "😊",
+        tranquilo: "💙",
+        neutral: "😐",
+        triste: "😢",
+        ansioso: "😖"
+    };
+
+    return emojis[top?.toLowerCase()] || "🌸";
 }
 
 function mostrarToast(msg) {

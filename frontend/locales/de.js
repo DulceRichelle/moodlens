@@ -506,6 +506,10 @@ export default {
 
     wellbeingDesc:
         "Schlaf und Selbstfürsorge beeinflussen ebenfalls deine Emotionen.",
+    yourProgress: "Dein Fortschritt",
+    consistency: "Beständigkeit",
+    totalEntries: "Gesamte Einträge",
+    mainMood: "Hauptstimmung",
     analysis: "Analyse",
     history: "Verlauf",
     tips: "Tipps",

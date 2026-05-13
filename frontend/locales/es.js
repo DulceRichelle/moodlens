@@ -504,5 +504,10 @@ export default {
         "Bienestar",
 
     wellbeingDesc:
-        "Dormir y cuidarte también impacta tus emociones."
+        "Dormir y cuidarte también impacta tus emociones.",
+
+    yourProgress: "Tu progreso",
+    consistency: "Constancia",
+    totalEntries: "Registros totales",
+    mainMood: "Estado principal",
 };

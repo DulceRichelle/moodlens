@@ -509,4 +509,9 @@ export default {
     history: "History",
     tips: "Tips",
     profile: "Profile",
+
+    yourProgress: "Your progress",
+    consistency: "Consistency",
+    totalEntries: "Total entries",
+    mainMood: "Main mood",
 };

@@ -509,4 +509,8 @@ export default {
     history: "Historique",
     tips: "Conseils",
     profile: "Profil",
+    yourProgress: "Votre progression",
+    consistency: "Régularité",
+    totalEntries: "Entrées totales",
+    mainMood: "Humeur principale",
 };
