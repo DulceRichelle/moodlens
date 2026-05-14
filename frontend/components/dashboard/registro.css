@@ -29,16 +29,32 @@
             all 0.55s cubic-bezier(0.16,1,0.3,1);
 }
 
+html,
 body{
+
+    width:100%;
+
+    min-height:100%;
 
     overflow-x:hidden;
 
     font-family:'Inter',sans-serif;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+
+    overflow-x:hidden;
+
+    position:relative;
 }
 
 .registro-page{
 
     width:100%;
+
+    max-width:100%;
 
     display:flex;
 
@@ -50,13 +66,19 @@ body{
 
     animation:
             pageReveal 0.8s cubic-bezier(0.16,1,0.3,1);
+
+    overflow-x:hidden;
 }
+
+/* HEADER */
 
 .header{
 
     padding:
             clamp(6px,1vw,10px)
             clamp(2px,1vw,4px);
+
+    width:100%;
 }
 
 .header h1{
@@ -82,6 +104,8 @@ body{
     animation:
             fadeUp 0.8s cubic-bezier(0.16,1,0.3,1)
             forwards;
+
+    word-break:break-word;
 }
 
 .header p{
@@ -104,7 +128,11 @@ body{
     animation:
             fadeUp 0.8s cubic-bezier(0.16,1,0.3,1)
             0.1s forwards;
+
+    word-break:break-word;
 }
+
+/* STATS */
 
 .stats{
 
@@ -121,6 +149,8 @@ body{
 
     gap:
             clamp(14px,2vw,22px);
+
+    width:100%;
 }
 
 .stat{
@@ -155,6 +185,8 @@ body{
     animation:
             statReveal 0.8s cubic-bezier(0.16,1,0.3,1)
             forwards;
+
+    min-width:0;
 }
 
 .stat:nth-child(2){
@@ -206,6 +238,8 @@ body{
             clamp(0.8rem,1vw,0.95rem);
 
     margin-bottom:12px;
+
+    word-break:break-word;
 }
 
 .stat h2{
@@ -216,7 +250,11 @@ body{
             clamp(1.5rem,3vw,2.3rem);
 
     font-weight:800;
+
+    word-break:break-word;
 }
+
+/* CARDS */
 
 .card,
 .grafico{
@@ -242,6 +280,10 @@ body{
     box-shadow:var(--shadow);
 
     transition:var(--transition);
+
+    width:100%;
+
+    min-width:0;
 }
 
 .card:hover,
@@ -263,7 +305,11 @@ body{
 
     margin-bottom:
             clamp(18px,2vw,28px);
+
+    word-break:break-word;
 }
+
+/* EMOCIONES */
 
 .emociones{
 
@@ -280,6 +326,8 @@ body{
 
     gap:
             clamp(12px,1.5vw,18px);
+
+    width:100%;
 }
 
 .emocion{
@@ -310,6 +358,8 @@ body{
 
     font-size:
             clamp(1.4rem,2vw,2rem);
+
+    min-width:0;
 }
 
 .emocion:hover{
@@ -343,6 +393,8 @@ body{
 
     font-size:
             clamp(0.76rem,1vw,0.95rem);
+
+    word-break:break-word;
 }
 
 .feliz{
@@ -370,6 +422,8 @@ body{
     background:#ECE5F8;
 }
 
+/* FORM */
+
 .intensidad,
 .notas{
 
@@ -392,6 +446,8 @@ body{
 
     font-size:
             clamp(0.85rem,1vw,1rem);
+
+    word-break:break-word;
 }
 
 input[type="range"]{
@@ -406,6 +462,8 @@ input[type="range"]{
 textarea{
 
     width:100%;
+
+    max-width:100%;
 
     min-height:
             clamp(95px,14vw,130px);
@@ -427,14 +485,15 @@ textarea{
     background:
             rgba(245,247,255,0.9);
 
-    font-size:
-            clamp(0.84rem,1vw,0.98rem);
+    font-size:16px;
 
     font-family:'Inter',sans-serif;
 
     color:var(--title);
 
     transition:var(--transition);
+
+    overflow-x:hidden;
 }
 
 textarea:focus{
@@ -445,7 +504,7 @@ textarea:focus{
             0 0 0 5px rgba(75,207,250,0.12);
 }
 
-/* FIX BOTON */
+/* BOTON */
 
 .btn{
 
@@ -498,6 +557,8 @@ textarea:focus{
     position:relative;
 
     z-index:20;
+
+    padding:16px;
 }
 
 .btn.visible{
@@ -549,6 +610,8 @@ textarea:focus{
 
     width:100% !important;
 
+    max-width:100%;
+
     max-height:420px !important;
 
     display:block;
@@ -559,6 +622,8 @@ canvas{
     width:100% !important;
 
     height:auto !important;
+
+    max-width:100%;
 }
 
 .hidden{
@@ -613,6 +678,10 @@ canvas{
             scale(0.96);
 
     transition:0.45s cubic-bezier(0.16,1,0.3,1);
+
+    max-width:min(92vw,420px);
+
+    word-break:break-word;
 }
 
 .toast-mood.show{
@@ -623,6 +692,8 @@ canvas{
             translateY(0)
             scale(1);
 }
+
+/* ANIMATIONS */
 
 @keyframes fadeUp{
 
@@ -665,6 +736,8 @@ canvas{
     }
 }
 
+/* TABLET */
+
 @media(max-width:768px){
 
     .registro-page{
@@ -693,13 +766,95 @@ canvas{
 
         max-height:320px !important;
     }
+
+    .stat{
+
+        min-height:auto;
+    }
 }
 
+/* MOBILE */
+
 @media(max-width:480px){
+
+    .registro-page{
+
+        gap:16px;
+
+        padding-bottom:100px;
+    }
+
+    .header h1{
+
+        font-size:2rem;
+
+        letter-spacing:-1px;
+    }
+
+    .header p{
+
+        font-size:.92rem;
+
+        line-height:1.7;
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+    }
+
+    .stat{
+
+        padding:20px;
+
+        border-radius:24px;
+    }
+
+    .card,
+    .grafico{
+
+        padding:20px 16px;
+
+        border-radius:24px;
+    }
 
     .emociones{
 
         grid-template-columns:1fr;
+
+        gap:12px;
+    }
+
+    .emocion{
+
+        padding:18px 14px;
+
+        border-radius:20px;
+
+        font-size:1.6rem;
+    }
+
+    .emocion span{
+
+        font-size:.9rem;
+    }
+
+    textarea{
+
+        min-height:100px;
+
+        padding:14px;
+
+        border-radius:18px;
+    }
+
+    .btn{
+
+        min-height:56px;
+
+        font-size:.92rem;
+
+        border-radius:18px;
     }
 
     .toast-mood{
@@ -708,13 +863,10 @@ canvas{
         right:14px;
 
         bottom:14px;
-    }
 
-    .btn{
+        max-width:none;
 
-        min-height:56px;
-
-        font-size:.92rem;
+        border-radius:18px;
     }
 }
 
