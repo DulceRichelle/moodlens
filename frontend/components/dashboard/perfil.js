@@ -8,10 +8,13 @@ import {
 
 export async function renderPerfil(app) {
 
-    const savedTheme =
-        localStorage.getItem("moodlens-theme") || "auto";
+    const currentTheme =
+        localStorage.getItem("theme") || "light";
 
-    aplicarTema(savedTheme);
+    document.documentElement.setAttribute(
+        "data-theme",
+        currentTheme
+    );
 
     app.innerHTML = `
 <link rel="stylesheet" href="components/dashboard/perfil.css">
@@ -51,7 +54,7 @@ export async function renderPerfil(app) {
             </div>
 
             <div class="hero-badge">
-                🌙 Mindful Journey
+                ✨ Mood Journal
             </div>
 
         </div>
@@ -102,12 +105,12 @@ export async function renderPerfil(app) {
 
                 <div class="mini-progress">
 
-                    <h3 id="racha">
-                        🔥 0
+                    <h3 id="nivel">
+                        Lv.1
                     </h3>
 
                     <p>
-                        ${t("streak")}
+                        ${t("level")}
                     </p>
 
                 </div>
@@ -202,35 +205,31 @@ export async function renderPerfil(app) {
 
             </div>
 
-            <div class="theme-section">
+            <div class="setting-item">
 
-                <div class="theme-info">
+                <div>
 
                     <h3>
-                        🌗 Tema visual
+                        🌙 Modo oscuro
                     </h3>
 
                     <p>
-                        Cambia automáticamente según tu dispositivo o elige un modo manual.
+                        Cambia automáticamente la apariencia de toda la aplicación.
                     </p>
 
                 </div>
 
-                <div class="theme-switcher">
+                <label class="switch-toggle">
 
-                    <button class="theme-btn ${savedTheme === "light" ? "active" : ""}" data-theme="light">
-                        ☀️
-                    </button>
+                    <input
+                        type="checkbox"
+                        id="themeToggle"
+                        ${currentTheme === "dark" ? "checked" : ""}
+                    >
 
-                    <button class="theme-btn ${savedTheme === "dark" ? "active" : ""}" data-theme="dark">
-                        🌙
-                    </button>
+                    <span class="slider"></span>
 
-                    <button class="theme-btn ${savedTheme === "auto" ? "active" : ""}" data-theme="auto">
-                        Auto
-                    </button>
-
-                </div>
+                </label>
 
             </div>
 
@@ -337,9 +336,6 @@ async function initPerfil(app){
     const diasActivos =
         calcularDiasActivos(registros);
 
-    const racha =
-        calcularRacha(registros);
-
     document.getElementById("diasActivos")
         .textContent = diasActivos;
 
@@ -348,10 +344,17 @@ async function initPerfil(app){
             ${calcularConstancia(diasActivos)}%
         `;
 
-    document.getElementById("racha")
-        .textContent = `🔥 ${racha}`;
+    document.getElementById("nivel")
+        .textContent = `
+            Lv.${Math.max(
+        1,
+        Math.floor(registros.length / 5)
+    )}
+        `;
 
     initLanguageSelector(app);
+
+    initTheme();
 
     document
         .getElementById("guardarPerfilBtn")
@@ -364,30 +367,6 @@ async function initPerfil(app){
             localStorage.removeItem("user");
 
             navigate("login");
-        });
-
-    document
-        .querySelectorAll(".theme-btn")
-        .forEach(btn => {
-
-            btn.addEventListener("click", () => {
-
-                const theme =
-                    btn.dataset.theme;
-
-                localStorage.setItem(
-                    "moodlens-theme",
-                    theme
-                );
-
-                aplicarTema(theme);
-
-                document
-                    .querySelectorAll(".theme-btn")
-                    .forEach(b => b.classList.remove("active"));
-
-                btn.classList.add("active");
-            });
         });
 
     async function guardarPerfil(){
@@ -447,29 +426,30 @@ async function initPerfil(app){
     }
 }
 
-function aplicarTema(theme){
+function initTheme(){
 
-    const root =
-        document.documentElement;
+    const toggle =
+        document.getElementById("themeToggle");
 
-    if(theme === "dark"){
+    if(!toggle) return;
 
-        root.classList.add("dark-theme");
+    toggle.addEventListener("change", () => {
 
-    }else if(theme === "light"){
+        const theme =
+            toggle.checked
+                ? "dark"
+                : "light";
 
-        root.classList.remove("dark-theme");
-
-    }else{
-
-        const systemDark =
-            window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-        root.classList.toggle(
-            "dark-theme",
-            systemDark
+        document.documentElement.setAttribute(
+            "data-theme",
+            theme
         );
-    }
+
+        localStorage.setItem(
+            "theme",
+            theme
+        );
+    });
 }
 
 function initLanguageSelector(app){
@@ -556,44 +536,6 @@ function calcularConstancia(dias){
         Math.round((dias / 30) * 100),
         100
     );
-}
-
-function calcularRacha(registros){
-
-    if(!registros.length) return 0;
-
-    const fechas = registros
-        .map(r => new Date(r.fecha))
-        .sort((a,b) => b - a);
-
-    let streak = 1;
-
-    for(let i = 0; i < fechas.length - 1; i++){
-
-        const actual =
-            new Date(fechas[i]);
-
-        const siguiente =
-            new Date(fechas[i + 1]);
-
-        actual.setHours(0,0,0,0);
-        siguiente.setHours(0,0,0,0);
-
-        const diferencia =
-            (actual - siguiente) /
-            (1000 * 60 * 60 * 24);
-
-        if(diferencia === 1){
-
-            streak++;
-
-        }else{
-
-            break;
-        }
-    }
-
-    return streak;
 }
 
 function mostrarToast(msg){

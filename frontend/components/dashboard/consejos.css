@@ -1,3 +1,12 @@
+[data-theme="dark"]{
+
+    --bg-start:#111827;
+    --bg-end:#1E293B;
+
+    --text-main:#F4F7FF;
+    --text-soft:#B8C0E0;
+}
+
 *{
     margin:0;
     padding:0;
@@ -104,8 +113,6 @@ body::before{
 
     overflow-x:hidden;
 }
-
-/* HERO */
 
 .hero-consejos{
 
@@ -216,8 +223,6 @@ body::before{
 
     word-break:break-word;
 }
-
-/* CONSEJO DESTACADO */
 
 .consejo-destacado{
 

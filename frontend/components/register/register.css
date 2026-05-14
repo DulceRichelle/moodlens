@@ -1,3 +1,12 @@
+[data-theme="dark"]{
+
+    --bg-start:#111827;
+    --bg-end:#1E293B;
+
+    --text-main:#F4F7FF;
+    --text-soft:#B8C0E0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -111,8 +120,6 @@ body::after {
     z-index: -1;
 }
 
-/* CONTAINER */
-
 .auth-container {
 
     min-height: 100svh;
@@ -131,8 +138,6 @@ body::after {
     padding:
             clamp(20px, 4vw, 50px);
 }
-
-/* BACKGROUND ORBS */
 
 .bg-orb {
 
@@ -191,8 +196,6 @@ body::after {
     bottom: -10%;
     left: 16%;
 }
-
-/* BACK BUTTON */
 
 .back {
 
@@ -267,8 +270,6 @@ body::after {
             translateX(-4px);
 }
 
-/* CARD */
-
 .auth-card {
 
     width: 100%;
@@ -340,8 +341,6 @@ body::after {
     pointer-events:none;
 }
 
-/* LOGO */
-
 .logo {
 
     width:
@@ -372,8 +371,6 @@ body::after {
 
     max-width: 100%;
 }
-
-/* TITLES */
 
 .auth-card h2 {
 
@@ -407,8 +404,6 @@ body::after {
 
     word-break: break-word;
 }
-
-/* INPUTS */
 
 .input-group {
 
@@ -538,8 +533,6 @@ body::after {
             scale(1.15);
 }
 
-/* MESSAGES */
-
 .message-area {
 
     min-height: 26px;
@@ -567,8 +560,6 @@ body::after {
 
     color: #25B46B;
 }
-
-/* BUTTON */
 
 .btn-main {
 
@@ -700,8 +691,6 @@ body::after {
     opacity: 0.72;
 }
 
-/* ANIMATIONS */
-
 @keyframes cardReveal {
 
     from {
@@ -802,8 +791,6 @@ body::after {
     }
 }
 
-/* TABLET */
-
 @media(max-width:768px){
 
     .auth-container{
@@ -823,8 +810,6 @@ body::after {
         min-height: 56px;
     }
 }
-
-/* MOBILE */
 
 @media(max-width:480px){
 
