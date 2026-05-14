@@ -445,6 +445,8 @@ textarea:focus{
             0 0 0 5px rgba(75,207,250,0.12);
 }
 
+/* FIX BOTON */
+
 .btn{
 
     width:100%;
@@ -452,8 +454,7 @@ textarea:focus{
     margin-top:
             clamp(20px,2vw,28px);
 
-    height:
-            clamp(50px,6vw,60px);
+    min-height:58px;
 
     border:none;
 
@@ -467,30 +468,36 @@ textarea:focus{
                     #5D7BEE
             );
 
-    color:white;
+    color:#FFFFFF !important;
 
     font-size:
-            clamp(0.88rem,1vw,1rem);
+            clamp(0.92rem,1vw,1rem);
 
-    font-weight:700;
+    font-weight:800;
+
+    letter-spacing:.2px;
 
     cursor:pointer;
 
     transition:var(--transition);
 
     box-shadow:
-            0 18px 34px rgba(93,123,238,0.2);
+            0 18px 34px rgba(93,123,238,0.26);
 
-    opacity:0;
+    display:flex;
 
-    transform:
-            translateY(12px);
+    justify-content:center;
+    align-items:center;
 
-    position:sticky;
+    text-align:center;
 
-    bottom:16px;
+    opacity:1;
 
-    z-index:50;
+    visibility:visible;
+
+    position:relative;
+
+    z-index:20;
 }
 
 .btn.visible{
@@ -507,8 +514,16 @@ textarea:focus{
             translateY(-4px);
 
     box-shadow:
-            0 24px 50px rgba(93,123,238,0.28);
+            0 24px 50px rgba(93,123,238,0.34);
 }
+
+.btn:active{
+
+    transform:
+            scale(.98);
+}
+
+/* GRAFICO */
 
 .grafico{
 
@@ -550,6 +565,8 @@ canvas{
 
     display:none;
 }
+
+/* TOAST */
 
 .toast-mood{
 
@@ -691,6 +708,13 @@ canvas{
         right:14px;
 
         bottom:14px;
+    }
+
+    .btn{
+
+        min-height:56px;
+
+        font-size:.92rem;
     }
 }
 
