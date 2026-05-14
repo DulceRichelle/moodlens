@@ -39,6 +39,8 @@
 html,
 body{
 
+    width:100%;
+
     min-height:100%;
 
     overflow-x:hidden;
@@ -51,11 +53,15 @@ body{
                     var(--bg-1),
                     var(--bg-2)
             );
+
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
 
     position:relative;
+
+    overflow-x:hidden;
 }
 
 body::before{
@@ -116,6 +122,8 @@ body::after{
 
     width:100%;
 
+    max-width:100%;
+
     min-height:100vh;
 
     padding:
@@ -129,7 +137,11 @@ body::after{
 
     animation:
             pageReveal .6s ease;
+
+    overflow-x:hidden;
 }
+
+/* HERO */
 
 .perfil-hero{
 
@@ -153,6 +165,8 @@ body::after{
 
     box-shadow:
             0 14px 34px rgba(0,0,0,.08);
+
+    width:100%;
 }
 
 .perfil-hero::before{
@@ -192,6 +206,8 @@ body::after{
     position:relative;
 
     z-index:2;
+
+    width:100%;
 }
 
 .hero-left{
@@ -202,11 +218,17 @@ body::after{
 
     gap:
             clamp(18px,3vw,28px);
+
+    min-width:0;
+
+    flex:1;
 }
 
 .avatar-wrapper{
 
     position:relative;
+
+    flex-shrink:0;
 }
 
 .avatar-glow{
@@ -283,6 +305,13 @@ body::after{
     border:3px solid white;
 }
 
+.hero-info{
+
+    min-width:0;
+
+    width:100%;
+}
+
 .hero-info h1{
 
     font-size:
@@ -295,6 +324,8 @@ body::after{
     margin-bottom:10px;
 
     letter-spacing:-2px;
+
+    word-break:break-word;
 }
 
 .hero-info p{
@@ -308,6 +339,8 @@ body::after{
 
     font-size:
             clamp(.95rem,1.5vw,1.1rem);
+
+    word-break:break-word;
 }
 
 .hero-info span{
@@ -317,6 +350,8 @@ body::after{
 
     font-size:
             clamp(.82rem,1vw,.95rem);
+
+    word-break:break-word;
 }
 
 .hero-badge{
@@ -340,13 +375,14 @@ body::after{
     font-size:.92rem;
 
     white-space:nowrap;
-}
-
-.hero-badge{
 
     box-shadow:
             0 10px 24px rgba(255,255,255,.08);
+
+    flex-shrink:0;
 }
+
+/* PROGRESS */
 
 .progress-section{
 
@@ -410,6 +446,8 @@ body::after{
             clamp(1.8rem,4vw,2.6rem);
 
     margin-bottom:10px;
+
+    word-break:break-word;
 }
 
 .progress-header p{
@@ -417,6 +455,8 @@ body::after{
     opacity:.92;
 
     line-height:1.7;
+
+    word-break:break-word;
 }
 
 .progress-grid{
@@ -454,6 +494,8 @@ body::after{
     padding:24px;
 
     transition:var(--transition);
+
+    min-width:0;
 }
 
 .mini-progress:hover{
@@ -469,6 +511,8 @@ body::after{
             clamp(2rem,4vw,2.8rem);
 
     margin-bottom:8px;
+
+    word-break:break-word;
 }
 
 .mini-progress p{
@@ -476,7 +520,11 @@ body::after{
     font-size:.95rem;
 
     opacity:.92;
+
+    word-break:break-word;
 }
+
+/* INSIGHTS */
 
 .insights-grid{
 
@@ -506,6 +554,8 @@ body::after{
     box-shadow:var(--shadow);
 
     transition:var(--transition);
+
+    min-width:0;
 }
 
 .insight-card:hover{
@@ -549,6 +599,8 @@ body::after{
     margin-bottom:10px;
 
     font-size:1.2rem;
+
+    word-break:break-word;
 }
 
 .insight-card p{
@@ -558,7 +610,11 @@ body::after{
     line-height:1.7;
 
     font-size:.95rem;
+
+    word-break:break-word;
 }
+
+/* PERFIL GRID */
 
 .perfil-grid{
 
@@ -574,6 +630,8 @@ body::after{
             );
 
     gap:24px;
+
+    width:100%;
 }
 
 .perfil-card{
@@ -591,6 +649,10 @@ body::after{
     box-shadow:var(--shadow);
 
     transition:var(--transition);
+
+    min-width:0;
+
+    overflow:hidden;
 }
 
 .perfil-card:hover{
@@ -609,11 +671,15 @@ body::after{
 
     font-size:
             clamp(1.3rem,2vw,1.8rem);
+
+    word-break:break-word;
 }
 
 .form-group{
 
     margin-bottom:20px;
+
+    width:100%;
 }
 
 .form-group label{
@@ -633,6 +699,8 @@ body::after{
 
     width:100%;
 
+    max-width:100%;
+
     border:none;
 
     outline:none;
@@ -646,7 +714,7 @@ body::after{
 
     padding:16px;
 
-    font-size:.95rem;
+    font-size:16px;
 
     transition:var(--transition);
 
@@ -680,6 +748,8 @@ body::after{
     font-size:.95rem;
 
     transition:var(--transition);
+
+    min-height:54px;
 }
 
 .btn-guardar{
@@ -723,6 +793,8 @@ body::after{
             translateY(-3px);
 }
 
+/* SETTINGS */
+
 .setting-item{
 
     display:flex;
@@ -751,6 +823,8 @@ body::after{
     margin-bottom:6px;
 
     font-size:1rem;
+
+    word-break:break-word;
 }
 
 .setting-item p{
@@ -760,6 +834,8 @@ body::after{
     line-height:1.6;
 
     font-size:.92rem;
+
+    word-break:break-word;
 }
 
 .setting-badge{
@@ -777,6 +853,8 @@ body::after{
     font-weight:700;
 
     white-space:nowrap;
+
+    flex-shrink:0;
 }
 
 .setting-badge.active{
@@ -785,6 +863,8 @@ body::after{
 
     color:#1DAA63;
 }
+
+/* CUSTOM SELECT */
 
 .custom-select{
 
@@ -821,6 +901,8 @@ body::after{
 
     box-shadow:
             0 6px 18px rgba(0,0,0,0.04);
+
+    gap:12px;
 }
 
 .select-selected:hover{
@@ -843,6 +925,10 @@ body::after{
     font-size:.95rem;
 
     font-weight:700;
+
+    min-width:0;
+
+    word-break:break-word;
 }
 
 .arrow{
@@ -852,6 +938,8 @@ body::after{
     transition:.35s ease;
 
     font-size:14px;
+
+    flex-shrink:0;
 }
 
 .select-options{
@@ -876,6 +964,8 @@ body::after{
             0 18px 40px rgba(0,0,0,.10);
 
     z-index:999;
+
+    overflow:hidden;
 }
 
 .option{
@@ -891,6 +981,8 @@ body::after{
     color:var(--text-dark);
 
     font-weight:600;
+
+    word-break:break-word;
 }
 
 .option:hover{
@@ -910,6 +1002,8 @@ body::after{
 
     display:none;
 }
+
+/* TOAST */
 
 .toast{
 
@@ -937,6 +1031,10 @@ body::after{
             translateY(20px);
 
     transition:.35s ease;
+
+    max-width:min(90vw,420px);
+
+    word-break:break-word;
 }
 
 .toast.show{
@@ -946,6 +1044,17 @@ body::after{
     transform:
             translateY(0);
 }
+
+.logout-text{
+
+    color:#6F6A97;
+
+    line-height:1.7;
+
+    word-break:break-word;
+}
+
+/* ANIMATIONS */
 
 @keyframes pageReveal{
 
@@ -1011,7 +1120,14 @@ body::after{
     }
 }
 
+/* TABLET */
+
 @media(max-width:768px){
+
+    .perfil-page{
+
+        gap:20px;
+    }
 
     .hero-top{
 
@@ -1022,7 +1138,18 @@ body::after{
 
     .hero-left{
 
+        width:100%;
+
         align-items:flex-start;
+    }
+
+    .hero-badge{
+
+        width:100%;
+
+        justify-content:center;
+
+        text-align:center;
     }
 
     .perfil-grid{
@@ -1033,14 +1160,32 @@ body::after{
     .setting-item{
 
         flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .perfil-card,
+    .progress-card,
+    .insight-card{
+
+        border-radius:28px;
+    }
+
+    .mini-progress{
+
+        padding:22px;
     }
 }
+
+/* MOBILE */
 
 @media(max-width:480px){
 
     .perfil-page{
 
         padding:14px;
+
+        gap:16px;
     }
 
     .perfil-hero,
@@ -1048,20 +1193,128 @@ body::after{
     .insight-card,
     .progress-card{
 
-        border-radius:26px;
+        border-radius:24px;
+    }
+
+    .perfil-hero{
+
+        padding:22px 18px;
     }
 
     .hero-left{
 
         flex-direction:column;
 
-        align-items:flex-start;
+        align-items:center;
+
+        text-align:center;
+
+        width:100%;
     }
 
-    .hero-stat,
+    .hero-info{
+
+        text-align:center;
+    }
+
+    .hero-info h1{
+
+        font-size:2rem;
+
+        letter-spacing:-1px;
+    }
+
+    .hero-info p{
+
+        font-size:.92rem;
+    }
+
+    .hero-badge{
+
+        width:100%;
+
+        padding:14px;
+
+        justify-content:center;
+
+        font-size:.85rem;
+    }
+
+    .progress-card{
+
+        padding:22px 18px;
+    }
+
+    .progress-header h2{
+
+        font-size:1.7rem;
+    }
+
+    .progress-grid{
+
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
     .mini-progress{
 
-        padding:20px;
+        padding:18px;
+    }
+
+    .mini-progress h3{
+
+        font-size:1.8rem;
+    }
+
+    .insights-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .insight-card{
+
+        padding:22px 18px;
+    }
+
+    .perfil-card{
+
+        padding:22px 18px;
+    }
+
+    .form-group input{
+
+        padding:15px;
+
+        border-radius:16px;
+    }
+
+    .btn-guardar,
+    .btn-secondary,
+    .logout-btn{
+
+        min-height:52px;
+
+        border-radius:16px;
+    }
+
+    .select-selected{
+
+        min-height:54px;
+
+        border-radius:16px;
+
+        padding:12px 14px;
+    }
+
+    .select-options{
+
+        border-radius:18px;
+    }
+
+    .option{
+
+        padding:12px 14px;
     }
 
     .toast{
@@ -1070,12 +1323,29 @@ body::after{
         right:14px;
 
         bottom:14px;
+
+        max-width:none;
+
+        border-radius:16px;
     }
 }
 
-.logout-text{
+@media screen
+and (max-height:560px)
+and (orientation:landscape){
 
-    color:#6F6A97;
+    .perfil-page{
 
-    line-height:1.7;
+        padding:12px;
+    }
+
+    .hero-top{
+
+        align-items:flex-start;
+    }
+
+    .perfil-grid{
+
+        grid-template-columns:1fr;
+    }
 }
