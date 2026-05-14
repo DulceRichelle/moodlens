@@ -265,14 +265,26 @@ function validateEmail(email) {
 
 function showError(msg) {
 
-    document.querySelector(
-        ".error"
-    ).textContent = msg;
+    const errorBox =
+        document.querySelector(".error");
+
+    const successBox =
+        document.querySelector(".success");
+
+    successBox.textContent = "";
+
+    errorBox.textContent = msg;
 }
 
 function showSuccess(msg) {
 
-    document.querySelector(
-        ".success"
-    ).textContent = msg;
+    const errorBox =
+        document.querySelector(".error");
+
+    const successBox =
+        document.querySelector(".success");
+
+    errorBox.textContent = "";
+
+    successBox.textContent = msg;
 }
