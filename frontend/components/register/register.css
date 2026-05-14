@@ -29,6 +29,8 @@
 html,
 body {
 
+    width: 100%;
+
     min-height: 100%;
 
     overflow-x: hidden;
@@ -41,11 +43,15 @@ body {
                     var(--bg-start),
                     var(--bg-end)
             );
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
 
     position: relative;
+
+    overflow-x: hidden;
 }
 
 body::before {
@@ -105,9 +111,13 @@ body::after {
     z-index: -1;
 }
 
+/* CONTAINER */
+
 .auth-container {
 
     min-height: 100svh;
+
+    width: 100%;
 
     display: flex;
 
@@ -121,6 +131,8 @@ body::after {
     padding:
             clamp(20px, 4vw, 50px);
 }
+
+/* BACKGROUND ORBS */
 
 .bg-orb {
 
@@ -180,6 +192,8 @@ body::after {
     left: 16%;
 }
 
+/* BACK BUTTON */
+
 .back {
 
     position: absolute;
@@ -190,11 +204,11 @@ body::after {
     left:
             clamp(14px, 2vw, 24px);
 
-    height:
+    min-height:
             clamp(44px, 5vw, 56px);
 
     padding:
-            0 clamp(16px, 2vw, 22px);
+            12px clamp(16px, 2vw, 22px);
 
     border: none;
 
@@ -253,6 +267,8 @@ body::after {
             translateX(-4px);
 }
 
+/* CARD */
+
 .auth-card {
 
     width: 100%;
@@ -283,6 +299,8 @@ body::after {
 
     animation:
             cardReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+
+    min-width: 0;
 }
 
 .auth-card::before {
@@ -322,6 +340,8 @@ body::after {
     pointer-events:none;
 }
 
+/* LOGO */
+
 .logo {
 
     width:
@@ -349,7 +369,11 @@ body::after {
             forwards,
 
             logoFloat 7s ease-in-out infinite 1s;
+
+    max-width: 100%;
 }
+
+/* TITLES */
 
 .auth-card h2 {
 
@@ -365,6 +389,8 @@ body::after {
 
     margin-bottom:
             clamp(10px, 2vw, 16px);
+
+    word-break: break-word;
 }
 
 .subtitle {
@@ -378,7 +404,11 @@ body::after {
 
     margin-bottom:
             clamp(24px, 4vw, 36px);
+
+    word-break: break-word;
 }
+
+/* INPUTS */
 
 .input-group {
 
@@ -404,7 +434,7 @@ body::after {
 
 .input-box {
 
-    height:
+    min-height:
             clamp(50px, 6vw, 66px);
 
     display:flex;
@@ -431,8 +461,11 @@ body::after {
     position:relative;
 
     z-index:2;
-}
 
+    width: 100%;
+
+    overflow: hidden;
+}
 
 .input-box:hover {
 
@@ -455,6 +488,8 @@ body::after {
 
     font-size:
             clamp(15px, 1vw, 18px);
+
+    flex-shrink: 0;
 }
 
 .input-box input {
@@ -473,13 +508,12 @@ body::after {
     color: var(--text-main);
 
     font-family: 'Inter', sans-serif;
-}
-
-.input-box input{
 
     position:relative;
 
     z-index:3;
+
+    min-width: 0;
 }
 
 .input-box input::placeholder {
@@ -492,6 +526,10 @@ body::after {
     cursor: pointer;
 
     transition: 0.3s ease;
+
+    flex-shrink: 0;
+
+    margin-left: 10px;
 }
 
 .toggle-password:hover {
@@ -499,6 +537,8 @@ body::after {
     transform:
             scale(1.15);
 }
+
+/* MESSAGES */
 
 .message-area {
 
@@ -514,6 +554,8 @@ body::after {
             clamp(12px, 1vw, 14px);
 
     font-weight: 700;
+
+    word-break: break-word;
 }
 
 .error {
@@ -526,11 +568,13 @@ body::after {
     color: #25B46B;
 }
 
+/* BUTTON */
+
 .btn-main {
 
     width: 100%;
 
-    height:
+    min-height:
             clamp(52px, 6vw, 66px);
 
     margin-top:
@@ -565,6 +609,17 @@ body::after {
 
     box-shadow:
             0 18px 36px rgba(93,123,238,0.22);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding: 14px 18px;
+
+    line-height: 1.4;
 }
 
 .btn-main::before {
@@ -612,6 +667,8 @@ body::after {
     pointer-events: none;
 }
 
+/* SWITCH */
+
 .switch {
 
     margin-top:
@@ -623,6 +680,8 @@ body::after {
 
     font-size:
             clamp(0.82rem, 1vw, 1rem);
+
+    word-break: break-word;
 }
 
 .switch span {
@@ -640,6 +699,8 @@ body::after {
 
     opacity: 0.72;
 }
+
+/* ANIMATIONS */
 
 @keyframes cardReveal {
 
@@ -738,6 +799,98 @@ body::after {
         transform:
                 translateY(40px)
                 translateX(-30px);
+    }
+}
+
+/* TABLET */
+
+@media(max-width:768px){
+
+    .auth-container{
+
+        padding:
+                90px 18px 30px;
+    }
+
+    .auth-card{
+
+        padding:
+                30px 22px;
+    }
+
+    .btn-main{
+
+        min-height: 56px;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+    .auth-container{
+
+        align-items:flex-start;
+
+        padding:
+                84px 14px 20px;
+    }
+
+    .auth-card{
+
+        width:100%;
+
+        border-radius:28px;
+
+        padding:
+                26px 18px;
+    }
+
+    .back{
+
+        top:12px;
+        left:12px;
+
+        border-radius:14px;
+
+        min-height:44px;
+
+        padding:10px 14px;
+
+        font-size:.82rem;
+    }
+
+    .auth-card h2{
+
+        font-size:2.3rem;
+
+        letter-spacing:-1px;
+    }
+
+    .subtitle{
+
+        font-size:.92rem;
+
+        line-height:1.7;
+    }
+
+    .input-box{
+
+        min-height:54px;
+
+        border-radius:18px;
+    }
+
+    .btn-main{
+
+        min-height:54px;
+
+        border-radius:18px;
+    }
+
+    .switch{
+
+        font-size:.88rem;
     }
 }
 
