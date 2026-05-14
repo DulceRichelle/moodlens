@@ -478,16 +478,30 @@ function initEventosGlobales() {
 
                 cerrarModal();
 
-                historialData =
-                    historialData.filter(
-                        r =>
-                            r.id_registro !==
-                            idEliminar
+                try {
+
+                    await fetch(
+                        `https://moodlens-oj88.onrender.com/api/emociones/${idEliminar}`,
+                        {
+                            method: "DELETE"
+                        }
                     );
 
-                pintarHistorial(historialData);
+                    historialData =
+                        historialData.filter(
+                            r =>
+                                r.id_registro !==
+                                idEliminar
+                        );
 
-                mostrarUndo(eliminado);
+                    pintarHistorial(historialData);
+
+                    mostrarUndo(eliminado);
+
+                } catch (error) {
+
+                    console.log(error);
+                }
             }
 
             if (e.target.closest("#undoBtn")) {
