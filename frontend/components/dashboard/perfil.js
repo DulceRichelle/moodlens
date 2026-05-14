@@ -24,11 +24,7 @@ export async function renderPerfil(app) {
                     <div class="avatar-glow"></div>
 
                     <div class="avatar-grande">
-
                         U
-
-                        <div class="online-indicator"></div>
-
                     </div>
 
                 </div>
@@ -46,12 +42,6 @@ export async function renderPerfil(app) {
                     <span id="memberSince"></span>
 
                 </div>
-
-            </div>
-
-            <div class="hero-badge">
-
-                ✨ Premium Mind Tracker
 
             </div>
 
@@ -103,18 +93,6 @@ export async function renderPerfil(app) {
 
                 <div class="mini-progress">
 
-                    <h3 id="racha">
-                        🔥 0
-                    </h3>
-
-                    <p>
-                        ${t("streak")}
-                    </p>
-
-                </div>
-
-                <div class="mini-progress">
-
                     <h3 id="nivel">
                         Lv.1
                     </h3>
@@ -136,15 +114,15 @@ export async function renderPerfil(app) {
         <div class="insight-card">
 
             <div class="insight-icon">
-                🌙
+                📈
             </div>
 
             <h3>
-                ${t("emotionalInsight")}
+                ${t("totalRecords")}
             </h3>
 
-            <p>
-                ${t("emotionalInsightDesc")}
+            <p id="totalRegistros">
+                0 registros emocionales guardados.
             </p>
 
         </div>
@@ -152,15 +130,15 @@ export async function renderPerfil(app) {
         <div class="insight-card">
 
             <div class="insight-icon">
-                💙
+                🧠
             </div>
 
             <h3>
-                ${t("calmMoments")}
+                ${t("mostUsedEmotion")}
             </h3>
 
-            <p>
-                ${t("calmMomentsDesc")}
+            <p id="emocionFrecuente">
+                Sin datos suficientes todavía.
             </p>
 
         </div>
@@ -168,15 +146,15 @@ export async function renderPerfil(app) {
         <div class="insight-card">
 
             <div class="insight-icon">
-                ✨
+                📅
             </div>
 
             <h3>
-                ${t("personalGrowth")}
+                ${t("lastRecord")}
             </h3>
 
-            <p>
-                ${t("personalGrowthDesc")}
+            <p id="ultimoRegistro">
+                No hay registros recientes.
             </p>
 
         </div>
@@ -292,65 +270,17 @@ export async function renderPerfil(app) {
                 <div>
 
                     <h3>
-                        🔒 ${t("privacy")}
+                        🌙 Dark mode
                     </h3>
 
                     <p>
-                        ${t("privateEmotions")}
+                        Automático según tu dispositivo
                     </p>
 
                 </div>
 
                 <span class="setting-badge active">
-                    ${t("active")}
-                </span>
-
-            </div>
-
-        </div>
-
-        <div class="perfil-card">
-
-            <h2>
-                🏆 ${t("achievements")}
-            </h2>
-
-            <div class="setting-item">
-
-                <div>
-
-                    <h3>
-                        🔥 ${t("firstStreak")}
-                    </h3>
-
-                    <p>
-                        ${t("firstStreakDesc")}
-                    </p>
-
-                </div>
-
-                <span class="setting-badge active">
-                    ${t("unlocked")}
-                </span>
-
-            </div>
-
-            <div class="setting-item">
-
-                <div>
-
-                    <h3>
-                        ✨ ${t("selfAwareness")}
-                    </h3>
-
-                    <p>
-                        ${t("selfAwarenessDesc")}
-                    </p>
-
-                </div>
-
-                <span class="setting-badge">
-                    ${t("progress")}
+                    Auto
                 </span>
 
             </div>
@@ -395,10 +325,8 @@ async function initPerfil(app){
     const avatar =
         document.querySelector(".avatar-grande");
 
-    avatar.innerHTML = `
-        ${user.nombre?.charAt(0).toUpperCase() || "U"}
-        <div class="online-indicator"></div>
-    `;
+    avatar.innerHTML =
+        user.nombre?.charAt(0).toUpperCase() || "U";
 
     document.querySelector(".hero-info h1")
         .innerHTML = `
@@ -448,9 +376,6 @@ async function initPerfil(app){
             ${calcularConstancia(diasActivos)}%
         `;
 
-    document.getElementById("racha")
-        .textContent = `🔥 ${diasActivos}`;
-
     document.getElementById("nivel")
         .textContent = `
             Lv.${Math.max(
@@ -458,6 +383,24 @@ async function initPerfil(app){
         Math.floor(registros.length / 5)
     )}
         `;
+
+    document.getElementById("totalRegistros")
+        .textContent = `
+            ${registros.length} registros emocionales guardados.
+        `;
+
+    const emocionMasUsada =
+        obtenerEmocionFrecuente(registros);
+
+    document.getElementById("emocionFrecuente")
+        .textContent =
+        emocionMasUsada;
+
+    const ultimo =
+        obtenerUltimoRegistro(registros);
+
+    document.getElementById("ultimoRegistro")
+        .textContent = ultimo;
 
     initLanguageSelector(app);
 
@@ -615,6 +558,54 @@ function calcularConstancia(dias){
         Math.round((dias / 30) * 100),
         100
     );
+}
+
+function obtenerEmocionFrecuente(registros){
+
+    if(!registros.length){
+
+        return "Sin datos suficientes todavía.";
+    }
+
+    const contador = {};
+
+    registros.forEach(r => {
+
+        const emocion =
+            r.emocion || "Emoción";
+
+        contador[emocion] =
+            (contador[emocion] || 0) + 1;
+    });
+
+    const favorita =
+        Object.entries(contador)
+            .sort((a,b) => b[1] - a[1])[0][0];
+
+    return `La emoción más registrada es "${favorita}".`;
+}
+
+function obtenerUltimoRegistro(registros){
+
+    if(!registros.length){
+
+        return "No hay registros recientes.";
+    }
+
+    const ordenados =
+        [...registros].sort(
+            (a,b) =>
+                new Date(b.fecha) -
+                new Date(a.fecha)
+        );
+
+    const ultimo =
+        new Date(ordenados[0].fecha);
+
+    return `
+        Último registro:
+        ${ultimo.toLocaleDateString()}
+    `;
 }
 
 function mostrarToast(msg){
