@@ -15,7 +15,9 @@ export function renderLogin(app) {
 
             <img src="assets/logo.png" class="logo"/>
 
-            <h2>${t("loginTitle")}</h2>
+            <h2>
+                ${t("loginTitle")}
+            </h2>
 
             <p class="subtitle">
                 ${t("loginSubtitle")}
@@ -65,15 +67,18 @@ export function renderLogin(app) {
                     </span>
 
                 </div>
-                </span>
-                </div>
+
                 <p
-    class="forgot-password"
-    id="forgotPasswordBtn"
->
-    ${t("forgotPassword")}
-</p>
+                    class="forgot-password"
+                    id="forgotPasswordBtn"
+                >
+                    ${t("forgotPassword")}
+                </p>
+
+            </div>
+
             <div class="error"></div>
+
             <div class="success"></div>
 
             <button
@@ -99,48 +104,72 @@ export function renderLogin(app) {
 `;
 
     document
-        .getElementById('loginBtn')
-        .addEventListener('click', login);
+        .getElementById("loginBtn")
+        .addEventListener(
+            "click",
+            login
+        );
 
     const togglePassword =
-        document.getElementById("togglePassword");
+        document.getElementById(
+            "togglePassword"
+        );
 
     const passwordInput =
-        document.getElementById("password");
+        document.getElementById(
+            "password"
+        );
 
-    togglePassword.addEventListener("click", () => {
-        document
-            .getElementById("forgotPasswordBtn")
-            .addEventListener("click", mostrarRecuperacion);
+    togglePassword.addEventListener(
+        "click",
+        () => {
 
-        const isPassword =
-            passwordInput.type === "password";
+            const isPassword =
+                passwordInput.type === "password";
 
-        passwordInput.type =
-            isPassword ? "text" : "password";
+            passwordInput.type =
+                isPassword
+                    ? "text"
+                    : "password";
 
-        togglePassword.textContent =
-            isPassword ? "🙈" : "👁️";
-    });
+            togglePassword.textContent =
+                isPassword
+                    ? "🙈"
+                    : "👁️";
+        }
+    );
 
+    document
+        .getElementById(
+            "forgotPasswordBtn"
+        )
+        .addEventListener(
+            "click",
+            mostrarRecuperacion
+        );
 }
 
 async function login() {
 
     const email =
-        document.getElementById('email').value.trim();
+        document
+            .getElementById("email")
+            .value
+            .trim();
 
     const password =
-        document.getElementById('password').value;
+        document
+            .getElementById("password")
+            .value;
 
     const errorBox =
-        document.querySelector('.error');
+        document.querySelector(".error");
 
     const successBox =
-        document.querySelector('.success');
+        document.querySelector(".success");
 
-    errorBox.textContent = '';
-    successBox.textContent = '';
+    errorBox.textContent = "";
+    successBox.textContent = "";
 
     if (!email || !password) {
 
@@ -159,12 +188,13 @@ async function login() {
     try {
 
         const res = await fetch(
-            'https://moodlens-oj88.onrender.com/api/login',
+            "https://moodlens-oj88.onrender.com/api/login",
             {
-                method: 'POST',
+                method: "POST",
 
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type":
+                        "application/json"
                 },
 
                 body: JSON.stringify({
@@ -174,17 +204,19 @@ async function login() {
             }
         );
 
-        const data = await res.json();
+        const data =
+            await res.json();
 
         if (!res.ok) {
 
             return showError(
-                data.message || t("loginError")
+                data.message ||
+                t("loginError")
             );
         }
 
         localStorage.setItem(
-            'user',
+            "user",
             JSON.stringify(data.user)
         );
 
@@ -194,7 +226,7 @@ async function login() {
 
         setTimeout(() => {
 
-            navigate('dashboard');
+            navigate("dashboard");
 
         }, 1000);
 
@@ -204,32 +236,17 @@ async function login() {
             t("serverConnectionError")
         );
     }
-
-}
-
-function validateEmail(email) {
-
-    return /\S+@\S+\.\S+/.test(email);
-}
-
-function showError(msg) {
-
-    document.querySelector('.error').textContent = msg;
-}
-
-function showSuccess(msg) {
-
-    document.querySelector('.success').textContent = msg;
 }
 
 function mostrarRecuperacion() {
 
     const email =
-        document.getElementById("email")
+        document
+            .getElementById("email")
             .value
             .trim();
 
-    if(!email){
+    if (!email) {
 
         return showError(
             t("enterEmailFirst")
@@ -239,4 +256,23 @@ function mostrarRecuperacion() {
     showSuccess(
         t("recoveryEmailSent")
     );
+}
+
+function validateEmail(email) {
+
+    return /\S+@\S+\.\S+/.test(email);
+}
+
+function showError(msg) {
+
+    document.querySelector(
+        ".error"
+    ).textContent = msg;
+}
+
+function showSuccess(msg) {
+
+    document.querySelector(
+        ".success"
+    ).textContent = msg;
 }
