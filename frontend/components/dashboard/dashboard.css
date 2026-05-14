@@ -51,6 +51,8 @@ body{
                     var(--bg-start),
                     var(--bg-end)
             );
+
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
@@ -93,8 +95,8 @@ body::after{
     width:50vw;
     height:50vw;
 
-    min-width:280px;
-    min-height:280px;
+    min-width:220px;
+    min-height:220px;
 
     max-width:700px;
     max-height:700px;
@@ -124,6 +126,8 @@ body::after{
     min-height:100svh;
 
     position:relative;
+
+    overflow:hidden;
 }
 
 .sidebar{
@@ -155,6 +159,8 @@ body::after{
     z-index:1000;
 
     transition:var(--transition);
+
+    overflow-y:auto;
 }
 
 .logo-dashboard{
@@ -198,11 +204,13 @@ body::after{
     color:white;
 
     font-size:
-            clamp(1.6rem,2vw,2rem);
+            clamp(1.4rem,2vw,2rem);
 
     line-height:1;
 
     font-weight:800;
+
+    word-break:break-word;
 }
 
 .logo-section span{
@@ -242,6 +250,8 @@ body::after{
             clamp(24px,2vw,30px);
 
     transition:var(--transition);
+
+    min-width:0;
 }
 
 .user-box:hover{
@@ -291,6 +301,14 @@ body::after{
 
     font-size:
             clamp(14px,1vw,16px);
+
+    display:block;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
 }
 
 .user-box p{
@@ -301,6 +319,12 @@ body::after{
             clamp(11px,0.9vw,13px);
 
     margin-top:3px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
 }
 
 .menu{
@@ -341,6 +365,8 @@ body::after{
     cursor:pointer;
 
     transition:var(--transition);
+
+    min-height:52px;
 }
 
 .menu-item:hover{
@@ -374,7 +400,7 @@ body::after{
 
     width:100%;
 
-    height:56px;
+    min-height:56px;
 
     border:none;
 
@@ -393,6 +419,8 @@ body::after{
     cursor:pointer;
 
     transition:var(--transition);
+
+    flex-shrink:0;
 }
 
 .logout:hover{
@@ -420,9 +448,15 @@ body::after{
             clamp(18px,3vw,34px);
 
     position:relative;
+
+    width:100%;
 }
 
 #contenidoDashboard{
+
+    width:100%;
+
+    max-width:100%;
 
     opacity:1;
 
@@ -499,6 +533,8 @@ body::after{
     transition:0.35s ease;
 
     z-index:900;
+
+    backdrop-filter:blur(4px);
 }
 
 .sidebar-overlay.active{
@@ -575,21 +611,6 @@ body::after{
     }
 }
 
-@keyframes logoFloat{
-
-    0%,100%{
-
-        transform:
-                translateY(0);
-    }
-
-    50%{
-
-        transform:
-                translateY(-8px);
-    }
-}
-
 @media(max-width:1024px){
 
     .menu-toggle{
@@ -612,6 +633,8 @@ body::after{
         width:min(82vw,300px);
 
         min-width:min(82vw,300px);
+
+        border-right:none;
     }
 
     .sidebar.open{
@@ -644,11 +667,18 @@ body::after{
     .menu-item{
 
         border-radius:18px;
+
+        font-size:15px;
     }
 
     .logout{
 
-        height:52px;
+        min-height:52px;
+    }
+
+    .user-box{
+
+        border-radius:22px;
     }
 }
 
@@ -657,6 +687,8 @@ body::after{
     .sidebar{
 
         width:84vw;
+
+        padding:18px 14px;
     }
 
     .menu-toggle{
@@ -667,12 +699,56 @@ body::after{
         border-radius:16px;
 
         font-size:22px;
+
+        top:14px;
+        left:14px;
     }
 
     .main-content{
 
         padding:
                 72px 12px 18px;
+    }
+
+    .logo-section{
+
+        gap:10px;
+    }
+
+    .logo-dashboard{
+
+        width:50px;
+        height:50px;
+    }
+
+    .logo-section h3{
+
+        font-size:1.3rem;
+    }
+
+    .menu-item{
+
+        min-height:48px;
+
+        padding:14px;
+    }
+
+    .logout{
+
+        min-height:48px;
+    }
+
+    .user-box{
+
+        padding:14px;
+
+        gap:10px;
+    }
+
+    .avatar{
+
+        width:44px;
+        height:44px;
     }
 }
 
@@ -685,11 +761,6 @@ and (orientation:landscape){
         overflow-y:auto;
     }
 
-    .logo{
-
-        width:46px;
-    }
-
     .menu-item{
 
         padding:12px 14px;
@@ -697,6 +768,6 @@ and (orientation:landscape){
 
     .logout{
 
-        height:48px;
+        min-height:48px;
     }
 }
