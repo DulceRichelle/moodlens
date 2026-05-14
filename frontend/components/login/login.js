@@ -65,14 +65,14 @@ export function renderLogin(app) {
                     </span>
 
                 </div>
-
-            </div>
-            <div class="forgot-password">
-            <span id="forgotPasswordBtn">
-${t("forgotPassword")}
-</span>
-
-</div>
+                </span>
+                </div>
+                <p
+    class="forgot-password"
+    id="forgotPasswordBtn"
+>
+    ${t("forgotPassword")}
+</p>
             <div class="error"></div>
             <div class="success"></div>
 
@@ -111,7 +111,7 @@ ${t("forgotPassword")}
     togglePassword.addEventListener("click", () => {
         document
             .getElementById("forgotPasswordBtn")
-            .addEventListener("click", forgotPassword);
+            .addEventListener("click", mostrarRecuperacion);
 
         const isPassword =
             passwordInput.type === "password";
@@ -222,72 +222,21 @@ function showSuccess(msg) {
     document.querySelector('.success').textContent = msg;
 }
 
-async function forgotPassword() {
+function mostrarRecuperacion() {
 
     const email =
-        document
-            .getElementById("email")
+        document.getElementById("email")
             .value
             .trim();
 
-    const errorBox =
-        document.querySelector(".error");
-
-    const successBox =
-        document.querySelector(".success");
-
-    errorBox.textContent = "";
-    successBox.textContent = "";
-
-    if (!email) {
+    if(!email){
 
         return showError(
             t("enterEmailFirst")
         );
     }
 
-    if (!validateEmail(email)) {
-
-        return showError(
-            t("invalidEmail")
-        );
-    }
-
-    try {
-
-        const res = await fetch(
-            "https://moodlens-oj88.onrender.com/api/forgot-password",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    email
-                })
-            }
-        );
-
-        const data = await res.json();
-
-        if (!res.ok) {
-
-            return showError(
-                data.message ||
-                t("resetError")
-            );
-        }
-
-        showSuccess(
-            t("resetEmailSent")
-        );
-
-    } catch (error) {
-
-        showError(
-            t("serverConnectionError")
-        );
-    }
+    showSuccess(
+        t("recoveryEmailSent")
+    );
 }

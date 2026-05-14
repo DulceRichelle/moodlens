@@ -552,8 +552,7 @@ export default {
     emotionalPatternsDesc:"Small emotional patterns can reveal meaningful habits.",
     personalizedWellness:"Personalized recommendations based on your recent emotional activity.",
 
-    forgotPassword:"¿Olvidaste tu contraseña?",
-    enterEmailFirst:"Introduce tu email primero",
-    resetEmailSent:"Te enviamos un correo para recuperar tu contraseña",
-    resetError:"No se pudo enviar el correo de recuperación",
+    forgotPassword:"Forgot your password?",
+    enterEmailFirst:"Enter your email first.",
+    recoveryEmailSent:"We sent you recovery instructions."
 };

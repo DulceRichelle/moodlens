@@ -553,7 +553,6 @@ export default {
     personalizedWellness:"Personalisierte Empfehlungen basierend auf deiner aktuellen emotionalen Aktivität.",
 
     forgotPassword:"Passwort vergessen?",
-    enterEmailFirst:"Gib zuerst deine E-Mail ein",
-    resetEmailSent:"Wir haben dir eine E-Mail zur Wiederherstellung gesendet",
-    resetError:"Die Wiederherstellungs-E-Mail konnte nicht gesendet werden",
+    enterEmailFirst:"Gib zuerst deine E-Mail ein.",
+    recoveryEmailSent:"Wir haben dir Wiederherstellungsanweisungen gesendet."
 };

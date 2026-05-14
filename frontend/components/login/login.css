@@ -479,35 +479,24 @@ body::after {
 
 .forgot-password{
 
-    display:flex;
-
-    justify-content:flex-end;
-
     margin-top:12px;
 
-    margin-bottom:6px;
-}
+    text-align:right;
 
-.forgot-password span{
+    font-size:.9rem;
 
-    color:#4F9BFF;
+    color:#5D7BEE;
 
-    font-size:
-            clamp(0.78rem,1vw,0.92rem);
-
-    font-weight:700;
+    font-weight:600;
 
     cursor:pointer;
 
-    transition:var(--transition);
+    transition:.25s ease;
 }
 
-.forgot-password span:hover{
+.forgot-password:hover{
 
     opacity:.7;
-
-    transform:
-            translateX(2px);
 }
 
 .error,
