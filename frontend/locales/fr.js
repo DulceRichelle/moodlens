@@ -549,5 +549,10 @@ export default {
     startTrackingToSeeInsights:"Commencez à enregistrer vos émotions pour débloquer des statistiques et analyses émotionnelles.",
 
     emotionalPatternsDesc:"Les petits schémas émotionnels peuvent révéler des habitudes importantes.",
-    personalizedWellness:"Recommandations personnalisées selon votre activité émotionnelle récente."
+    personalizedWellness:"Recommandations personnalisées selon votre activité émotionnelle récente.",
+
+    forgotPassword:"¿Olvidaste tu contraseña?",
+    enterEmailFirst:"Introduce tu email primero",
+    resetEmailSent:"Te enviamos un correo para recuperar tu contraseña",
+    resetError:"No se pudo enviar el correo de recuperación",
 };

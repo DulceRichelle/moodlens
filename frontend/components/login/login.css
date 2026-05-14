@@ -477,6 +477,39 @@ body::after {
             scale(1.14);
 }
 
+.forgot-password{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:12px;
+
+    margin-bottom:6px;
+}
+
+.forgot-password span{
+
+    color:#4F9BFF;
+
+    font-size:
+            clamp(0.78rem,1vw,0.92rem);
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+}
+
+.forgot-password span:hover{
+
+    opacity:.7;
+
+    transform:
+            translateX(2px);
+}
+
 .error,
 .success {
 

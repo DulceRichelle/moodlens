@@ -550,5 +550,10 @@ export default {
     startTrackingToSeeInsights:"Beginne damit, deine Emotionen zu erfassen, um emotionale Statistiken und Erkenntnisse freizuschalten.",
 
     emotionalPatternsDesc:"Kleine emotionale Muster können wichtige Gewohnheiten offenbaren.",
-    personalizedWellness:"Personalisierte Empfehlungen basierend auf deiner aktuellen emotionalen Aktivität."
+    personalizedWellness:"Personalisierte Empfehlungen basierend auf deiner aktuellen emotionalen Aktivität.",
+
+    forgotPassword:"Passwort vergessen?",
+    enterEmailFirst:"Gib zuerst deine E-Mail ein",
+    resetEmailSent:"Wir haben dir eine E-Mail zur Wiederherstellung gesendet",
+    resetError:"Die Wiederherstellungs-E-Mail konnte nicht gesendet werden",
 };

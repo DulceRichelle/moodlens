@@ -67,7 +67,12 @@ export function renderLogin(app) {
                 </div>
 
             </div>
+            <div class="forgot-password">
+            <span id="forgotPasswordBtn">
+${t("forgotPassword")}
+</span>
 
+</div>
             <div class="error"></div>
             <div class="success"></div>
 
@@ -104,6 +109,9 @@ export function renderLogin(app) {
         document.getElementById("password");
 
     togglePassword.addEventListener("click", () => {
+        document
+            .getElementById("forgotPasswordBtn")
+            .addEventListener("click", forgotPassword);
 
         const isPassword =
             passwordInput.type === "password";
@@ -212,4 +220,74 @@ function showError(msg) {
 function showSuccess(msg) {
 
     document.querySelector('.success').textContent = msg;
+}
+
+async function forgotPassword() {
+
+    const email =
+        document
+            .getElementById("email")
+            .value
+            .trim();
+
+    const errorBox =
+        document.querySelector(".error");
+
+    const successBox =
+        document.querySelector(".success");
+
+    errorBox.textContent = "";
+    successBox.textContent = "";
+
+    if (!email) {
+
+        return showError(
+            t("enterEmailFirst")
+        );
+    }
+
+    if (!validateEmail(email)) {
+
+        return showError(
+            t("invalidEmail")
+        );
+    }
+
+    try {
+
+        const res = await fetch(
+            "https://moodlens-oj88.onrender.com/api/forgot-password",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email
+                })
+            }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+
+            return showError(
+                data.message ||
+                t("resetError")
+            );
+        }
+
+        showSuccess(
+            t("resetEmailSent")
+        );
+
+    } catch (error) {
+
+        showError(
+            t("serverConnectionError")
+        );
+    }
 }

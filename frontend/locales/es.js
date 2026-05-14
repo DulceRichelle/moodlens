@@ -549,5 +549,10 @@ export default {
     startTrackingToSeeInsights:"Empieza a registrar tus emociones para desbloquear estadísticas e insights emocionales.",
 
     emotionalPatternsDesc:"Pequeños patrones emocionales pueden revelar hábitos importantes.",
-    personalizedWellness:"Recomendaciones personalizadas según tu actividad emocional reciente."
+    personalizedWellness:"Recomendaciones personalizadas según tu actividad emocional reciente.",
+
+    forgotPassword:"¿Olvidaste tu contraseña?",
+    enterEmailFirst:"Introduce tu email primero",
+    resetEmailSent:"Te enviamos un correo para recuperar tu contraseña",
+    resetError:"No se pudo enviar el correo de recuperación",
 };
