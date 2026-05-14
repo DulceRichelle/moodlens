@@ -33,17 +33,37 @@ export async function renderConsejos(app) {
     const insights =
         generarInsights(registros);
 
-    const streak =
-        calcularRacha(registros);
-
-    const intensidadPromedio =
-        calcularPromedio(registros);
-
     app.innerHTML = `
 
 <link rel="stylesheet" href="components/dashboard/consejos.css">
 
 <div class="consejos-page">
+
+    <section class="hero-consejos">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+
+                ✨ MoodLens Insights
+
+            </span>
+
+            <h1>
+
+                ${t("tipsForYou")} 🌸
+
+            </h1>
+
+            <p>
+
+                ${t("tipsSubtitle")}
+
+            </p>
+
+        </div>
+
+    </section>
 
     <section class="consejo-destacado">
 
@@ -78,7 +98,11 @@ export async function renderConsejos(app) {
             <div class="emotion-pill">
 
                 ${emocionPrincipal.icono}
-                ${capitalizar(emocionPrincipal.nombre)}
+                ${capitalizar(
+        traducirEmocion(
+            emocionPrincipal.nombre
+        )
+    )}
 
             </div>
 
@@ -319,58 +343,6 @@ function calcularPromedio(registros) {
     ).toFixed(1);
 }
 
-function calcularRacha(registros) {
-
-    if (!registros.length) return 0;
-
-    const fechas = [
-
-        ...new Set(
-
-            registros.map(r =>
-
-                new Date(r.fecha)
-                    .toDateString()
-            )
-        )
-    ];
-
-    return fechas.length;
-}
-
-function generarEstadoEmocional(registros) {
-
-    if (!registros.length) {
-
-        return "You are just beginning your emotional journey.";
-    }
-
-    const promedio =
-        calcularPromedio(registros);
-
-    if (promedio >= 7) {
-
-        return "Your recent emotions show high intensity and emotional energy.";
-    }
-
-    if (promedio >= 5) {
-
-        return "Your emotional balance appears relatively stable lately.";
-    }
-
-    return "Your recent emotions seem calm and emotionally balanced.";
-}
-
-function generarEnergia(registros) {
-
-    if (!registros.length) {
-
-        return "Tracking emotions regularly can improve emotional awareness.";
-    }
-
-    return "Small mindful breaks and routines can help maintain emotional clarity.";
-}
-
 function crearTips(emocion) {
 
     const tips = {
@@ -503,6 +475,22 @@ function crearTips(emocion) {
 </div>
 
 `).join("");
+}
+
+function traducirEmocion(emocion) {
+
+    const emociones = {
+
+        feliz: t("happy"),
+        tranquilo: t("calm"),
+        neutral: t("neutral"),
+        triste: t("sad"),
+        ansioso: t("anxious")
+    };
+
+    return emociones[
+        emocion?.toLowerCase()
+        ] || emocion;
 }
 
 function capitalizar(texto) {
