@@ -25,58 +25,6 @@ export function renderAnalisis(app){
                 ${t("analysisSubtitle")}
             </p>
 
-            <div class="quick-insights">
-
-                <div class="insight">
-
-                    <span>
-                        ✨
-                    </span>
-
-                    <h3>
-                        Emotional Awareness
-                    </h3>
-
-                    <p>
-                        Your emotional patterns become clearer with every new entry.
-                    </p>
-
-                </div>
-
-                <div class="insight">
-
-                    <span>
-                        🧠
-                    </span>
-
-                    <h3>
-                        Personal Insights
-                    </h3>
-
-                    <p>
-                        Detect mood tendencies and emotional intensity over time.
-                    </p>
-
-                </div>
-
-                <div class="insight">
-
-                    <span>
-                        🌙
-                    </span>
-
-                    <h3>
-                        Wellness Journey
-                    </h3>
-
-                    <p>
-                        Emotional tracking helps improve self awareness and routines.
-                    </p>
-
-                </div>
-
-            </div>
-
         </div>
 
     </section>
@@ -153,9 +101,21 @@ export function renderAnalisis(app){
 
         <div class="chart-card">
 
-            <h2>
-                ${t("moodTrend")}
-            </h2>
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        ${t("moodTrend")}
+                    </h2>
+
+                    <p>
+                        ${t("emotionalTimeline")}
+                    </p>
+
+                </div>
+
+            </div>
 
             <div class="chart-wrapper">
 
@@ -167,9 +127,21 @@ export function renderAnalisis(app){
 
         <div class="mood-distribution">
 
-            <h2>
-                Mood Distribution
-            </h2>
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        ${t("moodDistribution")}
+                    </h2>
+
+                    <p>
+                        ${t("mostRegisteredMoods")}
+                    </p>
+
+                </div>
+
+            </div>
 
             <div
                 class="mood-list"
@@ -180,53 +152,25 @@ export function renderAnalisis(app){
 
     </section>
 
-    <section class="analysis-grid">
+    <section class="insight-section">
 
-        <div class="analysis-card">
+        <div class="real-insight-card">
 
-            <span>
-                💙
-            </span>
+            <div class="real-insight-icon">
+                ✨
+            </div>
 
-            <h3>
-                Emotional Balance
-            </h3>
+            <div>
 
-            <p id="balanceText">
-                Your emotional balance insights will appear here.
-            </p>
+                <h3>
+                    ${t("emotionalInsight")}
+                </h3>
 
-        </div>
+                <p id="realInsightText">
+                    ...
+                </p>
 
-        <div class="analysis-card">
-
-            <span>
-                📅
-            </span>
-
-            <h3>
-                Activity Pattern
-            </h3>
-
-            <p id="activityText">
-                Your emotional activity patterns will appear here.
-            </p>
-
-        </div>
-
-        <div class="analysis-card">
-
-            <span>
-                🌱
-            </span>
-
-            <h3>
-                Growth Reflection
-            </h3>
-
-            <p id="growthText">
-                Personalized emotional reflections will appear here.
-            </p>
+            </div>
 
         </div>
 
@@ -271,7 +215,7 @@ async function cargarAnalisis(){
 
         pintarDistribucion(data);
 
-        generarInsights(data);
+        generarInsightReal(data);
 
     }catch(error){
 
@@ -394,7 +338,7 @@ function pintarGrafico(data){
                     borderColor:"#49C7E7",
 
                     backgroundColor:
-                        "rgba(73,199,231,.18)",
+                        "rgba(73,199,231,.16)",
 
                     pointRadius:6,
 
@@ -428,6 +372,10 @@ function pintarGrafico(data){
 
                     grid:{
                         display:false
+                    },
+
+                    ticks:{
+                        color:"#6E6894"
                     }
                 },
 
@@ -437,7 +385,12 @@ function pintarGrafico(data){
                     max:10,
 
                     ticks:{
-                        stepSize:2
+                        stepSize:2,
+                        color:"#6E6894"
+                    },
+
+                    grid:{
+                        color:"rgba(0,0,0,.06)"
                     }
                 }
             }
@@ -521,16 +474,27 @@ function pintarDistribucion(data){
             </h3>
 
             <p>
-                ${contador[emocion]} entries
+                ${contador[emocion]} ${t("entries")}
             </p>
 
         </div>
 
     </div>
 
-    <div class="mood-percent">
+    <div class="mood-right">
 
-        ${porcentaje}%
+        <strong>
+            ${porcentaje}%
+        </strong>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill ${mood.color}"
+                style="width:${porcentaje}%"
+            ></div>
+
+        </div>
 
     </div>
 
@@ -539,7 +503,7 @@ function pintarDistribucion(data){
     });
 }
 
-function generarInsights(data){
+function generarInsightReal(data){
 
     const promedio =
         data.reduce(
@@ -548,19 +512,27 @@ function generarInsights(data){
             0
         ) / data.length;
 
-    document.getElementById("balanceText")
-        .textContent =
-        promedio >= 7
-            ? "Your recent emotional intensity has been quite high. Taking breaks and reflecting may help balance your energy."
-            : "Your emotional intensity appears relatively balanced and stable recently.";
+    let texto = "";
 
-    document.getElementById("activityText")
-        .textContent =
-        `You have logged ${data.length} emotional entries so far, helping build a clearer emotional timeline.`;
+    if(promedio >= 8){
 
-    document.getElementById("growthText")
-        .textContent =
-        "Consistent emotional tracking improves self awareness and helps recognize emotional patterns over time.";
+        texto =
+            t("highIntensityInsight");
+
+    }else if(promedio >= 5){
+
+        texto =
+            t("balancedInsight");
+
+    }else{
+
+        texto =
+            t("calmInsight");
+    }
+
+    document.getElementById(
+        "realInsightText"
+    ).textContent = texto;
 }
 
 function mostrarEstadoVacio(){
@@ -572,11 +544,11 @@ function mostrarEstadoVacio(){
 <div class="empty-state">
 
     <h2>
-        📊 No analysis available yet
+        📊 ${t("noAnalysisYet")}
     </h2>
 
     <p>
-        Start tracking your emotions to unlock emotional insights, mood analytics and personalized reflections.
+        ${t("startTrackingToSeeInsights")}
     </p>
 
 </div>

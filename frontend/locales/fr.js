@@ -536,4 +536,15 @@ export default {
 
     unlocked: "Débloqué",
     progress: "Progression",
+
+    moodDistribution:"Répartition émotionnelle",
+    mostRegisteredMoods:"Émotions les plus enregistrées",
+    entries:"entrées",
+    emotionalTimeline:"Visualisez l’évolution de votre intensité émotionnelle",
+
+    highIntensityInsight:"Votre intensité émotionnelle récente a été assez élevée. Faire des pauses et réfléchir peut aider à retrouver un équilibre émotionnel.",
+    balancedInsight:"Votre état émotionnel semble relativement équilibré et stable récemment.",
+    calmInsight:"Vos enregistrements montrent une intensité émotionnelle calme et stable.",
+    noAnalysisYet:"Aucune analyse disponible pour le moment",
+    startTrackingToSeeInsights:"Commencez à enregistrer vos émotions pour débloquer des statistiques et analyses émotionnelles."
 };

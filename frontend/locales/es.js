@@ -536,4 +536,15 @@ export default {
 
     unlocked: "Desbloqueado",
     progress: "Progreso",
+
+    moodDistribution:"Distribución emocional",
+    mostRegisteredMoods:"Emociones registradas con más frecuencia",
+    entries:"registros",
+    emotionalTimeline:"Visualiza cómo cambia tu intensidad emocional",
+
+    highIntensityInsight:"Tu intensidad emocional reciente ha sido bastante alta. Descansar y reflexionar puede ayudarte a recuperar equilibrio emocional.",
+    balancedInsight:"Tu estado emocional parece relativamente equilibrado y estable últimamente.",
+    calmInsight:"Tus registros muestran una intensidad emocional tranquila y estable.",
+    noAnalysisYet:"Todavía no hay análisis disponibles",
+    startTrackingToSeeInsights:"Empieza a registrar tus emociones para desbloquear estadísticas e insights emocionales."
 };

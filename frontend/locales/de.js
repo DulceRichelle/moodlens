@@ -537,4 +537,15 @@ export default {
 
     unlocked: "Freigeschaltet",
     progress: "Fortschritt",
+
+    moodDistribution:"Emotionale Verteilung",
+    mostRegisteredMoods:"Am häufigsten registrierte Emotionen",
+    entries:"Einträge",
+    emotionalTimeline:"Sieh dir an, wie sich deine emotionale Intensität verändert",
+   
+    highIntensityInsight:"Deine emotionale Intensität war zuletzt ziemlich hoch. Pausen und Reflexion können helfen, das emotionale Gleichgewicht wiederzufinden.",
+    balancedInsight:"Dein emotionaler Zustand wirkt in letzter Zeit relativ ausgeglichen und stabil.",
+    calmInsight:"Deine Einträge zeigen eine ruhige und stabile emotionale Intensität.",
+    noAnalysisYet:"Noch keine Analyse verfügbar",
+    startTrackingToSeeInsights:"Beginne damit, deine Emotionen zu erfassen, um emotionale Statistiken und Erkenntnisse freizuschalten."
 };

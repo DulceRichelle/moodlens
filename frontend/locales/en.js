@@ -537,4 +537,15 @@ export default {
 
     unlocked: "Unlocked",
     progress: "Progress",
+
+    moodDistribution:"Mood Distribution",
+    mostRegisteredMoods:"Most frequently registered emotions",
+    entries:"entries",
+    emotionalTimeline:"Visualize how your emotional intensity changes",
+
+    highIntensityInsight:"Your recent emotional intensity has been quite high. Taking breaks and reflecting may help restore emotional balance.",
+    balancedInsight:"Your emotional state seems relatively balanced and stable lately.",
+    calmInsight:"Your records show a calm and stable emotional intensity.",
+    noAnalysisYet:"No analysis available yet",
+    startTrackingToSeeInsights:"Start tracking your emotions to unlock emotional statistics and insights."
 };
