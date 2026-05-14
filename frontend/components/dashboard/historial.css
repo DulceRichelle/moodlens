@@ -29,11 +29,23 @@
             all 0.55s cubic-bezier(0.16,1,0.3,1);
 }
 
+html,
 body{
+
+    width:100%;
+
+    min-height:100%;
 
     overflow-x:hidden;
 
     font-family:'Inter',sans-serif;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+
+    overflow-x:hidden;
 }
 
 .historial-page{
@@ -41,6 +53,8 @@ body{
     min-height:100vh;
 
     width:100%;
+
+    max-width:100%;
 
     display:flex;
 
@@ -50,12 +64,16 @@ body{
 
     animation:
             pageReveal 0.7s cubic-bezier(0.16,1,0.3,1);
+
+    overflow-x:hidden;
 }
 
 .header-historial{
 
     padding:
             clamp(4px,1vw,8px);
+
+    width:100%;
 }
 
 .header-historial h1{
@@ -81,6 +99,8 @@ body{
     animation:
             fadeUp 0.8s cubic-bezier(0.16,1,0.3,1)
             forwards;
+
+    word-break:break-word;
 }
 
 .header-historial p{
@@ -101,6 +121,8 @@ body{
     animation:
             fadeUp 0.8s cubic-bezier(0.16,1,0.3,1)
             0.08s forwards;
+
+    word-break:break-word;
 }
 
 .historial-main-container{
@@ -110,6 +132,8 @@ body{
     overflow:hidden;
 
     width:100%;
+
+    max-width:100%;
 
     background:
             rgba(255,255,255,0.92);
@@ -155,6 +179,8 @@ body{
 
     margin-bottom:
             clamp(18px,2vw,26px);
+
+    word-break:break-word;
 }
 
 .filtros{
@@ -193,6 +219,8 @@ body{
     font-weight:600;
 
     transition:var(--transition);
+
+    white-space:nowrap;
 }
 
 .filtro:hover{
@@ -231,6 +259,8 @@ body{
 
     overflow-y:auto;
 
+    overflow-x:hidden;
+
     padding-right:6px;
 }
 
@@ -254,6 +284,8 @@ body{
     flex-direction:column;
 
     gap:14px;
+
+    width:100%;
 }
 
 .grupo-titulo{
@@ -266,6 +298,8 @@ body{
     font-weight:800;
 
     margin-bottom:4px;
+
+    word-break:break-word;
 }
 
 .historial-card{
@@ -302,6 +336,10 @@ body{
     animation:
             cardReveal 0.6s cubic-bezier(0.16,1,0.3,1)
             forwards;
+
+    width:100%;
+
+    max-width:100%;
 }
 
 .historial-card::before{
@@ -335,6 +373,8 @@ body{
     flex:1;
 
     min-width:0;
+
+    width:100%;
 }
 
 .emocion-header{
@@ -345,6 +385,8 @@ body{
 
     gap:
             clamp(12px,2vw,18px);
+
+    width:100%;
 }
 
 .emocion-icono{
@@ -371,11 +413,15 @@ body{
 
     box-shadow:
             0 10px 24px rgba(0,0,0,0.06);
+
+    flex-shrink:0;
 }
 
 .emocion-info{
 
     min-width:0;
+
+    width:100%;
 }
 
 .card-left h3{
@@ -388,6 +434,8 @@ body{
     margin-bottom:10px;
 
     line-height:1.2;
+
+    word-break:break-word;
 }
 
 .card-left p{
@@ -420,6 +468,8 @@ body{
             clamp(0.72rem,1vw,0.86rem);
 
     white-space:nowrap;
+
+    flex-shrink:0;
 }
 
 .acciones{
@@ -427,12 +477,16 @@ body{
     display:flex;
 
     gap:8px;
+
+    flex-wrap:wrap;
 }
 
 .acciones button{
 
     width:42px;
     height:42px;
+
+    min-width:42px;
 
     border:none;
 
@@ -473,6 +527,8 @@ body{
     line-height:1.7;
 }
 
+/* MODAL FIXED MOBILE */
+
 .modal{
 
     position:fixed;
@@ -489,12 +545,14 @@ body{
     justify-content:center;
     align-items:center;
 
-    padding:20px;
+    padding:18px;
 
     z-index:9999;
 
     animation:
             fadeModal 0.25s ease;
+
+    overflow-y:auto;
 }
 
 .modal-content{
@@ -502,6 +560,10 @@ body{
     width:100%;
 
     max-width:420px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
 
     background:
             rgba(255,255,255,0.96);
@@ -517,6 +579,8 @@ body{
 
     animation:
             modalReveal 0.35s cubic-bezier(0.16,1,0.3,1);
+
+    margin:auto;
 }
 
 .modal-content h2,
@@ -528,6 +592,8 @@ body{
 
     font-size:
             clamp(1.2rem,2vw,1.6rem);
+
+    word-break:break-word;
 }
 
 .modal-content p{
@@ -535,6 +601,8 @@ body{
     color:var(--text);
 
     line-height:1.7;
+
+    word-break:break-word;
 }
 
 .modal-content label{
@@ -571,6 +639,8 @@ body{
     font-family:'Inter',sans-serif;
 
     transition:var(--transition);
+
+    font-size:16px;
 }
 
 .modal-content textarea{
@@ -580,7 +650,8 @@ body{
     resize:vertical;
 }
 
-.modal-content textarea:focus{
+.modal-content textarea:focus,
+.modal-content input:focus{
 
     box-shadow:
             0 0 0 5px rgba(75,207,250,0.12);
@@ -593,13 +664,15 @@ body{
     gap:12px;
 
     margin-top:24px;
+
+    width:100%;
 }
 
 .modal-buttons button{
 
     flex:1;
 
-    height:50px;
+    min-height:50px;
 
     border:none;
 
@@ -610,6 +683,8 @@ body{
     cursor:pointer;
 
     transition:var(--transition);
+
+    padding:12px;
 }
 
 #guardarEdit{
@@ -694,6 +769,8 @@ body{
 
     animation:
             toastReveal 0.35s cubic-bezier(0.16,1,0.3,1);
+
+    max-width:min(92vw,420px);
 }
 
 .toast button{
@@ -711,6 +788,8 @@ body{
     font-weight:700;
 
     cursor:pointer;
+
+    flex-shrink:0;
 }
 
 .hidden{
@@ -884,9 +963,25 @@ body{
 
 @media(max-width:768px){
 
+    .historial-page{
+
+        gap:18px;
+    }
+
+    .historial-main-container{
+
+        padding:20px 16px;
+
+        border-radius:26px;
+    }
+
     .historial-card{
 
         flex-direction:column;
+
+        gap:16px;
+
+        padding:18px;
     }
 
     .card-right{
@@ -906,19 +1001,136 @@ body{
 
         width:38px;
         height:38px;
+
+        min-width:38px;
+    }
+
+    .modal{
+
+        padding:14px;
+    }
+
+    .modal-content{
+
+        max-height:88vh;
+
+        border-radius:24px;
     }
 }
 
 @media(max-width:480px){
 
-    .toast{
+    .historial-page{
 
-        left:14px;
-        right:14px;
+        gap:16px;
+    }
 
-        transform:none;
+    .header-historial h1{
 
-        justify-content:space-between;
+        font-size:2rem;
+
+        letter-spacing:-1px;
+    }
+
+    .header-historial p{
+
+        font-size:.92rem;
+    }
+
+    .historial-main-container{
+
+        padding:16px 14px;
+
+        border-radius:22px;
+    }
+
+    .filtros{
+
+        gap:8px;
+    }
+
+    .filtro{
+
+        width:100%;
+
+        text-align:center;
+    }
+
+    .emocion-header{
+
+        align-items:flex-start;
+    }
+
+    .emocion-icono{
+
+        width:48px;
+        height:48px;
+
+        min-width:48px;
+
+        border-radius:16px;
+    }
+
+    .card-left h3{
+
+        font-size:1rem;
+    }
+
+    .card-left p{
+
+        font-size:.88rem;
+
+        line-height:1.6;
+    }
+
+    .card-right{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:14px;
+    }
+
+    .acciones{
+
+        width:100%;
+    }
+
+    .acciones button{
+
+        flex:1;
+
+        height:42px;
+    }
+
+    .modal{
+
+        align-items:flex-end;
+
+        padding:10px;
+    }
+
+    .modal-content{
+
+        max-width:100%;
+
+        width:100%;
+
+        max-height:92vh;
+
+        border-radius:24px 24px 0 0;
+
+        padding:20px 16px;
+
+        animation:
+                mobileModalReveal 0.3s ease;
+    }
+
+    .modal-content input,
+    .modal-content textarea{
+
+        font-size:16px;
     }
 
     .modal-buttons{
@@ -926,9 +1138,25 @@ body{
         flex-direction:column;
     }
 
-    .emocion-header{
+    .modal-buttons button{
 
-        align-items:flex-start;
+        width:100%;
+    }
+
+    .toast{
+
+        left:12px;
+        right:12px;
+
+        bottom:12px;
+
+        transform:none;
+
+        justify-content:space-between;
+
+        padding:14px 16px;
+
+        border-radius:18px;
     }
 }
 
@@ -944,5 +1172,36 @@ and (orientation:landscape){
     .historial-card{
 
         padding:16px;
+    }
+
+    .modal{
+
+        align-items:flex-start;
+
+        padding:16px;
+    }
+
+    .modal-content{
+
+        max-height:none;
+    }
+}
+
+@keyframes mobileModalReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+                translateY(100%);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+                translateY(0);
     }
 }
