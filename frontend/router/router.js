@@ -10,6 +10,10 @@ import { renderConsejos } from "../components/dashboard/consejos.js";
 import { renderPerfil } from "../components/dashboard/perfil.js";
 
 export function navigate(route) {
+    localStorage.setItem(
+        "currentRoute",
+        route
+    );
     const app = document.getElementById('app');
 
     app.classList.remove('page-enter', 'page-enter-active');
@@ -73,4 +77,9 @@ export function navigate(route) {
 }
 
 window.navigate = navigate;
-navigate('home');
+const savedRoute =
+    localStorage.getItem(
+        "currentRoute"
+    ) || "home";
+
+navigate(savedRoute);
