@@ -514,4 +514,27 @@ export default {
     history: "Verlauf",
     tips: "Tipps",
     profile: "Profil",
+
+    emotionalInsight: "Emotionale Erkenntnis",
+    emotionalInsightDesc: "Du wirst immer konsequenter bei deinem emotionalen Tracking.",
+
+    calmMoments: "Ruhige Momente",
+    calmMomentsDesc: "Das Erfassen ruhiger Tage hilft dabei, gesündere Gewohnheiten zu erkennen.",
+
+    personalGrowth: "Persönliches Wachstum",
+    personalGrowthDesc: "Kleine emotionale Reflexionen schaffen langfristige Selbstwahrnehmung.",
+
+    streak: "Serie",
+    level: "Level",
+
+    achievements: "Erfolge",
+
+    firstStreak: "Erste Serie",
+    firstStreakDesc: "Emotionen mehrere Tage hintereinander eingetragen.",
+
+    selfAwareness: "Selbstwahrnehmung",
+    selfAwarenessDesc: "Mehrere emotionale Einträge erreicht.",
+
+    unlocked: "Freigeschaltet",
+    progress: "Fortschritt",
 };

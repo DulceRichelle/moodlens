@@ -513,4 +513,27 @@ export default {
     consistency: "Constancia",
     totalEntries: "Registros totales",
     mainMood: "Estado principal",
+
+    emotionalInsight: "Insight emocional",
+    emotionalInsightDesc: "Te estás volviendo más constante en tu seguimiento emocional.",
+
+    calmMoments: "Momentos de calma",
+    calmMomentsDesc: "Registrar tus días tranquilos ayuda a identificar hábitos más saludables.",
+
+    personalGrowth: "Crecimiento personal",
+    personalGrowthDesc: "Pequeñas reflexiones emocionales crean una gran conciencia personal.",
+
+    streak: "Racha",
+    level: "Nivel",
+
+    achievements: "Logros",
+
+    firstStreak: "Primera racha",
+    firstStreakDesc: "Registraste emociones durante días consecutivos.",
+
+    selfAwareness: "Autoconocimiento",
+    selfAwarenessDesc: "Has alcanzado múltiples registros emocionales.",
+
+    unlocked: "Desbloqueado",
+    progress: "Progreso",
 };

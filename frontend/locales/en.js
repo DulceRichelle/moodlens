@@ -514,4 +514,27 @@ export default {
     consistency: "Consistency",
     totalEntries: "Total entries",
     mainMood: "Main mood",
+
+    emotionalInsight: "Emotional Insight",
+    emotionalInsightDesc: "You are becoming more consistent with your emotional tracking journey.",
+
+    calmMoments: "Calm Moments",
+    calmMomentsDesc: "Tracking your calm days helps identify healthier routines and habits.",
+
+    personalGrowth: "Personal Growth",
+    personalGrowthDesc: "Small emotional reflections create powerful long-term self awareness.",
+
+    streak: "Streak",
+    level: "Level",
+
+    achievements: "Achievements",
+
+    firstStreak: "First Streak",
+    firstStreakDesc: "Logged emotions for consecutive days.",
+
+    selfAwareness: "Self Awareness",
+    selfAwarenessDesc: "Reached multiple emotional entries.",
+
+    unlocked: "Unlocked",
+    progress: "Progress",
 };

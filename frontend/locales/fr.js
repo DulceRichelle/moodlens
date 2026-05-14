@@ -513,4 +513,27 @@ export default {
     consistency: "Régularité",
     totalEntries: "Entrées totales",
     mainMood: "Humeur principale",
+
+    emotionalInsight: "Analyse émotionnelle",
+    emotionalInsightDesc: "Vous devenez plus constant dans votre suivi émotionnel.",
+
+    calmMoments: "Moments de calme",
+    calmMomentsDesc: "Suivre vos journées calmes aide à identifier de meilleures habitudes.",
+
+    personalGrowth: "Croissance personnelle",
+    personalGrowthDesc: "De petites réflexions émotionnelles créent une forte conscience de soi.",
+
+    streak: "Série",
+    level: "Niveau",
+
+    achievements: "Succès",
+
+    firstStreak: "Première série",
+    firstStreakDesc: "Vous avez enregistré des émotions plusieurs jours de suite.",
+
+    selfAwareness: "Conscience de soi",
+    selfAwarenessDesc: "Vous avez atteint plusieurs enregistrements émotionnels.",
+
+    unlocked: "Débloqué",
+    progress: "Progression",
 };
