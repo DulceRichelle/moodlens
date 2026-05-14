@@ -546,5 +546,8 @@ export default {
     balancedInsight:"Votre état émotionnel semble relativement équilibré et stable récemment.",
     calmInsight:"Vos enregistrements montrent une intensité émotionnelle calme et stable.",
     noAnalysisYet:"Aucune analyse disponible pour le moment",
-    startTrackingToSeeInsights:"Commencez à enregistrer vos émotions pour débloquer des statistiques et analyses émotionnelles."
+    startTrackingToSeeInsights:"Commencez à enregistrer vos émotions pour débloquer des statistiques et analyses émotionnelles.",
+
+    emotionalPatternsDesc:"Les petits schémas émotionnels peuvent révéler des habitudes importantes.",
+    personalizedWellness:"Recommandations personnalisées selon votre activité émotionnelle récente."
 };

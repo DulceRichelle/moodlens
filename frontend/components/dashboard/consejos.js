@@ -45,72 +45,6 @@ export async function renderConsejos(app) {
 
 <div class="consejos-page">
 
-    <section class="hero-consejos">
-
-        <div class="hero-content">
-
-            <span class="hero-badge">
-
-                ✨ MoodLens Insights
-
-            </span>
-
-            <h1>
-
-                ${t("tipsForYou")} 🌸
-
-            </h1>
-
-            <p>
-
-                ${t("tipsSubtitle")}
-
-            </p>
-
-            <div class="hero-mini-stats">
-
-                <div class="mini-stat">
-
-                    <h3>
-                        ${registros.length}
-                    </h3>
-
-                    <p>
-                        ${t("totalRecords")}
-                    </p>
-
-                </div>
-
-                <div class="mini-stat">
-
-                    <h3>
-                        ${intensidadPromedio}/10
-                    </h3>
-
-                    <p>
-                        ${t("averageIntensity")}
-                    </p>
-
-                </div>
-
-                <div class="mini-stat">
-
-                    <h3>
-                        ${streak}
-                    </h3>
-
-                    <p>
-                        Day Streak
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
     <section class="consejo-destacado">
 
         <div class="destacado-glow"></div>
@@ -152,70 +86,6 @@ export async function renderConsejos(app) {
 
     </section>
 
-    <section class="mood-summary">
-
-        <div class="summary-card calm">
-
-            <span>
-                💙
-            </span>
-
-            <div>
-
-                <h3>
-                    Emotional State
-                </h3>
-
-                <p>
-                    ${generarEstadoEmocional(registros)}
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="summary-card energy">
-
-            <span>
-                ⚡
-            </span>
-
-            <div>
-
-                <h3>
-                    Energy Reflection
-                </h3>
-
-                <p>
-                    ${generarEnergia(registros)}
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="summary-card growth">
-
-            <span>
-                🌱
-            </span>
-
-            <div>
-
-                <h3>
-                    Personal Growth
-                </h3>
-
-                <p>
-                    Your consistency helps build emotional awareness over time.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
     <section class="insights-section">
 
         <div class="section-title">
@@ -225,7 +95,7 @@ export async function renderConsejos(app) {
             </h2>
 
             <p>
-                Small emotional patterns can reveal meaningful habits.
+                ${t("emotionalPatternsDesc")}
             </p>
 
         </div>
@@ -243,10 +113,6 @@ export async function renderConsejos(app) {
                             ${item.icono}
 
                         </div>
-
-                        <span class="insight-badge">
-                            Insight
-                        </span>
 
                     </div>
 
@@ -279,7 +145,7 @@ export async function renderConsejos(app) {
             </h2>
 
             <p>
-                Personalized recommendations based on your recent emotional activity.
+                ${t("personalizedWellness")}
             </p>
 
         </div>
