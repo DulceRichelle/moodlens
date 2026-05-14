@@ -37,6 +37,7 @@ html,
 body{
 
     min-height:100%;
+
     overflow-x:hidden;
 
     font-family:'Inter',sans-serif;
@@ -47,6 +48,8 @@ body{
                     var(--bg-1),
                     var(--bg-2)
             );
+
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
@@ -83,6 +86,8 @@ body::before{
 
     width:100%;
 
+    max-width:100%;
+
     min-height:100vh;
 
     padding:
@@ -96,6 +101,8 @@ body::before{
 
     animation:
             fadePage .6s ease;
+
+    overflow-x:hidden;
 }
 
 /* HERO */
@@ -121,6 +128,8 @@ body::before{
             1px solid rgba(255,255,255,.16);
 
     box-shadow:var(--shadow);
+
+    width:100%;
 }
 
 .hero-consejos::before{
@@ -151,6 +160,8 @@ body::before{
     position:relative;
 
     z-index:2;
+
+    width:100%;
 }
 
 .hero-badge{
@@ -171,6 +182,8 @@ body::before{
     font-size:.9rem;
 
     margin-bottom:22px;
+
+    flex-wrap:wrap;
 }
 
 .hero-consejos h1{
@@ -185,6 +198,8 @@ body::before{
     margin-bottom:16px;
 
     letter-spacing:-2px;
+
+    word-break:break-word;
 }
 
 .hero-consejos p{
@@ -198,6 +213,8 @@ body::before{
 
     font-size:
             clamp(.95rem,1.5vw,1.15rem);
+
+    word-break:break-word;
 }
 
 /* CONSEJO DESTACADO */
@@ -233,6 +250,8 @@ body::before{
             1px solid rgba(255,255,255,.16);
 
     box-shadow:var(--shadow);
+
+    width:100%;
 }
 
 .destacado-glow{
@@ -280,6 +299,8 @@ body::before{
 
     box-shadow:
             0 18px 40px rgba(0,0,0,.12);
+
+    flex-shrink:0;
 }
 
 .destacado-info{
@@ -287,6 +308,10 @@ body::before{
     position:relative;
 
     z-index:2;
+
+    min-width:0;
+
+    flex:1;
 }
 
 .tag{
@@ -307,6 +332,8 @@ body::before{
     font-size:.85rem;
 
     margin-bottom:18px;
+
+    flex-wrap:wrap;
 }
 
 .consejo-destacado h2{
@@ -319,6 +346,8 @@ body::before{
     line-height:1.15;
 
     margin-bottom:14px;
+
+    word-break:break-word;
 }
 
 .consejo-destacado p{
@@ -329,6 +358,8 @@ body::before{
     line-height:1.8;
 
     max-width:760px;
+
+    word-break:break-word;
 }
 
 .emotion-pill{
@@ -351,6 +382,8 @@ body::before{
     color:white;
 
     font-weight:600;
+
+    flex-wrap:wrap;
 }
 
 /* SECTIONS */
@@ -358,6 +391,8 @@ body::before{
 .section-title{
 
     margin-bottom:22px;
+
+    width:100%;
 }
 
 .section-title h2{
@@ -368,6 +403,10 @@ body::before{
             clamp(1.8rem,4vw,2.6rem);
 
     margin-bottom:10px;
+
+    line-height:1.2;
+
+    word-break:break-word;
 }
 
 .section-title p{
@@ -378,6 +417,8 @@ body::before{
     line-height:1.7;
 
     max-width:700px;
+
+    word-break:break-word;
 }
 
 .insights-grid,
@@ -395,6 +436,8 @@ body::before{
             );
 
     gap:22px;
+
+    width:100%;
 }
 
 .insight-card,
@@ -416,6 +459,8 @@ body::before{
     position:relative;
 
     overflow:hidden;
+
+    min-width:0;
 }
 
 .insight-card:hover,
@@ -437,6 +482,8 @@ body::before{
 
     width:68px;
     height:68px;
+
+    min-width:68px;
 
     border-radius:22px;
 
@@ -468,6 +515,10 @@ body::before{
     font-size:1.3rem;
 
     margin-bottom:12px;
+
+    line-height:1.3;
+
+    word-break:break-word;
 }
 
 .insight-card p,
@@ -478,6 +529,8 @@ body::before{
     line-height:1.75;
 
     font-size:.95rem;
+
+    word-break:break-word;
 }
 
 @keyframes fadePage{
@@ -529,16 +582,27 @@ body::before{
     .consejos-page{
 
         padding:18px;
+
+        gap:22px;
     }
 
     .hero-consejos{
 
         padding:30px 24px;
+
+        border-radius:30px;
+    }
+
+    .hero-consejos h1{
+
+        letter-spacing:-1px;
     }
 
     .consejo-destacado{
 
         padding:28px 22px;
+
+        border-radius:30px;
     }
 
     .destacado-icono{
@@ -550,6 +614,12 @@ body::before{
 
         font-size:2.5rem;
     }
+
+    .insight-card,
+    .tip-card{
+
+        border-radius:28px;
+    }
 }
 
 @media(max-width:480px){
@@ -557,16 +627,145 @@ body::before{
     .consejos-page{
 
         padding:14px;
+
+        gap:18px;
+    }
+
+    .hero-consejos{
+
+        padding:22px 18px;
+
+        border-radius:24px;
+    }
+
+    .hero-badge{
+
+        width:100%;
+
+        justify-content:center;
+
+        text-align:center;
     }
 
     .hero-consejos h1{
 
-        letter-spacing:-1px;
+        font-size:2.1rem;
+
+        line-height:1.1;
+    }
+
+    .hero-consejos p{
+
+        font-size:.95rem;
+
+        line-height:1.7;
+    }
+
+    .consejo-destacado{
+
+        padding:22px 18px;
+
+        border-radius:24px;
+
+        gap:18px;
+    }
+
+    .destacado-icono{
+
+        width:78px;
+        height:78px;
+
+        min-width:78px;
+
+        border-radius:24px;
+
+        font-size:2rem;
+    }
+
+    .tag{
+
+        width:100%;
+
+        justify-content:center;
+
+        text-align:center;
+    }
+
+    .consejo-destacado h2{
+
+        font-size:1.7rem;
+    }
+
+    .emotion-pill{
+
+        width:100%;
+
+        justify-content:center;
+
+        text-align:center;
+    }
+
+    .section-title h2{
+
+        font-size:1.6rem;
+    }
+
+    .insights-grid,
+    .tips-grid{
+
+        grid-template-columns:1fr;
+
+        gap:16px;
     }
 
     .insight-card,
     .tip-card{
 
-        padding:24px;
+        padding:22px 18px;
+
+        border-radius:22px;
+    }
+
+    .insight-icono,
+    .tip-icono{
+
+        width:58px;
+        height:58px;
+
+        min-width:58px;
+
+        border-radius:18px;
+
+        font-size:1.5rem;
+    }
+
+    .insight-card h3,
+    .tip-card h3{
+
+        font-size:1.1rem;
+    }
+
+    .insight-card p,
+    .tip-card p{
+
+        font-size:.92rem;
+
+        line-height:1.7;
+    }
+}
+
+@media screen
+and (max-height:560px)
+and (orientation:landscape){
+
+    .consejos-page{
+
+        padding:12px;
+    }
+
+    .hero-consejos,
+    .consejo-destacado{
+
+        padding:20px;
     }
 }
