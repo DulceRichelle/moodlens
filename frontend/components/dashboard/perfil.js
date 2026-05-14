@@ -8,6 +8,11 @@ import {
 
 export async function renderPerfil(app) {
 
+    const savedTheme =
+        localStorage.getItem("moodlens-theme") || "auto";
+
+    aplicarTema(savedTheme);
+
     app.innerHTML = `
 <link rel="stylesheet" href="components/dashboard/perfil.css">
 
@@ -43,6 +48,10 @@ export async function renderPerfil(app) {
 
                 </div>
 
+            </div>
+
+            <div class="hero-badge">
+                🌙 Mindful Journey
             </div>
 
         </div>
@@ -93,12 +102,12 @@ export async function renderPerfil(app) {
 
                 <div class="mini-progress">
 
-                    <h3 id="nivel">
-                        Lv.1
+                    <h3 id="racha">
+                        🔥 0
                     </h3>
 
                     <p>
-                        ${t("level")}
+                        ${t("streak")}
                     </p>
 
                 </div>
@@ -108,58 +117,6 @@ export async function renderPerfil(app) {
         </div>
 
     </section>
-
-    <div class="insights-grid">
-
-        <div class="insight-card">
-
-            <div class="insight-icon">
-                📈
-            </div>
-
-            <h3>
-                ${t("totalRecords")}
-            </h3>
-
-            <p id="totalRegistros">
-                0 registros emocionales guardados.
-            </p>
-
-        </div>
-
-        <div class="insight-card">
-
-            <div class="insight-icon">
-                🧠
-            </div>
-
-            <h3>
-                ${t("mostUsedEmotion")}
-            </h3>
-
-            <p id="emocionFrecuente">
-                Sin datos suficientes todavía.
-            </p>
-
-        </div>
-
-        <div class="insight-card">
-
-            <div class="insight-icon">
-                📅
-            </div>
-
-            <h3>
-                ${t("lastRecord")}
-            </h3>
-
-            <p id="ultimoRegistro">
-                No hay registros recientes.
-            </p>
-
-        </div>
-
-    </div>
 
     <div class="perfil-grid">
 
@@ -245,23 +202,35 @@ export async function renderPerfil(app) {
 
             </div>
 
-            <div class="setting-item">
+            <div class="theme-section">
 
-                <div>
+                <div class="theme-info">
 
                     <h3>
-                        🔔 ${t("notifications")}
+                        🌗 Tema visual
                     </h3>
 
                     <p>
-                        ${t("emotionalReminders")}
+                        Cambia automáticamente según tu dispositivo o elige un modo manual.
                     </p>
 
                 </div>
 
-                <span class="setting-badge">
-                    Soon
-                </span>
+                <div class="theme-switcher">
+
+                    <button class="theme-btn ${savedTheme === "light" ? "active" : ""}" data-theme="light">
+                        ☀️
+                    </button>
+
+                    <button class="theme-btn ${savedTheme === "dark" ? "active" : ""}" data-theme="dark">
+                        🌙
+                    </button>
+
+                    <button class="theme-btn ${savedTheme === "auto" ? "active" : ""}" data-theme="auto">
+                        Auto
+                    </button>
+
+                </div>
 
             </div>
 
@@ -270,17 +239,17 @@ export async function renderPerfil(app) {
                 <div>
 
                     <h3>
-                        🌙 Dark mode
+                        🔒 ${t("privacy")}
                     </h3>
 
                     <p>
-                        Automático según tu dispositivo
+                        ${t("privateEmotions")}
                     </p>
 
                 </div>
 
                 <span class="setting-badge active">
-                    Auto
+                    ${t("active")}
                 </span>
 
             </div>
@@ -368,6 +337,9 @@ async function initPerfil(app){
     const diasActivos =
         calcularDiasActivos(registros);
 
+    const racha =
+        calcularRacha(registros);
+
     document.getElementById("diasActivos")
         .textContent = diasActivos;
 
@@ -376,31 +348,8 @@ async function initPerfil(app){
             ${calcularConstancia(diasActivos)}%
         `;
 
-    document.getElementById("nivel")
-        .textContent = `
-            Lv.${Math.max(
-        1,
-        Math.floor(registros.length / 5)
-    )}
-        `;
-
-    document.getElementById("totalRegistros")
-        .textContent = `
-            ${registros.length} registros emocionales guardados.
-        `;
-
-    const emocionMasUsada =
-        obtenerEmocionFrecuente(registros);
-
-    document.getElementById("emocionFrecuente")
-        .textContent =
-        emocionMasUsada;
-
-    const ultimo =
-        obtenerUltimoRegistro(registros);
-
-    document.getElementById("ultimoRegistro")
-        .textContent = ultimo;
+    document.getElementById("racha")
+        .textContent = `🔥 ${racha}`;
 
     initLanguageSelector(app);
 
@@ -415,6 +364,30 @@ async function initPerfil(app){
             localStorage.removeItem("user");
 
             navigate("login");
+        });
+
+    document
+        .querySelectorAll(".theme-btn")
+        .forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                const theme =
+                    btn.dataset.theme;
+
+                localStorage.setItem(
+                    "moodlens-theme",
+                    theme
+                );
+
+                aplicarTema(theme);
+
+                document
+                    .querySelectorAll(".theme-btn")
+                    .forEach(b => b.classList.remove("active"));
+
+                btn.classList.add("active");
+            });
         });
 
     async function guardarPerfil(){
@@ -471,6 +444,31 @@ async function initPerfil(app){
                 t("saveError")
             );
         }
+    }
+}
+
+function aplicarTema(theme){
+
+    const root =
+        document.documentElement;
+
+    if(theme === "dark"){
+
+        root.classList.add("dark-theme");
+
+    }else if(theme === "light"){
+
+        root.classList.remove("dark-theme");
+
+    }else{
+
+        const systemDark =
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        root.classList.toggle(
+            "dark-theme",
+            systemDark
+        );
     }
 }
 
@@ -560,52 +558,42 @@ function calcularConstancia(dias){
     );
 }
 
-function obtenerEmocionFrecuente(registros){
+function calcularRacha(registros){
 
-    if(!registros.length){
+    if(!registros.length) return 0;
 
-        return "Sin datos suficientes todavía.";
+    const fechas = registros
+        .map(r => new Date(r.fecha))
+        .sort((a,b) => b - a);
+
+    let streak = 1;
+
+    for(let i = 0; i < fechas.length - 1; i++){
+
+        const actual =
+            new Date(fechas[i]);
+
+        const siguiente =
+            new Date(fechas[i + 1]);
+
+        actual.setHours(0,0,0,0);
+        siguiente.setHours(0,0,0,0);
+
+        const diferencia =
+            (actual - siguiente) /
+            (1000 * 60 * 60 * 24);
+
+        if(diferencia === 1){
+
+            streak++;
+
+        }else{
+
+            break;
+        }
     }
 
-    const contador = {};
-
-    registros.forEach(r => {
-
-        const emocion =
-            r.emocion || "Emoción";
-
-        contador[emocion] =
-            (contador[emocion] || 0) + 1;
-    });
-
-    const favorita =
-        Object.entries(contador)
-            .sort((a,b) => b[1] - a[1])[0][0];
-
-    return `La emoción más registrada es "${favorita}".`;
-}
-
-function obtenerUltimoRegistro(registros){
-
-    if(!registros.length){
-
-        return "No hay registros recientes.";
-    }
-
-    const ordenados =
-        [...registros].sort(
-            (a,b) =>
-                new Date(b.fecha) -
-                new Date(a.fecha)
-        );
-
-    const ultimo =
-        new Date(ordenados[0].fecha);
-
-    return `
-        Último registro:
-        ${ultimo.toLocaleDateString()}
-    `;
+    return streak;
 }
 
 function mostrarToast(msg){
