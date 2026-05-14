@@ -157,7 +157,7 @@ body::after{
     transition:var(--transition);
 }
 
-.logo{
+.logo-dashboard{
 
     width:clamp(52px,5vw,62px);
 

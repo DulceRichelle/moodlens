@@ -34,8 +34,8 @@ export function renderDashboard(app) {
             <div class="logo-section">
 
                 <img
-                    src="assets/logo.png"
-                    class="logo"
+                src="assets/logo.png"
+                class="logo-dashboard"
                 />
 
                 <div>
