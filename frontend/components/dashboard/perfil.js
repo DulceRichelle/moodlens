@@ -57,46 +57,6 @@ export async function renderPerfil(app) {
 
         </div>
 
-        <div class="hero-stats">
-
-            <div class="hero-stat">
-
-                <h3 id="heroEntries">
-                    0
-                </h3>
-
-                <p>
-                    ${t("totalEntries")}
-                </p>
-
-            </div>
-
-            <div class="hero-stat">
-
-                <h3 id="heroDays">
-                    0
-                </h3>
-
-                <p>
-                    ${t("activeDays")}
-                </p>
-
-            </div>
-
-            <div class="hero-stat">
-
-                <h3 id="heroMood">
-                    😊
-                </h3>
-
-                <p>
-                    ${t("mainMood")}
-                </p>
-
-            </div>
-
-        </div>
-
     </div>
 
     <section class="progress-section">
@@ -148,7 +108,7 @@ export async function renderPerfil(app) {
                     </h3>
 
                     <p>
-                        Streak
+                        ${t("streak")}
                     </p>
 
                 </div>
@@ -160,7 +120,7 @@ export async function renderPerfil(app) {
                     </h3>
 
                     <p>
-                        Emotional Explorer
+                        ${t("level")}
                     </p>
 
                 </div>
@@ -180,11 +140,11 @@ export async function renderPerfil(app) {
             </div>
 
             <h3>
-                Emotional Insight
+                ${t("emotionalInsight")}
             </h3>
 
             <p>
-                You are becoming more consistent with your emotional tracking journey.
+                ${t("emotionalInsightDesc")}
             </p>
 
         </div>
@@ -196,11 +156,11 @@ export async function renderPerfil(app) {
             </div>
 
             <h3>
-                Calm Moments
+                ${t("calmMoments")}
             </h3>
 
             <p>
-                Tracking your calm days helps identify healthier routines and habits.
+                ${t("calmMomentsDesc")}
             </p>
 
         </div>
@@ -212,11 +172,11 @@ export async function renderPerfil(app) {
             </div>
 
             <h3>
-                Personal Growth
+                ${t("personalGrowth")}
             </h3>
 
             <p>
-                Small emotional reflections create powerful long-term self awareness.
+                ${t("personalGrowthDesc")}
             </p>
 
         </div>
@@ -352,7 +312,7 @@ export async function renderPerfil(app) {
         <div class="perfil-card">
 
             <h2>
-                🏆 Achievements
+                🏆 ${t("achievements")}
             </h2>
 
             <div class="setting-item">
@@ -360,17 +320,17 @@ export async function renderPerfil(app) {
                 <div>
 
                     <h3>
-                        🔥 First Streak
+                        🔥 ${t("firstStreak")}
                     </h3>
 
                     <p>
-                        Logged emotions for consecutive days.
+                        ${t("firstStreakDesc")}
                     </p>
 
                 </div>
 
                 <span class="setting-badge active">
-                    Unlocked
+                    ${t("unlocked")}
                 </span>
 
             </div>
@@ -380,17 +340,17 @@ export async function renderPerfil(app) {
                 <div>
 
                     <h3>
-                        ✨ Self Awareness
+                        ✨ ${t("selfAwareness")}
                     </h3>
 
                     <p>
-                        Reached multiple emotional entries.
+                        ${t("selfAwarenessDesc")}
                     </p>
 
                 </div>
 
                 <span class="setting-badge">
-                    Progress
+                    ${t("progress")}
                 </span>
 
             </div>
@@ -403,7 +363,7 @@ export async function renderPerfil(app) {
                 🚪 ${t("session")}
             </h2>
 
-            <p style="color:#6F6A97;line-height:1.7;">
+            <p class="logout-text">
 
                 ${t("logoutText")}
 
@@ -479,18 +439,6 @@ async function initPerfil(app){
 
     const diasActivos =
         calcularDiasActivos(registros);
-
-    const emocionTop =
-        obtenerEmocionTop(registros);
-
-    document.getElementById("heroEntries")
-        .textContent = registros.length;
-
-    document.getElementById("heroDays")
-        .textContent = diasActivos;
-
-    document.getElementById("heroMood")
-        .textContent = emocionTop;
 
     document.getElementById("diasActivos")
         .textContent = diasActivos;
@@ -667,47 +615,6 @@ function calcularConstancia(dias){
         Math.round((dias / 30) * 100),
         100
     );
-}
-
-function obtenerEmocionTop(registros){
-
-    if(!registros.length){
-
-        return "🌸";
-    }
-
-    const contador = {};
-
-    registros.forEach(r => {
-
-        contador[r.nombre_emocion] =
-            (contador[r.nombre_emocion] || 0) + 1;
-    });
-
-    let top = null;
-
-    let max = 0;
-
-    for(const emocion in contador){
-
-        if(contador[emocion] > max){
-
-            max = contador[emocion];
-
-            top = emocion;
-        }
-    }
-
-    const emojis = {
-
-        feliz:"😊",
-        tranquilo:"💙",
-        neutral:"😐",
-        triste:"😢",
-        ansioso:"😖"
-    };
-
-    return emojis[top?.toLowerCase()] || "🌸";
 }
 
 function mostrarToast(msg){
