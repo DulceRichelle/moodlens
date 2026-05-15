@@ -47,8 +47,6 @@ body{
     overflow-x:hidden;
 }
 
-/* HEADER */
-
 .header{
 
     padding:
@@ -60,7 +58,7 @@ body{
 
 .header h1{
 
-    color:var(--text-primary);
+    color:#2F2A68;
 
     font-size:
             clamp(2rem,5vw,4rem);
@@ -87,7 +85,7 @@ body{
 
 .header p{
 
-    color:var(--text-secondary);
+    color:#6F6A97;
 
     font-size:
             clamp(0.9rem,1.4vw,1.15rem);
@@ -222,7 +220,7 @@ body{
 
 .stat h2{
 
-    color:var(--text-primary);
+    color:#2F2A68;
 
     font-size:
             clamp(1.5rem,3vw,2.3rem);
@@ -231,8 +229,6 @@ body{
 
     word-break:break-word;
 }
-
-/* CARDS */
 
 .card,
 .grafico{
@@ -275,7 +271,7 @@ body{
 .card h3,
 .grafico h3{
 
-    color:var(--text-primary);
+    color:#2F2A68;
 
     font-size:
             clamp(1.2rem,2vw,1.7rem);
@@ -285,8 +281,6 @@ body{
 
     word-break:break-word;
 }
-
-/* EMOCIONES */
 
 .emociones{
 
@@ -367,7 +361,7 @@ body{
 
     margin-top:12px;
 
-    color:var(--text-primary);
+    color:#2F2A68;
 
     font-weight:700;
 
@@ -397,8 +391,6 @@ body{
     background:#ECE5F8;
 }
 
-/* FORM */
-
 .intensidad,
 .notas{
 
@@ -413,7 +405,7 @@ body{
 .intensidad p,
 .notas p{
 
-    color:var(--text-primary);
+    color:#2F2A68;
 
     margin-bottom:12px;
 
@@ -464,7 +456,7 @@ textarea{
 
     font-family:'Inter',sans-serif;
 
-    color:var(--text-primary);
+    color:#2F2A68;
 
     transition:var(--transition);
 
@@ -483,8 +475,6 @@ textarea:focus{
     box-shadow:
             0 0 0 5px rgba(75,207,250,0.12);
 }
-
-/* BOTON */
 
 .btn{
 
@@ -548,8 +538,6 @@ textarea:focus{
             scale(.98);
 }
 
-/* GRAFICO */
-
 .grafico{
 
     margin-top:24px;
@@ -566,8 +554,6 @@ textarea:focus{
     display:block;
 }
 
-/* TOAST */
-
 .toast-mood{
 
     position:fixed;
@@ -582,7 +568,7 @@ textarea:focus{
 
     background:var(--surface);
 
-    color:var(--text-primary);
+    color:#2F2A68;
 
     font-size:
             clamp(0.82rem,1vw,0.95rem);
@@ -622,7 +608,23 @@ textarea:focus{
             scale(1);
 }
 
-/* ANIMATIONS */
+[data-theme="dark"] .header h1,
+[data-theme="dark"] .stat h2,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .grafico h3,
+[data-theme="dark"] .emocion span,
+[data-theme="dark"] .intensidad p,
+[data-theme="dark"] .notas p,
+[data-theme="dark"] textarea,
+[data-theme="dark"] .toast-mood{
+
+    color:#F8FAFC;
+}
+
+[data-theme="dark"] .header p{
+
+    color:#CBD5E1;
+}
 
 @keyframes fadeUp{
 
@@ -665,8 +667,6 @@ textarea:focus{
     }
 }
 
-/* TABLET */
-
 @media(max-width:768px){
 
     .registro-page{
@@ -701,8 +701,6 @@ textarea:focus{
         min-height:auto;
     }
 }
-
-/* MOBILE */
 
 @media(max-width:480px){
 
