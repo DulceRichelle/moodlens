@@ -688,8 +688,8 @@ and (orientation:landscape){
     }
 }
 
-[data-theme="dark"] .feliz    { background: rgba(246,232,200,.25); }
-[data-theme="dark"] .tranquilo{ background: rgba(216,240,246,.25); }
-[data-theme="dark"] .neutral  { background: rgba(230,235,246,.25); }
-[data-theme="dark"] .triste   { background: rgba(240,222,214,.25); }
-[data-theme="dark"] .ansioso  { background: rgba(236,229,248,.25); }
+[data-theme="dark"] .feliz    { background: rgba(246,232,200,.45); }
+[data-theme="dark"] .tranquilo{ background: rgba(216,240,246,.45); }
+[data-theme="dark"] .neutral  { background: rgba(230,235,246,.45); }
+[data-theme="dark"] .triste   { background: rgba(240,222,214,.45); }
+[data-theme="dark"] .ansioso  { background: rgba(236,229,248,.45); }
