@@ -3,20 +3,22 @@
   "short_name": "MoodLens",
   "start_url": "/",
   "scope": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#79AEA5",
   "theme_color": "#79AEA5",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "/assets/logo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/logo.png",
+      "src": "/assets/logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
