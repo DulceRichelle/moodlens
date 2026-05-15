@@ -33,7 +33,7 @@
     font-size:
             clamp(2rem,5vw,4rem);
 
-    color:var(--text-dark);
+    color:white;
 
     line-height:1.05;
 
@@ -57,7 +57,7 @@
 
 .header p{
 
-    color:var(--text-soft);
+    color:rgba(255,255,255,.92);
 
     font-size:
             clamp(.95rem,1.4vw,1.1rem);
