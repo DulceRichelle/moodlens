@@ -48,7 +48,6 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
 
-    // Las llamadas a la API siempre van a la red
     if (event.request.url.includes("moodlens-oj88.onrender.com")) {
 
         event.respondWith(
@@ -73,7 +72,6 @@ self.addEventListener("fetch", event => {
                 return fetch(event.request)
                     .then(response => {
 
-                        // Cachea dinámicamente archivos nuevos
                         if (
                             response.ok &&
                             event.request.method === "GET"
