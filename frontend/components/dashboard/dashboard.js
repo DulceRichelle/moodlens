@@ -34,8 +34,8 @@ export function renderDashboard(app) {
             <div class="logo-section">
 
                 <img
-                src="assets/logo.png"
-                class="logo-dashboard"
+                    src="assets/logo.png"
+                    class="logo-dashboard"
                 />
 
                 <div>
@@ -214,6 +214,10 @@ function cargarVista(vista) {
         document
             .getElementById('sidebar')
             ?.classList.remove('open');
+
+        document
+            .querySelector('.menu-toggle')
+            ?.classList.remove('hidden');
     }
 }
 
@@ -241,9 +245,21 @@ function toggleSidebar() {
     const sidebar =
         document.getElementById('sidebar');
 
+    const toggleBtn =
+        document.querySelector('.menu-toggle');
+
     if (sidebar) {
 
         sidebar.classList.toggle('open');
+
+        if (sidebar.classList.contains('open')) {
+
+            toggleBtn?.classList.add('hidden');
+
+        } else {
+
+            toggleBtn?.classList.remove('hidden');
+        }
     }
 }
 
