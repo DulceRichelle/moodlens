@@ -605,7 +605,7 @@
 
 .setting-item p{
 
-    color:var(--text-soft);
+    color:var(--text-primary);
 
     line-height:1.6;
 
@@ -829,7 +829,7 @@
 
 .logout-text{
 
-    color:var(--text-soft);
+    color:var(--text-primary);
 
     line-height:1.7;
 
