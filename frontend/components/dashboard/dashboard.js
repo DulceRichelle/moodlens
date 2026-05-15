@@ -36,6 +36,7 @@ export function renderDashboard(app) {
                 <img
                     src="assets/logo.png"
                     class="logo-dashboard"
+                    alt="MoodLens Logo"
                 />
 
                 <div>
@@ -76,35 +77,35 @@ export function renderDashboard(app) {
 
                 <button
                     class="menu-item ${vistaActual === 'registro' ? 'active' : ''}"
-                    onclick="cargarVista('registro', this)"
+                    onclick="cargarVista('registro')"
                 >
                     🏠 ${t("registro")}
                 </button>
 
                 <button
                     class="menu-item ${vistaActual === 'analisis' ? 'active' : ''}"
-                    onclick="cargarVista('analisis', this)"
+                    onclick="cargarVista('analisis')"
                 >
                     📊 ${t("analysis")}
                 </button>
 
                 <button
                     class="menu-item ${vistaActual === 'historial' ? 'active' : ''}"
-                    onclick="cargarVista('historial', this)"
+                    onclick="cargarVista('historial')"
                 >
                     🕒 ${t("history")}
                 </button>
 
                 <button
                     class="menu-item ${vistaActual === 'consejos' ? 'active' : ''}"
-                    onclick="cargarVista('consejos', this)"
+                    onclick="cargarVista('consejos')"
                 >
                     💡 ${t("tips")}
                 </button>
 
                 <button
                     class="menu-item ${vistaActual === 'perfil' ? 'active' : ''}"
-                    onclick="cargarVista('perfil', this)"
+                    onclick="cargarVista('perfil')"
                 >
                     ⚙️ ${t("profile")}
                 </button>
@@ -211,13 +212,18 @@ function cargarVista(vista) {
 
     if (window.innerWidth <= 768) {
 
-        document
-            .getElementById('sidebar')
-            ?.classList.remove('open');
+        const sidebar =
+            document.getElementById('sidebar');
 
-        document
-            .querySelector('.menu-toggle')
-            ?.classList.remove('hidden');
+        const toggleBtn =
+            document.querySelector('.menu-toggle');
+
+        sidebar?.classList.remove('open');
+
+        if (toggleBtn) {
+
+            toggleBtn.style.display = 'flex';
+        }
     }
 }
 
@@ -248,18 +254,17 @@ function toggleSidebar() {
     const toggleBtn =
         document.querySelector('.menu-toggle');
 
-    if (sidebar) {
+    if (!sidebar || !toggleBtn) return;
 
-        sidebar.classList.toggle('open');
+    sidebar.classList.toggle('open');
 
-        if (sidebar.classList.contains('open')) {
+    if (sidebar.classList.contains('open')) {
 
-            toggleBtn?.classList.add('hidden');
+        toggleBtn.style.display = 'none';
 
-        } else {
+    } else {
 
-            toggleBtn?.classList.remove('hidden');
-        }
+        toggleBtn.style.display = 'flex';
     }
 }
 
