@@ -3,7 +3,7 @@ import { t, getLanguage } from '../../services/i18n.js';
 export function renderRegistro(app) {
 
     app.innerHTML = `
-<link rel="stylesheet" href="components/dashboard/analisis.css">
+<link rel="stylesheet" href="components/dashboard/registro.css">
 
 <div class="registro-page">
 

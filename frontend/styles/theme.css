@@ -16,6 +16,9 @@
     --text-secondary:#6F6A97;
     --text-muted:#A0A5BE;
 
+    --text-dark:#2F2A68;
+    --text-soft:#6F6A97;
+
     --shadow:
             0 20px 50px rgba(0,0,0,.10);
 
@@ -49,6 +52,9 @@
     --text-primary:#F8FAFC;
     --text-secondary:#CBD5E1;
     --text-muted:#94A3B8;
+
+    --text-dark:#F8FAFC;
+    --text-soft:#CBD5E1;
 
     --shadow:
             0 20px 50px rgba(0,0,0,.45);
