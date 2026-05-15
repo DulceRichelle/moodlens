@@ -801,25 +801,50 @@
 
 .emocion-icono.ansioso{
 
-    background:#5B4B8A;
+    background:#ECE5F8;
 }
 
 .emocion-icono.triste{
 
-    background:#8A5A4B;
+    background:#F0DED6;
 }
 
 .emocion-icono.tranquilo{
 
-    background:#2C7A7B;
+    background:#D8F0F6;
 }
 
 .emocion-icono.feliz{
 
-    background:#C0841A;
+    background:#F6E8C8;
 }
 
 .emocion-icono.neutral{
+
+    background:#E6EBF6;
+}
+
+[data-theme="dark"] .emocion-icono.ansioso{
+
+    background:#5B4B8A;
+}
+
+[data-theme="dark"] .emocion-icono.triste{
+
+    background:#8A5A4B;
+}
+
+[data-theme="dark"] .emocion-icono.tranquilo{
+
+    background:#2C7A7B;
+}
+
+[data-theme="dark"] .emocion-icono.feliz{
+
+    background:#C0841A;
+}
+
+[data-theme="dark"] .emocion-icono.neutral{
 
     background:#4B5563;
 }
