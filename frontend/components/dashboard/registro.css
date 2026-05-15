@@ -148,7 +148,7 @@
 
 .stat p{
 
-    color:var(--text-soft);
+    color:var(--text-primary);
 
     margin-bottom:10px;
 
@@ -278,7 +278,7 @@
 
     margin-top:12px;
 
-    color:var(--text-dark);
+    color:#2F2A68;
 
     font-weight:700;
 
