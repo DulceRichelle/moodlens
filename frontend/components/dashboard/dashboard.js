@@ -212,18 +212,7 @@ function cargarVista(vista) {
 
     if (window.innerWidth <= 768) {
 
-        const sidebar =
-            document.getElementById('sidebar');
-
-        const toggleBtn =
-            document.querySelector('.menu-toggle');
-
-        sidebar?.classList.remove('open');
-
-        if (toggleBtn) {
-
-            toggleBtn.style.display = 'flex';
-        }
+        closeSidebar();
     }
 }
 
@@ -246,6 +235,21 @@ function actualizarMenuActivo(vista) {
     });
 }
 
+function closeSidebar() {
+
+    const sidebar =
+        document.getElementById('sidebar');
+
+    const toggleBtn =
+        document.querySelector('.menu-toggle');
+
+    if (!sidebar || !toggleBtn) return;
+
+    sidebar.classList.remove('open');
+
+    toggleBtn.style.display = 'flex';
+}
+
 function toggleSidebar() {
 
     const sidebar =
@@ -260,13 +264,14 @@ function toggleSidebar() {
 
     if (sidebar.classList.contains('open')) {
 
-        toggleBtn.style.display = 'flex'; 
+        toggleBtn.style.display = 'none';
 
     } else {
 
-        toggleBtn.style.display = 'none';
+        toggleBtn.style.display = 'flex';
     }
 }
+
 function handleLogout() {
 
     logout();
