@@ -6,14 +6,13 @@
 
 :root{
 
-    --bg-1:#8DB8AF;
-    --bg-2:#7FA9E1;
+    --bg-1:var(--bg-primary);
+    --bg-2:var(--bg-secondary);
 
-    --card:
-            rgba(255,255,255,.94);
+    --card:var(--surface);
 
-    --text-dark:#2F2A68;
-    --text-soft:#6E6894;
+    --text-dark:var(--text-dark);
+    --text-soft:var(--text-muted);
 
     --primary:#49C7E7;
     --secondary:#5D7BEE;
@@ -131,6 +130,9 @@
     min-width:0;
 
     overflow:hidden;
+
+    border:
+            1px solid rgba(255,255,255,.08);
 }
 
 .stat-card:hover{
@@ -250,6 +252,9 @@
             clamp(20px,3vw,32px);
 
     box-shadow:var(--shadow);
+
+    border:
+            1px solid rgba(255,255,255,.08);
 }
 
 .section-header{
@@ -311,7 +316,8 @@
 
 .mood-item{
 
-    background:#F6F8FC;
+    background:
+            rgba(255,255,255,.55);
 
     border-radius:22px;
 
@@ -330,6 +336,9 @@
     width:100%;
 
     overflow:hidden;
+
+    border:
+            1px solid rgba(255,255,255,.06);
 }
 
 .mood-item:hover{
@@ -421,7 +430,8 @@
 
     border-radius:999px;
 
-    background:#E8ECF7;
+    background:
+            rgba(0,0,0,.08);
 
     overflow:hidden;
 }
@@ -524,6 +534,9 @@
     box-shadow:var(--shadow);
 
     width:100%;
+
+    border:
+            1px solid rgba(255,255,255,.08);
 }
 
 .empty-state h2{

@@ -7,23 +7,23 @@
 :root{
 
     --glass:
-            rgba(255,255,255,0.14);
+            rgba(255,255,255,0.08);
 
     --card:
-            rgba(255,255,255,0.92);
+            var(--surface);
 
     --card-soft:
-            rgba(255,255,255,0.75);
+            rgba(30,41,59,0.72);
 
-    --title:#2F2A68;
+    --title:var(--text-dark);
 
-    --text:#6D7292;
+    --text:var(--text-muted);
 
     --shadow:
-            0 20px 50px rgba(0,0,0,0.08);
+            0 20px 50px rgba(0,0,0,0.30);
 
     --shadow-hover:
-            0 30px 70px rgba(0,0,0,0.12);
+            0 30px 70px rgba(0,0,0,0.40);
 
     --transition:
             all 0.55s cubic-bezier(0.16,1,0.3,1);
@@ -106,7 +106,7 @@ body{
 .header-historial p{
 
     color:
-            rgba(255,255,255,0.88);
+            rgba(255,255,255,0.84);
 
     font-size:
             clamp(0.9rem,1.4vw,1.15rem);
@@ -136,12 +136,12 @@ body{
     max-width:100%;
 
     background:
-            rgba(255,255,255,0.92);
+            rgba(15,23,42,0.88);
 
     backdrop-filter:blur(26px);
 
     border:
-            1px solid rgba(255,255,255,0.22);
+            1px solid rgba(255,255,255,0.08);
 
     border-radius:
             clamp(24px,3vw,34px);
@@ -163,7 +163,7 @@ body{
     background:
             linear-gradient(
                     180deg,
-                    rgba(255,255,255,0.18),
+                    rgba(255,255,255,0.05),
                     transparent
             );
 
@@ -209,7 +209,7 @@ body{
     border-radius:999px;
 
     background:
-            rgba(233,238,245,0.95);
+            rgba(51,65,85,0.82);
 
     color:var(--title);
 
@@ -229,7 +229,7 @@ body{
             translateY(-2px);
 
     background:
-            rgba(220,228,240,1);
+            rgba(71,85,105,0.95);
 }
 
 .filtro.active{
@@ -309,10 +309,10 @@ body{
     overflow:hidden;
 
     background:
-            rgba(250,251,255,0.92);
+            rgba(30,41,59,0.82);
 
     border:
-            1px solid rgba(225,231,242,0.9);
+            1px solid rgba(255,255,255,0.08);
 
     border-radius:
             clamp(20px,2vw,28px);
@@ -353,7 +353,7 @@ body{
     background:
             linear-gradient(
                     180deg,
-                    rgba(255,255,255,0.22),
+                    rgba(255,255,255,0.04),
                     transparent
             );
 
@@ -412,7 +412,7 @@ body{
             clamp(1.2rem,2vw,1.6rem);
 
     box-shadow:
-            0 10px 24px rgba(0,0,0,0.06);
+            0 10px 24px rgba(0,0,0,0.20);
 
     flex-shrink:0;
 }
@@ -462,7 +462,7 @@ body{
 
     gap:12px;
 
-    color:#8C86AF;
+    color:#94A3B8;
 
     font-size:
             clamp(0.72rem,1vw,0.86rem);
@@ -493,7 +493,9 @@ body{
     border-radius:14px;
 
     background:
-            rgba(232,237,246,0.95);
+            rgba(51,65,85,0.9);
+
+    color:var(--text-light);
 
     cursor:pointer;
 
@@ -509,7 +511,7 @@ body{
             scale(1.05);
 
     background:
-            rgba(216,225,238,1);
+            rgba(71,85,105,1);
 }
 
 .historial-vacio{
@@ -519,15 +521,13 @@ body{
     padding:
             clamp(30px,4vw,50px);
 
-    color:#8A85AF;
+    color:#94A3B8;
 
     font-size:
             clamp(1rem,1.4vw,1.3rem);
 
     line-height:1.7;
 }
-
-/* MODAL FIXED MOBILE */
 
 .modal{
 
@@ -536,7 +536,7 @@ body{
     inset:0;
 
     background:
-            rgba(12,16,28,0.45);
+            rgba(2,6,23,0.72);
 
     backdrop-filter:blur(10px);
 
@@ -566,7 +566,10 @@ body{
     overflow-y:auto;
 
     background:
-            rgba(255,255,255,0.96);
+            rgba(15,23,42,0.96);
+
+    border:
+            1px solid rgba(255,255,255,0.08);
 
     border-radius:
             clamp(22px,3vw,30px);
@@ -575,7 +578,7 @@ body{
             clamp(20px,3vw,32px);
 
     box-shadow:
-            0 30px 70px rgba(0,0,0,0.2);
+            0 30px 70px rgba(0,0,0,0.4);
 
     animation:
             modalReveal 0.35s cubic-bezier(0.16,1,0.3,1);
@@ -630,7 +633,9 @@ body{
     outline:none;
 
     background:
-            rgba(243,246,251,0.95);
+            rgba(30,41,59,0.92);
+
+    color:var(--title);
 
     border-radius:16px;
 
@@ -703,7 +708,7 @@ body{
 #cancelarEliminar{
 
     background:
-            rgba(232,236,245,1);
+            rgba(51,65,85,1);
 
     color:var(--title);
 }
@@ -740,8 +745,8 @@ body{
     background:
             linear-gradient(
                     135deg,
-                    rgba(31,41,64,0.96),
-                    rgba(48,65,104,0.96)
+                    rgba(15,23,42,0.98),
+                    rgba(30,41,59,0.98)
             );
 
     color:white;
@@ -761,7 +766,7 @@ body{
             clamp(0.8rem,1vw,0.95rem);
 
     box-shadow:
-            0 20px 40px rgba(0,0,0,0.22);
+            0 20px 40px rgba(0,0,0,0.35);
 
     z-index:99999;
 
@@ -799,27 +804,27 @@ body{
 
 .emocion-icono.ansioso{
 
-    background:#ECE5F8;
+    background:#5B4B8A;
 }
 
 .emocion-icono.triste{
 
-    background:#F6E0D4;
+    background:#8A5A4B;
 }
 
 .emocion-icono.tranquilo{
 
-    background:#DDF4F8;
+    background:#2C7A7B;
 }
 
 .emocion-icono.feliz{
 
-    background:#FFF0D0;
+    background:#C0841A;
 }
 
 .emocion-icono.neutral{
 
-    background:#E9E9EC;
+    background:#4B5563;
 }
 
 .historial-card.removing{

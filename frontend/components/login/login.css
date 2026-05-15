@@ -6,14 +6,6 @@
 
 :root {
 
-    --bg-start: #79AEA5;
-    --bg-end: #6F95D7;
-
-    --text-main: #2F2A68;
-    --text-soft: #6E6894;
-
-    --glass-bg: rgba(255,255,255,0.9);
-
     --shadow-soft:
             0 24px 60px rgba(0,0,0,0.10);
 
@@ -38,9 +30,11 @@ body {
     background:
             linear-gradient(
                     135deg,
-                    var(--bg-start),
-                    var(--bg-end)
+                    var(--bg-primary),
+                    var(--bg-secondary)
             );
+
+    color: var(--text-primary);
 
     -webkit-tap-highlight-color: transparent;
 }
@@ -180,8 +174,6 @@ body::after {
             floatTwo 17s ease-in-out infinite;
 }
 
-/* BACK BUTTON */
-
 .back {
 
     position: absolute;
@@ -207,11 +199,11 @@ body::after {
             clamp(14px, 2vw, 18px);
 
     background:
-            rgba(47,42,104,0.86);
+            var(--surface-soft);
 
     backdrop-filter: blur(18px);
 
-    color: white;
+    color: var(--text-primary);
 
     display: flex;
 
@@ -235,6 +227,9 @@ body::after {
             0 14px 30px rgba(0,0,0,0.12);
 
     z-index: 20;
+
+    border:
+            1px solid var(--border);
 }
 
 .back:hover {
@@ -244,7 +239,7 @@ body::after {
             scale(1.02);
 
     background:
-            rgba(47,42,104,1);
+            rgba(255,255,255,0.22);
 
     box-shadow:
             0 22px 44px rgba(0,0,0,0.18);
@@ -256,8 +251,6 @@ body::after {
             scale(0.97);
 }
 
-/* CARD */
-
 .auth-card {
 
     width: 100%;
@@ -268,12 +261,12 @@ body::after {
     overflow: hidden;
 
     background:
-            rgba(255,255,255,0.9);
+            var(--surface);
 
     backdrop-filter: blur(28px);
 
     border:
-            1px solid rgba(255,255,255,0.28);
+            1px solid var(--border);
 
     border-radius:
             clamp(24px, 4vw, 38px);
@@ -303,7 +296,7 @@ body::after {
     background:
             linear-gradient(
                     180deg,
-                    rgba(255,255,255,0.14),
+                    rgba(255,255,255,0.08),
                     transparent
             );
 
@@ -313,13 +306,13 @@ body::after {
 .logo {
 
     width:
-            clamp(72px, 10vw, 100px);
+            clamp(88px, 12vw, 130px);
 
     border-radius:
-            clamp(18px, 3vw, 28px);
+            clamp(22px, 3vw, 32px);
 
     margin-bottom:
-            clamp(18px, 3vw, 28px);
+            clamp(22px, 4vw, 32px);
 
     box-shadow:
             0 24px 50px rgba(0,0,0,0.14);
@@ -351,7 +344,7 @@ body::after {
     letter-spacing:
             clamp(-1px, -0.15vw, -3px);
 
-    color: var(--text-main);
+    color: var(--text-primary);
 
     margin-bottom:
             clamp(10px, 2vw, 16px);
@@ -364,7 +357,7 @@ body::after {
     font-size:
             clamp(0.86rem, 1.2vw, 1.04rem);
 
-    color: var(--text-soft);
+    color: var(--text-secondary);
 
     line-height: 1.75;
 
@@ -373,8 +366,6 @@ body::after {
 
     word-break: break-word;
 }
-
-/* INPUTS */
 
 .input-group {
 
@@ -393,7 +384,7 @@ body::after {
 
     margin-bottom: 10px;
 
-    color: #4A4378;
+    color: var(--text-primary);
 
     font-size:
             clamp(12px, 1vw, 15px);
@@ -414,10 +405,10 @@ body::after {
             0 clamp(14px, 2vw, 20px);
 
     background:
-            rgba(255,255,255,0.94);
+            var(--surface-soft);
 
     border:
-            1px solid #DCE4E6;
+            1px solid var(--border);
 
     border-radius:
             clamp(16px, 2vw, 22px);
@@ -470,7 +461,7 @@ body::after {
     font-size:
             clamp(13px, 1vw, 16px);
 
-    color: var(--text-main);
+    color: var(--text-primary);
 
     font-family: 'Inter', sans-serif;
 
@@ -479,7 +470,7 @@ body::after {
 
 .input-box input::placeholder {
 
-    color: #A0A5BE;
+    color: var(--text-muted);
 }
 
 .password-box {
@@ -509,8 +500,6 @@ body::after {
             scale(1.14);
 }
 
-/* FORGOT PASSWORD */
-
 .forgot-password{
 
     margin-top:12px;
@@ -519,7 +508,7 @@ body::after {
 
     font-size:.9rem;
 
-    color:#5D7BEE;
+    color:#7CCCF5;
 
     font-weight:600;
 
@@ -534,8 +523,6 @@ body::after {
 
     opacity:.7;
 }
-
-/* MESSAGES */
 
 .error,
 .success {
@@ -554,15 +541,13 @@ body::after {
 
 .error {
 
-    color: #E74C3C;
+    color: #FF7A7A;
 }
 
 .success {
 
-    color: #2DBE7E;
+    color: #63E6A5;
 }
-
-/* BUTTON */
 
 .btn-main {
 
@@ -660,8 +645,6 @@ body::after {
             scale(0.98);
 }
 
-/* SWITCH */
-
 .switch {
 
     margin-top:
@@ -670,7 +653,7 @@ body::after {
     font-size:
             clamp(0.82rem, 1vw, 1rem);
 
-    color: var(--text-soft);
+    color: var(--text-secondary);
 
     line-height: 1.7;
 
@@ -679,7 +662,7 @@ body::after {
 
 .switch span {
 
-    color: #35C2E8;
+    color: #7CCCF5;
 
     font-weight: 700;
 
@@ -692,8 +675,6 @@ body::after {
 
     opacity: 0.75;
 }
-
-/* ANIMATIONS */
 
 @keyframes cardAppear {
 
@@ -817,8 +798,6 @@ body::after {
     }
 }
 
-/* TABLET */
-
 @media(max-width:768px){
 
     .auth-container{
@@ -839,8 +818,6 @@ body::after {
     }
 }
 
-/* MOBILE */
-
 @media(max-width:480px){
 
     .auth-container{
@@ -859,6 +836,11 @@ body::after {
 
         padding:
                 26px 18px;
+    }
+
+    .logo{
+
+        width: 96px;
     }
 
     .back{

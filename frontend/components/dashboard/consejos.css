@@ -6,19 +6,18 @@
 
 :root{
 
-    --bg-1:#8DB8AF;
-    --bg-2:#7FA9E1;
+    --bg-1:var(--bg-primary);
+    --bg-2:var(--bg-secondary);
 
     --white:#FFFFFF;
 
-    --card:
-            rgba(255,255,255,.94);
+    --card:var(--surface);
 
     --glass:
             rgba(255,255,255,.14);
 
-    --text-dark:#2F2A68;
-    --text-soft:#6D6795;
+    --text-dark:var(--text-dark);
+    --text-soft:var(--text-muted);
 
     --primary:#49C7E7;
     --secondary:#5D7BEE;
@@ -118,12 +117,12 @@ body::before{
             clamp(28px,5vw,52px);
 
     background:
-            rgba(255,255,255,.14);
+            rgba(255,255,255,.12);
 
     backdrop-filter:blur(22px);
 
     border:
-            1px solid rgba(255,255,255,.16);
+            1px solid rgba(255,255,255,.12);
 
     box-shadow:var(--shadow);
 
@@ -142,7 +141,7 @@ body::before{
     border-radius:50%;
 
     background:
-            rgba(255,255,255,.12);
+            rgba(255,255,255,.10);
 
     top:-120px;
     right:-100px;
@@ -182,6 +181,9 @@ body::before{
     margin-bottom:22px;
 
     flex-wrap:wrap;
+
+    border:
+            1px solid rgba(255,255,255,.10);
 }
 
 .hero-consejos h1{
@@ -243,7 +245,7 @@ body::before{
     backdrop-filter:blur(22px);
 
     border:
-            1px solid rgba(255,255,255,.16);
+            1px solid rgba(255,255,255,.12);
 
     box-shadow:var(--shadow);
 
@@ -260,7 +262,7 @@ body::before{
     border-radius:50%;
 
     background:
-            rgba(255,255,255,.14);
+            rgba(255,255,255,.12);
 
     top:-100px;
     right:-80px;
@@ -330,6 +332,9 @@ body::before{
     margin-bottom:18px;
 
     flex-wrap:wrap;
+
+    border:
+            1px solid rgba(255,255,255,.10);
 }
 
 .consejo-destacado h2{
@@ -380,9 +385,10 @@ body::before{
     font-weight:600;
 
     flex-wrap:wrap;
-}
 
-/* SECTIONS */
+    border:
+            1px solid rgba(255,255,255,.10);
+}
 
 .section-title{
 
@@ -439,8 +445,7 @@ body::before{
 .insight-card,
 .tip-card{
 
-    background:
-            rgba(255,255,255,.95);
+    background:var(--card);
 
     border-radius:
             clamp(26px,3vw,34px);
@@ -457,6 +462,9 @@ body::before{
     overflow:hidden;
 
     min-width:0;
+
+    border:
+            1px solid rgba(255,255,255,.08);
 }
 
 .insight-card:hover,
