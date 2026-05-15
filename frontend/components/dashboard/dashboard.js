@@ -260,14 +260,13 @@ function toggleSidebar() {
 
     if (sidebar.classList.contains('open')) {
 
-        toggleBtn.style.display = 'none';
+        toggleBtn.style.display = 'flex'; 
 
     } else {
 
-        toggleBtn.style.display = 'flex';
+        toggleBtn.style.display = 'none';
     }
 }
-
 function handleLogout() {
 
     logout();
