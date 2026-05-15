@@ -3,17 +3,19 @@ import { renderRegister } from "../components/register/register.js";
 import { renderLogin } from "../components/login/login.js";
 import { renderHome } from "../components/home/home.js";
 
-import { renderRegistro } from "../components/dashboard/registro.js";
-import { renderAnalisis } from "../components/dashboard/analisis.js";
-import { renderHistorial } from "../components/dashboard/historial.js";
-import { renderConsejos } from "../components/dashboard/consejos.js";
-import { renderPerfil } from "../components/dashboard/perfil.js";
+const savedTheme = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", savedTheme);
+
+let isNavigating = false;
 
 export function navigate(route) {
-    localStorage.setItem(
-        "currentRoute",
-        route
-    );
+
+
+    if (isNavigating) return;
+    isNavigating = true;
+
+    localStorage.setItem("currentRoute", route);
+
     const app = document.getElementById('app');
 
     app.classList.remove('page-enter', 'page-enter-active');
@@ -23,7 +25,7 @@ export function navigate(route) {
 
         app.classList.remove('page-exit-active');
 
-        switch(route) {
+        switch (route) {
 
             case 'home':
                 renderHome(app);
@@ -41,26 +43,9 @@ export function navigate(route) {
                 renderDashboard(app);
                 break;
 
-            case 'registro':
-                renderRegistro(app);
+            default:
+                renderHome(app);
                 break;
-
-            case 'analisis':
-                renderAnalisis(app);
-                break;
-
-            case 'historial':
-                renderHistorial(app);
-                break;
-
-            case 'consejos':
-                renderConsejos(app);
-                break;
-
-            case 'perfil':
-                renderPerfil(app);
-                break;
-
         }
 
         app.classList.add('page-enter');
@@ -71,18 +56,13 @@ export function navigate(route) {
 
         setTimeout(() => {
             app.classList.remove('page-enter', 'page-enter-active');
+            isNavigating = false; // Libera el guard al terminar la animación
         }, 400);
 
     }, 300);
 }
 
 window.navigate = navigate;
-const savedTheme = localStorage.getItem("theme") || "light";
-document.documentElement.setAttribute("data-theme", savedTheme);
-const savedRoute =
-    localStorage.getItem(
-        "currentRoute"
-    ) || "home";
 
-
+const savedRoute = localStorage.getItem("currentRoute") || "home";
 navigate(savedRoute);
