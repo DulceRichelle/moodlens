@@ -170,6 +170,8 @@ export async function renderHistorial(app) {
     </button>
 
 </div>
+
+<div id="toastMsg" class="toast-msg hidden"></div>
 `;
 
     await cargarHistorial();
@@ -333,7 +335,7 @@ function crearGrupo(titulo, items) {
 
                     <h3>
                          ${traducirEmocion(item.nombre_emocion)}
-                    </h3> 
+                    </h3>
 
                     <p>
                         ${t("intensity")}:
@@ -352,7 +354,7 @@ function crearGrupo(titulo, items) {
 
         <div class="card-right">
 
-            <div>
+            <div class="card-fecha">
                 ${formatearFecha(item.fecha)}
             </div>
 
@@ -454,14 +456,22 @@ function initEventosGlobales() {
                 pintarHistorial(historialData);
 
                 cerrarModal();
+
+                mostrarToastMsg("✅ Registro modificado correctamente");
             }
 
             if (e.target.closest("#cancelarEdit")) {
+
                 cerrarModal();
+
+                mostrarToastMsg("↩️ Modificación cancelada");
             }
 
             if (e.target.closest("#cancelarEliminar")) {
+
                 cerrarModal();
+
+                mostrarToastMsg("↩️ Eliminación cancelada");
             }
 
             if (e.target.closest("#confirmarEliminar")) {
@@ -517,6 +527,8 @@ function initEventosGlobales() {
                 pintarHistorial(historialData);
 
                 ocultarToast();
+
+                mostrarToastMsg("↩️ Registro restaurado");
             }
         }
     );
@@ -560,6 +572,30 @@ function ocultarToast() {
         .classList.add("hidden");
 
     ultimoEliminado = null;
+}
+
+function mostrarToastMsg(mensaje) {
+
+    const toast =
+        document.getElementById("toastMsg");
+
+    toast.textContent = mensaje;
+
+    toast.classList.remove("hidden");
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+
+            toast.classList.add("hidden");
+
+        }, 400);
+
+    }, 2500);
 }
 
 function esMismoDia(a, b) {
