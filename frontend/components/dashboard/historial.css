@@ -1,53 +1,3 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-
-    --glass:
-            rgba(255,255,255,0.08);
-
-    --card:
-            var(--surface);
-
-    --card-soft:
-            rgba(30,41,59,0.72);
-
-    --title:var(--text-dark);
-
-    --text:var(--text-muted);
-
-    --shadow:
-            0 20px 50px rgba(0,0,0,0.30);
-
-    --shadow-hover:
-            0 30px 70px rgba(0,0,0,0.40);
-
-    --transition:
-            all 0.55s cubic-bezier(0.16,1,0.3,1);
-}
-
-html,
-body{
-
-    width:100%;
-
-    min-height:100%;
-
-    overflow-x:hidden;
-
-    font-family:'Inter',sans-serif;
-
-    -webkit-tap-highlight-color:transparent;
-}
-
-body{
-
-    overflow-x:hidden;
-}
-
 .historial-page{
 
     min-height:100vh;
@@ -135,13 +85,12 @@ body{
 
     max-width:100%;
 
-    background:
-            rgba(15,23,42,0.88);
+    background:var(--surface);
 
     backdrop-filter:blur(26px);
 
     border:
-            1px solid rgba(255,255,255,0.08);
+            1px solid var(--border);
 
     border-radius:
             clamp(24px,3vw,34px);
@@ -163,7 +112,7 @@ body{
     background:
             linear-gradient(
                     180deg,
-                    rgba(255,255,255,0.05),
+                    rgba(255,255,255,0.04),
                     transparent
             );
 
@@ -175,7 +124,7 @@ body{
     font-size:
             clamp(1.3rem,2vw,2rem);
 
-    color:var(--title);
+    color:var(--text-dark);
 
     margin-bottom:
             clamp(18px,2vw,26px);
@@ -209,9 +158,9 @@ body{
     border-radius:999px;
 
     background:
-            rgba(51,65,85,0.82);
+            rgba(0,0,0,0.07);
 
-    color:var(--title);
+    color:var(--text-dark);
 
     font-size:
             clamp(0.76rem,1vw,0.92rem);
@@ -223,10 +172,22 @@ body{
     white-space:nowrap;
 }
 
+[data-theme="dark"] .filtro{
+
+    background:
+            rgba(51,65,85,0.82);
+}
+
 .filtro:hover{
 
     transform:
             translateY(-2px);
+
+    background:
+            rgba(0,0,0,0.12);
+}
+
+[data-theme="dark"] .filtro:hover{
 
     background:
             rgba(71,85,105,0.95);
@@ -293,7 +254,7 @@ body{
     font-size:
             clamp(1rem,1.4vw,1.35rem);
 
-    color:var(--title);
+    color:var(--text-dark);
 
     font-weight:800;
 
@@ -309,10 +270,10 @@ body{
     overflow:hidden;
 
     background:
-            rgba(30,41,59,0.82);
+            rgba(255,255,255,0.55);
 
     border:
-            1px solid rgba(255,255,255,0.08);
+            1px solid var(--border);
 
     border-radius:
             clamp(20px,2vw,28px);
@@ -340,6 +301,12 @@ body{
     width:100%;
 
     max-width:100%;
+}
+
+[data-theme="dark"] .historial-card{
+
+    background:
+            rgba(30,41,59,0.82);
 }
 
 .historial-card::before{
@@ -426,7 +393,7 @@ body{
 
 .card-left h3{
 
-    color:var(--title);
+    color:var(--text-dark);
 
     font-size:
             clamp(1rem,1.5vw,1.45rem);
@@ -440,7 +407,7 @@ body{
 
 .card-left p{
 
-    color:var(--text);
+    color:var(--text-primary);
 
     font-size:
             clamp(0.8rem,1vw,0.95rem);
@@ -462,7 +429,7 @@ body{
 
     gap:12px;
 
-    color:#94A3B8;
+    color:var(--text-soft);
 
     font-size:
             clamp(0.72rem,1vw,0.86rem);
@@ -493,9 +460,9 @@ body{
     border-radius:14px;
 
     background:
-            rgba(51,65,85,0.9);
+            rgba(0,0,0,0.08);
 
-    color:var(--text-light);
+    color:var(--text-dark);
 
     cursor:pointer;
 
@@ -504,11 +471,23 @@ body{
     transition:var(--transition);
 }
 
+[data-theme="dark"] .acciones button{
+
+    background:
+            rgba(51,65,85,0.9);
+}
+
 .acciones button:hover{
 
     transform:
             translateY(-2px)
             scale(1.05);
+
+    background:
+            rgba(0,0,0,0.14);
+}
+
+[data-theme="dark"] .acciones button:hover{
 
     background:
             rgba(71,85,105,1);
@@ -521,7 +500,7 @@ body{
     padding:
             clamp(30px,4vw,50px);
 
-    color:#94A3B8;
+    color:var(--text-soft);
 
     font-size:
             clamp(1rem,1.4vw,1.3rem);
@@ -565,11 +544,10 @@ body{
 
     overflow-y:auto;
 
-    background:
-            rgba(15,23,42,0.96);
+    background:var(--surface);
 
     border:
-            1px solid rgba(255,255,255,0.08);
+            1px solid var(--border);
 
     border-radius:
             clamp(22px,3vw,30px);
@@ -589,7 +567,7 @@ body{
 .modal-content h2,
 .modal-content h3{
 
-    color:var(--title);
+    color:var(--text-dark);
 
     margin-bottom:18px;
 
@@ -601,7 +579,7 @@ body{
 
 .modal-content p{
 
-    color:var(--text);
+    color:var(--text-primary);
 
     line-height:1.7;
 
@@ -616,7 +594,7 @@ body{
 
     margin-top:16px;
 
-    color:var(--title);
+    color:var(--text-dark);
 
     font-size:0.9rem;
 
@@ -633,9 +611,12 @@ body{
     outline:none;
 
     background:
-            rgba(30,41,59,0.92);
+            rgba(255,255,255,0.55);
 
-    color:var(--title);
+    border:
+            1px solid var(--border);
+
+    color:var(--text-dark);
 
     border-radius:16px;
 
@@ -646,6 +627,13 @@ body{
     transition:var(--transition);
 
     font-size:16px;
+}
+
+[data-theme="dark"] .modal-content input,
+[data-theme="dark"] .modal-content textarea{
+
+    background:
+            rgba(30,41,59,0.92);
 }
 
 .modal-content textarea{
@@ -708,9 +696,16 @@ body{
 #cancelarEliminar{
 
     background:
-            rgba(51,65,85,1);
+            rgba(0,0,0,0.08);
 
-    color:var(--title);
+    color:var(--text-dark);
+}
+
+[data-theme="dark"] #cancelarEdit,
+[data-theme="dark"] #cancelarEliminar{
+
+    background:
+            rgba(51,65,85,1);
 }
 
 .danger,
@@ -742,14 +737,9 @@ body{
     transform:
             translateX(-50%);
 
-    background:
-            linear-gradient(
-                    135deg,
-                    rgba(15,23,42,0.98),
-                    rgba(30,41,59,0.98)
-            );
+    background:var(--surface);
 
-    color:white;
+    color:var(--text-dark);
 
     padding:
             16px 20px;
@@ -765,12 +755,14 @@ body{
     font-size:
             clamp(0.8rem,1vw,0.95rem);
 
-    box-shadow:
-            0 20px 40px rgba(0,0,0,0.35);
+    box-shadow:var(--shadow);
 
-    z-index:99999;
+    border:
+            1px solid var(--border);
 
     backdrop-filter:blur(20px);
+
+    z-index:99999;
 
     animation:
             toastReveal 0.35s cubic-bezier(0.16,1,0.3,1);
@@ -782,9 +774,14 @@ body{
 
     border:none;
 
-    background:white;
+    background:
+            linear-gradient(
+                    135deg,
+                    #49C7E7,
+                    #5D7BEE
+            );
 
-    color:var(--title);
+    color:white;
 
     padding:8px 14px;
 
