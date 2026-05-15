@@ -8,14 +8,6 @@ import {
 
 export async function renderPerfil(app) {
 
-    const currentTheme =
-        localStorage.getItem("theme") || "light";
-
-    document.documentElement.setAttribute(
-        "data-theme",
-        currentTheme
-    );
-
     app.innerHTML = `
 <link rel="stylesheet" href="components/dashboard/perfil.css">
 
@@ -224,7 +216,7 @@ export async function renderPerfil(app) {
                     <input
                         type="checkbox"
                         id="themeToggle"
-                        ${currentTheme === "dark" ? "checked" : ""}
+                        ${localStorage.getItem("theme") === "dark" ? "checked" : ""}
                     >
 
                     <span class="slider"></span>
