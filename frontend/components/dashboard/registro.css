@@ -687,3 +687,9 @@ and (orientation:landscape){
         padding:14px 10px;
     }
 }
+
+[data-theme="dark"] .feliz    { background: rgba(246,232,200,.15); }
+[data-theme="dark"] .tranquilo{ background: rgba(216,240,246,.15); }
+[data-theme="dark"] .neutral  { background: rgba(230,235,246,.15); }
+[data-theme="dark"] .triste   { background: rgba(240,222,214,.15); }
+[data-theme="dark"] .ansioso  { background: rgba(236,229,248,.15); }
