@@ -770,3 +770,14 @@ and (orientation:landscape){
         min-height:48px;
     }
 }
+
+[data-theme="dark"] .menu-toggle{
+
+    background:
+            rgba(255,255,255,0.12);
+
+    color:white;
+
+    border:
+            1px solid rgba(255,255,255,0.10);
+}
