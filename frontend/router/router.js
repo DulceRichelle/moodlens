@@ -77,9 +77,12 @@ export function navigate(route) {
 }
 
 window.navigate = navigate;
+const savedTheme = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", savedTheme);
 const savedRoute =
     localStorage.getItem(
         "currentRoute"
     ) || "home";
+
 
 navigate(savedRoute);
